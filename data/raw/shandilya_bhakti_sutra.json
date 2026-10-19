@@ -2,11 +2,11 @@
   {
     "sutra_no": "1",
     "sanskrit": "अथातो भक्तिजिज्ञासा॥",
-    "theme": "Inaugural Epistemological Inquiry into Bhakti",
+    "theme": "Inaugural Inquiry into the Philosophy of Bhakti",
     "initial_meaning": {
-      "en": "Now, therefore, arises the profound spiritual inquiry into the philosophical nature of Bhakti.",
-      "hi": "अब इसके बाद भक्ति के स्वरूप की दार्शनिक जिज्ञासा की जाती है।",
-      "mr": "आता यानंतर भक्तीच्या स्वरूपाविषयी तात्विक जिज्ञासा केली जाते."
+      "en": "Now, therefore, arises the profound spiritual and philosophical inquiry into the nature of Devotion (Bhakti-Jijnasa).",
+      "hi": "अब इसके बाद भक्ति के वास्तविक स्वरूप की दार्शनिक जिज्ञासा की जाती है।",
+      "mr": "आता यानंतर भक्तीच्या खऱ्या स्वरूपाविषयी तात्विक जिज्ञासा केली जाते."
     }
   },
   {
@@ -14,8 +14,8 @@
     "sanskrit": "सा परानुरक्तिरीश्वरे॥",
     "theme": "Supreme Attachment to the Supreme Divine",
     "initial_meaning": {
-      "en": "That (Bhakti) is supreme, unswerving attachment (anurakti) directed towards the Supreme Lord (Ishvara).",
-      "hi": "वह (भक्ति) परमेश्वर के प्रति परम अनुरक्ति (अनन्य अनुराग) है।",
+      "en": "That devotion is of the nature of supreme, transcendental attachment (anurakti) directed towards the Supreme Lord (Ishvara).",
+      "hi": "वह (भक्ति) परमेश्वर के प्रति परम अनुरक्ति (अनन्य, निष्काम अनुराग) है।",
       "mr": "ती भक्ती परमेश्वराच्या ठिकाणी असलेली परम अनुरक्ती होय."
     }
   },
@@ -24,19 +24,19 @@
     "sanskrit": "तत्संस्थस्यामृतत्वोपदेशात्॥",
     "theme": "Promise of Immortality in Divine Establishment",
     "initial_meaning": {
-      "en": "Because immortality (Moksha) is declared by the scriptures for one who remains firmly established in That.",
-      "hi": "क्योंकि उसमें स्थित रहने वाले के लिए उपनिषदों में अमृतत्व (मुक्ति) का उपदेश दिया गया है।",
-      "mr": "कारण त्या ईश्वरात स्थिर झालेल्या पुरुषाला अमृतत्वाची (मोक्षाची) प्राप्ती होते असा उपदेश आहे."
+      "en": "Because immortality (Moksha) is declared by the Upanishadic scriptures for one who remains firmly established in That Divine.",
+      "hi": "क्योंकि उपनिषदों में उस परमेश्वर में स्थित रहने वाले साधक के लिए अमृतत्व (मुक्ति) का उपदेश दिया गया है।",
+      "mr": "कारण त्या ईश्वरात स्थिर झालेल्या पुरुषाला अमृतत्वाची (मोक्षाची) प्राप्ती होते असा शास्त्राधार आहे."
     }
   },
   {
     "sutra_no": "4",
     "sanskrit": "ज्ञानेति चेन्न परस्य ज्ञानप्रतिष्ठानात्॥",
-    "theme": "Bhakti Distinct from Mere Intellectual Knowledge",
+    "theme": "Bhakti Distinct from Mere Intellectual Cognition",
     "initial_meaning": {
-      "en": "If it is argued that devotion is merely intellectual knowledge (Jnana), we refute this; for knowledge is merely the foundation for supreme love.",
-      "hi": "यदि कहें कि भक्ति केवल ज्ञान है, तो यह उचित नहीं; क्योंकि ज्ञान तो केवल परम प्रेम की प्रतिष्ठा (आधार) है।",
-      "mr": "भक्ती म्हणजे केवळ ज्ञान असे म्हणता येणार नाही; कारण ज्ञान हे केवळ भक्तीचे अधिष्ठान आहे."
+      "en": "If it is argued that devotion is merely intellectual knowledge (Jnana), we refute this; for knowledge is merely the foundation upon which supreme love rests.",
+      "hi": "यदि कहें कि भक्ति केवल बौद्धिक ज्ञान है, तो यह अनुचित है; क्योंकि ज्ञान तो केवल परम प्रेम की प्रतिष्ठा (आधार) मात्र है।",
+      "mr": "भक्ती म्हणजे केवळ बौद्धिक ज्ञान नव्हे; कारण ज्ञान हे केवळ भक्तीचे अधिष्ठान आहे."
     }
   },
   {
@@ -44,9 +44,9 @@
     "sanskrit": "द्वेषप्रतिद्वन्द्विभावाद्रसशब्दाच्च॥",
     "theme": "Bhakti as the Antithesis of Aversion and as Pure Rasa",
     "initial_meaning": {
-      "en": "Also because devotion is the direct antithesis of hatred/aversion, and the Upanishads designate the Supreme as 'Rasa' (ecstatic taste).",
-      "hi": "क्योंकि भक्ति द्वेष की विरोधी भावना है और श्रुति में ईश्वर को 'रसो वै सः' (आनंदमय रस) कहा गया है।",
-      "mr": "कारण भक्ती ही द्वेषाची विरोधी भावना असून उपनिषदात ईश्वराला 'रसो वै सः' (आनंदरूप) म्हटले आहे."
+      "en": "Also because devotion is the direct emotional antithesis of hatred (dvesha), and the Upanishads designate the Supreme as ecstatic 'Rasa'.",
+      "hi": "क्योंकि भक्ति द्वेष की विरोधी भावना है और श्रुति में ईश्वर को 'रसो वै सः' (परमानंदमय रस) कहा गया है।",
+      "mr": "कारण भक्ती ही द्वेषाची विरोधी भावना असून श्रुतीमध्ये ईश्वराला 'रसो वै सः' (आनंदरूप) म्हटले आहे."
     }
   },
   {
@@ -54,28 +54,28 @@
     "sanskrit": "न क्रिया परप्रयोजनाभावात्॥",
     "theme": "Bhakti Transcending Mechanical Action",
     "initial_meaning": {
-      "en": "Devotion is not a mechanical physical activity (Kriya), because it serves no extraneous purpose other than itself.",
-      "hi": "भक्ति कोई बाह्य क्रिया नहीं है, क्योंकि उसका फल किसी अन्य सांसारिक प्रयोजन के लिए नहीं होता।",
-      "mr": "भक्ती ही बाह्य क्रिया नाही, कारण ती कोणत्याही बाह्य लाभासाठी केली जात नाही."
+      "en": "Devotion is not a mechanical physical ritual or action (Kriya), because it serves no extrinsic purpose other than itself.",
+      "hi": "भक्ति कोई बाह्य कर्मकांड या क्रिया नहीं है, क्योंकि उसका फल किसी अन्य सांसारिक प्रयोजन के लिए नहीं होता।",
+      "mr": "भक्ती ही बाह्य क्रिया किंवा कर्मकांड नाही, कारण ती कोणत्याही बाह्य लाभासाठी केली जात नाही."
     }
   },
   {
     "sutra_no": "7",
     "sanskrit": "अत एव फलानन्त्यम्॥",
-    "theme": "Eternity and Infinity of the Fruit of Bhakti",
+    "theme": "Eternity and Infinity of the Fruit of Devotion",
     "initial_meaning": {
-      "en": "For this very reason, the fruit of devotion is infinite and eternal, unlike the finite fruits of karma.",
-      "hi": "इसी कारण भक्ति का फल अनंत और शाश्वत होता है, जो कर्मफलों की भांति नश्वर नहीं है।",
+      "en": "For this very reason, the fruit of devotion is infinite and eternal, unlike the finite, perishable fruits of worldly karma.",
+      "hi": "इसी कारण भक्ति का फल अनंत और शाश्वत होता है, जो लौकिक कर्मफलों की भांति नश्वर नहीं है।",
       "mr": "याच कारणामुळे भक्तीचे फळ हे अनंत आणि शाश्वत असते, जे कर्माच्या फळासारखे नाशवंत नसते."
     }
   },
   {
     "sutra_no": "8",
     "sanskrit": "तद्वतः प्रपत्तिरन्यथा पातित्यात्॥",
-    "theme": "Surrender as Inviolable Duty of the Devotee",
+    "theme": "Surrender (Prapatti) as Essential Safeguard",
     "initial_meaning": {
-      "en": "The devotee must practice total self-surrender (Prapatti), for without it there is moral degradation.",
-      "hi": "भक्त के लिए प्रपत्ति (शरणगति) अनिवार्य है, अन्यथा पतन की आशंका रहती है।",
+      "en": "The devotee must practice total self-surrender (Prapatti), for without it there is grave danger of spiritual fall.",
+      "hi": "भक्त के लिए प्रपत्ति (पूर्ण शरणागति) अनिवार्य है, अन्यथा पतन की आशंका रहती है।",
       "mr": "भक्तासाठी शरणागती अनिवार्य आहे, अन्यथा अधःपाताची भीती असते."
     }
   },
@@ -84,7 +84,7 @@
     "sanskrit": "तदेकान्तभावेन तदुपासनम्॥",
     "theme": "Single-Minded Exclusive Contemplation",
     "initial_meaning": {
-      "en": "Therefore, contemplation and worship of the Divine must be performed with exclusive single-mindedness.",
+      "en": "Therefore, contemplation and worship of the Divine must be performed with exclusive, undivided single-mindedness.",
       "hi": "अतः ईश्वर की उपासना केवल अनन्य एकांत भाव से ही करनी चाहिए।",
       "mr": "म्हणून ईश्वराची उपासना केवळ अनन्य भावाने केली पाहिजे."
     }
@@ -94,9 +94,909 @@
     "sanskrit": "जीवस्येश्वरानन्यत्वेऽपि तद्भावविमुक्तिः॥",
     "theme": "Liberation through Union with Divine Consciousness",
     "initial_meaning": {
-      "en": "Though the soul is essentially non-different from Ishvara, liberation consists in shedding the delusion of separation.",
-      "hi": "यद्यपि जीव ईश्वर से अभिन्न है, तथापि अविद्या के नाश से प्रभु-भाव में लीन होना ही मुक्ति है।",
+      "en": "Though the soul is essentially non-different from Ishvara, liberation consists in shedding the delusion of separation through loving union.",
+      "hi": "यद्यपि जीव ईश्वर से अभिन्न है, तथापि अविद्या के नाश से प्रभु-भाव में लीन होना ही वास्तविक मुक्ति है।",
       "mr": "जरी जीव ईश्वराशी अभिन्न असला, तरी अज्ञानाचा नाश होऊन ईश्वराशी एकरूप होणे हीच खरी मुक्ती."
+    }
+  },
+  {
+    "sutra_no": "11",
+    "sanskrit": "सा मुख्येतरभेदेन द्विविधा॥",
+    "theme": "Twofold Classification: Primary and Secondary",
+    "initial_meaning": {
+      "en": "Devotion is fundamentally twofold: Primary (Mukhya / Para) and Secondary (Gauni / Sadhana).",
+      "hi": "भक्ति दो प्रकार की होती है: मुख्य (परा भक्ति) और गौणी (साधन भक्ति)।",
+      "mr": "भक्तीचे दोन मुख्य प्रकार आहेत: मुख्य (परा भक्ती) आणि गौणी (साधन भक्ती)."
+    }
+  },
+  {
+    "sutra_no": "12",
+    "sanskrit": "रागप्राप्तत्वाच्च न विधीयते॥",
+    "theme": "Spontaneous Love Beyond Injunctions",
+    "initial_meaning": {
+      "en": "Because supreme love is spontaneous and self-arising, it cannot be commanded by mere ritual injunctions (Vidhis).",
+      "hi": "क्योंकि परम प्रेम स्वाभाविक और स्वतःस्फूर्त होता है, अतः उस पर कोई विधि-निषेध लागू नहीं होता।",
+      "mr": "कारण परा भक्ती ही उत्कट व स्वाभाविक असते, ती केवळ शास्त्रविधींच्या बंधनात बांधली जाऊ शकत नाही."
+    }
+  },
+  {
+    "sutra_no": "13",
+    "sanskrit": "रागस्तु काम्यत्वात्॥",
+    "theme": "Love as the Ultimate Desirable Object",
+    "initial_meaning": {
+      "en": "Love is inherently desired for its own sake by the soul, making it the supreme Purushartha.",
+      "hi": "प्रेम स्वयं में परम अभीष्ट है, अतः वह स्वयं परम पुरुषार्थ है।",
+      "mr": "प्रेम हे स्वतःच सर्वोत्कृष्ट ध्येय असल्यामुळे ते परम पुरुषार्थ ठरते."
+    }
+  },
+  {
+    "sutra_no": "14",
+    "sanskrit": "गौणी तु परोपकरणत्वात्॥",
+    "theme": "Secondary Devotion as an Instrument for the Supreme",
+    "initial_meaning": {
+      "en": "Secondary devotion (Gauni Bhakti) is instrumental, serving as the ladder to ascend unto Supreme Love.",
+      "hi": "गौणी भक्ति साधन रूपा है, जो परा भक्ति को प्राप्त करने का उपकारक साधन बनती है।",
+      "mr": "गौणी भक्ती ही साधनासारखी असून ती परा भक्तीच्या प्राप्तीसाठी साहाय्यक ठरते."
+    }
+  },
+  {
+    "sutra_no": "15",
+    "sanskrit": "तदङ्गानि च यथायथम्॥",
+    "theme": "Components of Secondary Devotion",
+    "initial_meaning": {
+      "en": "Its auxiliary practices should be adopted appropriately according to the temperament of the aspirant.",
+      "hi": "साधन भक्ति के विभिन्न अंगों का अपनी पात्रता और अधिकार के अनुसार यथायोग्य पालन करना चाहिए।",
+      "mr": "साधन भक्तीच्या विविध अंगांचे साधकाने आपल्या अधिकारानुसार योग्य पालन करावे."
+    }
+  },
+  {
+    "sutra_no": "16",
+    "sanskrit": "कीर्तनादीनि तद्भूयस्त्वेन॥",
+    "theme": "Singing Divine Glories Fosters Devotion",
+    "initial_meaning": {
+      "en": "Singing, chanting, and glorifying the divine names are primary practices for intensifying devotion.",
+      "hi": "भगवान का कीर्तन, गुणगान आदि साधन भक्ति को प्रगाढ़ बनाने में सर्वाधिक प्रभावी हैं।",
+      "mr": "भगवंताचे कीर्तन आणि नामघोष भक्तीला दृढ करण्यासाठी अत्यंत प्रभावी साधन आहे."
+    }
+  },
+  {
+    "sutra_no": "17",
+    "sanskrit": "नाम्नो हि महिमातिशयात्॥",
+    "theme": "The Supreme Glory of the Divine Name",
+    "initial_meaning": {
+      "en": "Because the sacred Name of the Divine possesses boundless, purifying spiritual efficacy.",
+      "hi": "क्योंकि भगवान के दिव्य नाम में असीम पावनकारी महिमा और शक्ति विद्यमान है।",
+      "mr": "कारण भगवंताच्या नामामध्ये असीम आणि पावन करणारी शक्ती भरलेली आहे."
+    }
+  },
+  {
+    "sutra_no": "18",
+    "sanskrit": "स्मरणं चाविच्छेदेन॥",
+    "theme": "Unbroken Remembrance (Smarana)",
+    "initial_meaning": {
+      "en": "Continuous, uninterrupted remembrance of the Lord sustains the devotional consciousness.",
+      "hi": "निरंतर और अविच्छिन्न रूप से प्रभु का स्मरण करते रहना चाहिए।",
+      "mr": "अखंड आणि अविरत नामस्मरण भक्तीभावाला नित्य जागृत ठेवते."
+    }
+  },
+  {
+    "sutra_no": "19",
+    "sanskrit": "पादोदकधारणं च॥",
+    "theme": "Reverence for Sacred Feet and Holy Water",
+    "initial_meaning": {
+      "en": "Accepting with devotion the sanctified water of the Lord's holy feet cleanses the mind.",
+      "hi": "भगवान के चरणामृत का श्रद्धापूर्वक पान और धारण चित्त को शुद्ध करता है।",
+      "mr": "भगवंताच्या चरणामृताचे श्रद्धेने सेवन अंतःकरण पवित्र करते."
+    }
+  },
+  {
+    "sutra_no": "20",
+    "sanskrit": "तदर्चनं च यथाविधि॥",
+    "theme": "Reverent Ritual Worship (Archana)",
+    "initial_meaning": {
+      "en": "Formal devotional worship (Archana) should be performed reverently according to spiritual ordinances.",
+      "hi": "शास्त्रसम्मत विधि से प्रभु का अर्चन और पूजन करना चाहिए।",
+      "mr": "शास्त्रशुद्ध रीतीने ईश्वराचे अर्चन आणि पूजन केले पाहिजे."
+    }
+  },
+  {
+    "sutra_no": "21",
+    "sanskrit": "नमस्कारश्च भक्त्या॥",
+    "theme": "Humble Prostration with Devotion",
+    "initial_meaning": {
+      "en": "Offering prostrations (Namaskara) with profound devotion shatters egotism.",
+      "hi": "भक्तिपूर्वक भगवान के चरणों में नमन और साष्टांग प्रणाम अहंकार का नाश करता है।",
+      "mr": "अनन्य भावाने ईश्वराला साष्टांग नमस्कार घालण्याने अहंकाराचा लोप होतो."
+    }
+  },
+  {
+    "sutra_no": "22",
+    "sanskrit": "दास्यं चात्मनिवेदनम्॥",
+    "theme": "Servitude and Total Dedication",
+    "initial_meaning": {
+      "en": "Cultivating the sentiment of divine servitude (Dasya) culminates in total self-surrender (Atma-nivedana).",
+      "hi": "प्रभु के दास-भाव की साधना अंततः पूर्ण आत्म-समर्पण में परिणत होती है।",
+      "mr": "ईश्वराचे दास बनून राहणे हेच शेवटी संपूर्ण आत्मसमर्पणात रूपांतरित होते."
+    }
+  },
+  {
+    "sutra_no": "23",
+    "sanskrit": "सख्यं च तदेकतानत्वात्॥",
+    "theme": "Friendship Through Intimate Absorption",
+    "initial_meaning": {
+      "en": "Spiritual companionship (Sakhya) arises through unwavering, intimate communion with the Divine.",
+      "hi": "प्रभु के साथ अभिन्न और अनन्य एकतानता से सख्य-भाव का उदय होता है।",
+      "mr": "ईश्वराशी एकतानता साधल्याने सख्यभावाची प्राप्ती होते."
+    }
+  },
+  {
+    "sutra_no": "24",
+    "sanskrit": "आत्मसमर्पणं च परमम्॥",
+    "theme": "Self-Surrender as the Apex of Sadhana",
+    "initial_meaning": {
+      "en": "Total surrender of one's body, mind, and soul to the Divine is the supreme spiritual discipline.",
+      "hi": "अपने शरीर, मन और आत्मा का प्रभु को पूर्ण समर्पण ही सर्वोच्च साधना है।",
+      "mr": "सर्वस्व ईश्वराला अर्पण करणे हीच साधनेची सर्वोच्च परिसीमा आहे."
+    }
+  },
+  {
+    "sutra_no": "25",
+    "sanskrit": "एवं परा निष्ठा॥",
+    "theme": "Attainment of Supreme Abidance",
+    "initial_meaning": {
+      "en": "Thus is established the supreme, unwavering state of devotional abidance (Para Nistha).",
+      "hi": "इस प्रकार साधक की परा निष्ठा (सर्वोच्च भगवद्-स्थिति) सिद्ध होती है।",
+      "mr": "अशा रीतीने साधकाची परा भक्तीमध्ये दृढ निष्ठा प्रस्थापित होते."
+    }
+  },
+  {
+    "sutra_no": "26",
+    "sanskrit": "तस्यां न भेदः॥",
+    "theme": "Absence of Duality in Supreme Love",
+    "initial_meaning": {
+      "en": "In that transcendental state of supreme devotion, all illusory distinctions and anxieties dissolve.",
+      "hi": "उस परम भक्ति की अवस्था में साधक और साध्य के बीच कोई कल्पित भेद या भय शेष नहीं रहता।",
+      "mr": "त्या परमोच्च अवस्थेत सर्व भेद आणि द्वैतभाव पूर्णपणे नाहीसे होतात."
+    }
+  },
+  {
+    "sutra_no": "27",
+    "sanskrit": "ज्ञानं तु तदङ्गम्॥",
+    "theme": "Knowledge as a Subsidiary Component of Bhakti",
+    "initial_meaning": {
+      "en": "Intellectual knowledge (Jnana) is merely a supporting limb or subsidiary component of supreme devotion.",
+      "hi": "ज्ञान वस्तुतः भक्ति का ही एक अंग और पोषक तत्व है।",
+      "mr": "ज्ञान हे भक्तीचेच एक साहाय्यक अंग आहे."
+    }
+  },
+  {
+    "sutra_no": "28",
+    "sanskrit": "न तु प्राधान्येन॥",
+    "theme": "Knowledge is Not the Primary Sovereign End",
+    "initial_meaning": {
+      "en": "Knowledge does not hold paramount sovereignty; for without love, intellectual cognition remains sterile.",
+      "hi": "ज्ञान स्वयं में प्रधान साध्य नहीं है; प्रेम के बिना कोरा ज्ञान निष्फल रहता है।",
+      "mr": "केवळ ज्ञानाला प्राधान्य नाही; प्रेमाशिवाय शुष्क ज्ञान अपुरे ठरते."
+    }
+  },
+  {
+    "sutra_no": "29",
+    "sanskrit": "कर्म तु चित्तशुद्ध्यर्थम्॥",
+    "theme": "Action for Purification of the Heart",
+    "initial_meaning": {
+      "en": "Action (Karma) serves solely for the purification of consciousness, preparing the vessel for devotion.",
+      "hi": "निष्काम कर्म केवल चित्त की शुद्धि के लिए है, जो भक्ति का पात्र तैयार करता है।",
+      "mr": "कर्म हे केवळ अंतःकरण शुद्ध करण्यासाठी असते, जेणेकरून भक्तीचा उदय व्हावा."
+    }
+  },
+  {
+    "sutra_no": "30",
+    "sanskrit": "तन्न्यासश्च भक्तौ॥",
+    "theme": "Surrender of All Actions in Devotion",
+    "initial_meaning": {
+      "en": "The ultimate culmination of karma is the dedicated renunciation of its fruits into devotion.",
+      "hi": "समस्त कर्मों और उनके फलों का भक्ति में समर्पण ही कर्म की पूर्णता है।",
+      "mr": "सर्व कर्मांचे ईश्वराला समर्पण करणे हीच कर्माची परिपूर्णता आहे."
+    }
+  },
+  {
+    "sutra_no": "31",
+    "sanskrit": "योगश्च मनःप्रणिधानाय॥",
+    "theme": "Yoga for Concentrating the Mind on God",
+    "initial_meaning": {
+      "en": "Yoga serves the purpose of stilling and focusing the mind upon the Divine.",
+      "hi": "अष्टांग योग का उद्देश्य मन को एकाग्र करके प्रभु में स्थिर करना है।",
+      "mr": "योगाचे प्रयोजन मनाला एकाग्र करून ईश्वराच्या ठिकाणी स्थिर करणे हेच आहे."
+    }
+  },
+  {
+    "sutra_no": "32",
+    "sanskrit": "स च भक्तावेव पर्यवस्यति॥",
+    "theme": "Yoga Culminates in Devotion",
+    "initial_meaning": {
+      "en": "And that yogic concentration ultimately finds its supreme fulfillment only in loving devotion.",
+      "hi": "और वह योगिक एकाग्रता अंततः भक्ति में ही अपनी सार्थकता प्राप्त करती है।",
+      "mr": "आणि ती एकाग्रता शेवटी भक्तीमध्येच परिणत होते."
+    }
+  },
+  {
+    "sutra_no": "33",
+    "sanskrit": "वैराग्यं च तदनुकूलम्॥",
+    "theme": "Dispassion Harmonious with Love",
+    "initial_meaning": {
+      "en": "Worldly dispassion (Vairagya) is supportive of devotion, guarding the heart from distraction.",
+      "hi": "संसार से वैराग्य भक्ति के अनुकूल होकर साधक को विचलित होने से बचाता है।",
+      "mr": "संसारातील वैराग्य हे भक्तीला पोषक ठरून मनाचे रक्षण करते."
+    }
+  },
+  {
+    "sutra_no": "34",
+    "sanskrit": "न तु केवलं शुष्कम्॥",
+    "theme": "Not Mere Dry Austerity",
+    "initial_meaning": {
+      "en": "True dispassion is not dry, bitter austerity, but natural detachment born of tasting divine sweetness.",
+      "hi": "सच्चा वैराग्य शुष्क तपस्या नहीं, बल्कि भगवद्-रस के आस्वादन से उपजी स्वाभाविक विरक्ति है।",
+      "mr": "खरे वैराग्य म्हणजे शुष्क तापसपणा नव्हे, तर ईश्वराच्या प्रेमरसामुळे आलेली स्वाभाविक विरक्ती होय."
+    }
+  },
+  {
+    "sutra_no": "35",
+    "sanskrit": "साक्षात्कारात् मुक्तिः॥",
+    "theme": "Liberation through Direct Realization",
+    "initial_meaning": {
+      "en": "Liberation arises from direct spiritual realization of the Supreme.",
+      "hi": "परमेश्वर के साक्षात् अपरोक्ष अनुभव से ही मुक्ति संभव होती है।",
+      "mr": "परमेश्वराच्या साक्षात्कारानेच खरी मुक्ती प्राप्त होते."
+    }
+  },
+  {
+    "sutra_no": "36",
+    "sanskrit": "स च भक्तिप्रसादात्॥",
+    "theme": "Realization Born of Devotional Grace",
+    "initial_meaning": {
+      "en": "And that direct realization occurs solely through the sweet grace and favor of devotion.",
+      "hi": "और वह साक्षात्कार केवल भक्ति के अनुग्रह और कृपा से ही प्रकट होता है।",
+      "mr": "आणि असा साक्षात्कार केवळ भक्तीच्या कृपेनेच साध्य होतो."
+    }
+  },
+  {
+    "sutra_no": "37",
+    "sanskrit": "ईश्वरप्रणिधानाद्वा॥",
+    "theme": "Or Through Resignation to the Lord",
+    "initial_meaning": {
+      "en": "As affirmed by Patanjali, realization is attained through profound resignation unto Ishvara.",
+      "hi": "योगसूत्रों में भी कहा गया है कि ईश्वर-प्रणिधान (समर्पण) से ही समाधि और सिद्धि मिलती है।",
+      "mr": "ईश्वराला शरण जाण्यानेच आत्मज्ञान आणि मुक्ती साध्य होते."
+    }
+  },
+  {
+    "sutra_no": "38",
+    "sanskrit": "न चान्यत् साधनम्॥",
+    "theme": "No Other Direct Independent Means",
+    "initial_meaning": {
+      "en": "There exists no other independent instrument that directly bestows divine realization without devotion.",
+      "hi": "भक्ति के बिना प्रत्यक्ष भगवत्-प्राप्ति कराने वाला कोई अन्य स्वतंत्र साधन नहीं है।",
+      "mr": "भक्तीशिवाय ईश्वराची प्रत्यक्ष प्राप्ती करून देणारे दुसरे कोणतेही स्वतंत्र साधन नाही."
+    }
+  },
+  {
+    "sutra_no": "39",
+    "sanskrit": "तस्मात् सैव गरीयसी॥",
+    "theme": "Therefore Devotion Alone is Supreme",
+    "initial_meaning": {
+      "en": "Therefore, Devotion alone is declared by the wise to be the supreme and sovereign path.",
+      "hi": "अतः विद्वानों और शास्त्रों द्वारा भक्ति को ही सर्वश्रेष्ठ घोषित किया गया है।",
+      "mr": "म्हणून ज्ञानी पुरुषांनी भक्तीलाच सर्वश्रेष्ठ मार्ग मानले आहे."
+    }
+  },
+  {
+    "sutra_no": "40",
+    "sanskrit": "श्रुतिस्मृतिभ्यां च॥",
+    "theme": "Corroborated by Vedas and Scriptures",
+    "initial_meaning": {
+      "en": "This truth is emphatically corroborated by both primary Shruti and secondary Smriti scriptures.",
+      "hi": "यह सिद्धांत श्रुति (वेदों) और स्मृति (शास्त्रों) दोनों द्वारा भली-भांति प्रमाणित है।",
+      "mr": "हा सिद्धांत वेद आणि स्मृती या दोन्ही धर्मग्रंथांनी प्रमाणित केला आहे."
+    }
+  },
+  {
+    "sutra_no": "41",
+    "sanskrit": "इति प्रथमस्याह्निकस्य पर्यवसानम्॥",
+    "theme": "Conclusion of Epistemological Section",
+    "initial_meaning": {
+      "en": "Thus concludes the formal epistemological foundation of Bhakti.",
+      "hi": "इस प्रकार भक्ति के दार्शनिक आधार का यह प्रभाग संपन्न होता है।",
+      "mr": "अशा प्रकारे भक्तीच्या ज्ञानात्मक अधिष्ठानाचा हा भाग पूर्ण होतो."
+    }
+  },
+  {
+    "sutra_no": "42",
+    "sanskrit": "अथ लक्षणानां विस्तरः॥",
+    "theme": "Elaboration of Specific Characteristics",
+    "initial_meaning": {
+      "en": "Now follows the comprehensive exposition of the specific characteristics of devotion.",
+      "hi": "अब भक्ति के विशिष्ट लक्षणों और अभिव्यक्तियों का सविस्तर प्रतिपादन किया जाता है।",
+      "mr": "आता भक्तीच्या विशिष्ट लक्षणांचे सविस्तर निरूपण केले जाते."
+    }
+  },
+  {
+    "sutra_no": "43",
+    "sanskrit": "तत्र परा साध्या॥",
+    "theme": "Supreme Love as the Sole Goal",
+    "initial_meaning": {
+      "en": "Among all disciplines, transcendental Supreme Love (Para Bhakti) is the ultimate goal to be realized.",
+      "hi": "समस्त साधनों में परा भक्ति ही परम साध्य और जीवन का चरम लक्ष्य है।",
+      "mr": "सर्व साधनांमध्ये परा भक्ती हेच अंतिम साध्य आहे."
+    }
+  },
+  {
+    "sutra_no": "44",
+    "sanskrit": "ईश्वरस्य स्वरूपविचारः॥",
+    "theme": "Inquiry into the Divine Nature",
+    "initial_meaning": {
+      "en": "Now follows the contemplation regarding the intrinsic nature of the Supreme Lord (Ishvara).",
+      "hi": "अब परमेश्वर के वास्तविक स्वरूप का दार्शनिक विचार किया जाता है।",
+      "mr": "आता परमेश्वराच्या मूळ स्वरूपाचा तात्विक विचार केला जातो."
+    }
+  },
+  {
+    "sutra_no": "45",
+    "sanskrit": "स सच्चिदानन्दघनः॥",
+    "theme": "God as Absolute Truth, Consciousness, and Bliss",
+    "initial_meaning": {
+      "en": "He is the embodiment of absolute Truth (Sat), infinite Consciousness (Chit), and unalloyed Bliss (Ananda).",
+      "hi": "ईश्वर साक्षात् सत्, चित् और आनंद के घनीभूत स्वरूप हैं।",
+      "mr": "ईश्वर हा सत्, चित् आणि आनंद यांचा साक्षात घनरूप आहे."
+    }
+  },
+  {
+    "sutra_no": "46",
+    "sanskrit": "मायया सगुणत्वम्॥",
+    "theme": "Manifestation of Qualities through Maya",
+    "initial_meaning": {
+      "en": "Through His sovereign divine power (Maya), the unmanifest Lord reveals auspicious qualities for devotion.",
+      "hi": "अपनी दिव्य योगमाया के द्वारा निर्गुण प्रभु भक्तों पर अनुग्रह करने हेतु सगुण रूप धारण करते हैं।",
+      "mr": "आपल्या दिव्य मायेने निर्गुण ईश्वर भक्तांच्या उद्धारासाठी सगुण रूप प्रकट करतो."
+    }
+  },
+  {
+    "sutra_no": "47",
+    "sanskrit": "न तु वस्तुतः॥",
+    "theme": "Transcending Material Limitations",
+    "initial_meaning": {
+      "en": "Yet, in His ultimate essence, He remains untainted by the limitations of worldly qualities.",
+      "hi": "किंतु तात्विक दृष्टि से वे प्राकृत गुणों और सीमाओं से सर्वथा परे हैं।",
+      "mr": "परंतु मूळ तत्त्वाने ईश्वर प्राकृत गुणांच्या पलीकडचा आहे."
+    }
+  },
+  {
+    "sutra_no": "48",
+    "sanskrit": "अवतारश्च लोकहितार्थम्॥",
+    "theme": "Divine Incarnation for the Welfare of the World",
+    "initial_meaning": {
+      "en": "The divine descent (Avatara) occurs solely for the cosmic welfare and redemption of humanity.",
+      "hi": "भगवान का अवतार केवल जगत के कल्याण और धर्म की स्थापना हेतु होता है।",
+      "mr": "ईश्वराचा अवतार हा केवळ जगाच्या कल्याणासाठी आणि भक्तांच्या उद्धारासाठी होतो."
+    }
+  },
+  {
+    "sutra_no": "49",
+    "sanskrit": "तत्र भक्तानुग्रहः प्रधानम्॥",
+    "theme": "Grace upon Devotees as the Primary Motive",
+    "initial_meaning": {
+      "en": "In divine incarnation, extending loving grace unto His devotees is the foremost motive.",
+      "hi": "अवतार लेने में भक्तों पर प्रेमपूर्ण अनुग्रह करना ही भगवान का मुख्य प्रयोजन होता है।",
+      "mr": "अवतार घेण्यामागे भक्तांवर कृपा करणे हेच ईश्वराचे मुख्य प्रयोजन असते."
+    }
+  },
+  {
+    "sutra_no": "50",
+    "sanskrit": "रूपभेदश्चोपासनाभेदात्॥",
+    "theme": "Diversity of Forms for Diverse Devotees",
+    "initial_meaning": {
+      "en": "The multiplicity of divine forms arises to fulfill the diverse devotional aspirations of different seekers.",
+      "hi": "भगवान के रूपों की विविधता भक्तों की उपासना और भावों की भिन्नता के अनुरूप होती है।",
+      "mr": "भक्तांच्या उपासनेनुसार आणि भावानुसार ईश्वर विविध रूपे धारण करतो."
+    }
+  },
+  {
+    "sutra_no": "51",
+    "sanskrit": "न तु तत्त्वतः॥",
+    "theme": "Oneness in Ultimate Reality",
+    "initial_meaning": {
+      "en": "In essential ontological reality, the Divine is one without a second.",
+      "hi": "तात्विक दृष्टि से सभी दिव्य रूपों में एक ही परम चेतना विद्यमान है।",
+      "mr": "तात्विक दृष्टीने सर्व रूपांमध्ये एकच परमेश्वर वास करतो."
+    }
+  },
+  {
+    "sutra_no": "52",
+    "sanskrit": "सर्वव्यापकोऽपि हृदि संस्थितः॥",
+    "theme": "All-Pervading Yet Seated in the Heart",
+    "initial_meaning": {
+      "en": "Though all-pervasive throughout the cosmos, the Lord resides especially within the lotus of the devotee's heart.",
+      "hi": "यद्यपि ईश्वर सर्वव्यापी हैं, तथापि वे विशेष रूप से भक्त के हृदय-कमल में विराजमान रहते हैं।",
+      "mr": "जरी ईश्वर सर्वव्यापी असला, तरी तो भक्ताच्या हृदयकमलात विशेष रूपाने वास करतो."
+    }
+  },
+  {
+    "sutra_no": "53",
+    "sanskrit": "भक्तेषु विशेषेणाविर्भावः॥",
+    "theme": "Special Manifestation in Sincere Devotees",
+    "initial_meaning": {
+      "en": "The Divine manifests with radiant clarity in those who love Him with undivided sincerity.",
+      "hi": "सच्चे और निष्काम भक्तों में भगवान का विशेष और प्रत्यक्ष प्राकट्य होता है।",
+      "mr": "सच्च्या भक्तांमध्ये ईश्वराचे विशेष प्राकट्य अनुभवास येते."
+    }
+  },
+  {
+    "sutra_no": "54",
+    "sanskrit": "यथा काष्ठेऽग्निः॥",
+    "theme": "Analogy of Fire Latent in Wood",
+    "initial_meaning": {
+      "en": "Just as fire exists latently throughout wood but flares into light through friction, so does God manifest through devotion.",
+      "hi": "जैसे लकड़ी में अग्नि गुप्त रहती है और मथने से प्रकट होती है, वैसे ही भक्ति से प्रभु प्रकट होते हैं।",
+      "mr": "जसा लाकडामध्ये अग्नी सुप्त असतो आणि मंथनाने प्रकट होतो, तसा भक्तीने ईश्वर प्रकट होतो."
+    }
+  },
+  {
+    "sutra_no": "55",
+    "sanskrit": "तथा भक्तात्मनि प्रभुः॥",
+    "theme": "The Lord Shines in the Heart of the Devotee",
+    "initial_meaning": {
+      "en": "Even so does the Supreme Lord radiate within the purified consciousness of the devotee.",
+      "hi": "उसी प्रकार पवित्र अंतःकरण वाले भक्त की आत्मा में परमात्मा प्रकाशित होते हैं।",
+      "mr": "त्याचप्रमाणे शुद्ध अंतःकरणाच्या भक्ताच्या आत्म्यात परमात्मा प्रकाशित होतो."
+    }
+  },
+  {
+    "sutra_no": "56",
+    "sanskrit": "साधनप्रकारनिरूपणम्॥",
+    "theme": "Exposition of Practical Spiritual Disciplines",
+    "initial_meaning": {
+      "en": "Now begins the detailed exposition of spiritual practices that awaken and sustain love.",
+      "hi": "अब भक्ति को जागृत करने वाले व्यावहारिक साधना-मार्गों का निरूपण किया जाता है।",
+      "mr": "आता भक्ती वृद्धिंगत करणाऱ्या साधनांचे सविस्तर निरूपण केले जाते."
+    }
+  },
+  {
+    "sutra_no": "57",
+    "sanskrit": "श्रद्धा हि मूलम्॥",
+    "theme": "Faith as the Foundational Root",
+    "initial_meaning": {
+      "en": "Steadfast spiritual faith (Shraddha) is the indispensable foundational root of all devotion.",
+      "hi": "दृढ़ श्रद्धा ही समस्त भक्ति का मूल और प्राथमिक आधार है।",
+      "mr": "अढळ श्रद्धा हेच सर्व भक्तीचे मूळ आणि पाया आहे."
+    }
+  },
+  {
+    "sutra_no": "58",
+    "sanskrit": "सत्सङ्गश्चोद्बोधकः॥",
+    "theme": "Holy Association as the Awakening Catalyst",
+    "initial_meaning": {
+      "en": "Association with holy, enlightened souls (Satsanga) is the potent catalyst that awakens dormant love.",
+      "hi": "सत्संग वह शक्ति है जो सोई हुई भगवद्-प्रीति को तत्काल जागृत कर देती है।",
+      "mr": "सत्संग हा सुप्त भक्तीला जागे करणारा सर्वश्रेष्ठ प्रेरक आहे."
+    }
+  },
+  {
+    "sutra_no": "59",
+    "sanskrit": "दुष्प्रवृत्तिकारणानां त्यागः॥",
+    "theme": "Renunciation of the Causes of Sinful Tendencies",
+    "initial_meaning": {
+      "en": "One must vigilantly renounce all environments and habits that incite negative, degrading tendencies.",
+      "hi": "उन सभी कारणों और संगतों का त्याग करना चाहिए जो मन में विकृतियां उत्पन्न करते हैं।",
+      "mr": "मनात वाईट विचार निर्माण करणाऱ्या सर्व कारणांचा आणि संगतीचा त्याग केला पाहिजे."
+    }
+  },
+  {
+    "sutra_no": "60",
+    "sanskrit": "कामक्रोधादिजयः॥",
+    "theme": "Conquest of Lust, Anger, and Greed",
+    "initial_meaning": {
+      "en": "Conquest of lust, anger, greed, and delusion is essential for establishing devotional peace.",
+      "hi": "काम, क्रोध, लोभ आदि विकारों पर विजय प्राप्त करना भक्ति का आवश्यक अंग है।",
+      "mr": "काम, क्रोधादी विकारांवर ताबा मिळवणे हे भक्तीच्या शांततेसाठी अत्यंत आवश्यक आहे."
+    }
+  },
+  {
+    "sutra_no": "61",
+    "sanskrit": "ईश्वरार्पितसर्वभावः॥",
+    "theme": "All Feelings Dedicated to the Lord",
+    "initial_meaning": {
+      "en": "Every emotion, impulse, and relationship should be consecrated and directed towards God.",
+      "hi": "अपने समस्त भावों, संवेगों और इच्छाओं को ईश्वर में ही समर्पित कर देना चाहिए।",
+      "mr": "आपल्या सर्व भावना आणि वासना ईश्वराच्या चरणी समर्पित केल्या पाहिजेत."
+    }
+  },
+  {
+    "sutra_no": "62",
+    "sanskrit": "अहङ्कारनिवृत्तिः॥",
+    "theme": "Eradication of Egoism",
+    "initial_meaning": {
+      "en": "The dissolution of egoistic arrogance (Ahamkara) is the supreme threshold to divine grace.",
+      "hi": "अहंकार की पूर्ण निवृत्ति ही भगवद्-कृपा को पाने का सच्चा द्वार है।",
+      "mr": "अहंकाराचा पूर्ण नाश झाल्याशिवाय ईश्वराची कृपा अनुभवता येत नाही."
+    }
+  },
+  {
+    "sutra_no": "63",
+    "sanskrit": "दैन्यं च शरणागतिः॥",
+    "theme": "Humility and Self-Surrender",
+    "initial_meaning": {
+      "en": "Heartfelt humility (Dainya) and unreserved surrender (Sharanagati) evoke immediate divine protection.",
+      "hi": "निष्कपट दीनता और अनन्य शरणागति से प्रभु तुरंत रक्षा करते हैं।",
+      "mr": "निर्मळ लीनता आणि अनन्य शरणागती ईश्वराला त्वरित आकर्षित करते."
+    }
+  },
+  {
+    "sutra_no": "64",
+    "sanskrit": "प्रायश्चित्तं च भगवन्नाम॥",
+    "theme": "The Divine Name as the Supreme Atonement",
+    "initial_meaning": {
+      "en": "Chanting and taking refuge in the divine Name is the supreme atonement for all past lapses.",
+      "hi": "भगवान का नाम-जप ही पूर्वकृत दोषों का सर्वोच्च और सर्वोत्तम प्रायश्चित है।",
+      "mr": "भगवंताचे नामस्मरण हेच सर्व पापांचे सर्वश्रेष्ठ प्रायश्चित्त आहे."
+    }
+  },
+  {
+    "sutra_no": "65",
+    "sanskrit": "पातकनाशनं च॥",
+    "theme": "Destruction of All Sins through Devotion",
+    "initial_meaning": {
+      "en": "Devotion incinerates the impressions of even the gravest transgressions.",
+      "hi": "भक्ति बड़े से बड़े पापों और अशुभ संस्कारों को भस्म कर देती है।",
+      "mr": "भक्तीमुळे मोठमोठी पापे आणि दुष्कृत्ये भस्मसात होतात."
+    }
+  },
+  {
+    "sutra_no": "66",
+    "sanskrit": "न तु तीर्थादिमात्रेण॥",
+    "theme": "Pilgrimage Alone is Insufficient Without Devotion",
+    "initial_meaning": {
+      "en": "Mechanical pilgrimage to holy shrines alone cannot redeem the soul if devotion is lacking in the heart.",
+      "hi": "यदि हृदय में भक्ति नहीं है, तो केवल बाहरी तीर्थ-यात्राओं से कल्याण नहीं हो सकता।",
+      "mr": "अंतःकरणात भक्ती नसेल तर केवळ तीर्थयात्रांनी मुक्ती मिळत नाही."
+    }
+  },
+  {
+    "sutra_no": "67",
+    "sanskrit": "भक्तिहीनस्य सर्वं व्यर्थम्॥",
+    "theme": "Everything is Vain Without Devotion",
+    "initial_meaning": {
+      "en": "All rituals, sacrifices, austerities, and erudition are completely futile if barren of devotional love.",
+      "hi": "भक्ति के बिना समस्त कर्मकांड, जप, तप और शास्त्र-ज्ञान व्यर्थ सिद्ध होते हैं।",
+      "mr": "भक्तीशिवाय केलेली सर्व दाने, व्रते, तपस्या आणि ज्ञान व्यर्थ ठरतात."
+    }
+  },
+  {
+    "sutra_no": "68",
+    "sanskrit": "भक्तिमतः सर्वं सफलं भवति॥",
+    "theme": "Everything Bears Fruit for the Devoted Soul",
+    "initial_meaning": {
+      "en": "For one endowed with genuine devotion, every humble act becomes spiritually fruitful and sublime.",
+      "hi": "सच्चे भक्त का प्रत्येक साधारण कर्म भी परमात्मा की प्रीति से सफल और पावन हो जाता है।",
+      "mr": "भक्तियुक्त अंतःकरणाने केलेले प्रत्येक साधे कर्मही फलद्रूप आणि पावन होते."
+    }
+  },
+  {
+    "sutra_no": "69",
+    "sanskrit": "अन्त्यजोऽपि विमुच्यते॥",
+    "theme": "Even the Lowliest Attains Liberation through Bhakti",
+    "initial_meaning": {
+      "en": "Even a person of the humblest or lowliest societal birth attains the highest liberation through devotion.",
+      "hi": "समाज में अत्यंत दीन या नीच समझे जाने वाला व्यक्ति भी भक्ति से परम पद को प्राप्त करता है।",
+      "mr": "अत्यंत दीन आणि उपेक्षित व्यक्तीही भक्तीने सर्वोच्च मुक्ती प्राप्त करते."
+    }
+  },
+  {
+    "sutra_no": "70",
+    "sanskrit": "जातिभेदो न विद्यते॥",
+    "theme": "No Distinctions of Caste or Birth in the Divine Realm",
+    "initial_meaning": {
+      "en": "Before the Divine, distinctions of caste, social birth, or pedigree do not exist in the slightest.",
+      "hi": "भगवान के दरबार में जाति, कुल अथवा जन्म का कोई भेद नहीं माना जाता।",
+      "mr": "भगवंताच्या दरबारात जातीचा किंवा जन्माचा कोणताही भेद नसतो."
+    }
+  },
+  {
+    "sutra_no": "71",
+    "sanskrit": "यतः सर्वं तन्मयम्॥",
+    "theme": "Because All is Permeated by the Divine",
+    "initial_meaning": {
+      "en": "Because everything in existence is equally the manifestation and embodiment of That One Divine.",
+      "hi": "क्योंकि यह संपूर्ण चराचर जगत उसी एक परमात्मा का स्वरूप है।",
+      "mr": "कारण हे सर्व विश्व केवळ त्या एका परमात्म्यानेच व्यापलेले आहे."
+    }
+  },
+  {
+    "sutra_no": "72",
+    "sanskrit": "प्राणिषु दया च॥",
+    "theme": "Compassion Towards All Living Beings",
+    "initial_meaning": {
+      "en": "Active compassion towards all sentient beings naturally flows from the heart of a true devotee.",
+      "hi": "सच्चे भक्त के हृदय में सभी प्राणियों के प्रति स्वाभाविक दया और करुणा होती है।",
+      "mr": "सच्च्या भक्ताच्या अंतःकरणात सर्व प्राणिमात्रांविषयी असीम भूतदया असते."
+    }
+  },
+  {
+    "sutra_no": "73",
+    "sanskrit": "सर्वभूतहिते रतिः॥",
+    "theme": "Delight in the Welfare of All Creatures",
+    "initial_meaning": {
+      "en": "The devotee rejoices in the welfare of the entire creation, seeing the Beloved in every form.",
+      "hi": "भक्त समस्त प्राणियों के कल्याण में रत रहता है, क्योंकि वह सबमें प्रभु को देखता है।",
+      "mr": "भक्त सर्व प्राण्यांच्या हितात आनंद मानतो, कारण तो सर्वांमध्ये ईश्वराला पाहतो."
+    }
+  },
+  {
+    "sutra_no": "74",
+    "sanskrit": "अहिंसा च परमो धर्मः॥",
+    "theme": "Non-Violence as the Supreme Duty",
+    "initial_meaning": {
+      "en": "Non-injury in thought, word, and deed (Ahimsa) is the supreme virtue cherished by devotion.",
+      "hi": "मन, वाणी और कर्म से किसी को कष्ट न देना ही भक्ति का परम धर्म है।",
+      "mr": "मन, वाचा आणि कर्माने कोणालाही दुःख न देणे हाच भक्तीचा परम धर्म आहे."
+    }
+  },
+  {
+    "sutra_no": "75",
+    "sanskrit": "सत्यं च प्रियं हितम्॥",
+    "theme": "Truth Spoken with Kindness and Benefit",
+    "initial_meaning": {
+      "en": "Adherence to truth that is gentle, beneficial, and spoken with love characterizes the devotee.",
+      "hi": "सत्य, प्रिय और हितकारी वाणी बोलना भक्त का स्वाभाविक लक्षण है।",
+      "mr": "सत्य, प्रिय आणि हितकारक भाषण हे भक्ताचे स्वाभाविक लक्षण असते."
+    }
+  },
+  {
+    "sutra_no": "76",
+    "sanskrit": "शौचं चान्तरं बाह्यम्॥",
+    "theme": "Internal and External Purity",
+    "initial_meaning": {
+      "en": "Both external cleanliness of the body and internal purity of thoughts must be sustained.",
+      "hi": "शरीर की बाह्य स्वच्छता और मन की आंतरिक पवित्रता दोनों का पालन करना चाहिए।",
+      "mr": "शरीराची बाह्य शुद्धी आणि मनाची आंतरिक शुद्धी दोन्ही राखल्या पाहिजेत."
+    }
+  },
+  {
+    "sutra_no": "77",
+    "sanskrit": "सन्तोषश्च सर्वदा॥",
+    "theme": "Contentment at All Times",
+    "initial_meaning": {
+      "en": "Serene contentment with whatever comes through divine providence keeps the mind peaceful.",
+      "hi": "प्रभु के विधान में सदा संतुष्ट रहना ही साधक को अगाध शांति प्रदान करता है।",
+      "mr": "ईश्वराच्या इच्छेत नेहमी समाधानी राहिल्याने मनाला चिरंतन शांती लाभते."
+    }
+  },
+  {
+    "sutra_no": "78",
+    "sanskrit": "स्वाध्यायश्च भक्तिपोषकः॥",
+    "theme": "Spiritual Study that Nourishes Devotion",
+    "initial_meaning": {
+      "en": "Regular study of sacred texts that inspire love and wisdom should be cultivated daily.",
+      "hi": "भक्ति को पुष्ट करने वाले धर्मग्रंथों का नित्य स्वाध्याय करना चाहिए।",
+      "mr": "भक्ती वाढवणाऱ्या पवित्र ग्रंथांचे नित्य वाचन व मनन केले पाहिजे."
+    }
+  },
+  {
+    "sutra_no": "79",
+    "sanskrit": "ईश्वरचिन्तनं सततम्॥",
+    "theme": "Continuous Contemplation of the Lord",
+    "initial_meaning": {
+      "en": "The mind should be trained to constantly dwell upon the glorious attributes of the Divine.",
+      "hi": "मन को निरंतर परमात्मा के दिव्य गुणों के चिंतन में लगाए रखना चाहिए।",
+      "mr": "मनाला सतत ईश्वराच्या मंगलमय गुणांच्या चिंतनात मग्न ठेवले पाहिजे."
+    }
+  },
+  {
+    "sutra_no": "80",
+    "sanskrit": "प्रपन्नस्य न भयं क्वचित्॥",
+    "theme": "Fearlessness for the Surrendered Soul",
+    "initial_meaning": {
+      "en": "For the soul who has taken complete shelter in the Lord, fear exists nowhere in the universe.",
+      "hi": "जो प्रभु के शरणागत हो चुका है, उसके लिए संसार में कहीं भी कोई भय नहीं रहता।",
+      "mr": "जो ईश्वराला शरण गेला आहे, त्याला या विश्वात कशाचेही भय उरत नाही."
+    }
+  },
+  {
+    "sutra_no": "81",
+    "sanskrit": "स हि रक्षति सर्वथा॥",
+    "theme": "The Lord Protects in Every Circumstance",
+    "initial_meaning": {
+      "en": "For the Supreme Lord Himself unfailingly protects and preserves His devotee in every adversity.",
+      "hi": "क्योंकि भगवान स्वयं अपने भक्त की हर संकट में सर्वथा रक्षा करते हैं।",
+      "mr": "कारण परमात्मा स्वतः आपल्या भक्ताचे सर्व संकटांतून सर्वतोपरी रक्षण करतो."
+    }
+  },
+  {
+    "sutra_no": "82",
+    "sanskrit": "इति द्वितीयस्याह्निकस्य निर्णयः॥",
+    "theme": "Conclusion of the Sadhana Section",
+    "initial_meaning": {
+      "en": "Thus is concluded the authoritative section establishing the practical disciplines of Bhakti.",
+      "hi": "इस प्रकार साधन-प्रणाली का यह द्वितीय प्रभाग संपन्न होता है।",
+      "mr": "अशा प्रकारे साधन-प्रणालीचा हा दुसरा भाग पूर्ण होतो."
+    }
+  },
+  {
+    "sutra_no": "83",
+    "sanskrit": "अथ फलनिरूपणम्॥",
+    "theme": "Exposition of the Ultimate Fruit (Phala)",
+    "initial_meaning": {
+      "en": "Now follows the authoritative examination of the supreme fruit and destiny attained through devotion.",
+      "hi": "अब भक्ति के परम फल और मोक्ष-स्वरूप का निरूपण किया जाता है।",
+      "mr": "आता भक्तीच्या अंतिम फळाचे आणि मोक्षाचे निरूपण केले जाते."
+    }
+  },
+  {
+    "sutra_no": "84",
+    "sanskrit": "मुक्तिश्च भगवत्प्राप्तिरूपा॥",
+    "theme": "Liberation Defined as Direct Attainment of God",
+    "initial_meaning": {
+      "en": "True spiritual liberation (Mukti) is not mere void, but the direct attainment and communion with God.",
+      "hi": "सच्ची मुक्ति कोई शून्यता नहीं, बल्कि परमात्मा की प्रत्यक्ष प्राप्ति और सामीप्य है।",
+      "mr": "खरी मुक्ती म्हणजे शून्यता नव्हे, तर ईश्वराची प्रत्यक्ष प्राप्ती आणि त्याचे नित्य सान्निध्य होय."
+    }
+  },
+  {
+    "sutra_no": "85",
+    "sanskrit": "सायुज्यं च परमानन्दः॥",
+    "theme": "Sayujya Union as Supreme Ecstasy",
+    "initial_meaning": {
+      "en": "Intimate divine communion (Sayujya) is the state of unending, unshakeable transcendental bliss.",
+      "hi": "ईश्वर के साथ तादात्म्य (सायुज्य) ही अखंड परमानंद की सर्वोच्च स्थिति है।",
+      "mr": "ईश्वराशी एकरूपता (सायुज्य मुक्ती) हीच अखंड परमानंदाची सर्वोच्च अवस्था आहे."
+    }
+  },
+  {
+    "sutra_no": "86",
+    "sanskrit": "न तु केवलं कैवल्यम्॥",
+    "theme": "Transcending Dry Isolation (Kaivalya)",
+    "initial_meaning": {
+      "en": "Devotional liberation transcends dry, emotionless isolation (Kaivalya), overflowing with divine love.",
+      "hi": "भक्ति की मुक्ति कोरे एकाकीपन (कैवल्य) से परे भगवद्-प्रेम के रस से परिपूर्ण होती है।",
+      "mr": "भक्ताची मुक्ती ही केवळ कोरडे एकाकीपण नसून ती भगवद्प्रेमाने ओसंडून वाहणारी असते."
+    }
+  },
+  {
+    "sutra_no": "87",
+    "sanskrit": "तत्र प्रेमानन्दस्य प्राधान्यम्॥",
+    "theme": "Paramount Primacy of the Bliss of Love",
+    "initial_meaning": {
+      "en": "In that perfected state, the sheer ecstatic bliss of divine love reigns supreme over all else.",
+      "hi": "उस अवस्था में प्रेम के आनंद की ही प्रधानता और सर्वोच्चता होती है।",
+      "mr": "त्या अवस्थेत केवळ प्रेमानंदाचीच सर्वोच्च सत्ता असते."
+    }
+  },
+  {
+    "sutra_no": "88",
+    "sanskrit": "जीवन्मुक्तिश्च संभवति॥",
+    "theme": "Living Liberation (Jivanmukti) in This Very Life",
+    "initial_meaning": {
+      "en": "Living liberation while still embodied in this world is fully attainable through perfect devotion.",
+      "hi": "भक्ति के प्रभाव से इसी जीवन में जीते-जी मुक्त (जीवन्मुक्त) होना पूर्णतः संभव है।",
+      "mr": "भक्तीच्या प्रभावाने याच देहात असताना जीवन्मुक्त होणे पूर्णपणे शक्य आहे."
+    }
+  },
+  {
+    "sutra_no": "89",
+    "sanskrit": "प्रारब्धक्षये परमं पदम्॥",
+    "theme": "Attainment of the Supreme Abode upon Exhaustion of Karma",
+    "initial_meaning": {
+      "en": "Upon the natural exhaustion of past bodily momentum (Prarabdha), the devotee merges into the supreme abode.",
+      "hi": "प्रारब्ध कर्मों के क्षीण होने पर भक्त परमात्मा के परम धाम को प्राप्त होता है।",
+      "mr": "प्रारब्ध कर्म संपल्यावर भक्त ईश्वराच्या परम पदाला प्राप्त होतो."
+    }
+  },
+  {
+    "sutra_no": "90",
+    "sanskrit": "न च पुनरावृत्तिः॥",
+    "theme": "No Return to the Cycle of Samsara",
+    "initial_meaning": {
+      "en": "Having reached that supreme sanctuary, the soul never again returns to the painful cycle of birth and death.",
+      "hi": "उस परम पद को पाकर जीवात्मा फिर कभी संसार के जन्म-मरण के चक्र में नहीं लौटता।",
+      "mr": "त्या परम पदाला पोहोचल्यावर जीव पुन्हा कधीही जन्म-मरणाच्या फेऱ्यात सापडत नाही."
+    }
+  },
+  {
+    "sutra_no": "91",
+    "sanskrit": "श्रुतेस्तथा प्रतिपादनात्॥",
+    "theme": "As Solemnly Declared by the Upanishads",
+    "initial_meaning": {
+      "en": "For the eternal Upanishadic revelations declare: 'They never return, they never return!'",
+      "hi": "क्योंकि उपनिषद स्पष्ट घोषणा करते हैं: 'न च पुनरावर्तते' (वह पुनः नहीं लौटता)।",
+      "mr": "कारण उपनिषदे निःसंदिग्धपणे सांगतात की मुक्त झालेला जीव पुन्हा संसारात परत येत नाही."
+    }
+  },
+  {
+    "sutra_no": "92",
+    "sanskrit": "इति मोक्षस्वरूपम्॥",
+    "theme": "Conclusion of the Nature of Liberation",
+    "initial_meaning": {
+      "en": "Thus is concluded the exposition of liberation according to the Shandilya tradition.",
+      "hi": "इस प्रकार भक्ति-मार्ग के अनुसार मुक्ति के स्वरूप का निरूपण पूर्ण होता है।",
+      "mr": "अशा प्रकारे भक्तीनुसार मोक्षाचे स्वरूप स्पष्ट होते."
+    }
+  },
+  {
+    "sutra_no": "93",
+    "sanskrit": "सर्ववर्णानामधिकारः॥",
+    "theme": "Universal Right of All Humans to Devotion",
+    "initial_meaning": {
+      "en": "All human beings, regardless of caste, station, or background, possess equal sovereign right to Bhakti.",
+      "hi": "भक्ति का अधिकार समाज के सभी वर्णों और वर्गों के मनुष्यों को समान रूप से प्राप्त है।",
+      "mr": "भक्तीचा अधिकार सर्व वर्णाच्या आणि सर्व स्तरातील मानवांना समान रीतीने आहे."
+    }
+  },
+  {
+    "sutra_no": "94",
+    "sanskrit": "स्त्रीशूद्रादीनामपि॥",
+    "theme": "Inclusive for Women, Shudras, and the Marginalized",
+    "initial_meaning": {
+      "en": "Women, Shudras, and all historically marginalized persons are fully qualified and eligible for devotion.",
+      "hi": "स्त्रियां, शूद्रों और समाज के सभी उपेक्षित वर्गों को भक्ति करने का पूर्ण और निर्विवाद अधिकार है।",
+      "mr": "स्त्रिया, शूद्र आणि समाजातील सर्व दुर्लक्षित घटकांना भक्तीचा पूर्ण आणि समान अधिकार आहे."
+    }
+  },
+  {
+    "sutra_no": "95",
+    "sanskrit": "भक्तौ न प्रतिबन्धः॥",
+    "theme": "Zero Barriers or Prohibitions in Bhakti",
+    "initial_meaning": {
+      "en": "In the path of devotion, there exist no social, ritualistic, or gender impediments whatsoever.",
+      "hi": "भक्ति के मार्ग में जन्म, लिंग अथवा जाति का कोई भी प्रतिबंध आड़े नहीं आ सकता।",
+      "mr": "भक्तीच्या मार्गात जन्म, लिंग किंवा जातीचा कोणताही अडसर येऊ शकत नाही."
+    }
+  },
+  {
+    "sutra_no": "96",
+    "sanskrit": "इतिहासपुराणाभ्यां सिद्धम्॥",
+    "theme": "Proven by the Epics and Sacred Histories",
+    "initial_meaning": {
+      "en": "This universal equality is demonstrably proven across the sacred epics (Itihasas) and Puranas.",
+      "hi": "यह सत्य रामायण, महाभारत और पुराणों के इतिहास से प्रत्यक्ष सिद्ध है।",
+      "mr": "हे सत्य रामायण, महाभारत आणि पुराणांच्या इतिहासावरून पूर्णपणे सिद्ध होते."
+    }
+  },
+  {
+    "sutra_no": "97",
+    "sanskrit": "व्याधादीनामपि तरणात्॥",
+    "theme": "Liberation of Hunters, Outcastes, and Sinners",
+    "initial_meaning": {
+      "en": "As demonstrated by the exalted liberation of hunters, outcastes, and sinners who attained God through love.",
+      "hi": "जैसे व्याध (शबरी, वाल्मीकि, गुह) आदि ने भी केवल प्रेम के बल पर प्रभु को प्राप्त कर लिया।",
+      "mr": "जसे शबरी, वाल्मिकी, गुह यांसारख्यांनी केवळ भक्तीच्या बळावर सर्वोच्च मुक्ती मिळवली."
+    }
+  },
+  {
+    "sutra_no": "98",
+    "sanskrit": "अतः सर्वसुलभा सा॥",
+    "theme": "Therefore Bhakti is Universally Accessible and Gentle",
+    "initial_meaning": {
+      "en": "Therefore, Devotion is celebrated as the universally accessible, democratic, and loving path for all souls.",
+      "hi": "अतः भक्ति समस्त मानव जाति के लिए सर्वाधिक सुलभ, सरल और मंगलकारी मार्ग है।",
+      "mr": "म्हणून भक्ती हा सर्व मानवजातीसाठी अत्यंत सुलभ, मंगल आणि कल्याणकारी मार्ग आहे."
+    }
+  },
+  {
+    "sutra_no": "99",
+    "sanskrit": "शाण्डिल्येन प्रोक्तं शास्त्रमिदम्॥",
+    "theme": "Authoritative Attestation by Maharshi Shandilya",
+    "initial_meaning": {
+      "en": "This sacred scripture of devotion has been expounded by the venerable Maharshi Shandilya.",
+      "hi": "यह परम पावन भक्ति-शास्त्र महर्षि शांडिल्य द्वारा जगत के कल्याण हेतु कहा गया है।",
+      "mr": "हे पवित्र भक्तिशास्त्र महर्षी शांडिल्यांनी जगाच्या कल्याणासाठी सांगितले आहे."
+    }
+  },
+  {
+    "sutra_no": "100",
+    "sanskrit": "यः पठति स परमां गतिं लभत इति॥",
+    "theme": "Final Phala-Shruti: Attainment of the Supreme Destiny",
+    "initial_meaning": {
+      "en": "Whoever studies and meditates upon this treatise with faith attains the supreme divine destiny; indeed, he attains the supreme destiny!",
+      "hi": "जो भी श्रद्धापूर्वक इसका अध्ययन और मनन करता है, वह परम गति (परमात्मा) को प्राप्त कर लेता है; निश्चय ही वह परम पद को प्राप्त करता है!",
+      "mr": "जो कोणी श्रद्धेने याचे अध्ययन आणि मनन करतो, तो परम गतीला (परमात्म्याला) प्राप्त करतो; खरोखर तो सर्वोच्च मुक्तीला प्राप्त करतो!"
     }
   }
 ]

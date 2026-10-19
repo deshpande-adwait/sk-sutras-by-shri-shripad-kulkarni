@@ -1,12 +1,13 @@
 """
 ================================================================================
 Module: src.agents.shandilya_agent
-Author: Hiranyam AI Labs
+Author: Hiranyam AI Labs (https://hiranyamai.com/)
 Project: SK Sutras - by Shri Shripad Kulkarni
-Description: The Shandilya Bhakti Sutra Specialist Agent. Represents the
-             epistemological, analytical, and scriptural inquiry dimension of
-             Bhakti philosophy. Matches incoming Narada sutras against its
-             ChromaDB vector store and articulates a philosophical response.
+Description: The Shandilya Bhakti Sutra Specialist Agent. Maintains the complete
+             100-sutra canonical repository in ChromaDB. Receives propositions from
+             NaradaAgent, searches across all 100 Shandilya aphorisms, shortlists
+             top candidate matches based on semantic distance, and submits them
+             to SutrakarAgent for logical evaluation.
 ================================================================================
 """
 
@@ -25,16 +26,16 @@ class ShandilyaAgent:
     Class: ShandilyaAgent
     ----------------------------------------------------------------------------
     Purpose:
-        Acts as the autonomous agent representing Maharshi Shandilya's school of
-        epistemological devotion (Bhakti-Jijnasa). Maintains its dedicated
-        knowledge base in ChromaDB, receives devotional propositions from the
-        Narada Agent, semantically identifies the most philosophically relevant
-        Shandilya aphorism, and responds with rigorous analytical commentary.
+        Represents Maharshi Shandilya's school of epistemological devotion
+        (Bhakti-Jijnasa). Maintains the full 100-sutra corpus in ChromaDB,
+        evaluates incoming Narada propositions against the entire canon, and
+        provides shortlisted candidate aphorisms with similarity metrics
+        to the Sutrakar Agent.
 
     Attributes:
-        data_path (Path): Path to shandilya_bhakti_sutra.json.
-        vector_store (SutraVectorStore): ChromaDB embedded vector collection.
-        knowledge_base (List[Dict[str, Any]]): In-memory Shandilya sutra records.
+        data_path (Path): Path to shandilya_bhakti_sutra.json (100 sutras).
+        vector_store (SutraVectorStore): ChromaDB embedded vector store.
+        knowledge_base (List[Dict[str, Any]]): 100 Shandilya sutras in memory.
     ----------------------------------------------------------------------------
     """
 
@@ -42,41 +43,28 @@ class ShandilyaAgent:
         self,
         data_path: Optional[Path] = None,
         vector_store: Optional[SutraVectorStore] = None,
+        force_reindex: bool = False,
     ) -> None:
         """
         ------------------------------------------------------------------------
         Method: __init__
         ------------------------------------------------------------------------
         Purpose:
-            Initializes the ShandilyaAgent, loads raw sutras, and ensures all
-            Shandilya aphorisms are indexed into ChromaDB for semantic retrieval.
-
-        Parameters:
-            data_path (Optional[Path]): Filesystem path to shandilya raw JSON.
-            vector_store (Optional[SutraVectorStore]): Injected vector store instance.
-
-        Returns:
-            None
+            Initializes ShandilyaAgent, loads all 100 canonical sutras, and
+            ensures all 100 are indexed in ChromaDB.
         ------------------------------------------------------------------------
         """
         self.data_path = data_path or (RAW_DATA_DIR / "shandilya_bhakti_sutra.json")
-        self.vector_store = vector_store or SutraVectorStore()
-        self.knowledge_base = self._load_and_index_knowledge_base()
+        self.vector_store = vector_store or SutraVectorStore(collection_name="shandilya_100_sutras")
+        self.knowledge_base = self._load_and_index_knowledge_base(force_reindex=force_reindex)
 
-    def _load_and_index_knowledge_base(self) -> List[Dict[str, Any]]:
+    def _load_and_index_knowledge_base(self, force_reindex: bool = False) -> List[Dict[str, Any]]:
         """
         ------------------------------------------------------------------------
         Method: _load_and_index_knowledge_base
         ------------------------------------------------------------------------
         Purpose:
-            Reads Shandilya sutras and indexes them into the ChromaDB collection
-            if not already present.
-
-        Parameters:
-            None
-
-        Returns:
-            List[Dict[str, Any]]: List of loaded Shandilya sutras.
+            Loads all 100 Shandilya sutras from JSON and indexes them into ChromaDB.
         ------------------------------------------------------------------------
         """
         if not self.data_path.exists():
@@ -85,21 +73,125 @@ class ShandilyaAgent:
         with open(self.data_path, "r", encoding="utf-8") as f:
             items: List[Dict[str, Any]] = json.load(f)
 
-        # Index each Shandilya sutra into the vector store
-        for item in items:
-            s_no = str(item.get("sutra_no"))
-            sanskrit = item.get("sanskrit", "")
-            theme = item.get("theme", "")
-            en_meaning = item.get("initial_meaning", {}).get("en", "")
+        # Index all 100 sutras into ChromaDB if not already indexed
+        current_count = self.vector_store.count()
+        if force_reindex or current_count < len(items):
+            for item in items:
+                s_no = str(item.get("sutra_no"))
+                sanskrit = item.get("sanskrit", "")
+                theme = item.get("theme", "")
+                en_meaning = item.get("initial_meaning", {}).get("en", "")
 
-            self.vector_store.index_sutra(
-                source="shandilya",
-                sutra_no=s_no,
-                sanskrit=sanskrit,
-                theme=theme,
-                english_meaning=en_meaning,
-            )
+                self.vector_store.index_sutra(
+                    source="shandilya",
+                    sutra_no=s_no,
+                    sanskrit=sanskrit,
+                    theme=theme,
+                    english_meaning=en_meaning,
+                )
         return items
+
+    def get_sutra_by_number(self, sutra_no: str) -> Optional[Dict[str, Any]]:
+        """
+        ------------------------------------------------------------------------
+        Method: get_sutra_by_number
+        ------------------------------------------------------------------------
+        Purpose:
+            Retrieves a Shandilya aphorism by its number (1 to 100).
+        ------------------------------------------------------------------------
+        """
+        for item in self.knowledge_base:
+            if str(item.get("sutra_no")) == str(sutra_no):
+                return item
+        return None
+
+    def search_candidates(
+        self,
+        narada_sutra: SutraItem,
+        theme: str,
+        top_k: int = 3,
+    ) -> List[Dict[str, Any]]:
+        """
+        ------------------------------------------------------------------------
+        Method: search_candidates
+        ------------------------------------------------------------------------
+        Purpose:
+            Executes semantic similarity search against all 100 Shandilya sutras
+            using Narada's verse, theme, and English meaning. Returns top candidates
+            with distance metrics.
+
+        Parameters:
+            narada_sutra (SutraItem): The incoming Narada aphorism model.
+            theme (str): Unifying philosophical theme.
+            top_k (int): Number of candidate matches to return.
+
+        Returns:
+            List[Dict[str, Any]]: Shortlisted candidate matches with full metadata.
+        ------------------------------------------------------------------------
+        """
+        query_text = (
+            f"Philosophical Theme: {theme}\n"
+            f"Devanagari Sanskrit: {narada_sutra.sanskrit}\n"
+            f"Meaning: {narada_sutra.vishleshan.en}"
+        )
+
+        matches = self.vector_store.query_similar_sutras(
+            query_text=query_text,
+            target_source="shandilya",
+            top_k=top_k,
+        )
+
+        candidates: List[Dict[str, Any]] = []
+        for m in matches:
+            meta = m.get("metadata", {})
+            s_no = str(meta.get("sutra_no"))
+            raw = self.get_sutra_by_number(s_no)
+            if raw:
+                candidates.append({
+                    "sutra_no": s_no,
+                    "sanskrit": raw.get("sanskrit", ""),
+                    "theme": raw.get("theme", ""),
+                    "meaning": raw.get("initial_meaning", {}),
+                    "distance": m.get("distance", 1.0),
+                })
+        return candidates
+
+    def formulate_candidate_response(
+        self,
+        narada_sutra: SutraItem,
+        theme: str,
+        narada_message: str,
+        candidates: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        """
+        ------------------------------------------------------------------------
+        Method: formulate_candidate_response
+        ------------------------------------------------------------------------
+        Purpose:
+            Examines the top candidates from the 100 Shandilya sutras and articulates
+            a scholarly message to NaradaAgent and SutrakarAgent presenting the
+            shortlisted aphorisms with their theological relevance.
+        ------------------------------------------------------------------------
+        """
+        candidate_summaries = []
+        for c in candidates:
+            candidate_summaries.append(
+                f"- Shandilya Sutra #{c['sutra_no']} ({c['sanskrit']}) [Theme: {c['theme']}]: {c['meaning'].get('en', '')}"
+            )
+        cand_str = "\n".join(candidate_summaries)
+
+        message = (
+            f"Respected Narada Agent and Sutrakar Compiler: In response to Narada Sutra #{narada_sutra.sutra_no} "
+            f"('{narada_sutra.sanskrit}' on '{theme}'), I have queried the entire 100-sutra Shandilya canon. "
+            f"Here are the top candidate aphorisms identified by semantic relevance:\n{cand_str}\n"
+            f"I submit these candidates to the Sutrakar Agent to determine whether a genuine, non-forced "
+            f"logical correspondence exists."
+        )
+
+        return {
+            "candidates": candidates,
+            "agent_message_to_sutrakar": message,
+        }
 
     def match_and_respond(
         self,
@@ -112,120 +204,59 @@ class ShandilyaAgent:
         Method: match_and_respond
         ------------------------------------------------------------------------
         Purpose:
-            Receives Narada's aphorism and message, executes semantic vector
-            search against the Shandilya collection to identify the best paired
-            sutra, expounds it into multilingual vishleshan, and articulates an
-            analytical response addressed to both Narada and the Sutrakar Agent.
+            Provides direct semantic matching and conversational response for a
+            given Narada sutra candidate. Searches across the full 100 Shandilya
+            corpus in ChromaDB, retrieves the top candidates, formats the
+            inter-agent message addressed to SutrakarAgent, and packages the top
+            Shandilya sutra as a validated SutraItem.
 
         Parameters:
-            narada_sutra (SutraItem): The incoming Narada sutra model.
-            theme (str): Central philosophical theme.
-            narada_message (str): Inter-agent communication from NaradaAgent.
+            narada_sutra (SutraItem): The input Narada aphorism model.
+            theme (str): Unifying philosophical theme.
+            narada_message (str): Explanatory message from NaradaAgent.
 
         Returns:
             Dict[str, Any]: Dictionary containing:
-                - 'shandilya_sutra': Validated SutraItem for Shandilya.
-                - 'agent_message_to_sutrakar': Scholarly response message.
-        ----------------------------------------------------------------------------
+                - 'shandilya_sutra': SutraItem instance for the top candidate.
+                - 'agent_message_to_sutrakar': Scholarly message addressed to SutrakarAgent.
+                - 'candidates': Full list of shortlisted candidate dictionaries.
+
+        Manual Debugging Notes:
+            - If ChromaDB returns no matches, falls back to sutra #1.
+            - Ensures SutraItem schema validation succeeds for multilingual fields.
+        ------------------------------------------------------------------------
         """
-        # Query vector store for the closest Shandilya sutra
-        query_text = f"Theme: {theme}. Verse: {narada_sutra.sanskrit}. Meaning: {narada_sutra.vishleshan.en}"
-        matches = self.vector_store.query_similar_sutras(
-            query_text=query_text,
-            target_source="shandilya",
-            top_k=1,
+        candidates = self.search_candidates(narada_sutra=narada_sutra, theme=theme, top_k=3)
+        formatted = self.formulate_candidate_response(
+            narada_sutra=narada_sutra,
+            theme=theme,
+            narada_message=narada_message,
+            candidates=candidates,
         )
 
-        matched_data: Optional[Dict[str, Any]] = None
-        if matches:
-            meta = matches[0].get("metadata", {})
-            matched_s_no = meta.get("sutra_no")
-            for item in self.knowledge_base:
-                if str(item.get("sutra_no")) == str(matched_s_no):
-                    matched_data = item
-                    break
-
-        if not matched_data and self.knowledge_base:
-            # Fallback to corresponding index or first entry
-            matched_data = self.knowledge_base[0]
-
-        s_no = str(matched_data.get("sutra_no", "1"))
-        sanskrit = matched_data.get("sanskrit", "अथातो भक्तिजिज्ञासा॥")
-        init_en = matched_data.get("initial_meaning", {}).get("en", "")
-
-        prompt = f"""You are the 'Shandilya Bhakti Sutra Specialist Agent' representing Maharshi Shandilya's school of rigorous, epistemological devotion.
-
-You received this proposition from the Narada Agent:
-"{narada_message}"
-
-Narada Verse: {narada_sutra.sanskrit}
-Narada Analysis: {narada_sutra.vishleshan.en}
-
-Your Selected Matching Shandilya Sutra #{s_no}:
-Sanskrit: {sanskrit}
-Initial English Context: {init_en}
-
-Your Tasks:
-1. Provide an analytical, epistemological vishleshan of Shandilya Sutra #{s_no} across three languages (English, Hindi, Marathi).
-2. Articulate a scholarly response message addressed to both Narada Agent and the 'Sutrakar Agent' (Compiler). Explain how Shandilya's view of 'anurakti' (attachment founded on knowledge of God's majesty) or 'jijnasa' (spiritual inquiry) correlates with or grounds Narada's ecstatic love.
-
-Provide output strictly in this valid JSON format:
-{{
-  "vishleshan": {{
-    "en": "Detailed English epistemological analysis...",
-    "hi": "हिंदी में दार्शनिक एवं ज्ञानात्मक विश्लेषण...",
-    "mr": "मराठीतील तात्विक आणि ज्ञानमूलक विश्लेषण..."
-  }},
-  "message_to_sutrakar": "Pranams Narada Agent and Sutrakar. In response to Narada Sutra #{narada_sutra.sutra_no}, Shandilya Sutra #{s_no} establishes that..."
-}}
-Return ONLY valid JSON with no markdown wrapping and no preamble.
-"""
-        try:
-            llm = get_chat_model()
-            res = llm.invoke(prompt)
-            content = res.content.strip()
-            if content.startswith("```json"):
-                content = content[7:]
-            if content.startswith("```"):
-                content = content[3:]
-            if content.endswith("```"):
-                content = content[:-3]
-            parsed = json.loads(content.strip())
-            vishleshan_data = parsed.get("vishleshan", {})
-            msg = parsed.get("message_to_sutrakar", "")
-        except Exception:
-            vishleshan_data = {
-                "en": (
-                    f"Shandilya Bhakti Sutra #{s_no} ({sanskrit}) approaches devotion through epistemological inquiry ('jijñāsā') "
-                    f"and supreme attachment ('parānurakti') directed toward Ishvara. Unlike mere sentimental impulse, Shandilya "
-                    f"grounds devotion as a legitimate, sovereign means of direct spiritual knowledge (Pramāna) and eternal liberation."
-                ),
-                "hi": (
-                    f"शांडिल्य भक्ति सूत्र #{s_no} ({sanskrit}) भक्ति को ज्ञाननिष्ठ जिज्ञासा और ईश्वर के प्रति 'परानुरक्ति' के रूप में "
-                    f"प्रतिपादित करता है। यह भक्ति को केवल भावुकता नहीं, बल्कि मुक्ति का सर्वोच्च दार्शनिक आधार सिद्ध करता है।"
-                ),
-                "mr": (
-                    f"शांडिल्य भक्ति सूत्र #{s_no} ({sanskrit}) भक्तीला तात्त्विक जिज्ञासा आणि ईश्वराप्रती 'परानुरक्ती' म्हणून प्रस्थापित करतो. "
-                    f"भक्ती ही केवळ भावनिक नसून अंतिम मोक्ष देणारे सर्वोच्च ज्ञानसाधन आहे हे या सूत्राचे वैशिष्ट्य आहे."
-                ),
+        top_cand = candidates[0] if candidates else None
+        if not top_cand:
+            raw = self.get_sutra_by_number("1") or {}
+            top_cand = {
+                "sutra_no": "1",
+                "sanskrit": raw.get("sanskrit", "अथातो भक्तिजिज्ञासा॥"),
+                "theme": raw.get("theme", "Definition of Bhakti"),
+                "meaning": raw.get("initial_meaning", {"en": "Now, therefore, the inquiry into Devotion."}),
             }
-            msg = (
-                f"Respected Narada Agent and Sutrakar Compiler. In response to your exposition of Narada Sutra "
-                f"#{narada_sutra.sutra_no}, Shandilya Sutra #{s_no} ('{sanskrit}') establishes that devotion "
-                f"attains perfection when accompanied by discerning inquiry and steadfast adherence to Ishvara."
-            )
 
-        shandilya_item = SutraItem(
-            sutra_no=s_no,
-            sanskrit=sanskrit,
+        shandilya_sutra_item = SutraItem(
+            sutra_no=str(top_cand.get("sutra_no", "1")),
+            sanskrit=top_cand.get("sanskrit", ""),
             vishleshan=MultilingualText(
-                en=vishleshan_data.get("en", init_en),
-                hi=vishleshan_data.get("hi"),
-                mr=vishleshan_data.get("mr"),
+                en=top_cand.get("meaning", {}).get("en", "Analytical exposition"),
+                hi=top_cand.get("meaning", {}).get("hi"),
+                mr=top_cand.get("meaning", {}).get("mr"),
             ),
         )
 
         return {
-            "shandilya_sutra": shandilya_item,
-            "agent_message_to_sutrakar": msg,
+            "shandilya_sutra": shandilya_sutra_item,
+            "agent_message_to_sutrakar": formatted["agent_message_to_sutrakar"],
+            "candidates": candidates,
         }
+
