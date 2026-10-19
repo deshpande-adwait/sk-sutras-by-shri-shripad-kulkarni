@@ -77,7 +77,7 @@ def test_three_agent_communication_flow(tmp_path: Path) -> None:
     )
 
     assert compiled.pair_id == "PAIR-TEST-001"
-    assert len(compiled.udyoga_bhashya_synthesis.en) > 0
+    assert len(compiled.udyoga_bhashya_synthesis.mr) > 0
 
     # Verify database persistence
     saved_db = test_repo.get_pair("PAIR-TEST-001")

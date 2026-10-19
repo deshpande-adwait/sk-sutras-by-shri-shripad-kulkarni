@@ -2,6 +2,52 @@
 
 All notable changes, architectural updates, and releases for **SK Sutras - by Shri Shripad Kulkarni** are documented in this client-facing log.
 
+## [v0.2.3-beta] - 2026-10-19
+
+### Executive Summary of Changes
+Strengthened the third arbitrating agent (**Sutrakar Agent**) with intelligent similarity and duplicate rejection, eliminated repeated explanations across comparative pairs, streamlined the entire treatise to **pure Marathi and original Sanskrit** (removing English and Hindi translations), and updated headers and technology branding:
+1. **Intelligent Duplicate & Similarity Rejection in Sutrakar Agent**:
+   - Upgraded `SutrakarAgent` with stateful tracking of accepted verses (`used_shandilya_sutras`, `used_narada_sutras`, `accepted_pairs`).
+   - The Sutrakar Agent now actively scans all previously shortlisted and accepted pairs before approving any match. Any candidate already paired or exhibiting thematic redundancy is intelligently rejected with a recorded rationale.
+   - Identified and resolved previously duplicate pairs (such as Pair 2 & Pair 3, Pair 5 & Pair 6).
+   - Filtered all 84 Narada sutras against all 100 Shandilya sutras into a curated set of 17 canonical, non-overlapping, logically distinct pairs with zero repeated explanations.
+2. **Marathi-Only & Sanskrit Presentation**:
+   - As instructed, removed English and Hindi translations from individual sutra cards and the synthesis section.
+   - Sutra cards now strictly display the original sacred Sanskrit shloka in Devanagari and its classical Marathi explanation (`मराठी भावार्थ`).
+   - The unified *Udyoga Bhashya* (`उद्योग भाष्य (तुलनात्मक तात्त्विक समन्वय व जीवन-साधना)`) is authored purely in classical Marathi with bespoke, multi-paragraph expositions tailored uniquely to each specific pair (zero shared boilerplate).
+3. **Header & Attribution Refinements**:
+   - Main page title standardized to `Udyoga Sutras` (removed `SK Sutras:`).
+   - Technology attribution updated to `Technology supported by: Hiranyam AI Labs` with official clickable hyperlink (`https://hiranyamai.com/`).
+   - Retained author attribution `Authored by: Shri Shripad Kulkarni` and Marathi subtitle `नारद भक्ति सूत्र आणि शांडिल्य भक्ति सूत्र यांचा तात्त्विक समन्वय`.
+4. **Enhanced Senior Citizen (65+ Mode) Readability**:
+   - Devanagari Sanskrit verses rendered at 21pt bold, Marathi commentary at 16pt with comfortable line spacing (1.85-1.9) on soft, fatigue-free parchment background (`#faf7f2`).
+
+### Direct Client/User Benefits & Features Added
+* **Elimination of Redundant & Duplicate Explanations**: Every accepted comparative pair now features a completely unique, non-repetitive philosophical discourse and enterprise application.
+* **Focused Marathi Reading Experience**: Pure Marathi commentary without language clutter, ideal for senior scholar review and publication drafting.
+* **Clean & Professional Cover**: Updated header clearly stating `Udyoga Sutras` with proper attribution and hyperlinked technology partnership credit.
+* **Intelligent Arbitration Engine**: The Sutrakar Agent actively prevents forced or repetitive matches, maintaining the highest scholarly rigor.
+
+### Issues/Defects Resolved
+* Resolved repetitive explanations across pairs (e.g. Pair 2 vs Pair 3, Pair 5 vs Pair 6).
+* Removed English and Hindi translations from final HTML output as requested.
+* Corrected header title from `SK Sutras: Udyoga Sutra` to `Udyoga Sutras`.
+* Updated attribution copy from `Technologically supported by:` to `Technology supported by:`.
+
+### Data/Knowledge Base Updates
+* SQLite database (`data/manuscript.db`) refreshed with the 17 unique, non-duplicative, curated pairs.
+
+### Validation & Test Results
+* **Automated Test Suite**: 100% pass rate across all unit and integration tests (`pytest tests/ -v`).
+* **Treatise Output**: Re-compiled publication HTML at [`data/output/manuscripts/udyoga_sutra_final_treatise.html`](file:///C:/Users/deshp/.gemini/antigravity/scratch/sk-sutras-by-shri-shripad-kulkarni/data/output/manuscripts/udyoga_sutra_final_treatise.html).
+
+### Deployment Details
+* **Environment**: Local Staging / Test Environment (Workstation Instance).
+* **Target Publication HTML**: [`data/output/manuscripts/udyoga_sutra_final_treatise.html`](file:///C:/Users/deshp/.gemini/antigravity/scratch/sk-sutras-by-shri-shripad-kulkarni/data/output/manuscripts/udyoga_sutra_final_treatise.html)
+* **Release Status**: Verified & Ready for Human Review.
+
+---
+
 ## [v0.2.2-beta] - 2026-10-19
 
 ### Executive Summary of Changes

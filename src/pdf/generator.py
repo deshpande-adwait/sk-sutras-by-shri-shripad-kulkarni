@@ -52,7 +52,7 @@ class ManuscriptPDFGenerator:
     def render_html(
         self,
         pairs: List[SutraPairManuscript],
-        title: str = "SK Sutras: Udyoga Sutra",
+        title: str = "Udyoga Sutras",
         author: str = "Shri Shripad Kulkarni",
     ) -> str:
         """
@@ -62,52 +62,19 @@ class ManuscriptPDFGenerator:
         Purpose:
             Generates the print-ready HTML5 document with embedded CSS typography
             specifically optimized for senior citizen readability (65+ Mode):
-            - Large Devanagari typography (19-21pt) with generous line heights (1.8)
-            - Prominent scholarly Marathi titles and Marathi-first exposition
-            - Spelled-out HINDI and MARATHI language labels
-            - High-contrast, gentle warm reading palette
-            - Refined header: 'Authored by: Shri Shripad Kulkarni' and
-              'Technologically supported by: Hiranyam AI Labs'
+            - Large Devanagari typography (21-24pt) with generous line heights (1.85-1.9)
+            - Pure Sanskrit shlokas and scholarly Marathi explanations only
+            - Bespoke Marathi Udyoga Bhashya synthesis
+            - Soft warm parchment reading palette
+            - Refined header: 'Udyoga Sutras', 'Authored by: Shri Shripad Kulkarni'
+              and 'Technology supported by: Hiranyam AI Labs'
         ------------------------------------------------------------------------
         """
         items_html = ""
         for p in pairs:
-            # Pre-render language sections to prevent f-string backslash syntax errors in Python 3.11
-            narada_mr_html = (
-                f'<div class="lang-note marathi-note"><strong>MARATHI:</strong> {p.narada_sutra.vishleshan.mr}</div>'
-                if p.narada_sutra.vishleshan.mr
-                else ""
-            )
-            narada_hi_html = (
-                f'<div class="lang-note hindi-note"><strong>HINDI:</strong> {p.narada_sutra.vishleshan.hi}</div>'
-                if p.narada_sutra.vishleshan.hi
-                else ""
-            )
-            shandilya_mr_html = (
-                f'<div class="lang-note marathi-note"><strong>MARATHI:</strong> {p.shandilya_sutra.vishleshan.mr}</div>'
-                if p.shandilya_sutra.vishleshan.mr
-                else ""
-            )
-            shandilya_hi_html = (
-                f'<div class="lang-note hindi-note"><strong>HINDI:</strong> {p.shandilya_sutra.vishleshan.hi}</div>'
-                if p.shandilya_sutra.vishleshan.hi
-                else ""
-            )
-            bhashya_mr_html = (
-                f'<div class="bhashya-block marathi-bhashya"><strong>MARATHI:</strong><br/>{p.udyoga_bhashya_synthesis.mr}</div>'
-                if p.udyoga_bhashya_synthesis.mr
-                else ""
-            )
-            bhashya_hi_html = (
-                f'<div class="bhashya-block hindi-bhashya"><strong>HINDI:</strong><br/>{p.udyoga_bhashya_synthesis.hi}</div>'
-                if p.udyoga_bhashya_synthesis.hi
-                else ""
-            )
-            bhashya_en_html = (
-                f'<div class="bhashya-block english-bhashya"><strong>Analysis (EN):</strong><br/>{p.udyoga_bhashya_synthesis.en}</div>'
-                if p.udyoga_bhashya_synthesis.en
-                else ""
-            )
+            narada_mr = p.narada_sutra.vishleshan.mr or ""
+            shandilya_mr = p.shandilya_sutra.vishleshan.mr or ""
+            bhashya_mr = p.udyoga_bhashya_synthesis.mr or ""
 
             items_html += f"""
             <div class="sutra-pair-container">
@@ -121,10 +88,8 @@ class ManuscriptPDFGenerator:
                     <div class="sutra-card narada-card">
                         <div class="card-tag">नारद भक्ति सूत्र #{p.narada_sutra.sutra_no}</div>
                         <div class="sanskrit-verse">{p.narada_sutra.sanskrit}</div>
-                        {narada_mr_html}
-                        {narada_hi_html}
-                        <div class="vishleshan-section">
-                            <strong>Analysis (EN):</strong> {p.narada_sutra.vishleshan.en}
+                        <div class="marathi-explanation">
+                            <span class="marathi-label">मराठी भावार्थ:</span> {narada_mr}
                         </div>
                     </div>
 
@@ -132,10 +97,8 @@ class ManuscriptPDFGenerator:
                     <div class="sutra-card shandilya-card">
                         <div class="card-tag">शांडिल्य भक्ति सूत्र #{p.shandilya_sutra.sutra_no}</div>
                         <div class="sanskrit-verse">{p.shandilya_sutra.sanskrit}</div>
-                        {shandilya_mr_html}
-                        {shandilya_hi_html}
-                        <div class="vishleshan-section">
-                            <strong>Analysis (EN):</strong> {p.shandilya_sutra.vishleshan.en}
+                        <div class="marathi-explanation">
+                            <span class="marathi-label">मराठी भावार्थ:</span> {shandilya_mr}
                         </div>
                     </div>
                 </div>
@@ -144,9 +107,7 @@ class ManuscriptPDFGenerator:
                 <div class="synthesis-card">
                     <h3 class="synthesis-heading">उद्योग भाष्य (तुलनात्मक तात्त्विक समन्वय व जीवन-साधना)</h3>
                     <div class="synthesis-body">
-                        {bhashya_mr_html}
-                        {bhashya_hi_html}
-                        {bhashya_en_html}
+                        <div class="bhashya-block marathi-bhashya">{bhashya_mr}</div>
                     </div>
                 </div>
             </div>
@@ -169,7 +130,7 @@ class ManuscriptPDFGenerator:
                 font-size: 10pt;
             }}
             @bottom-left {{
-                content: "SK Sutras: Udyoga Sutra";
+                content: "Udyoga Sutras";
                 font-family: 'Noto Serif', serif;
                 font-size: 9pt;
                 color: #555;
@@ -305,34 +266,22 @@ class ManuscriptPDFGenerator:
             line-height: 1.65;
         }}
 
-        .marathi-note {{
+        .marathi-explanation {{
             font-family: 'Noto Serif Devanagari', serif;
-            font-size: 16.5pt;
+            font-size: 16pt;
             line-height: 1.85;
             color: #1f2937;
-            margin-bottom: 14px;
             background: #fbf7ee;
-            padding: 14px 16px;
+            padding: 14px 18px;
             border-radius: 4px;
             border-left: 4px solid #b85d19;
+            margin-top: 10px;
         }}
 
-        .hindi-note {{
-            font-family: 'Noto Serif Devanagari', serif;
-            font-size: 15.5pt;
-            line-height: 1.8;
-            color: #374151;
-            margin-bottom: 14px;
-            padding: 8px 6px;
-        }}
-
-        .vishleshan-section {{
-            font-size: 15pt;
-            line-height: 1.75;
-            color: #4b5563;
-            border-top: 1px dashed #e2d6c5;
-            padding-top: 12px;
-            margin-top: 12px;
+        .marathi-label {{
+            font-weight: 700;
+            color: #7a3a0e;
+            margin-right: 6px;
         }}
 
         .synthesis-card {{
@@ -366,26 +315,9 @@ class ManuscriptPDFGenerator:
             line-height: 1.9;
             color: #111827;
             background: #fffcf7;
-            padding: 18px;
+            padding: 22px;
             border-radius: 6px;
             border: 1.5px solid #ede3d4;
-        }}
-
-        .hindi-bhashya {{
-            font-family: 'Noto Serif Devanagari', serif;
-            font-size: 15.5pt;
-            line-height: 1.8;
-            color: #1f2937;
-            padding: 12px 16px;
-            border-top: 1px dashed #dfd5c6;
-        }}
-
-        .english-bhashya {{
-            font-size: 15pt;
-            line-height: 1.75;
-            color: #374151;
-            border-top: 1px dashed #dfd5c6;
-            padding-top: 16px;
         }}
 
         .footer-branding {{
@@ -409,7 +341,7 @@ class ManuscriptPDFGenerator:
         <h1 class="main-title">{title}</h1>
         <div class="subtitle">नारद भक्ति सूत्र आणि शांडिल्य भक्ति सूत्र यांचा तात्त्विक समन्वय</div>
         <div class="author-line">Authored by: {author}</div>
-        <div class="support-line">Technologically supported by: <a href="https://hiranyamai.com/" target="_blank" rel="noopener noreferrer">Hiranyam AI Labs</a></div>
+        <div class="support-line">Technology supported by: <a href="https://hiranyamai.com/" target="_blank" rel="noopener noreferrer">Hiranyam AI Labs</a></div>
     </div>
 
     {items_html}
@@ -425,7 +357,7 @@ class ManuscriptPDFGenerator:
         self,
         pairs: List[SutraPairManuscript],
         output_filename: str = "udyoga_sutra_manuscript.pdf",
-        title: str = "SK Sutras: Udyoga Sutra",
+        title: str = "Udyoga Sutras",
         author: str = "Shri Shripad Kulkarni",
     ) -> Path:
         """

@@ -55,6 +55,7 @@ def run_curated_batch_synthesis():
     # Force reindex all 100 Shandilya sutras into ChromaDB
     shandilya_agent = ShandilyaAgent(force_reindex=True)
     sutrakar_agent = SutrakarAgent(repository=repo)
+    sutrakar_agent.reset_state()
 
     print(sutrakar_agent.issue_arbitration_guidelines())
     print()
@@ -74,11 +75,11 @@ def run_curated_batch_synthesis():
         narada_out = narada_agent.expound_sutra(sutra_raw)
         narada_item = narada_out["sutra_item"]
 
-        # 2. Shandilya Agent: Search all 100 Shandilya Sutras for top 3 candidates
+        # 2. Shandilya Agent: Search all 100 Shandilya Sutras for top 5 candidates
         candidates = shandilya_agent.search_candidates(
             narada_sutra=narada_item,
             theme=theme,
-            top_k=3,
+            top_k=5,
         )
         shandilya_out = shandilya_agent.formulate_candidate_response(
             narada_sutra=narada_item,
