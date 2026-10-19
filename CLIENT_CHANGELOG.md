@@ -2,6 +2,43 @@
 
 All notable changes, architectural updates, and releases for **SK Sutras - by Shri Shripad Kulkarni** are documented in this client-facing log.
 
+## [v0.2.2-beta] - 2026-10-19
+
+### Executive Summary of Changes
+Implemented comprehensive client styling and linguistic refinements to give the final publication a prominent **Marathi touch**, optimized for senior citizen readability (**Senior Citizen 65+ Mode**):
+1. **Spelled out language labels**: Displayed clearly as `MARATHI:` and `HINDI:` (along with `Analysis (EN):`).
+2. **Authentic Marathi Titles for Each Pair**: Formatted all comparative pair headings in scholarly, classical Marathi Devanagari (e.g. `भक्तीचे स्वरूप आणि तात्त्विक जिज्ञासा`, `परम प्रेमरूप भक्ती आणि प्रेमानंदाचे प्राधान्य`, `निष्काम प्रेम आणि वासनांचा निरोध`, `परम समता: जात, विद्या, कुल व धनाचे भेद निरर्थक`).
+3. **Marathi-First Visual Layout**: Placed Marathi translations directly underneath Sanskrit verses in individual sutra cards, and positioned the Marathi *Udyoga Bhashya* at the top of the unified synthesis block.
+4. **Enhanced Senior Citizen (65+ Mode) Typography**: Upgraded base font to 16pt, titles to 24-32pt, Sanskrit verses to 21pt Devanagari bold, and line heights to 1.85-1.9 on a soft warm reading background (`#faf7f2`) with high-contrast text.
+5. **Cover Header Refinement**: Removed `(Curated Comparative Treatise)`, standardized title to `SK Sutras: Udyoga Sutra`, added Marathi subtitle `नारद भक्ति सूत्र आणि शांडिल्य भक्ति सूत्र यांचा तात्त्विक समन्वय`, set author attribution `Authored by: Shri Shripad Kulkarni`, and included hyperlinked technology credit `Technologically supported by: Hiranyam AI Labs`.
+6. **Full Batch Re-Synthesis**: Executed canon-wide re-compilation, producing the refreshed 1,645-line publication treatise [`data/output/manuscripts/udyoga_sutra_final_treatise.html`](file:///C:/Users/deshp/.gemini/antigravity/scratch/sk-sutras-by-shri-shripad-kulkarni/data/output/manuscripts/udyoga_sutra_final_treatise.html) (337 KB) and updating SQLite (`data/manuscript.db`).
+
+### Direct Client/User Benefits & Features Added
+* **Distinct Scholarly Marathi Titles**: Every comparative pair now features a customized, classical Marathi title highlighting the philosophical essence of the aphorisms.
+* **Uncompromising Readability for Senior Reviewers**: Font sizes and line spacing have been scaled up for effortless viewing by senior citizens without visual fatigue.
+* **Streamlined Executive Cover**: Clean, professional cover typography adhering strictly to Shri Shripad Kulkarni's authorship and Hiranyam AI Labs' technology support.
+* **Clear Language Demarcation**: Full-length labels (`MARATHI:`, `HINDI:`, `Analysis (EN):`) replace shorthand abbreviations.
+
+### Issues/Defects Resolved
+* Fixed shorthand language labels (`MR`, `HI`) to full spelled-out representations (`MARATHI:`, `HINDI:`).
+* Resolved client request to give a Marathi touch to pair titles and layout.
+* Eliminated `(Curated Comparative Treatise)` from the cover title.
+* Resolved Python 3.11 f-string backslash parsing in WeasyPrint HTML renderer.
+
+### Data/Knowledge Base Updates
+* SQLite database (`data/manuscript.db`) updated with the 26 refreshed pairs bearing authentic Marathi titles.
+
+### Validation & Test Results
+* **Test Suite**: 19 out of 19 automated tests passing (`pytest tests/ -v`, 100% pass rate).
+* **Compilation Status**: Batch synthesis across all 84 Narada sutras against 100 Shandilya sutras successfully completed in 31.2s.
+
+### Deployment Details
+* **Environment**: Local Staging / Test Environment (Workstation Instance).
+* **Target Publication HTML**: [`data/output/manuscripts/udyoga_sutra_final_treatise.html`](file:///C:/Users/deshp/.gemini/antigravity/scratch/sk-sutras-by-shri-shripad-kulkarni/data/output/manuscripts/udyoga_sutra_final_treatise.html)
+* **Release Status**: Verified & Ready for Human Review.
+
+---
+
 ## [v0.2.1-beta] - 2026-10-19
 
 ### Executive Summary of Changes

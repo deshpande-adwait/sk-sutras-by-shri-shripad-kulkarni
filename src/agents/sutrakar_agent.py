@@ -271,9 +271,15 @@ Return ONLY valid JSON with no markdown wrapping and no preamble.
             ),
         )
 
+        marathi_title = self._get_marathi_theme_title(
+            narada_sutra_no=str(narada_sutra.sutra_no),
+            shandilya_sutra_no=str(selected_cand_data.get("sutra_no", "")),
+            default_theme=theme,
+        )
+
         manuscript_pair = SutraPairManuscript(
             pair_id=pair_id,
-            theme=f"{theme} & {selected_cand_data.get('theme', '')}",
+            theme=marathi_title,
             narada_sutra=narada_sutra,
             shandilya_sutra=shandilya_sutra_item,
             udyoga_bhashya_synthesis=MultilingualText(
@@ -298,6 +304,8 @@ Return ONLY valid JSON with no markdown wrapping and no preamble.
         self,
         approved_pairs: List[SutraPairManuscript],
         output_filename: str = "udyoga_sutra_curated_treatise.html",
+        title: str = "SK Sutras: Udyoga Sutra",
+        author: str = "Shri Shripad Kulkarni",
     ) -> Path:
         """
         ------------------------------------------------------------------------
@@ -311,7 +319,8 @@ Return ONLY valid JSON with no markdown wrapping and no preamble.
         return self.pdf_generator.generate_pdf(
             pairs=approved_pairs,
             output_filename=output_filename,
-            title="SK Sutras: Udyoga Sutra (Curated Comparative Treatise)",
+            title=title,
+            author=author,
         )
 
     def synthesize_and_compile(
@@ -366,9 +375,15 @@ Return ONLY valid JSON with no markdown wrapping and no preamble.
             mr=bhashya_dict.get("mr"),
         )
 
+        marathi_title = self._get_marathi_theme_title(
+            narada_sutra_no=str(narada_sutra.sutra_no),
+            shandilya_sutra_no=str(shandilya_sutra.sutra_no),
+            default_theme=theme,
+        )
+
         manuscript_pair = SutraPairManuscript(
             pair_id=pair_id,
-            theme=theme,
+            theme=marathi_title,
             narada_sutra=narada_sutra,
             shandilya_sutra=shandilya_sutra,
             udyoga_bhashya_synthesis=bhashya,
@@ -689,5 +704,126 @@ Return ONLY valid JSON with no markdown wrapping and no preamble.
             )
 
         return {"en": en_text, "hi": hi_text, "mr": mr_text}
+
+    def _get_marathi_theme_title(
+        self,
+        narada_sutra_no: str,
+        shandilya_sutra_no: str,
+        default_theme: str = "",
+    ) -> str:
+        """
+        ------------------------------------------------------------------------
+        Method: _get_marathi_theme_title
+        ------------------------------------------------------------------------
+        Purpose:
+            Returns an authentic, scholarly Marathi title for each comparative
+            sutra pair, enriching the Udyoga Sutra treatise with an authentic
+            Marathi touch and large Devanagari heading for senior citizen review.
+
+        Parameters:
+            narada_sutra_no (str): Aphorism number from Narada Bhakti Sutra.
+            shandilya_sutra_no (str): Matched aphorism number from Shandilya Bhakti Sutra.
+            default_theme (str): Fallback theme string if sutra number is unmapped.
+
+        Returns:
+            str: Scholarly Marathi theme title.
+
+        Manual Debugging Notes:
+            - Covers all 84 canonical Narada Bhakti Sutras with precise philosophical titles.
+            - Guarantees non-empty Marathi heading even if an unusual sutra index is queried.
+        ------------------------------------------------------------------------
+        """
+        marathi_canon_titles: Dict[str, str] = {
+            "1": "भक्तीचे स्वरूप आणि तात्त्विक जिज्ञासा",
+            "2": "परम प्रेमरूप भक्ती आणि प्रेमानंदाचे प्राधान्य",
+            "3": "भक्तीचे अमृतस्वरूप आणि अमरत्व",
+            "4": "परम सिद्धी, अमरत्व आणि आत्मतृप्ती",
+            "5": "सर्व वासना, द्वेष आणि शोकापासून मुक्ती",
+            "6": "दिव्य परमानंद आणि आत्माराम अवस्था",
+            "7": "निष्काम प्रेम आणि वासनांचा निरोध",
+            "8": "लौकिक व वैदिक प्रपंचातून निवृत्ती",
+            "9": "अनन्य भक्ती आणि निस्वार्थ समर्पण",
+            "10": "एकनिष्ठ शरणागती आणि अनन्यता",
+            "11": "भक्तीस अनुकूल आचरण आणि लोकसंग्रह",
+            "12": "शास्त्रमर्यादेचे रक्षण आणि दृढ निष्ठा",
+            "13": "अधःपातापासून रक्षण आणि नित्य सावधानता",
+            "14": "शरीर-निर्वाहापुरते आचरण आणि साधेपणा",
+            "15": "भक्तीच्या विविध लक्षणांचे दर्शन",
+            "16": "व्यासमुनींचे मत: पूजा-अर्चनेतील प्रेम",
+            "17": "गर्गमुनींचे मत: भगवत्कथेतील अनुरागाचे माहात्म्य",
+            "18": "शांडिल्यमुनींचे मत: आत्मरती आणि ईश्वराशी अनुसंधान",
+            "19": "नारदांचे सार्वभौम मत: सर्व कर्मार्पण आणि विरहातील व्याकुळता",
+            "20": "भक्तीच्या परिपूर्णतेचा प्रत्यक्ष पुरावा",
+            "21": "व्रजगोपींचे आदर्श आणि अनन्य प्रेम",
+            "22": "ईश्वरमाहात्म्यज्ञानाची अनिवार्य आवश्यकता",
+            "23": "माहात्म्यज्ञानाशिवाय प्रेम म्हणजे केवळ जड आकर्षण",
+            "24": "परस्परांच्या आनंदातील निस्वार्थ सुख",
+            "25": "कर्म, ज्ञान आणि योगापेक्षा भक्तीचे श्रेष्ठत्व",
+            "26": "भक्ती हे केवळ साधन नसून अंतिम साध्य",
+            "27": "ईश्वराला नम्रतेची प्रीती आणि अहंकाराचा तिटकारा",
+            "28": "ज्ञान हे भक्तीचे केवळ साधन असल्याचा विचार",
+            "29": "ज्ञान आणि भक्तीचा परस्पर संवादी समन्वय",
+            "30": "सनत्कुमारांचे मत: भक्ती हे स्वतःच स्वयंसिद्ध फळ",
+            "31": "राजप्रासाद आणि भोजनाचा दृष्टान्त",
+            "32": "केवळ वैचारिक ज्ञानाने खरी तृप्ती लाभत नाही",
+            "33": "मुमुक्षूंनी निरुपाधिक भक्तीचाच अंगीकार करावा",
+            "34": "भक्ती-प्राप्तीची प्रमुख अंतरंग साधने",
+            "35": "विषयासक्ती आणि लौकिक प्रपंचाचा त्याग",
+            "36": "अखंड नामस्मरण आणि अविरत भजन-साधना",
+            "37": "ईश्वरी कीर्तीचे श्रवण आणि गुणसंकीर्तन",
+            "38": "संतकृपा आणि भगवंताच्या अहैतुकी दयेचे सामर्थ्य",
+            "39": "सत्पुरुषांचा समागम: दुर्मिळ आणि अमोघ",
+            "40": "सत्संग हा केवळ ईश्वराच्या कृपेनेच साध्य",
+            "41": "ईश्वर आणि त्याचे भक्त यांच्यात तात्त्विक अभेद",
+            "42": "सत्संगाची नित्य तळमळ आणि आचरण",
+            "43": "कुसंगतीचा सर्वथा आणि संपूर्ण त्याग",
+            "44": "कुसंगाचे घातक दुष्परिणाम आणि अधःपात",
+            "45": "कुसंगामुळे लहान वासनांचा विशाल महासागर होतो",
+            "46": "मायेचा दुस्तर सागर कोण पार करतो?",
+            "47": "एकांतवास, त्रिगुणातीत अवस्था आणि दृढ श्रद्धा",
+            "48": "कर्मफलाचा त्याग आणि द्वंद्वातीत अवस्था",
+            "49": "अखंड प्रेमाची प्राप्ती आणि परमानंद",
+            "50": "जो मायेला तरतो तो सर्व जगालाही तारतो",
+            "51": "भगवत्-प्रेमाचे अनिर्वचनीय स्वरूप",
+            "52": "मुक्याच्या गुळाचा आस्वाद: शब्दातीत अनुभूती",
+            "53": "पात्र जिवाच्या ठायी दिव्य प्रेमाचा प्रादुर्भाव",
+            "54": "परम प्रेमाचे षड्विध दिव्य लक्षण",
+            "55": "सर्वत्र ईश्वराचेच दर्शन आणि तन्मयता",
+            "56": "गौणी भक्तीचे त्रिविध स्वरूप: त्रिगुण भेद",
+            "57": "भक्तीच्या उत्तरोत्तर चढत्या पायऱ्यांचे श्रेष्ठत्व",
+            "58": "भक्तीमार्गाची सुलभता आणि सहज साध्यता",
+            "59": "भक्तीचे स्वयंसिद्ध स्वातंत्र्य आणि प्रमाण",
+            "60": "परम शांती आणि आत्मानंदाचे स्वरूप",
+            "61": "लौकिक नुकसानीची भीती आणि चिंतेचा अभाव",
+            "62": "कर्तव्यपालन आणि फळाची निरपेक्षता",
+            "63": "इंद्रियांच्या प्रलोभनांपासून मनाचे रक्षण",
+            "64": "दंभ, अहंकार आणि अहंकाराचा त्याग",
+            "65": "सर्व भावनांचे ईश्वराकडे उदात्तीकरण",
+            "66": "त्रिपुटीचा भेद मोडून परम ऐक्याची प्राप्ती",
+            "67": "एकनिष्ठ अनन्य भक्तांचे परम माहात्म्य",
+            "68": "भक्तांमुळे कुळाचे आणि पृथ्वीचे पावनत्व",
+            "69": "तीर्थक्षेत्रे, शास्त्रे आणि कर्मांचे पावन रूपांतर",
+            "70": "भक्तांच्या रोमरोमात भरलेली ईश्वरी चेतना",
+            "71": "पितरांचा आनंद आणि देवतांचे नर्तन",
+            "72": "परम समता: जात, विद्या, रूप, कुल व धनाचे भेद निरर्थक",
+            "73": "कारण सर्व जीव ईश्वराचेच अंश आहेत",
+            "74": "व्यर्थ वादविवाद आणि शुष्क तर्काचा निषेध",
+            "75": "तर्काला अंत नसतो आणि निर्णय होत नाही",
+            "76": "भक्तीशास्त्राचे नित्य मनन आणि चिंतन",
+            "77": "अर्धा क्षणही व्यर्थ न घालवता निरंतर साधन",
+            "78": "अहिंसा, सत्य, दया आणि सर्व सद्गुणांची जोपासना",
+            "79": "निर्भय आणि सर्वभावे ईश्वराला आत्मसमर्पण",
+            "80": "अनन्य भावाने आळवताच ईश्वराचा त्वरित साक्षात्कार",
+            "81": "त्रिकालाबाधित सत्य: भक्ती हेच सर्वश्रेष्ठ",
+            "82": "परम भक्तीची एकादश दिव्य रूपे",
+            "83": "सर्व श्रेष्ठ महर्षींचे एकमुखी एकमत",
+            "84": "फलश्रुती: परम प्रियतम ईश्वराची अखंड प्राप्ती",
+        }
+        clean_no = str(narada_sutra_no).strip()
+        if clean_no in marathi_canon_titles:
+            return marathi_canon_titles[clean_no]
+        if default_theme:
+            return f"भक्तीचे तात्त्विक अधिष्ठान: {default_theme}"
+        return f"नारद सूत्र #{clean_no} तात्त्विक समन्वय"
 
 
