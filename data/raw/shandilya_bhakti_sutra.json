@@ -2,8 +2,7 @@
   {
     "sutra_no": "1",
     "sanskrit": "अथातो भक्तिजिज्ञासा॥",
-    "transliteration": "athāto bhakti-jijñāsā ||",
-    "theme": "Inaugural Inquiry into Bhakti",
+    "theme": "Inaugural Epistemological Inquiry into Bhakti",
     "initial_meaning": {
       "en": "Now, therefore, arises the profound spiritual inquiry into the philosophical nature of Bhakti.",
       "hi": "अब इसके बाद भक्ति के स्वरूप की दार्शनिक जिज्ञासा की जाती है।",
@@ -13,7 +12,6 @@
   {
     "sutra_no": "2",
     "sanskrit": "सा परानुरक्तिरीश्वरे॥",
-    "transliteration": "sā parānuraktir-īśvare ||",
     "theme": "Supreme Attachment to the Supreme Divine",
     "initial_meaning": {
       "en": "That (Bhakti) is supreme, unswerving attachment (anurakti) directed towards the Supreme Lord (Ishvara).",
@@ -24,12 +22,81 @@
   {
     "sutra_no": "3",
     "sanskrit": "तत्संस्थस्यामृतत्वोपदेशात्॥",
-    "transliteration": "tat-saṁsthasyāmṛtatvopadeśāt ||",
-    "theme": "Immortality Promised to the Established Devotee",
+    "theme": "Promise of Immortality in Divine Establishment",
     "initial_meaning": {
       "en": "Because immortality (Moksha) is declared by the scriptures for one who remains firmly established in That.",
       "hi": "क्योंकि उसमें स्थित रहने वाले के लिए उपनिषदों में अमृतत्व (मुक्ति) का उपदेश दिया गया है।",
       "mr": "कारण त्या ईश्वरात स्थिर झालेल्या पुरुषाला अमृतत्वाची (मोक्षाची) प्राप्ती होते असा उपदेश आहे."
+    }
+  },
+  {
+    "sutra_no": "4",
+    "sanskrit": "ज्ञानेति चेन्न परस्य ज्ञानप्रतिष्ठानात्॥",
+    "theme": "Bhakti Distinct from Mere Intellectual Knowledge",
+    "initial_meaning": {
+      "en": "If it is argued that devotion is merely intellectual knowledge (Jnana), we refute this; for knowledge is merely the foundation for supreme love.",
+      "hi": "यदि कहें कि भक्ति केवल ज्ञान है, तो यह उचित नहीं; क्योंकि ज्ञान तो केवल परम प्रेम की प्रतिष्ठा (आधार) है।",
+      "mr": "भक्ती म्हणजे केवळ ज्ञान असे म्हणता येणार नाही; कारण ज्ञान हे केवळ भक्तीचे अधिष्ठान आहे."
+    }
+  },
+  {
+    "sutra_no": "5",
+    "sanskrit": "द्वेषप्रतिद्वन्द्विभावाद्रसशब्दाच्च॥",
+    "theme": "Bhakti as the Antithesis of Aversion and as Pure Rasa",
+    "initial_meaning": {
+      "en": "Also because devotion is the direct antithesis of hatred/aversion, and the Upanishads designate the Supreme as 'Rasa' (ecstatic taste).",
+      "hi": "क्योंकि भक्ति द्वेष की विरोधी भावना है और श्रुति में ईश्वर को 'रसो वै सः' (आनंदमय रस) कहा गया है।",
+      "mr": "कारण भक्ती ही द्वेषाची विरोधी भावना असून उपनिषदात ईश्वराला 'रसो वै सः' (आनंदरूप) म्हटले आहे."
+    }
+  },
+  {
+    "sutra_no": "6",
+    "sanskrit": "न क्रिया परप्रयोजनाभावात्॥",
+    "theme": "Bhakti Transcending Mechanical Action",
+    "initial_meaning": {
+      "en": "Devotion is not a mechanical physical activity (Kriya), because it serves no extraneous purpose other than itself.",
+      "hi": "भक्ति कोई बाह्य क्रिया नहीं है, क्योंकि उसका फल किसी अन्य सांसारिक प्रयोजन के लिए नहीं होता।",
+      "mr": "भक्ती ही बाह्य क्रिया नाही, कारण ती कोणत्याही बाह्य लाभासाठी केली जात नाही."
+    }
+  },
+  {
+    "sutra_no": "7",
+    "sanskrit": "अत एव फलानन्त्यम्॥",
+    "theme": "Eternity and Infinity of the Fruit of Bhakti",
+    "initial_meaning": {
+      "en": "For this very reason, the fruit of devotion is infinite and eternal, unlike the finite fruits of karma.",
+      "hi": "इसी कारण भक्ति का फल अनंत और शाश्वत होता है, जो कर्मफलों की भांति नश्वर नहीं है।",
+      "mr": "याच कारणामुळे भक्तीचे फळ हे अनंत आणि शाश्वत असते, जे कर्माच्या फळासारखे नाशवंत नसते."
+    }
+  },
+  {
+    "sutra_no": "8",
+    "sanskrit": "तद्वतः प्रपत्तिरन्यथा पातित्यात्॥",
+    "theme": "Surrender as Inviolable Duty of the Devotee",
+    "initial_meaning": {
+      "en": "The devotee must practice total self-surrender (Prapatti), for without it there is moral degradation.",
+      "hi": "भक्त के लिए प्रपत्ति (शरणगति) अनिवार्य है, अन्यथा पतन की आशंका रहती है।",
+      "mr": "भक्तासाठी शरणागती अनिवार्य आहे, अन्यथा अधःपाताची भीती असते."
+    }
+  },
+  {
+    "sutra_no": "9",
+    "sanskrit": "तदेकान्तभावेन तदुपासनम्॥",
+    "theme": "Single-Minded Exclusive Contemplation",
+    "initial_meaning": {
+      "en": "Therefore, contemplation and worship of the Divine must be performed with exclusive single-mindedness.",
+      "hi": "अतः ईश्वर की उपासना केवल अनन्य एकांत भाव से ही करनी चाहिए।",
+      "mr": "म्हणून ईश्वराची उपासना केवळ अनन्य भावाने केली पाहिजे."
+    }
+  },
+  {
+    "sutra_no": "10",
+    "sanskrit": "जीवस्येश्वरानन्यत्वेऽपि तद्भावविमुक्तिः॥",
+    "theme": "Liberation through Union with Divine Consciousness",
+    "initial_meaning": {
+      "en": "Though the soul is essentially non-different from Ishvara, liberation consists in shedding the delusion of separation.",
+      "hi": "यद्यपि जीव ईश्वर से अभिन्न है, तथापि अविद्या के नाश से प्रभु-भाव में लीन होना ही मुक्ति है।",
+      "mr": "जरी जीव ईश्वराशी अभिन्न असला, तरी अज्ञानाचा नाश होऊन ईश्वराशी एकरूप होणे हीच खरी मुक्ती."
     }
   }
 ]
