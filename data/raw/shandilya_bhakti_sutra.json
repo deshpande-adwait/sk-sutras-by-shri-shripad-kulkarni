@@ -1,0 +1,35 @@
+[
+  {
+    "sutra_no": "1",
+    "sanskrit": "अथातो भक्तिजिज्ञासा॥",
+    "transliteration": "athāto bhakti-jijñāsā ||",
+    "theme": "Inaugural Inquiry into Bhakti",
+    "initial_meaning": {
+      "en": "Now, therefore, arises the profound spiritual inquiry into the philosophical nature of Bhakti.",
+      "hi": "अब इसके बाद भक्ति के स्वरूप की दार्शनिक जिज्ञासा की जाती है।",
+      "mr": "आता यानंतर भक्तीच्या स्वरूपाविषयी तात्विक जिज्ञासा केली जाते."
+    }
+  },
+  {
+    "sutra_no": "2",
+    "sanskrit": "सा परानुरक्तिरीश्वरे॥",
+    "transliteration": "sā parānuraktir-īśvare ||",
+    "theme": "Supreme Attachment to the Supreme Divine",
+    "initial_meaning": {
+      "en": "That (Bhakti) is supreme, unswerving attachment (anurakti) directed towards the Supreme Lord (Ishvara).",
+      "hi": "वह (भक्ति) परमेश्वर के प्रति परम अनुरक्ति (अनन्य अनुराग) है।",
+      "mr": "ती भक्ती परमेश्वराच्या ठिकाणी असलेली परम अनुरक्ती होय."
+    }
+  },
+  {
+    "sutra_no": "3",
+    "sanskrit": "तत्संस्थस्यामृतत्वोपदेशात्॥",
+    "transliteration": "tat-saṁsthasyāmṛtatvopadeśāt ||",
+    "theme": "Immortality Promised to the Established Devotee",
+    "initial_meaning": {
+      "en": "Because immortality (Moksha) is declared by the scriptures for one who remains firmly established in That.",
+      "hi": "क्योंकि उसमें स्थित रहने वाले के लिए उपनिषदों में अमृतत्व (मुक्ति) का उपदेश दिया गया है।",
+      "mr": "कारण त्या ईश्वरात स्थिर झालेल्या पुरुषाला अमृतत्वाची (मोक्षाची) प्राप्ती होते असा उपदेश आहे."
+    }
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "sutra_no": "1",
+    "sanskrit": "अथातो भक्तिं व्याख्यास्यामः॥",
+    "transliteration": "athāto bhaktiṁ vyākhyāsyāmaḥ ||",
+    "theme": "Definition and Inauguration of Bhakti",
+    "initial_meaning": {
+      "en": "Now, therefore, we shall expound the nature and philosophy of Devotion (Bhakti).",
+      "hi": "अब इसके बाद हम भक्ति की व्याख्या करेंगे।",
+      "mr": "आता यानंतर आम्ही भक्तीची सविस्तर व्याख्या करू."
+    }
+  },
+  {
+    "sutra_no": "2",
+    "sanskrit": "सा त्वस्मिन् परमप्रेमरूपा॥",
+    "transliteration": "sā tvasmin parama-prema-rūpā ||",
+    "theme": "Supreme Love as the Essence of Bhakti",
+    "initial_meaning": {
+      "en": "That (Devotion) is indeed of the nature of supreme divine love directed towards the Divine.",
+      "hi": "वह (भक्ति) निश्चित रूप से ईश्वर के प्रति परम प्रेम स्वरूप है।",
+      "mr": "ती भक्ती खरोखर ईश्वराविषयी परम प्रेमरूप आहे."
+    }
+  },
+  {
+    "sutra_no": "3",
+    "sanskrit": "अमृतस्वरूपा च॥",
+    "transliteration": "amṛta-svarūpā ca ||",
+    "theme": "Nectarine / Immortal Nature of Bhakti",
+    "initial_meaning": {
+      "en": "And it is of the nature of divine nectar (immortality and eternal fulfillment).",
+      "hi": "और वह अमृत स्वरूपा (अमरत्व प्रदान करने वाली) भी है।",
+      "mr": "आणि ती अमृतस्वरूप (अमरत्व देणारी) सुद्धा आहे."
+    }
+  }
+]

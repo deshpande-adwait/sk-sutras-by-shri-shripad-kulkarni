@@ -1,0 +1,31 @@
+# Core LangChain & LangGraph Orchestration
+langgraph>=0.2.0
+langchain>=0.3.0
+langchain-core>=0.3.0
+langchain-community>=0.3.0
+
+# Dynamic Model Provider Adapters
+langchain-openai>=0.2.0
+langchain-anthropic>=0.2.0
+langchain-google-vertexai>=2.0.0
+
+# Vector Database & Embeddings (100% Open Source)
+chromadb>=0.5.0
+fastembed>=0.3.0
+
+# Data Validation & State Management
+pydantic>=2.7.0
+
+# Device-Agnostic Review Portal
+streamlit>=1.38.0
+
+# Typesetting & Publication Engine
+weasyprint>=62.0
+jinja2>=3.1.0
+
+# Environment & Utilities
+python-dotenv>=1.0.0
+
+# Senior QA & Testing Suite
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
