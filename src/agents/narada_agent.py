@@ -175,20 +175,28 @@ Return ONLY valid JSON with no markdown wrapping and no preamble.
             vishleshan_data = parsed.get("vishleshan", {})
             msg = parsed.get("message_to_shandilya", "")
         except Exception:
-            # Deterministic, scholarly fallback
+            # Deterministic, scholarly fallback using rich canonical meanings
+            init_meaning = sutra_data.get("initial_meaning", {})
+            init_en_val = init_meaning.get("en", init_en)
+            init_hi_val = init_meaning.get("hi", f"नारद भक्ति सूत्र #{sutra_no} ईश्वर के प्रति अनन्य प्रेम का प्रतिपादन करता है।")
+            init_mr_val = init_meaning.get("mr", f"नारद भक्ति सूत्र #{sutra_no} भगवंताविषयीच्या अनन्य प्रेमाचे निरूपण करतो.")
+
             vishleshan_data = {
                 "en": (
-                    f"Narada Bhakti Sutra #{sutra_no} ({sanskrit}) expounds Bhakti from the stance of pure "
-                    f"experiential ecstasy and supreme divine love ('parama-prema'). Here, devotion is neither a mere "
-                    f"ritual nor dry ratiocination, but the ultimate direct realization of the soul's eternal relationship with God."
+                    f"Narada Bhakti Sutra #{sutra_no} ({sanskrit}) expounds the theme of '{theme}'. "
+                    f"{init_en_val} In the Narada tradition, this aphorism establishes that divine love is an "
+                    f"immediate, experiential ecstasy (anubhava) that transcends dry intellectual speculation "
+                    f"and manifests as total, unconditioned surrender to the Supreme."
                 ),
                 "hi": (
-                    f"नारद भक्ति सूत्र #{sutra_no} ({sanskrit}) भक्ति को साक्षात् परम प्रेमरूपा और अमृतस्वरूपा घोषित करता है। "
-                    f"यह साधक को बौद्धिक वाद-विवाद से परे ले जाकर ईश्वर के प्रति पूर्ण आत्मसमर्पण का मार्ग दिखाता है।"
+                    f"नारद भक्ति सूत्र #{sutra_no} ({sanskrit}) '{theme}' के पावन विषय का निरूपण करता है। "
+                    f"{init_hi_val} देवर्षि नारद के दर्शन में यह सूत्र स्पष्ट करता है कि भक्ति केवल औपचारिक कर्मकांड नहीं, "
+                    f"अपितु अंतःकरण का साक्षात् भगवत्-अनुराग और परम अमृत स्वरूप है।"
                 ),
                 "mr": (
-                    f"नारद भक्ति सूत्र #{sutra_no} ({sanskrit}) भक्तीला साक्षात परम प्रेमरूप व अमृतस्वरूप मानतो. "
-                    f"केवळ शुष्क बुद्धीवादापेक्षा ईश्वराप्रती असलेले उत्कट समर्पण आणि निष्काम प्रेम हेच या सूत्राचे सार आहे."
+                    f"नारद भक्ति सूत्र #{sutra_no} ({sanskrit}) '{theme}' या मध्यवर्ती विषयाचे निरूपण करतो. "
+                    f"{init_mr_val} नारदांच्या संप्रदायानुसार ही भक्ती केवळ कोरड्या बुद्धीवादापुरती मर्यादित नसून, "
+                    f"ती साक्षात परमेश्वराप्रती असलेले उत्कट, निस्वार्थ प्रेम आणि निरंतर आत्मसमर्पण आहे."
                 ),
             }
             msg = (

@@ -278,16 +278,21 @@ class ManuscriptPDFGenerator:
 
         .bhashya-text-en {{
             font-size: 10pt;
-            line-height: 1.5;
+            line-height: 1.6;
             color: #1a1a1a;
-            margin: 0 0 6px 0;
+            margin: 0 0 10px 0;
+            white-space: pre-line;
         }}
 
         .bhashya-text-indic {{
             font-family: 'Noto Serif Devanagari', serif;
             font-size: 9.5pt;
-            color: #333;
-            margin: 4px 0;
+            line-height: 1.6;
+            color: #2b2b2b;
+            margin: 8px 0;
+            white-space: pre-line;
+            border-top: 1px dashed #e2d6c5;
+            padding-top: 8px;
         }}
 
         .footer-branding {{

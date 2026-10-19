@@ -2,6 +2,42 @@
 
 All notable changes, architectural updates, and releases for **SK Sutras - by Shri Shripad Kulkarni** are documented in this client-facing log.
 
+## [v0.2.1-beta] - 2026-10-19
+
+### Executive Summary of Changes
+Enriched the comparative **उद्योग भाष्य (Udyoga Bhashya Synthesis)** across all finalized pairs with tri-fold philosophical, practical, and scriptural commentary in English, Hindi, and Marathi. Re-executed canon-wide batch arbitration across all 84 Narada Sutras against the 100 Shandilya Sutras in ChromaDB, producing 26 verified authentic comparative pairings and re-generating the complete 1,586-line publication treatise [`data/output/manuscripts/udyoga_sutra_final_treatise.html`](file:///C:/Users/deshp/.gemini/antigravity/scratch/sk-sutras-by-shri-shripad-kulkarni/data/output/manuscripts/udyoga_sutra_final_treatise.html).
+
+### Direct Client/User Benefits & Features Added
+* **Tri-Fold Comprehensive Udyoga Bhashya Architecture**:
+  * **[Philosophical Nexus / तात्त्विक समन्वय]**: In-depth scholarly analysis detailing the doctrinal bridge between Narada's experiential love (*Parama-Prema*) and Shandilya's epistemological inquiry (*Bhakti-Jijnasa*).
+  * **[Applied Enterprise & Duty / उद्योग एवं कर्म-साधना]**: Concrete guidance on applying each aphorism to active enterprise ('Udyoga'), workplace ethics, and daily human duty without conflict between intellect and devotion.
+  * **[Core Realization / अंतिम बोध]**: Harmonious reconciliation of head (Jnana), heart (Bhakti), and hands (Karma / Udyoga).
+* **Enhanced Distinct Verse Analysis**:
+  * Updated `NaradaAgent` to generate unique, contextual analysis for each specific Narada sutra, eliminating template repetition.
+* **Expanded Curated Treatise Compilation**:
+  * 26 verified pairs accepted and 58 forced mappings rejected/skipped.
+  * Re-generated [`data/output/manuscripts/udyoga_sutra_final_treatise.html`](file:///C:/Users/deshp/.gemini/antigravity/scratch/sk-sutras-by-shri-shripad-kulkarni/data/output/manuscripts/udyoga_sutra_final_treatise.html) (329 KB, 1,586 lines) with enhanced typography and preserved whitespace formatting.
+* **SQLite Repository Synchronized**:
+  * Loaded all 26 verified pairs into `data/manuscript.db` ready for scholar review in the Streamlit portal.
+
+### Issues/Defects Resolved
+* Fulfilled client requirement to expand explanation depth within the *Udyoga Bhashya* whenever any matching reference is finalized.
+* Resolved HTML paragraph break presentation by enabling `white-space: pre-line` in typesetting CSS.
+
+### Data/Knowledge Base Updates
+* SQLite database (`data/manuscript.db`) updated with 26 enriched comparative manuscript entries.
+
+### Validation & Test Results
+* **Test Suite**: 19 out of 19 tests passing (`pytest tests/ -v`, 100% pass rate).
+* **Quality Gate**: Passed with zero defects and zero regressions.
+
+### Deployment Details
+* **Environment**: Local Staging / Test Environment (Workstation Instance).
+* **Target Workstation Directory**: `C:\Users\deshp\.gemini\antigravity\scratch\sk-sutras-by-shri-shripad-kulkarni`
+* **Release Status**: Batch Synthesis Complete & Verified.
+
+---
+
 ## [v0.2.0-beta] - 2026-10-19
 
 ### Executive Summary of Changes

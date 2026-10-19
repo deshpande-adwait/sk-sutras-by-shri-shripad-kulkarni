@@ -137,7 +137,11 @@ Your Task:
 2. If YES:
    - Identify the single best corresponding Shandilya Sutra number.
    - Explain the logical and theological nexus connecting both.
-   - Synthesize the authoritative 'Udyoga Bhashya' across English, Hindi, and Marathi.
+   - Synthesize the authoritative, comprehensive 'Udyoga Bhashya' across English, Hindi, and Marathi.
+     The Udyoga Bhashya MUST contain distinct multi-paragraph sections:
+     a) [Philosophical Nexus / तात्त्विक समन्वय]: Deep doctrinal harmony between Narada's experiential love and Shandilya's epistemological inquiry.
+     b) [Applied Enterprise & Duty / उद्योग एवं कर्म-साधना]: Concrete guidance on how this principle applies to purposeful endeavor ('Udyoga'), daily work, and ethical responsibility in life.
+     c) [Core Realization / अंतिम बोध]: The unifying resolution of intellect, heart, and action.
 3. If NO:
    - State 'is_authentic_match': false
    - Provide a clear explanation of why none of the candidates qualify as a legitimate match.
@@ -148,9 +152,9 @@ Provide output strictly in this valid JSON format:
   "selected_shandilya_sutra_no": "number_or_null",
   "arbitration_rationale": "Clear reasoning on why this pairing is accepted or rejected...",
   "udyoga_bhashya": {{
-    "en": "Comprehensive English synthesis (if accepted) or empty string...",
-    "hi": "हिंदी में तुलनात्मक उद्योग भाष्य (यदि स्वीकृत हो)...",
-    "mr": "मराठीतील तुलनात्मक उद्योग भाष्य (स्वीकृत असल्यास)..."
+    "en": "Extensive English synthesis detailing [Philosophical Nexus], [Applied Enterprise & Duty], and [Core Realization]...",
+    "hi": "हिंदी में विस्तृत उद्योग भाष्य [दार्शनिक समन्वय], [उद्योग एवं कर्म-साधना], और [तात्त्विक निष्कर्ष]...",
+    "mr": "मराठीतील विस्तृत उद्योग भाष्य [तात्त्विक समन्वय], [उद्योग आणि जीवन-साधना], आणि [अंतिम बोध]..."
   }}
 }}
 Return ONLY valid JSON with no markdown wrapping and no preamble.
@@ -222,25 +226,11 @@ Return ONLY valid JSON with no markdown wrapping and no preamble.
                     f"('{theme}') and Shandilya Sutra #{selected_no} ('{matched_candidate.get('theme')}') share a deep "
                     f"doctrinal nexus. Narada provides experiential insight while Shandilya establishes epistemological grounding."
                 )
-                bhashya_dict = {
-                    "en": (
-                        f"The Udyoga Sutra admits this comparative pairing connecting Narada Sutra #{narada_sutra.sutra_no} "
-                        f"({narada_sutra.sanskrit}) with Shandilya Sutra #{selected_no} ({matched_candidate.get('sanskrit')}). "
-                        f"While Narada expounds Bhakti from the standpoint of direct experiential ecstasy and surrender, "
-                        f"Shandilya grounds this very truth within rigorous epistemological inquiry. Far from conflicting, "
-                        f"they reveal that genuine devotion is both the supreme emotional fulfillment and the highest rational wisdom."
-                    ),
-                    "hi": (
-                        f"उद्योग सूत्र नारद सूत्र #{narada_sutra.sutra_no} ({narada_sutra.sanskrit}) और शांडिल्य सूत्र #{selected_no} "
-                        f"({matched_candidate.get('sanskrit')}) के दार्शनिक समन्वय को स्वीकार करता है। नारद की अनुभवात्मक भक्ति "
-                        f"और शांडिल्य की ज्ञानात्मक जिज्ञासा वस्तुतः एक ही सच्चिदानंद स्वरूप के दो पूरक आयाम हैं।"
-                    ),
-                    "mr": (
-                        f"उद्योग सूत्र नारद सूत्र #{narada_sutra.sutra_no} ({narada_sutra.sanskrit}) आणि शांडिल्य सूत्र #{selected_no} "
-                        f"({matched_candidate.get('sanskrit')}) यांचा तात्त्विक संगम स्थापित करतो. नारदांचे उत्कट भगवत्प्रेम "
-                        f"आणि शांडिल्यांची ज्ञानमूलक जिज्ञासा एकत्र येऊन साधकाला परिपूर्ण आत्मसाक्षात्काराचा मार्ग दाखवतात."
-                    ),
-                }
+                bhashya_dict = self._generate_comprehensive_udyoga_bhashya(
+                    narada_sutra=narada_sutra,
+                    shandilya_cand=matched_candidate,
+                    theme=theme,
+                )
             else:
                 is_match = False
                 selected_no = ""
@@ -262,6 +252,14 @@ Return ONLY valid JSON with no markdown wrapping and no preamble.
                 break
         if not selected_cand_data:
             selected_cand_data = shandilya_candidates[0]
+
+        # Guarantee extensive tri-fold Udyoga Bhashya if LLM commentary is brief or absent
+        if not bhashya_dict.get("en") or len(bhashya_dict.get("en", "")) < 200:
+            bhashya_dict = self._generate_comprehensive_udyoga_bhashya(
+                narada_sutra=narada_sutra,
+                shandilya_cand=selected_cand_data,
+                theme=theme,
+            )
 
         shandilya_sutra_item = SutraItem(
             sutra_no=str(selected_cand_data.get("sutra_no")),
@@ -350,24 +348,22 @@ Return ONLY valid JSON with no markdown wrapping and no preamble.
             - Falls back gracefully to deterministic multilingual synthesis if LLM is unavailable.
         ------------------------------------------------------------------------
         """
-        # Synthesize multilingual Udyoga Bhashya
+        # Synthesize comprehensive multilingual Udyoga Bhashya
+        cand_dict = {
+            "sutra_no": shandilya_sutra.sutra_no,
+            "sanskrit": shandilya_sutra.sanskrit,
+            "theme": theme,
+        }
+        bhashya_dict = self._generate_comprehensive_udyoga_bhashya(
+            narada_sutra=narada_sutra,
+            shandilya_cand=cand_dict,
+            theme=theme,
+        )
+
         bhashya = MultilingualText(
-            en=(
-                f"The Udyoga Sutra unites Narada Sutra #{narada_sutra.sutra_no} ({narada_sutra.sanskrit}) "
-                f"with Shandilya Sutra #{shandilya_sutra.sutra_no} ({shandilya_sutra.sanskrit}) under the theme of '{theme}'. "
-                f"While Narada expounds experiential ecstasy and personal devotion, Shandilya grounds it in rigorous "
-                f"epistemological inquiry. Together, they demonstrate that true devotion combines affective surrender with rational clarity."
-            ),
-            hi=(
-                f"उद्योग सूत्र नारद सूत्र #{narada_sutra.sutra_no} ({narada_sutra.sanskrit}) और शांडिल्य सूत्र #{shandilya_sutra.sutra_no} "
-                f"({shandilya_sutra.sanskrit}) का '{theme}' विषय के अंतर्गत समन्वय स्थापित करता है। नारद की प्रेमरूपा भक्ति और शांडिल्य "
-                f"की ज्ञानात्मक जिज्ञासा वस्तुतः एक ही परम सत्य के दो पूरक स्वरूप हैं।"
-            ),
-            mr=(
-                f"उद्योग सूत्र नारद सूत्र #{narada_sutra.sutra_no} ({narada_sutra.sanskrit}) आणि शांडिल्य सूत्र #{shandilya_sutra.sutra_no} "
-                f"({shandilya_sutra.sanskrit}) यांचा '{theme}' या मध्यवर्ती विषयाखाली तात्त्विक संगम साधतो. नारदांची पराभक्ती "
-                f"आणि शांडिल्यांचे तात्त्विक चिंतन साधकाला पूर्णत्वाकडे नेतात."
-            ),
+            en=bhashya_dict.get("en", ""),
+            hi=bhashya_dict.get("hi"),
+            mr=bhashya_dict.get("mr"),
         )
 
         manuscript_pair = SutraPairManuscript(
@@ -380,4 +376,318 @@ Return ONLY valid JSON with no markdown wrapping and no preamble.
 
         self.repository.save_pair(manuscript_pair, status="in_review")
         return manuscript_pair
+
+    def _generate_comprehensive_udyoga_bhashya(
+        self,
+        narada_sutra: SutraItem,
+        shandilya_cand: Dict[str, Any],
+        theme: str,
+    ) -> Dict[str, str]:
+        """
+        ------------------------------------------------------------------------
+        Method: _generate_comprehensive_udyoga_bhashya
+        ------------------------------------------------------------------------
+        Purpose:
+            Synthesizes an extensive, publication-grade, tri-fold Udyoga Bhashya
+            across English, Hindi, and Marathi whenever a comparative sutra pairing
+            is finalized. The synthesis uniquely addresses:
+            1. Philosophical Nexus (Doctrinal & Epistemological Harmony)
+            2. Applied Enterprise & Duty (Udyoga in Daily Life & Professional Work)
+            3. Core Realization & Definitive Synthesis (Unity of Head, Heart & Hands)
+
+        Parameters:
+            narada_sutra (SutraItem): The Narada aphorism model.
+            shandilya_cand (Dict[str, Any]): The matched Shandilya candidate dictionary.
+            theme (str): Unifying philosophical theme.
+
+        Returns:
+            Dict[str, str]: Dictionary containing rich 'en', 'hi', and 'mr' commentaries.
+
+        Manual Debugging Notes:
+            - Formats with clear section headers for readability in HTML and PDF publications.
+            - Preserves Devanagari script integrity across Hindi and Marathi texts.
+        ------------------------------------------------------------------------
+        """
+        n_no = str(narada_sutra.sutra_no)
+        n_sanskrit = narada_sutra.sanskrit
+        s_no = str(shandilya_cand.get("sutra_no", "1"))
+        s_sanskrit = shandilya_cand.get("sanskrit", "")
+        s_theme = shandilya_cand.get("theme", "")
+
+        theme_lower = (theme + " " + s_theme).lower()
+
+        # Category 1: Inauguration, Inquiry, and Definition of Bhakti
+        if any(w in theme_lower for w in ["inaugur", "jijnasa", "inquiry", "definition"]):
+            en_text = (
+                f"[Philosophical Nexus / तात्त्विक समन्वय]: The Udyoga Sutra establishes this inaugural comparative "
+                f"pairing connecting Narada Sutra #{n_no} ({n_sanskrit}) with Shandilya Sutra #{s_no} ({s_sanskrit}) "
+                f"under the theme of '{theme}'. Narada inaugurates the path through direct, heart-centered exposition ('vyākhyā'), "
+                f"presenting devotion as an immediate experiential sweetness. Conversely, Shandilya opens with rigorous epistemological "
+                f"inquiry ('jijñāsā'), paralleling the classical Badarayana Vedanta tradition. Where Shandilya satisfies the philosophical "
+                f"intellect by validating Bhakti as a legitimate, sovereign field of ontological inquiry, Narada immediately invites "
+                f"the seeker to participate in its nectarine reality. Far from conflicting, they demonstrate that genuine Bhakti is "
+                f"simultaneously the summit of rational inquiry and the perfection of emotional fulfillment.\n\n"
+                f"[Applied Enterprise & Duty / उद्योग एवं कर्म-साधना]: In human enterprise and daily life, this inaugural harmony reveals "
+                f"the essential psychology of purposeful action ('Udyoga'). Before embarking upon any great endeavor, the practitioner must "
+                f"synthesize Shandilya's critical inquiry (thoroughly investigating the purpose, ethics, and fundamental principles of the mission) "
+                f"with Narada's total devotional dedication. Action without philosophical inquiry is blind and prone to error; conversely, inquiry "
+                f"without wholehearted commitment remains sterile intellectual speculation. The Udyoga Sutra teaches that true achievement begins "
+                f"when critical discernment and selfless dedication are consecrated as one.\n\n"
+                f"[Core Realization / अंतिम बोध]: Head and heart converge at the inception of truth. Inquiry blossoms into love, and love "
+                f"illuminates the intellect, guiding the seeker toward supreme excellence and inner peace."
+            )
+            hi_text = (
+                f"[दार्शनिक समन्वय]: उद्योग सूत्र नारद सूत्र #{n_no} ({n_sanskrit}) और शांडिल्य सूत्र #{s_no} ({s_sanskrit}) का "
+                f"'{theme}' के अंतर्गत भव्य तात्त्विक समन्वय प्रस्तुत करता है। देवर्षि नारद भक्ति की व्याख्या को प्रत्यक्ष, अनुभवात्मक और "
+                f"हृदयस्पर्शी रूप में प्रस्तुत करते हैं, जबकि महर्षि शांडिल्य 'भक्तिजिज्ञासा' के माध्यम से वेदान्त-सुलभ दार्शनिक और प्रमाण-संगत "
+                f"अन्वेषण का सूत्रपात करते हैं। शांडिल्य जहाँ बुद्धि को संतुष्ट कर भक्ति को एक स्वतंत्र और प्रामाणिक विद्या सिद्ध करते हैं, "
+                f"वहीं नारद साधक को उसके अमृतमय रस का आस्वादन कराते हैं। ज्ञान और प्रेम का यह संगम भक्ति के समग्र स्वरूप को प्रकट करता है।\n\n"
+                f"[उद्योग एवं कर्म-साधना]: सांसारिक उद्योग, व्यवसाय और कर्तव्य-कर्म के धरातल पर यह सूत्र कर्मण्यता की आधारशिला रखता है। "
+                f"किसी भी महान कार्य का शुभारंभ शांडिल्य की विवेकी जिज्ञासा (कार्य के उद्देश्य और नीति का सूक्ष्म विचार) और नारद के उत्कट "
+                f"समर्पण के संगम से होना चाहिए। विवेकहीन उत्साह भ्रम पैदा करता है और प्रेमविहीन बुद्धि शुष्कता लाती है। उद्योग सूत्र यह सिखाता "
+                f"है कि जब विचार और समर्पण एक साथ मिलते हैं, तब प्रत्येक लौकिक उद्यम साक्षात् साधना बन जाता है।\n\n"
+                f"[तात्त्विक निष्कर्ष]: सत्य के प्रवेशद्वार पर ज्ञान और प्रेम एकाकार हो जाते हैं। जिज्ञासा का चरम फल प्रेम है, और प्रेम का आधार प्रबुद्ध विवेक है।"
+            )
+            mr_text = (
+                f"[तात्त्विक समन्वय]: उद्योग सूत्र नारद सूत्र #{n_no} ({n_sanskrit}) आणि शांडिल्य सूत्र #{s_no} ({s_sanskrit}) यांचा "
+                f"'{theme}' या मध्यवर्ती विषयाखाली उदात्त तात्त्विक संगम घडवून आणतो. नारद भक्तीची मांडणी अंतःकरणातील उत्कट प्रेमाच्या व "
+                f"अनुभूतीच्या पातळीवर करतात, तर शांडिल्य 'भक्तिजिज्ञासा' या सूत्राद्वारे भक्तीला तर्कशुद्ध व शास्त्रीय अधिष्ठान देतात. "
+                f"शांडिल्य बुद्धीला समाधान देतात आणि नारद अंतःकरणाला तृप्त करतात. दोन्हींचा समन्वय परिपूर्ण भक्तीमार्ग प्रस्थापित करतो.\n\n"
+                f"[उद्योग आणि जीवन-साधना]: दैनंदिन जीवन, व्यवसाय आणि कर्मक्षेत्रात हे सूत्र 'सत्-उद्योगाची' पायाभरणी करते. कोणतेही श्रेष्ठ कार्य करताना "
+                f"शांडिल्यांची विवेकनिष्ठ विचारशीलता (कार्याचा खरा हेतू काय?) आणि नारदांची निस्वार्थ निष्ठा यांचा मेळ घातला पाहिजे. केवळ बुद्धी असेल तर "
+                f"कर्म कोरडे होते, आणि केवळ भावना असेल तर दिशा भरकटते. जेव्हा विवेक आणि प्रेम एकत्र येतात, तेव्हा मानवी प्रयत्न सिद्धीस जातात.\n\n"
+                f"[अंतिम बोध]: ज्ञान आणि भक्ती हे एकाच परमतत्त्वाचे दोन पंख आहेत. विवेकाने सुरू झालेली जिज्ञासा प्रेमात परिपूर्ण होते."
+            )
+
+        # Category 2: Supreme Love, Absolute Attachment, Sole Goal
+        elif any(w in theme_lower for w in ["love", "anurakti", "prema", "supreme", "goal", "essence"]):
+            en_text = (
+                f"[Philosophical Nexus / तात्त्विक समन्वय]: The Udyoga Sutra admits this profound comparative pairing connecting "
+                f"Narada Sutra #{n_no} ({n_sanskrit}) with Shandilya Sutra #{s_no} ({s_sanskrit}) under the theme of '{theme}'. "
+                f"Narada identifies the intrinsic essence of devotion as 'Parama-Prema-Rūpā' (the nature of supreme, unconditioned love), "
+                f"while Shandilya establishes 'Parānurakti' (continuous, unbroken attraction toward Ishvara) and affirms 'Tatra Parā Sādhyā' "
+                f"(Supreme love is the ultimate end, not a subordinate means). Both traditions definitively reject the notion that devotion "
+                f"is merely an emotional stepping-stone; it is the ultimate ontological reality and the highest spiritual consummation.\n\n"
+                f"[Applied Enterprise & Duty / उद्योग एवं कर्म-साधना]: In professional and everyday human endeavors, this principle transforms "
+                f"ordinary labor into selfless excellence. When an individual works solely out of fear or transactional greed, fatigue and "
+                f"anxiety are inevitable. However, when endeavor ('Udyoga') is animated by supreme love—love for excellence, truth, and the "
+                f"welfare of all beings—work ceases to be a burden and becomes a joyful expression of divine energy. The practitioner acts with "
+                f"boundless dedication, unaffected by petty egoism or fear of failure.\n\n"
+                f"[Core Realization / अंतिम बोध]: Love is the supreme sovereign power of consciousness. When action is saturated with divine love, "
+                f"work becomes worship, and enterprise becomes liberation."
+            )
+            hi_text = (
+                f"[दार्शनिक समन्वय]: उद्योग सूत्र नारद सूत्र #{n_no} ({n_sanskrit}) और शांडिल्य सूत्र #{s_no} ({s_sanskrit}) का "
+                f"'{theme}' के अंतर्गत मिलन स्वीकार करता है। नारद जहाँ भक्ति को 'परमप्रेमरूपा' कहकर उसके शुद्ध रागात्मक और अमृतमय स्वभाव को "
+                f"उद्घाटित करते हैं, वहीं शांडिल्य उसे 'परानुरक्तिरीश्वरे' तथा 'तत्र परा साध्या' कहकर यह सिद्ध करते हैं कि भक्ति किसी अन्य फल "
+                f"का साधन मात्र नहीं, अपितु जीवन का परम साध्य है। दोनों परंपराएँ एकमत होकर यह स्थापित करती हैं कि अनन्य प्रेम ही आत्मा की "
+                f"सर्वोच्च पूर्णता है।\n\n"
+                f"[उद्योग एवं कर्म-साधना]: सांसारिक उद्यम और कार्यक्षेत्र में यह सिद्धांत कर्मयोग की पराकाष्ठा है। जब व्यक्ति भय, लोभ या संकीर्ण "
+                f"स्वार्थ से कार्य करता है, तो मानसिक तनाव और शिथिलता जन्म लेती है। इसके विपरीत, जब उद्यम ('उद्योग') में सत्य, सेवा और परमेश्वर के "
+                f"प्रति अनन्य अनुराग जुड़ जाता है, तो साधारण कर्म भी असाधारण उत्कृष्टता में बदल जाता है। ऐसा साधक निष्काम भाव से निरंतर कर्मरत "
+                f"रहकर भी आंतरिक शांति में प्रतिष्ठित रहता है।\n\n"
+                f"[तात्त्विक निष्कर्ष]: प्रेम ही चेतना की सर्वोच्च शक्ति है। जब कर्म प्रेम से अभिसिंचित होता है, तब वह बंधन नहीं बल्कि मोक्ष का साधन बन जाता है।"
+            )
+            mr_text = (
+                f"[तात्त्विक समन्वय]: उद्योग सूत्र नारद सूत्र #{n_no} ({n_sanskrit}) आणि शांडिल्य सूत्र #{s_no} ({s_sanskrit}) यांचा "
+                f"'{theme}' या विषयाखाली तात्त्विक मेळ साधतो. नारद भक्तीला 'परमप्रेमरूपा' मानून तिच्या उत्कट प्रेमाविष्काराचे वर्णन करतात, "
+                f"तर शांडिल्य 'परानुरक्तिरीश्वरे' आणि 'तत्र परा साध्या' या सूत्रांद्वारे हे सिद्ध करतात की भक्ती हे केवळ साधन नसून तेच अंतिम "
+                f"साध्य आहे. दोन्ही ऋषी एका सुरात सांगतात की ईश्वरावरील निरतिशय प्रेम हीच मानवी जीवनाची सर्वोच्च परिणती आहे.\n\n"
+                f"[उद्योग आणि जीवन-साधना]: दैनंदिन कर्म आणि कर्तव्यक्षेत्रात हा सिद्धांत कर्मयोगाचे रहस्य उलगडतो. जेव्हा माणूस स्वार्थ किंवा भीतीने "
+                f"काम करतो, तेव्हा थकवा व निराशा येते. परंतु जेव्हा आपल्या उद्योगात प्रेमाचा, निष्ठेचा आणि ईश्वरी सेवेचा भाव येतो, तेव्हा प्रत्येक कृती "
+                f"पूजा बनते. असा साधक यशापयशाने विचलित न होता सातत्याने सर्वोत्तम कार्य करत राहतो.\n\n"
+                f"[अंतिम बोध]: प्रेम हीच आत्म्याची खरी शक्ती आहे. जेव्हा कर्माला प्रेमाचा स्पर्श होतो, तेव्हा उद्योगच मोक्षदायी ठरतो."
+            )
+
+        # Category 3: Superiority over Mere Intellect, Knowledge & Interdependence
+        elif any(w in theme_lower for w in ["knowledge", "intellect", "jnana", "superior", "interdepend"]):
+            en_text = (
+                f"[Philosophical Nexus / तात्त्विक समन्वय]: The Udyoga Sutra unites Narada Sutra #{n_no} ({n_sanskrit}) with "
+                f"Shandilya Sutra #{s_no} ({s_sanskrit}) under the theme of '{theme}'. Both masters address the classical dilemma between "
+                f"dry intellect (Jnana) and loving surrender (Bhakti). Shandilya delivers a masterclass in epistemological precision "
+                f"('Jñāneti cenna parasya jñānapratiṣṭhānāt'), demonstrating that mere intellectual cognition cannot be equated with devotion; "
+                f"knowledge merely provides the cognitive scaffold upon which supreme love rests. Narada vigorously corroborates this, declaring "
+                f"devotion superior to karma, jnana, and yoga, observing that a starving person cannot be nourished simply by intellectually "
+                f"analyzing food. Both acharyas conclude that knowledge is the foundation, but love is the living edifice.\n\n"
+                f"[Applied Enterprise & Duty / उद्योग एवं कर्म-साधना]: In modern organizational leadership and enterprise, this doctrine holds "
+                f"monumental relevance. Data, technical intellect, and strategic models are vital foundational tools, but they cannot inspire "
+                f"human greatness or ethical resilience on their own. Strategy without dedication produces cynical paralysis; passion without "
+                f"knowledge produces chaotic failure. True 'Udyoga' requires technical mastery anchored in a passionate, values-driven heart. "
+                f"The practitioner combines rigorous competence with deep care for the mission.\n\n"
+                f"[Core Realization / अंतिम बोध]: Knowledge is the lamp that illuminates the path; devotion is the flame that provides warmth "
+                f"and life. Together, they dissolve darkness and grant total spiritual sovereignty."
+            )
+            hi_text = (
+                f"[दार्शनिक समन्वय]: उद्योग सूत्र नारद सूत्र #{n_no} ({n_sanskrit}) और शांडिल्य सूत्र #{s_no} ({s_sanskrit}) का "
+                f"'{theme}' के परिप्रेक्ष्य में समन्वय करता है। दोनों आचार्य शुष्क बुद्धिवाद और भक्ति के संबंध का गहरा विश्लेषण करते हैं। "
+                f"शांडिल्य तार्किक स्पष्टता से स्थापित करते हैं कि केवल बौद्धिक ज्ञान भक्ति नहीं हो सकता, क्योंकि ज्ञान तो केवल प्रेम का "
+                f"अधिष्ठान (आधार) मात्र है। नारद इस सत्य को पुष्ट करते हुए कहते हैं कि भोजन की केवल चर्चा करने से भूख शांत नहीं होती, उसे ग्रहण "
+                f"करने से तृप्ति मिलती है। ज्ञान पथ दिखाता है, परंतु गंतव्य तक पहुँचाने वाली शक्ति भक्ति ही है।\n\n"
+                f"[उद्योग एवं कर्म-साधना]: आधुनिक उद्यम और नेतृत्व के संदर्भ में यह सिद्धांत अत्यंत मार्गदर्शक है। योजनाएँ, डेटा और तकनीकी ज्ञान "
+                f"आवश्यक साधन हैं, परंतु बिना निष्ठा, सेवा-भाव और समर्पण के कोई भी संगठन महान नहीं बन सकता। शुष्क बुद्धि केवल विश्लेषण में उलझी "
+                f"रहती है, जबकि प्रेम और समर्पण असंभव को भी संभव बना देते हैं। उद्योग सूत्र कुशल ज्ञान और समर्पित कर्म के समन्वय का आदेश देता है।\n\n"
+                f"[तात्त्विक निष्कर्ष]: ज्ञान दीपक है और भक्ति उसका प्रकाश। दोनों के संगम से साधक अज्ञान के अंधकार से पार होकर परमानंद को प्राप्त करता है।"
+            )
+            mr_text = (
+                f"[तात्त्विक समन्वय]: उद्योग सूत्र नारद सूत्र #{n_no} ({n_sanskrit}) आणि शांडिल्य सूत्र #{s_no} ({s_sanskrit}) यांचा "
+                f"'{theme}' या विषयानुसार समन्वय साधतो. दोन्ही ऋषी बुद्धी आणि भक्ती यांमधील संबंध स्पष्ट करतात. शांडिल्य स्पष्ट करतात की केवळ ज्ञान "
+                f"म्हणजे भक्ती नव्हे, ज्ञान हे केवळ भक्तीचे अधिष्ठान आहे. नारद सांगतात की अन्नाची नुसती माहिती असण्याने भूक भागत नाही, तर ते प्रत्यक्ष "
+                f"सेवन केल्यावरच तृप्ती मिळते. ज्ञान पाया रचतो, पण त्यावर भक्तीचा कळस चढवावा लागतो.\n\n"
+                f"[उद्योग आणि जीवन-साधना]: कार्यक्षेत्रात आणि उद्योगात हा सिद्धांत यशाचा मूलमंत्र आहे. कौशल्य, तंत्रज्ञान आणि नियोजन हे साधन आहेत; "
+                f"परंतु कामाप्रती निष्ठा, प्रेम आणि नैतिक मूल्ये नसतील तर मोठे कार्य उभे राहू शकत नाही. केवळ बुद्धी असेल तर अहंकार वाढतो, पण जेव्हा "
+                f"बुद्धीला भक्तीची जोड मिळते, तेव्हा कार्याला पावित्र्य लाभते.\n\n"
+                f"[अंतिम बोध]: ज्ञान ही दृष्टी आहे आणि भक्ती ही शक्ती आहे. या दोन्हींच्या संयोगाने साधक जीवनात कृतार्थ होतो."
+            )
+
+        # Category 4: Renunciation, Non-attachment, Transcending Ritualism
+        elif any(w in theme_lower for w in ["renunciat", "detachment", "vairagya", "ritual", "mechanical"]):
+            en_text = (
+                f"[Philosophical Nexus / तात्त्विक समन्वय]: The Udyoga Sutra unites Narada Sutra #{n_no} ({n_sanskrit}) with "
+                f"Shandilya Sutra #{s_no} ({s_sanskrit}) under the theme of '{theme}'. Narada defines renunciation ('nirodha') not as "
+                f"passive nihilism, but as 'loka-veda-vyāpāra-nyāsaḥ'—the transcendence of mechanical social and scriptural rituals to achieve "
+                f"undivided focus on the Divine. Shandilya confirms this epistemologically, explaining that ritualistic actions produce "
+                f"perishable, transient fruits and therefore cannot satisfy the soul's yearning for the Infinite. Both sages agree that true "
+                f"renunciation is the elimination of ego-driven desires, making room for boundless spiritual love.\n\n"
+                f"[Applied Enterprise & Duty / उद्योग एवं कर्म-साधना]: In practical work and professional discipline, this principle translates "
+                f"into radical focus and ethical integrity. It instructs the worker to renounce trivial distractions, toxic office politics, and "
+                f"superficial status-seeking, channeling all energy toward meaningful, value-creating enterprise. Non-attachment does not mean "
+                f"abandoning duty; it means performing duty with total dedication while releasing anxious fixation on personal aggrandizement.\n\n"
+                f"[Core Realization / अंतिम बोध]: Renunciation is not the denial of life, but the purification of action. When selfish desires "
+                f"are surrendered, enterprise becomes pure spiritual power."
+            )
+            hi_text = (
+                f"[दार्शनिक समन्वय]: उद्योग सूत्र नारद सूत्र #{n_no} ({n_sanskrit}) और शांडिल्य सूत्र #{s_no} ({s_sanskrit}) का "
+                f"'{theme}' के अंतर्गत समन्वय स्थापित करता है। नारद 'निरोध' की व्याख्या करते हुए सांसारिक प्रपंच और यांत्रिक कर्मकांडों के "
+                f"त्याग का उपदेश देते हैं, ताकि चित्त केवल ईश्वर में एकाग्र हो सके। शांडिल्य दार्शनिक रूप से सिद्ध करते हैं कि सकाम कर्म विनाशी "
+                f"फल देने वाले हैं, अतः वे आत्मा को परम तृप्ति नहीं दे सकते। दोनों आचार्य सकाम कर्म के त्याग और निष्काम भगवत्-प्रेम का प्रतिपादन करते हैं।\n\n"
+                f"[उद्योग एवं कर्म-साधना]: कर्मक्षेत्र में यह सिद्धांत एकाग्रता और शुचिता का पाठ पढ़ाता है। इसका अर्थ कार्य छोड़ना नहीं, अपितु व्यर्थ के "
+                f"प्रपंच, दिखावे और संकीर्ण स्वार्थ को त्यागना है। जब कार्यकर्ता व्यक्तिगत लोभ और व्यर्थ की चिंताओं से मुक्त होकर अपने लक्ष्य के प्रति समर्पित "
+                f"होता है, तब उसके उद्यम में अभूतपूर्व प्रभावशीलता और सृजनात्मकता का उदय होता है।\n\n"
+                f"[तात्त्विक निष्कर्ष]: त्याग जीवन का नकार नहीं, बल्कि कर्म की शुद्धि है। स्वार्थ के मिटते ही उद्यम दिव्य साधना बन जाता है।"
+            )
+            mr_text = (
+                f"[तात्त्विक समन्वय]: उद्योग सूत्र नारद सूत्र #{n_no} ({n_sanskrit}) आणि शांडिल्य सूत्र #{s_no} ({s_sanskrit}) यांचा "
+                f"'{theme}' या विषयाखाली मेळ घालतो. नारद 'निरोध' म्हणजे व्यावहारिक व कर्मकांडी बंधनांचा त्याग करून ईश्वरात लीन होणे असे सांगतात. "
+                f"शांडिल्य स्पष्ट करतात की फळाची आशा ठेवून केलेले कर्म अशाश्वत असते, म्हणून ते आत्म्याला पूर्णत्व देऊ शकत नाही. दोन्ही तत्त्वज्ञ सांगतात "
+                f"की स्वार्थाचा त्याग हाच खऱ्या भक्तीचा पाया आहे.\n\n"
+                f"[उद्योग आणि जीवन-साधना]: कर्तव्यक्षेत्रात हा सिद्धांत एकाग्रतेची आणि निस्वार्थतेची प्रेरणा देतो. काम सोडणे म्हणजे त्याग नव्हे, तर कामातील "
+                f"स्वार्थ, मत्सर आणि व्यर्थ चिंता सोडणे हा खरा त्याग होय. जेव्हा कार्यकर्ता फळाच्या हव्यासाशिवाय प्रामाणिकपणे झोकून देऊन काम करतो, तेव्हा "
+                f"त्याच्या हातून महान कार्य घडते.\n\n"
+                f"[अंतिम बोध]: त्याग म्हणजे कर्तव्यापासून पळ काढणे नव्हे, तर कर्माला निस्वार्थ बनवणे होय."
+            )
+
+        # Category 5: Universal Equality, Transcending Caste & Lineage
+        elif any(w in theme_lower for w in ["caste", "equal", "lineage", "universal", "all humans"]):
+            en_text = (
+                f"[Philosophical Nexus / तात्त्विक समन्वय]: The Udyoga Sutra synthesizes Narada Sutra #{n_no} ({n_sanskrit}) with "
+                f"Shandilya Sutra #{s_no} ({s_sanskrit}) under the theme of '{theme}'. Both acharyas champion a revolutionary spiritual egalitarianism. "
+                f"Narada resoundingly proclaims that among true devotees, distinctions of caste, academic pedigree, physical appearance, family "
+                f"lineage, wealth, or secular profession cease to exist ('Nāsti teṣu jāti-vidyā-rūpa-kula-dhana-kriyādi-bhedaḥ'). Shandilya provides "
+                f"absolute epistemological justification by declaring universal entitlement to Bhakti ('Sarveṣām cādhikāraḥ'). Unlike restrictive "
+                f"orthodox rituals, the sanctuary of divine devotion belongs equally to every living being.\n\n"
+                f"[Applied Enterprise & Duty / उद्योग एवं कर्म-साधना]: In modern organizational culture and human enterprise, this stands as the "
+                f"timeless charter of dignity, meritocracy, and inclusion. An enlightened institution evaluates individuals not by birth, privilege, "
+                f"or external labels, but by inner character, ethical commitment, and excellence in contribution. True leadership creates an "
+                f"environment of profound psychological safety where every individual's contribution is valued with equal reverence.\n\n"
+                f"[Core Realization / अंतिम बोध]: Before the Supreme, the only distinction that matters is purity of heart. In unity of spirit, "
+                f"all artificial human barriers dissolve."
+            )
+            hi_text = (
+                f"[दार्शनिक समन्वय]: उद्योग सूत्र नारद सूत्र #{n_no} ({n_sanskrit}) और शांडिल्य सूत्र #{s_no} ({s_sanskrit}) का "
+                f"'{theme}' के पावन विषय पर एकीकरण करता है। दोनों आचार्यों ने सामाजिक और जन्मगत संकीर्णताओं का समूल खंडन किया है। नारद "
+                f"सिंहगर्जना करते हैं कि भक्तों में जाति, विद्या, रूप, कुल, धन और क्रिया आदि का कोई भेद नहीं होता। शांडिल्य शास्त्र सम्मत "
+                f"प्रमाण देते हैं कि भक्ति पर प्रत्येक प्राणी का समान और जन्मसिद्ध अधिकार है। ईश्वर के प्रेम-दरबार में सभी आत्माएँ समान हैं।\n\n"
+                f"[उद्योग एवं कर्म-साधना]: व्यावसायिक संगठन और समाज के संचालन में यह समता, गरिमा और सर्वसमावेशी न्याय का अमर संदेश है। एक श्रेष्ठ "
+                f"कार्य-संस्कृति वही है जहाँ व्यक्ति का मूल्यांकन उसके वंश, बाह्य प्रतिष्ठा या धन से नहीं, बल्कि उसकी निष्ठा, योग्यता और ईमानदारी "
+                f"से होता है। उद्योग सूत्र मानवीय गरिमा और बंधुत्व की रक्षा को सर्वोच्च धर्म मानता है।\n\n"
+                f"[तात्त्विक निष्कर्ष]: परमात्मा के समक्ष केवल हृदय की शुद्धि मान्य है। भगवत्-प्रेम की पावन धारा में ऊँच-नीच के सभी कल्पित भेद विलीन हो जाते हैं।"
+            )
+            mr_text = (
+                f"[तात्त्विक समन्वय]: उद्योग सूत्र नारद सूत्र #{n_no} ({n_sanskrit}) आणि शांडिल्य सूत्र #{s_no} ({s_sanskrit}) यांचा "
+                f"'{theme}' या विषयावर एकात्म विचार मांडतो. दोन्ही आचार्यांनी जात, पात आणि कुळाच्या भेदांना पूर्णपणे नाकारले आहे. नारद स्पष्ट "
+                f"सांगतात की ईश्वराच्या भक्तांमध्ये जात, विद्या, रूप, कुल, धन किंवा व्यवसाय यावरून कोणताही भेद नसतो. शांडिल्य सांगतात की भक्तीचा "
+                f"अधिकार विश्वातील प्रत्येक जीवाला समान आहे. ईश्वराच्या दरबारात सर्वांना समान स्थान आहे.\n\n"
+                f"[उद्योग आणि जीवन-साधना]: सामाजिक आणि व्यावसायिक क्षेत्रात हा सिद्धांत समता, न्याय आणि सर्वसमावेशकतेची शिकवण देतो. कोणत्याही संस्थेचे "
+                f"किंवा उद्योगाचे यश माणसाच्या बाह्य रूपावर किंवा वंशावर अवलंबून नसून, त्याच्यातील प्रामाणिकपणा, कष्ट आणि गुणांवर अवलंबून असते. हे सूत्र "
+                f"सर्वांना समान संधी आणि आदर देण्याचा आग्रह धरते.\n\n"
+                f"[अंतिम बोध]: ईश्वराच्या दृष्टीने अंतःकरणाची शुद्धी हीच खरी संपत्ती आहे. प्रेमाच्या प्रवाहात सर्व मानवनिर्मित भिंती गळून पडतात."
+            )
+
+        # Category 6: Ineffable Bliss, Tasting the Divine Nectar (Rasa)
+        elif any(w in theme_lower for w in ["ineffable", "rasa", "bliss", "taste"]):
+            en_text = (
+                f"[Philosophical Nexus / तात्त्विक समन्वय]: The Udyoga Sutra unites Narada Sutra #{n_no} ({n_sanskrit}) with "
+                f"Shandilya Sutra #{s_no} ({s_sanskrit}) under the theme of '{theme}'. Narada illustrates the mystery of divine love with the "
+                f"poignant metaphor of the mute person tasting delicious nectar ('Mūkāsvādanavat')—the experience of sweetness is profoundly real, "
+                f"intoxicating, and transformative, yet utterly beyond the capacity of speech to articulate. Shandilya corroborates this through "
+                f"the Upanishadic doctrine of 'Raso vai saḥ', demonstrating that the Supreme is transcendental aesthetic bliss itself. Love is not "
+                f"an intellectual concept to be debated, but an immediate ontological reality to be tasted.\n\n"
+                f"[Applied Enterprise & Duty / उद्योग एवं कर्म-साधना]: In creative enterprise and master craftsmanship, this reflects the "
+                f"psychological phenomenon of deep 'flow' and intrinsic joy. When a dedicated creator or craftsman is completely absorbed in "
+                f"purposeful work, the distinction between worker and work vanishes. The joy of creating something truly sublime cannot be fully "
+                f"captured in words or metrics; it is known only by the heart that pours itself into the craft.\n\n"
+                f"[Core Realization / अंतिम बोध]: Truth in its highest octave is beyond language. It is realized in the silence of deep fulfillment "
+                f"and the joy of selfless creation."
+            )
+            hi_text = (
+                f"[दार्शनिक समन्वय]: उद्योग सूत्र नारद सूत्र #{n_no} ({n_sanskrit}) और शांडिल्य सूत्र #{s_no} ({s_sanskrit}) का "
+                f"'{theme}' के परिप्रेक्ष्य में मिलन कराता है। नारद गूंगे के गुड़ के प्रसिद्ध दृष्टांत ('मूकास्वादनवत्') से समझाते हैं कि "
+                f"भक्ति-रस का आस्वादन वाणी से परे, अनिर्वचनीय और केवल स्व-संवेद्य है। शांडिल्य उपनिषदों के 'रसो वै सः' सिद्धांत से इसकी पुष्टि "
+                f"करते हुए सिद्ध करते हैं कि परमात्मा साक्षात् रस-स्वरूप और परमानंद हैं। यह प्रेम वाद-विवाद का विषय नहीं, अपितु जीवन में साक्षात् अनुभव करने की वस्तु है।\n\n"
+                f"[उद्योग एवं कर्म-साधना]: सृजनात्मक उद्यम और कर्म-कौशल में यह 'परम तन्मयता' का प्रतीक है। जब कोई निष्ठावान शिल्पी या वैज्ञानिक अपने "
+                f"कार्य में पूरी तरह लीन हो जाता है, तो कर्म ही उसका आनंद बन जाता है। उत्कृष्ट सृजन का जो गहरा आंतरिक संतोष होता है, उसे शब्दों में "
+                f"नहीं बाँधा जा सकता; उसे केवल वही जान सकता है जिसने अपने कार्य में आत्मा उड़ेल दी हो।\n\n"
+                f"[तात्त्विक निष्कर्ष]: सर्वोच्च सत्य शब्दों की सीमा से परे है। वह मौन की गहराई में और समर्पित कर्म के आनंद में साक्षात् अनुभूत होता है।"
+            )
+            mr_text = (
+                f"[तात्त्विक समन्वय]: उद्योग सूत्र नारद सूत्र #{n_no} ({n_sanskrit}) आणि शांडिल्य सूत्र #{s_no} ({s_sanskrit}) यांचा "
+                f"'{theme}' या विषयाखाली समन्वय साधतो. नारद मुक्याच्या गुळाच्या दृष्टान्ताने ('मूकास्वादनवत्') दाखवून देतात की भक्तीचा आनंद अवर्णनीय "
+                f"आहे; तो शब्दात सांगता येत नाही, केवळ अनुभवता येतो. शांडिल्य 'रसो वै सः' या श्रुतिवचनाद्वारे स्पष्ट करतात की ईश्वर हा साक्षात रसरूप "
+                f"व आनंदरूप आहे. प्रेम हे चर्चेचे साधन नसून ते साक्षात अनुभूतीचे अमृत आहे.\n\n"
+                f"[उद्योग आणि जीवन-साधना]: व्यावसायिक आणि कलात्मक क्षेत्रात हे सूत्र 'परम तल्लीनतेची' अनुभूती देते. जेव्हा एखादा कुशल कारागीर किंवा संशोधक "
+                f"आपल्या कार्यात मनापासून रमून जातो, तेव्हा कर्माचाच आनंद बनतो. उत्कृष्ट कार्याचा जो आंतरिक आनंद असतो, तो शब्दातीत असतो. तो फक्त त्या "
+                f"कार्यात स्वतःला विसरून जाणाऱ्यालाच समजतो.\n\n"
+                f"[अंतिम बोध]: परमोच्च सत्य हे भाषेच्या पलीकडचे आहे. ते अंतःकरणाच्या शांततेत आणि समर्पित कर्माच्या आनंदाने प्रकट होते."
+            )
+
+        # Default / General Syncretic Commentary
+        else:
+            en_text = (
+                f"[Philosophical Nexus / तात्त्विक समन्वय]: The Udyoga Sutra admits this comparative pairing uniting Narada Sutra #{n_no} "
+                f"({n_sanskrit}) with Shandilya Sutra #{s_no} ({s_sanskrit}) under the theme of '{theme}'. Narada expounds Bhakti from the "
+                f"perspective of direct experiential realization and ecstatic devotional absorption, while Shandilya grounds this identical "
+                f"truth in rigorous epistemological inquiry and ontological certitude. Rather than existing as competing schools, they represent "
+                f"two complementary aspects of one indivisible reality: Shandilya provides the rational foundation, and Narada infuses it "
+                f"with living, vibrant love.\n\n"
+                f"[Applied Enterprise & Duty / उद्योग एवं कर्म-साधना]: In human enterprise and duty, this synthesis provides the foundation for "
+                f"sustainable excellence. Diligent endeavor ('Udyoga') requires both clear intellectual discernment and passionate emotional "
+                f"commitment. Work undertaken without knowledge lacks strategic efficacy; work performed without heart lacks endurance and moral "
+                f"elevation. When intellect and love are unified in purposeful action, everyday duty is elevated into sublime spiritual practice.\n\n"
+                f"[Core Realization / अंतिम बोध]: Reason and devotion are the two harmonious wings of human liberation. In their syncretic union, "
+                f"the seeker achieves total balance, excellence in work, and eternal spiritual fulfillment."
+            )
+            hi_text = (
+                f"[दार्शनिक समन्वय]: उद्योग सूत्र नारद सूत्र #{n_no} ({n_sanskrit}) और शांडिल्य सूत्र #{s_no} ({s_sanskrit}) का "
+                f"'{theme}' के अंतर्गत समन्वय स्थापित करता है। नारद जहाँ अनुभवात्मक भक्ति, प्रेम और आत्मसमर्पण का मार्ग दिखाते हैं, वहीं शांडिल्य "
+                f"प्रमाण, तर्क और ज्ञानमूलक जिज्ञासा के द्वारा उसी सत्य को दार्शनिक आधार प्रदान करते हैं। यह दोनों धाराएँ परस्पर विरोधी नहीं, बल्कि एक "
+                f"ही सच्चिदानंद सत्य के दो अभिन्न अंग हैं—शांडिल्य का विवेक और नारद का प्रेम।\n\n"
+                f"[उद्योग एवं कर्म-साधना]: जीवन के कर्मक्षेत्र और उद्योग में यह सिद्धांत संतुलन और पूर्णता का सूत्र है। किसी भी कार्य में सफलता के "
+                f"लिए स्पष्ट विवेक (ज्ञान) और गहरी निष्ठा (प्रेम) दोनों की आवश्यकता होती है। जब साधक अपने कर्तव्य-कर्म को विवेकपूर्ण दृष्टि से समझकर "
+                f"और प्रेमपूर्वक ईश्वर को समर्पित करके करता है, तब उसका प्रत्येक उद्यम आत्म-कल्याण और लोक-कल्याण का साधन बन जाता है।\n\n"
+                f"[तात्त्विक निष्कर्ष]: बुद्धि और हृदय का समन्वय ही जीवन की सार्थकता है। ज्ञान और भक्ति के एकाकार होने पर साधक कर्म में कुशलता और "
+                f"हृदय में परमानंद का अनुभव करता है।"
+            )
+            mr_text = (
+                f"[तात्त्विक समन्वय]: उद्योग सूत्र नारद सूत्र #{n_no} ({n_sanskrit}) आणि शांडिल्य सूत्र #{s_no} ({s_sanskrit}) यांचा "
+                f"'{theme}' या विषयानुसार तात्त्विक संगम घडवून आणतो. नारद भक्तीला थेट अनुभवाच्या व उत्कट प्रेमाच्या दृष्टीने मांडतात, तर शांडिल्य "
+                f"तर्कशुद्ध व शास्त्रीय विचाराने त्याच सत्याला भक्कम अधिष्ठान देतात. या दोन परंपरा भिन्न नसून एकाच परमतत्त्वाच्या दोन बाजू आहेत—"
+                f"शांडिल्यांचा विवेक आणि नारदांचे प्रेम.\n\n"
+                f"[उद्योग आणि जीवन-साधना]: दैनंदिन जीवन आणि कार्यक्षेत्रात हे सूत्र शाश्वत यशाचा मार्ग दाखवते. कोणत्याही कार्यात यश मिळवण्यासाठी "
+                f"योग्य दिशा (ज्ञान) आणि कामाप्रती नितांत निष्ठा (प्रेम) या दोन्हींची गरज असते. जेव्हा बुद्धी आणि भावना यांचा समन्वय साधून कर्तव्य "
+                f"पार पाडले जाते, तेव्हा सामान्य कामसुद्धा ईश्वरी सेवा बनते.\n\n"
+                f"[अंतिम बोध]: विवेक आणि भक्ती यांचा संगम म्हणजेच मानवी जीवनाची पूर्णता. या समन्वयाने साधकाला कर्मात यश आणि अंतःकरणात चिरंतन शांती लाभते."
+            )
+
+        return {"en": en_text, "hi": hi_text, "mr": mr_text}
+
 
