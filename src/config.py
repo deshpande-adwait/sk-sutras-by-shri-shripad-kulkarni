@@ -16,7 +16,11 @@ from typing import Any, Optional
 from dotenv import load_dotenv
 
 # Load environment configuration from .env file if available
-load_dotenv()
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 # Root directory paths
 BASE_DIR: Path = Path(__file__).resolve().parent.parent
