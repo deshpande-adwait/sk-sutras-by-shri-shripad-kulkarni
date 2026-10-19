@@ -3,70 +3,46 @@
 Module: src.orchestration.graph
 Author: Hiranyam AI Labs
 Project: SK Sutras - by Shri Shripad Kulkarni
-Description: Compiles the LangGraph StateGraph Directed Acyclic Graph (DAG) with
-             a bi-directional Human-in-the-Loop (HitL) interrupt mechanism.
+Description: Compiles the 3-agent LangGraph workflow engine:
+             NaradaAgent -> ShandilyaAgent -> SutrakarAgent -> Human Review Checkpoint -> Approval & PDF Compilation
 ================================================================================
 """
 
-from typing import Any, Dict, Literal
-from langgraph.graph import StateGraph, START, END
+from typing import Any, Literal
 from langgraph.checkpoint.memory import MemorySaver
+from langgraph.graph import END, START, StateGraph
 
 from src.models.state import SutraSynthesisState
 from src.orchestration.nodes import (
-    prepare_candidate_pair_node,
-    synthesize_bhashya_node,
     human_review_checkpoint_node,
+    narada_agent_node,
     record_approval_node,
+    shandilya_agent_node,
+    sutrakar_agent_node,
 )
-
-
-def _route_after_prepare(state: SutraSynthesisState) -> Literal["synthesize_bhashya", "__end__"]:
-    """
-    ----------------------------------------------------------------------------
-    Function: _route_after_prepare
-    ----------------------------------------------------------------------------
-    Purpose:
-        Conditional routing logic following the prepare candidate node. If the
-        batch queue is exhausted or no active pair is found, routes to END;
-        otherwise proceeds to synthesize_bhashya.
-
-    Parameters:
-        state (SutraSynthesisState): The current graph state.
-
-    Returns:
-        Literal["synthesize_bhashya", "__end__"]: Next node destination.
-    ----------------------------------------------------------------------------
-    """
-    if state.get("current_pair") is None:
-        return "__end__"
-    return "synthesize_bhashya"
 
 
 def _route_after_review(
     state: SutraSynthesisState,
-) -> Literal["record_approval", "prepare_candidate", "__end__"]:
+) -> Literal["record_approval", "__end__"]:
     """
     ----------------------------------------------------------------------------
     Function: _route_after_review
     ----------------------------------------------------------------------------
     Purpose:
-        Evaluates the review_status after human evaluation. If approved, advances
-        to record_approval. If rejected, skips persistence and prepares the next
-        item. If finished, terminates cleanly.
+        Routes after the human review checkpoint. If approved, advances to
+        record_approval; otherwise terminates or awaits next command.
 
     Parameters:
-        state (SutraSynthesisState): The current graph state.
+        state (SutraSynthesisState): The active state.
 
     Returns:
-        Literal["record_approval", "prepare_candidate", "__end__"]: Next step.
+        Literal["record_approval", "__end__"]: Destination node.
     ----------------------------------------------------------------------------
     """
     status = state.get("review_status")
     if status == "approved":
         return "record_approval"
-    elif status == "rejected":
-        return "prepare_candidate"
     return "__end__"
 
 
@@ -76,60 +52,48 @@ def build_sutra_synthesis_graph(checkpointer: Any = None) -> Any:
     Function: build_sutra_synthesis_graph
     ----------------------------------------------------------------------------
     Purpose:
-        Constructs and compiles the complete multi-agent LangGraph workflow for
-        comparative manuscript synthesis. Incorporates Human-in-the-Loop (HitL)
-        interrupts before the human_review node so scholars can review, refine,
-        or approve the generated Udyoga Bhashya.
+        Constructs and compiles the multi-agent LangGraph orchestration graph
+        connecting:
+        1. NaradaAgent (presents Narada sutra & devotional thesis)
+        2. ShandilyaAgent (matches Shandilya sutra via ChromaDB & provides epistemological thesis)
+        3. SutrakarAgent (synthesizes both into Udyoga Bhashya & validates schema)
+        4. Human Review Checkpoint (pauses before this node via HitL interrupt)
+        5. Record Approval & Publication PDF compilation
 
     Parameters:
-        checkpointer (Any): State persistence checkpointer. Defaults to an
-                            in-memory MemorySaver if omitted.
+        checkpointer (Any): Optional state persistence checkpointer.
 
     Returns:
-        CompiledStateGraph: The executable LangGraph workflow engine.
-
-    Manual Debugging Notes:
-        - When invoking the graph, pass a unique `thread_id` in the config dictionary:
-          `config = {"configurable": {"thread_id": "session-001"}}`
-        - The graph will pause right before `human_review` when `interrupt_before`
-          is specified, allowing the Streamlit UI to display the pending pair.
+        CompiledStateGraph: Executable multi-agent graph.
     ----------------------------------------------------------------------------
     """
     workflow = StateGraph(SutraSynthesisState)
 
-    # Add core processing nodes
-    workflow.add_node("prepare_candidate", prepare_candidate_pair_node)
-    workflow.add_node("synthesize_bhashya", synthesize_bhashya_node)
+    # 1. Register Multi-Agent Nodes
+    workflow.add_node("narada_agent", narada_agent_node)
+    workflow.add_node("shandilya_agent", shandilya_agent_node)
+    workflow.add_node("sutrakar_agent", sutrakar_agent_node)
     workflow.add_node("human_review", human_review_checkpoint_node)
     workflow.add_node("record_approval", record_approval_node)
 
-    # Establish edge routing
-    workflow.add_edge(START, "prepare_candidate")
+    # 2. Wire Multi-Agent Communication Graph
+    workflow.add_edge(START, "narada_agent")
+    workflow.add_edge("narada_agent", "shandilya_agent")
+    workflow.add_edge("shandilya_agent", "sutrakar_agent")
+    workflow.add_edge("sutrakar_agent", "human_review")
 
-    workflow.add_conditional_edges(
-        "prepare_candidate",
-        _route_after_prepare,
-        {
-            "synthesize_bhashya": "synthesize_bhashya",
-            "__end__": END,
-        },
-    )
-
-    workflow.add_edge("synthesize_bhashya", "human_review")
-
+    # 3. Conditional Human Review Resolution
     workflow.add_conditional_edges(
         "human_review",
         _route_after_review,
         {
             "record_approval": "record_approval",
-            "prepare_candidate": "prepare_candidate",
             "__end__": END,
         },
     )
 
-    workflow.add_edge("record_approval", "prepare_candidate")
+    workflow.add_edge("record_approval", END)
 
-    # Use supplied checkpointer or default MemorySaver
     resolved_checkpointer = checkpointer if checkpointer is not None else MemorySaver()
 
     return workflow.compile(
