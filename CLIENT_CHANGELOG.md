@@ -2,6 +2,66 @@
 
 All notable changes, architectural updates, and releases for **SK Sutras - by Shri Shripad Kulkarni** are documented in this client-facing log.
 
+## [v0.2.5-beta] - 2026-10-23
+
+### Executive Summary of Changes
+Prepared and published the official **Project Proposal & Commercial Quotation** for **Shri Shripad Kulkarni** ([`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf), [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx), [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.md`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.md)):
+1. **Three-Agent Philosophical Architecture**: Defined the specialized roles of the three autonomous agents:
+   - **Narada Bhakti Sutra Specialist Agent**: Canonical exposition of 84 Narada sutras from the standpoint of unconditional experiential devotion (*Parama-Prema*).
+   - **Shandilya Bhakti Sutra Specialist Agent**: Epistemological defense and vector search across 100 Shandilya sutras in ChromaDB (*Bhakti-Jijnasa, Tarka*).
+   - **Sutrakar Agent (Master Coordinator, Arbiter & Creative Synthesizer)**: Enforces non-compulsory logic (omitting 67 non-matches), eliminates duplicate themes, and formulates **original Sanskrit shlokas (*Udyoga Sutras*)** and three-dimensional classical Marathi *Udyoga Bhashya*.
+2. **Comprehensive Two-Option Commercial Proposal**:
+   - **Option 1: Hybrid Architecture (ChatGPT + Google Gemini Sutrakar)**:
+     - Narada & Shandilya Agents on OpenAI ChatGPT (GPT-4o), Sutrakar Agent on Google Gemini (Gemini 1.5 Pro).
+     - Compute & Infrastructure: ₹18,000 INR.
+     - Hiranyam AI Development, Publication & Proofreading Service Fee: ₹30,000 INR.
+     - **Total Option 1 Investment: ₹48,000 INR**.
+   - **Option 2: Pure Google DeepMind Gemini Specialized Architecture (Recommended)**:
+     - All three agents on Google Gemini (Gemini 1.5 Pro Specialized).
+     - Leverages Gemini's world-leading pre-training corpus on ancient Indian Vedic literature, classical Sanskrit grammar, and Marathi nuance.
+     - Enables native formulation of brand-new, original metered Sanskrit shlokas (*Udyoga Sutras*) for the new book.
+     - Compute, Deep Contextual Caching, High-Reasoning & Infrastructure: ₹45,000 INR.
+     - Hiranyam AI Development, Publication & Proofreading Service Fee: ₹30,000 INR.
+     - **Total Option 2 Investment: ₹75,000 INR**.
+3. **Hiranyam AI Scope of Services Commitment (₹30,000 Fee)**:
+   - Full Multi-Agent System Engineering & LangGraph DAG state machine.
+   - ChromaDB semantic vector search setup for all 184 sutras.
+   - Senior Citizen (65+ Mode) Web Review Portal for Shri Shripad Kulkarni.
+   - Delivery of beautifully typeset PDF books for author proofreading.
+   - Up to 50 cycles of testing, re-communication, author revisions, and corrections till final sign-off.
+   - Complete pre-press formatting ready for physical printing.
+4. **Compliance & Standardization**:
+   - Every page of the generated PDF and DOCX incorporates the mandatory standardized confidentiality footer: `"Proprietory and Confidential- Hiranyam AI Labs"`.
+   - Brand attribution properly hyperlinked to `https://hiranyamai.com/`.
+
+### Direct Client/User Benefits & Features Added
+* **Transparent Pricing & Fixed Service Scope**: Clear separation between pass-through AI compute costs and Hiranyam AI's ₹30,000 fixed engineering fee.
+* **Unlimited Revision Guarantee**: Up to 50 complete canon re-generation cycles covered, ensuring the author never incurs surprise fees for edits.
+* **Original Sanskrit Verse Creation**: Option 2 empowers the treatise with brand-new Sanskrit shlokas composed specifically for the new *Udyoga Sutra* book.
+* **Multi-Format Delivery**: Delivered in print-ready PDF, Word DOCX with OpenXML footers, and GitHub Markdown.
+
+### Issues/Defects Resolved
+* Fulfilled client proposal and commercial quotation requirement with two distinct model architectures and detailed service scope.
+
+### Data/Knowledge Base Updates
+* Added proposal documents in `docs/`:
+  - `docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf`
+  - `docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx`
+  - `docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.md`
+  - Generation script `scripts/generate_proposal_docs.py`.
+
+### Validation & Test Results
+* Validated PDF and DOCX generation with ReportLab and python-docx.
+* Verified confidentiality footer rendering across all document pages.
+* Automated QA test suite passing (19/19 tests passing).
+
+### Deployment Details
+* **Environment**: Version Control Repository & Documentation Suite.
+* **Target Documentation**: [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf)
+* **Release Status**: Committed & Pushed to Remote Repository (`origin main`).
+
+---
+
 ## [v0.2.4-beta] - 2026-10-19
 
 ### Executive Summary of Changes
