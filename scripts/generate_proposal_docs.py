@@ -6,11 +6,15 @@ Project: SK Sutras - by Shri Shripad Kulkarni
 Description: Generates the formal, publication-grade client proposal and quotation
              for Shri Shripad Kulkarni in both PDF and DOCX formats.
              Includes:
-             - Detailed explanation of the 3-Agent AI architecture (Narada, Shandilya, Sutrakar).
-             - Option 1 (ChatGPT + Gemini Sutrakar): ₹48,000 INR (₹18,000 LLM/infra + ₹30,000 dev).
-             - Option 2 (Pure Google DeepMind Gemini Specialized): ₹75,000 INR (₹45,000 LLM/infra + ₹30,000 dev).
-             - Sutrakar Agent original Sanskrit shloka formulation capability.
-             - Proofreading PDF book delivery and iterative revision commitment.
+             - Layman-friendly section titles (Three Book Specialists, Solution Options).
+             - Option 1 (ChatGPT + Gemini Sutrakar): Exactly Rs. 45,678 INR
+               (Rs. 18,000 AI Infra + Rs. 27,678 Development & Service Fee).
+             - Option 2 (Pure Google Gemini Specialized): Exactly Rs. 78,910 INR
+               (Rs. 45,000 AI Infra + Rs. 33,910 Development & Service Fee).
+             - Separate development fees explicitly stated per option.
+             - Proofreading & physical printing clarified as handled by client.
+             - Pre-proofreading PDF book delivery & 50 cycles of revisions included.
+             - All currency symbols rendered as 'Rs.' to guarantee zero font glyph errors.
              - Mandatory confidentiality footer: "Proprietory and Confidential- Hiranyam AI Labs".
 ================================================================================
 """
@@ -125,8 +129,8 @@ def build_pdf_proposal(output_pdf_path: Path):
         "DocTitle",
         parent=styles["Normal"],
         fontName="Helvetica-Bold",
-        fontSize=24,
-        leading=28,
+        fontSize=23,
+        leading=27,
         textColor=c_maroon,
         spaceAfter=6,
     )
@@ -134,8 +138,8 @@ def build_pdf_proposal(output_pdf_path: Path):
         "DocSubTitle",
         parent=styles["Normal"],
         fontName="Helvetica-Bold",
-        fontSize=13,
-        leading=17,
+        fontSize=12.5,
+        leading=16.5,
         textColor=c_navy,
         spaceAfter=14,
     )
@@ -151,8 +155,8 @@ def build_pdf_proposal(output_pdf_path: Path):
         "Heading1_Custom",
         parent=styles["Normal"],
         fontName="Helvetica-Bold",
-        fontSize=15,
-        leading=19,
+        fontSize=14.5,
+        leading=18.5,
         textColor=c_maroon,
         spaceBefore=14,
         spaceAfter=8,
@@ -178,11 +182,6 @@ def build_pdf_proposal(output_pdf_path: Path):
         textColor=c_charcoal,
         spaceAfter=7,
     )
-    body_bold = ParagraphStyle(
-        "Body_Bold",
-        parent=body_style,
-        fontName="Helvetica-Bold",
-    )
     bullet_style = ParagraphStyle(
         "Bullet_Custom",
         parent=body_style,
@@ -194,8 +193,8 @@ def build_pdf_proposal(output_pdf_path: Path):
         "Callout_Custom",
         parent=styles["Normal"],
         fontName="Helvetica-Oblique",
-        fontSize=9,
-        leading=13.5,
+        fontSize=8.5,
+        leading=13,
         textColor=colors.HexColor("#443322"),
     )
 
@@ -220,7 +219,7 @@ def build_pdf_proposal(output_pdf_path: Path):
 
     # Title & Metadata
     story.append(Paragraph("Project Proposal & Commercial Quotation", title_style))
-    story.append(Paragraph("Autonomous Tri-Agent AI Synthesis & Publication Framework for <i>SK Sutras: Udyoga Sutras</i>", subtitle_style))
+    story.append(Paragraph("Autonomous Multi-Agent AI Synthesis & Digital Draft Framework for <i>SK Sutras: Udyoga Sutras</i>", subtitle_style))
 
     client_info_data = [
         [
@@ -233,7 +232,7 @@ def build_pdf_proposal(output_pdf_path: Path):
             Paragraph("<b>Project Title:</b>", meta_style),
             Paragraph("SK Sutras (Udyoga Sutras Treatise)", meta_style),
             Paragraph("<b>Target Deliverable:</b>", meta_style),
-            Paragraph("Print-Ready Publication PDF & Proofreading Drafts", meta_style),
+            Paragraph("Pre-Proofreading Digital Book PDFs & Revisions", meta_style),
         ],
     ]
     t_client = Table(client_info_data, colWidths=[1.6 * inch, 2.1 * inch, 1.4 * inch, 2.1 * inch])
@@ -254,55 +253,55 @@ def build_pdf_proposal(output_pdf_path: Path):
     # --------------------------------------------------------------------------
     story.append(Paragraph("1. Executive Summary", h1_style))
     story.append(Paragraph(
-        "Hiranyam AI Labs is privileged to submit this formal proposal and quotation to <b>Shri Shripad Kulkarni</b> "
-        "for the complete research, synthesis, multi-agent AI engineering, and pre-press publication workflow of the monumental "
-        "philosophical treatise: <b><i>SK Sutras: Udyoga Sutras</i></b>.",
+        "Hiranyam AI Labs is privileged to present this formal proposal and quotation to <b>Shri Shripad Kulkarni</b> "
+        "for the complete research, synthesis, and multi-agent AI engineering workflow of the monumental philosophical treatise: "
+        "<b><i>SK Sutras: Udyoga Sutras</i></b>.",
         body_style
     ))
     story.append(Paragraph(
         "The objective of this project is to orchestrate a pioneering doctrinal synthesis between two foundational canons of Indian spiritual philosophy—the "
-        "<b>84 Narada Bhakti Sutras</b> (representing ecstatic, experiential devotion) and the <b>100 Shandilya Bhakti Sutras</b> (representing rational, "
-        "epistemological Vedantic inquiry). Through an autonomous Tri-Agent AI architecture, these traditions are systematically cross-examined, "
+        "<b>84 Narada Bhakti Sutras</b> (representing experiential devotion) and the <b>100 Shandilya Bhakti Sutras</b> (representing rational, "
+        "epistemological Vedantic inquiry). Through a dedicated team of three specialized AI agents, these traditions are systematically cross-examined, "
         "filtered against false overlaps, and unified into an authoritative new treatise featuring <b>original Sanskrit shlokas</b> and in-depth classical "
-        "<b>Marathi Udyoga Bhashya</b> tailored for modern workplace ethics and human duty.",
+        "<b>Marathi Udyoga Bhashya</b> commentary dedicated to modern workplace ethics and human duty.",
         body_style
     ))
     story.append(Spacer(1, 8))
 
     # --------------------------------------------------------------------------
-    # 2. The Three-Agent AI Architecture
+    # 2. How the Three Dedicated Book Specialists Work Together
     # --------------------------------------------------------------------------
-    story.append(Paragraph("2. The Autonomous Three-Agent Architecture", h1_style))
+    story.append(Paragraph("2. How the Three Dedicated Book Specialists Work Together", h1_style))
     story.append(Paragraph(
-        "Traditional single-model prompts fail when addressing complex scriptural literature because a single model inevitably agrees with itself, producing superficial syncretism. "
-        "Our proprietary solution deploys three distinct, specialized autonomous agents with contrasting cognitive perspectives that debate, cross-examine, and arbitrate each verse:",
+        "Instead of relying on a single AI that tries to do everything at once, our system divides the work between three specialized digital scholars. "
+        "Each book has its own dedicated specialist agent, and a third coordinator oversees the entire conversation to ensure deep authenticity and zero duplicate matches:",
         body_style
     ))
 
     agents_table_data = [
         [
-            Paragraph("<b>Agent Name</b>", meta_style),
-            Paragraph("<b>Specialized Domain Canon</b>", meta_style),
-            Paragraph("<b>Cognitive Role & Capabilities</b>", meta_style),
+            Paragraph("<b>Specialist Role</b>", meta_style),
+            Paragraph("<b>Assigned Book / Domain</b>", meta_style),
+            Paragraph("<b>What This Specialist Does in Plain Words</b>", meta_style),
         ],
         [
             Paragraph("<b>1. Narada Bhakti Sutra Specialist Agent</b>", ParagraphStyle("AN1", parent=meta_style, textColor=c_maroon, fontName="Helvetica-Bold")),
-            Paragraph("<b>84 Narada Sutras</b><br/>(Experiential Devotion)", meta_style),
-            Paragraph("Adopts the perspective of Devarshi Narada. Focuses on <i>Parama-Prema</i> (unconditional divine love), ecstatic surrender, and practical heart-centered devotion. Formulates formal philosophical propositions to challenge the rational school.", meta_style),
+            Paragraph("<b>84 Narada Sutras</b><br/>(Devotional Love & Surrender)", meta_style),
+            Paragraph("Acts as the champion of pure devotion (Parama-Prema). It studies each of the 84 Narada verses, explains its emotional and spiritual meaning, and poses thoughtful philosophical questions to the Shandilya specialist.", meta_style),
         ],
         [
             Paragraph("<b>2. Shandilya Bhakti Sutra Specialist Agent</b>", ParagraphStyle("AN2", parent=meta_style, textColor=c_navy, fontName="Helvetica-Bold")),
-            Paragraph("<b>100 Shandilya Sutras</b><br/>(Epistemological Vedanta)", meta_style),
-            Paragraph("Adopts the perspective of Maharshi Shandilya. Maintains all 100 sutras in ChromaDB vector storage. Conducts mathematical semantic searches and defends the rational Vedantic inquiry (<i>Bhakti-Jijnasa, Tarka</i>) with rigorous scriptural citations.", meta_style),
+            Paragraph("<b>100 Shandilya Sutras</b><br/>(Logic & Vedantic Inquiry)", meta_style),
+            Paragraph("Acts as the master of scriptural logic (Bhakti-Jijnasa). It searches the complete 100 Shandilya sutras in our specialized database, finds the closest conceptual matches, and explains the rational philosophy behind them.", meta_style),
         ],
         [
-            Paragraph("<b>3. Sutrakar Agent</b><br/>(Master Coordinator, Arbiter & Creative Synthesizer)", ParagraphStyle("AN3", parent=meta_style, textColor=c_dark_maroon, fontName="Helvetica-Bold")),
+            Paragraph("<b>3. Sutrakar Agent</b><br/>(Master Coordinator, Arbiter & Synthesizer)", ParagraphStyle("AN3", parent=meta_style, textColor=c_dark_maroon, fontName="Helvetica-Bold")),
             Paragraph("<b>Vedic Synthesis & New Udyoga Sutras</b>", meta_style),
-            Paragraph("Acts as the supreme philosophical arbiter and compiler:<br/>"
-                      "• <b>Strict Non-Compulsory Logic:</b> Rejects forced or superficial mappings (67 non-matches omitted).<br/>"
-                      "• <b>Anti-Duplicate Intelligence:</b> Scans memory to eliminate repeated themes or recycled sutras.<br/>"
-                      "• <b>Original Shloka Formulation:</b> When authentic correspondence is verified, the Sutrakar Agent <b>composes brand-new Sanskrit shlokas</b> (new <i>Udyoga Sutras</i>).<br/>"
-                      "• <b>Bespoke Marathi Commentary:</b> Authors multi-paragraph <i>Udyoga Bhashya</i> (Doctrinal Harmony, Applied Enterprise & Ethics, and Culminating Realization).", meta_style),
+            Paragraph("Acts as the master editor and judge between the two specialists:<br/>"
+                      "• <b>Prevents Forced Matches:</b> Rejects weak parallels where verses do not truly match (67 non-matches omitted).<br/>"
+                      "• <b>Prevents Repetitions:</b> Ensures no verse or explanation is repeated twice anywhere in the book.<br/>"
+                      "• <b>Composes Original Sanskrit Shlokas:</b> When an authentic match is found, it <b>composes a brand-new Sanskrit shloka (new Udyoga Sutra)</b>.<br/>"
+                      "• <b>Authors Comprehensive Marathi Commentary:</b> Writes in-depth Marathi Udyoga Bhashya connecting the verses to daily enterprise, workplace ethics, and inner peace.", meta_style),
         ],
     ]
     t_agents = Table(agents_table_data, colWidths=[1.8 * inch, 1.6 * inch, 3.6 * inch])
@@ -323,34 +322,34 @@ def build_pdf_proposal(output_pdf_path: Path):
     story.append(PageBreak())
 
     # --------------------------------------------------------------------------
-    # 3. Two Deployment Options
+    # 3. Technology Choices and Solution Options Explained
     # --------------------------------------------------------------------------
-    story.append(Paragraph("3. Detailed Deployment Options & LLM Selection Rationale", h1_style))
+    story.append(Paragraph("3. Technology Choices and Solution Options Explained", h1_style))
     story.append(Paragraph(
-        "To provide full strategic and financial flexibility, we present two distinct deployment architectures based on commercial frontier Large Language Models (LLMs):",
+        "To provide clear choices in capabilities and budget, we offer two distinct solution options based on leading commercial artificial intelligence engines:",
         body_style
     ))
 
     # Option 1 Callout Box
     opt1_box_data = [
         [
-            Paragraph("<b>OPTION 1: Hybrid Architecture (ChatGPT + Google Gemini)</b>", ParagraphStyle("Opt1Title", parent=h2_style, textColor=c_navy, spaceBefore=0)),
+            Paragraph("<b>OPTION 1: Hybrid Solution (ChatGPT for Two Books + Google Gemini for Master Coordinator)</b>", ParagraphStyle("Opt1Title", parent=h2_style, textColor=c_navy, spaceBefore=0)),
         ],
         [
             Paragraph(
-                "<b>Agent-to-Model Configuration:</b><br/>"
-                "• <b>Narada Agent:</b> OpenAI ChatGPT (GPT-4o)<br/>"
-                "• <b>Shandilya Agent:</b> OpenAI ChatGPT (GPT-4o)<br/>"
-                "• <b>Sutrakar Agent:</b> Google DeepMind Gemini (Gemini 1.5 Pro)<br/><br/>"
-                "<b>Architectural Rationale:</b><br/>"
-                "In Option 1, OpenAI's GPT-4o provides rapid conversational parsing and structured dialectic discourse for the individual source books. "
-                "The <b>Sutrakar Agent is powered by Google Gemini 1.5 Pro</b> because of Gemini's unmatched training corpus on ancient Indian Vedic literatures, "
-                "native classical Sanskrit grammar, Sanskrit-to-Marathi translation nuance, and massive context window (up to 2,000,000 tokens) which enables "
-                "the Sutrakar to hold the entire treatise in active memory to prevent duplicate verses and repeated explanations.<br/><br/>"
-                "<b>Commercial Breakdown:</b><br/>"
-                "• AI Compute & Cloud Token Infrastructure: <b>₹18,000 INR</b> (approx. $215 USD)<br/>"
-                "• Hiranyam AI Development, Publication & Proofreading Service Fee: <b>₹30,000 INR</b><br/>"
-                "• <b>Total Investment (Option 1): ₹48,000 INR</b> (approx. $570 USD)",
+                "<b>How the Models Are Assigned:</b><br/>"
+                "• <b>Narada Specialist:</b> OpenAI ChatGPT (GPT-4o)<br/>"
+                "• <b>Shandilya Specialist:</b> OpenAI ChatGPT (GPT-4o)<br/>"
+                "• <b>Sutrakar Master Coordinator:</b> Google Gemini (Gemini 1.5 Pro)<br/><br/>"
+                "<b>Why This Setup Works:</b><br/>"
+                "ChatGPT handles the active question-and-answer dialogue between the two books with speed and clarity. "
+                "The <b>Sutrakar Master Coordinator is powered by Google Gemini</b> because Google Gemini has an enormous memory "
+                "(up to 2,000,000 words at once). This allows the master coordinator to keep the entire book in mind continuously, "
+                "ensuring that no explanation is ever repeated and that all Vedic references are carefully checked.<br/><br/>"
+                "<b>Commercial Investment (Option 1):</b><br/>"
+                "• AI Cloud Compute & Model Infrastructure (50 full cycles): <b>Rs. 18,000 INR</b> (approx. $215 USD)<br/>"
+                "• Hiranyam AI Development and Service Fee: <b>Rs. 27,678 INR</b> (approx. $329 USD)<br/>"
+                "• <b>Total Proposed Investment (Option 1): Rs. 45,678 INR</b> (approx. $544 USD)",
                 body_style
             )
         ]
@@ -370,24 +369,24 @@ def build_pdf_proposal(output_pdf_path: Path):
     # Option 2 Callout Box
     opt2_box_data = [
         [
-            Paragraph("<b>OPTION 2: Pure Google DeepMind Gemini Specialized Architecture (Recommended)</b>", ParagraphStyle("Opt2Title", parent=h2_style, textColor=c_maroon, spaceBefore=0)),
+            Paragraph("<b>OPTION 2: Dedicated Google Gemini Vedic Specialist Solution (Recommended)</b>", ParagraphStyle("Opt2Title", parent=h2_style, textColor=c_maroon, spaceBefore=0)),
         ],
         [
             Paragraph(
-                "<b>Agent-to-Model Configuration:</b><br/>"
-                "• <b>Narada Agent:</b> Google Gemini (Gemini 1.5 Pro Specialized)<br/>"
-                "• <b>Shandilya Agent:</b> Google Gemini (Gemini 1.5 Pro Specialized)<br/>"
-                "• <b>Sutrakar Agent:</b> Google Gemini (Gemini 1.5 Pro / Advanced High-Reasoning)<br/><br/>"
-                "<b>Architectural Rationale & Superiority:</b><br/>"
-                "Option 2 provides specialized in-depth Vedic and Sanskrit mastery across <b>all three agents</b>:<br/>"
-                "1. <b>Deepest Vedic & Indic Corpus:</b> Google possesses the world's most comprehensive scanned repository of ancient Indian scriptures, Vedantic commentaries, and Marathi literature via Google Books digitization.<br/>"
-                "2. <b>Original Sanskrit Shloka Formulation:</b> With all agents on Gemini, the Sutrakar Agent can formulate <b>completely original, grammatically precise, metered Sanskrit shlokas</b> (new <i>Udyoga Sutras</i>) that synthesize the spiritual essence of Narada and Shandilya into a brand-new canonical work.<br/>"
-                "3. <b>Nuanced Marathi Translation:</b> Generates scholarly, classical Marathi prose (*भावार्थ*) free from crude English transliterations.<br/>"
-                "4. <b>Unified Context Caching:</b> Eliminates multi-vendor API latency and guarantees seamless, zero-duplicate harmonization across all 50 full cycles of canon re-generation.<br/><br/>"
-                "<b>Commercial Breakdown:</b><br/>"
-                "• AI Compute, Deep Contextual Caching, High-Reasoning & Infrastructure: <b>₹45,000 INR</b> (approx. $535 USD)<br/>"
-                "• Hiranyam AI Development, Publication & Proofreading Service Fee: <b>₹30,000 INR</b><br/>"
-                "• <b>Total Investment (Option 2): ₹75,000 INR</b> (approx. $895 USD)",
+                "<b>How the Models Are Assigned:</b><br/>"
+                "• <b>Narada Specialist:</b> Google Gemini (Gemini 1.5 Pro Specialized)<br/>"
+                "• <b>Shandilya Specialist:</b> Google Gemini (Gemini 1.5 Pro Specialized)<br/>"
+                "• <b>Sutrakar Master Coordinator:</b> Google Gemini (Gemini 1.5 Pro Advanced High-Reasoning)<br/><br/>"
+                "<b>Why This Option Is Superior for Ancient Scriptures:</b><br/>"
+                "Option 2 gives all three specialists deep Vedic and Sanskrit expertise:<br/>"
+                "1. <b>Vast Knowledge of Indian Scriptures:</b> Google has digitized millions of ancient Indian books, Sanskrit commentaries, and Marathi historical texts through its global library archives.<br/>"
+                "2. <b>Composes Brand-New Sanskrit Shlokas:</b> When an authentic match is approved, Gemini possesses the unique ability to <b>write brand-new, poetically metered Sanskrit verses (new Udyoga Sutras)</b> for the client's new book.<br/>"
+                "3. <b>Authentic Classical Marathi:</b> Writes dignified, classical Marathi commentary (Bhavartha) naturally, without unnatural English-sounding phrasing.<br/>"
+                "4. <b>Unified Memory Across 50 Full Cycles:</b> All three specialists share the exact same brain architecture, allowing completely seamless coordination across 50 full cycles of re-running and fine-tuning.<br/><br/>"
+                "<b>Commercial Investment (Option 2):</b><br/>"
+                "• AI Cloud Compute, Deep Caching, High-Reasoning & Infrastructure: <b>Rs. 45,000 INR</b> (approx. $535 USD)<br/>"
+                "• Hiranyam AI Development and Service Fee: <b>Rs. 33,910 INR</b> (approx. $404 USD)<br/>"
+                "• <b>Total Proposed Investment (Option 2): Rs. 78,910 INR</b> (approx. $939 USD)",
                 body_style
             )
         ]
@@ -405,24 +404,56 @@ def build_pdf_proposal(output_pdf_path: Path):
     story.append(Spacer(1, 14))
 
     # --------------------------------------------------------------------------
-    # 4. Hiranyam AI Scope of Services (The ₹30,000 Fee)
+    # 4. Scope of Services Covered under Hiranyam AI Development and Service Fees
     # --------------------------------------------------------------------------
-    story.append(Paragraph("4. Scope of Services Covered under Hiranyam AI Fee (₹30,000 INR)", h1_style))
+    story.append(Paragraph("4. Scope of Services Covered under Hiranyam AI Development and Service Fees", h1_style))
     story.append(Paragraph(
-        "Our fixed development and publication service charge of <b>₹30,000 INR</b> provides exhaustive end-to-end engineering, editorial, and pre-press support until final sign-off:",
+        "Our development and service fees cover the complete technical software engineering, database setup, "
+        "and digital draft delivery up to the stage of the client's proofreading. The specific fee applies according to the option chosen:",
         body_style
     ))
 
+    fee_box_data = [
+        [
+            Paragraph("<b>Under Option 1 (Hybrid Solution):</b>", meta_style),
+            Paragraph("Hiranyam AI Development and Service Fee is <b>Rs. 27,678 INR</b>", ParagraphStyle("F1", parent=meta_style, textColor=c_navy, fontName="Helvetica-Bold")),
+        ],
+        [
+            Paragraph("<b>Under Option 2 (Gemini Specialized):</b>", meta_style),
+            Paragraph("Hiranyam AI Development and Service Fee is <b>Rs. 33,910 INR</b>", ParagraphStyle("F2", parent=meta_style, textColor=c_maroon, fontName="Helvetica-Bold")),
+        ],
+    ]
+    t_fee_box = Table(fee_box_data, colWidths=[2.8 * inch, 4.2 * inch])
+    t_fee_box.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), c_light_bg),
+        ('BOX', (0, 0), (-1, -1), 1, c_border),
+        ('INNERGRID', (0, 0), (-1, -1), 0.5, c_border),
+        ('TOPPADDING', (0, 0), (-1, -1), 6),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
+        ('LEFTPADDING', (0, 0), (-1, -1), 8),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 8),
+    ]))
+    story.append(t_fee_box)
+    story.append(Spacer(1, 10))
+
+    story.append(Paragraph("<b>What Is Covered Under Our Service Fee:</b>", h2_style))
     scope_points = [
-        "<b>Multi-Agent Engineering & LangGraph DAG:</b> Custom construction of the inter-agent state machine coordinating Narada, Shandilya, and Sutrakar agents.",
-        "<b>ChromaDB Vector Retrieval Setup:</b> Embedding and indexing all 100 Shandilya sutras and 84 Narada sutras for mathematical semantic matching.",
-        "<b>Senior Citizen (65+ Mode) Web Review Portal:</b> Interactive digital workspace designed specifically for Shri Shripad Kulkarni with large touch targets, high-contrast typography, and 1-click approval.",
-        "<b>Proofreading Book PDF Delivery:</b> Generating beautifully typeset A4/book-format PDF drafts with Devanagari Sanskrit verses and Marathi commentary for author proofreading.",
-        "<b>50 Cycles of Re-running & Editorial Corrections:</b> Unlimited re-synthesis, re-evaluations, author-directed revisions, and tone adjustments till the copy is finalized.",
-        "<b>Pre-Press Printing Preparation:</b> Formatting print-ready master files with proper margins, page numbers, cover branding, and publishing headers ready for immediate physical printing.",
+        "<b>Multi-Agent Software Engineering:</b> Building and fine-tuning the automated coordination system connecting the Narada, Shandilya, and Sutrakar specialists.",
+        "<b>Scriptural Database Setup (ChromaDB):</b> Indexing all 100 Shandilya verses and 84 Narada verses for instant mathematical comparison and retrieval.",
+        "<b>Senior Citizen (65+ Mode) Web Review Portal:</b> Setting up an easy-to-use digital reading portal for Shri Shripad Kulkarni with extra-large fonts, high contrast, and simple buttons.",
+        "<b>Pre-Proofreading Book PDF Deliveries:</b> Generating clean, beautifully typeset digital PDF drafts containing Sanskrit verses and Marathi commentary for the client's internal proofreading.",
+        "<b>Up to 50 Full Cycles of Re-running & Author Corrections:</b> Executing all adjustments, re-evaluations, and re-arbitration runs per author feedback until the final text is approved.",
+        "<b>Delivery of Final Digital Master PDF:</b> Providing the finalized digital PDF manuscript ready for the client's publication and printing team.",
     ]
     for pt in scope_points:
         story.append(Paragraph(f"• {pt}", bullet_style))
+
+    story.append(Spacer(1, 6))
+    story.append(Paragraph(
+        "<i>Note on Client Responsibilities: Actual proofreading, physical printing, bookbinding, and formal book publishing "
+        "will be handled independently by the client. Hiranyam AI Labs delivers all digital manuscript materials ready up to the proofreading stage.</i>",
+        callout_style
+    ))
 
     story.append(Spacer(1, 10))
     story.append(PageBreak())
@@ -440,26 +471,26 @@ def build_pdf_proposal(output_pdf_path: Path):
             Paragraph("<b>Payment Due</b>", meta_style),
         ],
         [
-            Paragraph("<b>Milestone 1: Project Kickoff & Agent Setup</b>", meta_style),
-            Paragraph("Ingestion of 84 Narada and 100 Shandilya sutras into ChromaDB. Deployment of Tri-Agent state machine.", meta_style),
+            Paragraph("<b>Milestone 1: Project Kickoff & Setup</b>", meta_style),
+            Paragraph("Database indexing of 184 sutras, setup of three specialists, and launch of Senior Citizen portal.", meta_style),
             Paragraph("Week 1", meta_style),
-            Paragraph("<b>40%</b> of Service Fee + LLM Infra Deposit", meta_style),
+            Paragraph("<b>40%</b> of Service Fee + AI Infra Deposit", meta_style),
         ],
         [
-            Paragraph("<b>Milestone 2: First Complete Proofreading PDF</b>", meta_style),
-            Paragraph("Batch execution of canon cross-examination. Generation of the first complete <i>Udyoga Sutra</i> book draft PDF for author review.", meta_style),
+            Paragraph("<b>Milestone 2: Delivery of Pre-Proofreading Draft PDF</b>", meta_style),
+            Paragraph("Complete batch execution of all 84 Narada verses against 100 Shandilya verses. Delivery of first complete pre-proofreading book PDF for client review.", meta_style),
             Paragraph("Week 2", meta_style),
             Paragraph("<b>30%</b> of Service Fee", meta_style),
         ],
         [
-            Paragraph("<b>Milestone 3: Portal Review & Editorial Rework</b>", meta_style),
-            Paragraph("Author reviews verses in Senior Citizen portal. Multi-agent revisions and re-runs executed per author guidance.", meta_style),
+            Paragraph("<b>Milestone 3: Client Proofreading & Revisions</b>", meta_style),
+            Paragraph("Author reviews verses in portal and conducts proofreading. Multi-agent revisions and re-runs executed per author guidance.", meta_style),
             Paragraph("Weeks 3 – 4", meta_style),
             Paragraph("—", meta_style),
         ],
         [
-            Paragraph("<b>Milestone 4: Final Sign-off & Print-Ready Master</b>", meta_style),
-            Paragraph("Final approval by Shri Shripad Kulkarni. Delivery of publication-grade print-ready PDF and archival master files.", meta_style),
+            Paragraph("<b>Milestone 4: Final Approval & Master PDF Handover</b>", meta_style),
+            Paragraph("Final approval by Shri Shripad Kulkarni. Delivery of finalized master PDF manuscript ready for client's publishing team.", meta_style),
             Paragraph("Week 5", meta_style),
             Paragraph("<b>30%</b> Final Balance", meta_style),
         ],
@@ -486,33 +517,33 @@ def build_pdf_proposal(output_pdf_path: Path):
     quotation_data = [
         [
             Paragraph("<b>Cost Element</b>", meta_style),
-            Paragraph("<b>Option 1: Hybrid Architecture<br/>(ChatGPT + Gemini Sutrakar)</b>", meta_style),
+            Paragraph("<b>Option 1: Hybrid Solution<br/>(ChatGPT + Gemini Sutrakar)</b>", meta_style),
             Paragraph("<b>Option 2: Gemini Specialized<br/>(All Agents on Google Gemini)</b>", meta_style),
         ],
         [
-            Paragraph("<b>Autonomous Agentic AI Infrastructure & Compute</b><br/>(50 full canon passes, multi-million token volume, vector hosting)", meta_style),
-            Paragraph("₹18,000 INR<br/><font size='8' color='#666'>($215 USD approx.)</font>", meta_style),
-            Paragraph("₹45,000 INR<br/><font size='8' color='#666'>($535 USD approx.)</font>", meta_style),
+            Paragraph("<b>Autonomous AI Cloud Compute & Infrastructure</b><br/>(50 full canon passes, multi-million token volume, database hosting)", meta_style),
+            Paragraph("Rs. 18,000 INR<br/><font size='8' color='#666'>($215 USD approx.)</font>", meta_style),
+            Paragraph("Rs. 45,000 INR<br/><font size='8' color='#666'>($535 USD approx.)</font>", meta_style),
         ],
         [
-            Paragraph("<b>Hiranyam AI Engineering & Publication Service Fee</b><br/>(LangGraph DAG, Senior Citizen portal, proofreading PDFs, corrections)", meta_style),
-            Paragraph("₹30,000 INR<br/><font size='8' color='#666'>($357 USD approx.)</font>", meta_style),
-            Paragraph("₹30,000 INR<br/><font size='8' color='#666'>($357 USD approx.)</font>", meta_style),
+            Paragraph("<b>Hiranyam AI Development and Service Fee</b><br/>(Software engineering, portal, pre-proofreading PDFs, up to 50 revisions)", meta_style),
+            Paragraph("<b>Rs. 27,678 INR</b><br/><font size='8' color='#666'>($329 USD approx.)</font>", meta_style),
+            Paragraph("<b>Rs. 33,910 INR</b><br/><font size='8' color='#666'>($404 USD approx.)</font>", meta_style),
         ],
         [
-            Paragraph("<b>Sanskrit Shloka Formulation & Bespoke Bhashya</b>", meta_style),
-            Paragraph("Included (Standard Synthesis)", meta_style),
+            Paragraph("<b>Original Sanskrit Shloka Formulation</b>", meta_style),
+            Paragraph("Standard Synthesis", meta_style),
             Paragraph("<b>Included (Original Sanskrit Shlokas)</b>", meta_style),
         ],
         [
-            Paragraph("<b>Proofreading PDF Deliveries & 50 Rework Cycles</b>", meta_style),
-            Paragraph("Included till Final Sign-off", meta_style),
-            Paragraph("Included till Final Sign-off", meta_style),
+            Paragraph("<b>Pre-Proofreading PDF Deliveries & 50 Rework Cycles</b>", meta_style),
+            Paragraph("Included till Final Master Delivery", meta_style),
+            Paragraph("Included till Final Master Delivery", meta_style),
         ],
         [
             Paragraph("<b>TOTAL PROPOSED INVESTMENT</b>", ParagraphStyle("TotalLabel", parent=meta_style, fontName="Helvetica-Bold", fontSize=10.5, textColor=c_maroon)),
-            Paragraph("<b>₹48,000 INR</b><br/><font size='8.5' color='#555'>($572 USD)</font>", ParagraphStyle("TotalVal1", parent=meta_style, fontName="Helvetica-Bold", fontSize=11, textColor=c_navy)),
-            Paragraph("<b>₹75,000 INR</b><br/><font size='8.5' color='#555'>($892 USD)</font>", ParagraphStyle("TotalVal2", parent=meta_style, fontName="Helvetica-Bold", fontSize=11, textColor=c_maroon)),
+            Paragraph("<b>Rs. 45,678 INR</b><br/><font size='8.5' color='#555'>($544 USD)</font>", ParagraphStyle("TotalVal1", parent=meta_style, fontName="Helvetica-Bold", fontSize=11, textColor=c_navy)),
+            Paragraph("<b>Rs. 78,910 INR</b><br/><font size='8.5' color='#555'>($939 USD)</font>", ParagraphStyle("TotalVal2", parent=meta_style, fontName="Helvetica-Bold", fontSize=11, textColor=c_maroon)),
         ],
     ]
     t_quote = Table(quotation_data, colWidths=[2.6 * inch, 2.2 * inch, 2.2 * inch])
@@ -528,7 +559,14 @@ def build_pdf_proposal(output_pdf_path: Path):
         ('RIGHTPADDING', (0, 0), (-1, -1), 8),
     ]))
     story.append(t_quote)
-    story.append(Spacer(1, 18))
+    story.append(Spacer(1, 10))
+
+    story.append(Paragraph(
+        "<i>*Note: Proofreading, physical printing, bookbinding, and formal publishing will be arranged independently by the client. "
+        "Hiranyam AI Labs delivers the finalized master digital PDF ready for printing upon completion of revisions.</i>",
+        callout_style
+    ))
+    story.append(Spacer(1, 14))
 
     # --------------------------------------------------------------------------
     # 7. Acceptance & Authorization Block
@@ -544,7 +582,7 @@ def build_pdf_proposal(output_pdf_path: Path):
         Table([
             [
                 Paragraph("<b>Accepted Option (Please Circle):</b>", meta_style),
-                Paragraph("<b>[  ] Option 1 (₹48,000)</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>[  ] Option 2 (₹75,000)</b>", meta_style),
+                Paragraph("<b>[  ] Option 1 (Rs. 45,678 INR)</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>[  ] Option 2 (Rs. 78,910 INR)</b>", meta_style),
             ],
             [
                 Paragraph("<b>For the Client / Author:</b><br/><br/><br/>_____________________________________<br/><b>Shri Shripad Kulkarni</b><br/>Date: ________________________", meta_style),
@@ -571,8 +609,6 @@ import docx
 from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
-from docx.oxml import OxmlElement
-from docx.oxml.ns import qn
 
 
 def build_docx_proposal(output_docx_path: Path):
@@ -605,7 +641,7 @@ def build_docx_proposal(output_docx_path: Path):
     p_title.space_after = Pt(2)
 
     p_sub = doc.add_paragraph()
-    r_sub = p_sub.add_run("Autonomous Tri-Agent AI Synthesis & Publication Framework for SK Sutras (Udyoga Sutras)")
+    r_sub = p_sub.add_run("Autonomous Multi-Agent AI Synthesis & Digital Draft Framework for SK Sutras (Udyoga Sutras)")
     r_sub.font.name = "Arial"
     r_sub.font.size = Pt(12)
     r_sub.font.bold = True
@@ -628,72 +664,79 @@ def build_docx_proposal(output_docx_path: Path):
     doc.add_heading("1. Executive Summary", level=1)
     doc.add_paragraph(
         "Hiranyam AI Labs is pleased to present this formal proposal to Shri Shripad Kulkarni for the autonomous agentic AI "
-        "synthesis and publication of the authoritative comparative treatise: SK Sutras (Udyoga Sutras). This framework orchestrates "
-        "the 84 Narada Bhakti Sutras and the 100 Shandilya Bhakti Sutras into a unified publication draft, formulating original "
+        "synthesis and digital draft preparation of the authoritative comparative treatise: SK Sutras (Udyoga Sutras). This framework orchestrates "
+        "the 84 Narada Bhakti Sutras and the 100 Shandilya Bhakti Sutras into a unified digital draft, formulating original "
         "Sanskrit shlokas and comprehensive Marathi Udyoga Bhashya commentary for modern enterprise and life-duty."
     )
 
     # Section 2
-    doc.add_heading("2. The Three Specialized Agents", level=1)
+    doc.add_heading("2. How the Three Dedicated Book Specialists Work Together", level=1)
     doc.add_paragraph(
-        "1. Narada Bhakti Sutra Specialist Agent: Represents Devarshi Narada's experiential, devotional school (84 sutras).\n"
-        "2. Shandilya Bhakti Sutra Specialist Agent: Represents Maharshi Shandilya's epistemological, Vedantic school (100 sutras in ChromaDB).\n"
-        "3. Sutrakar Agent (Master Arbiter & Creative Synthesizer): Enforces non-compulsory matching, eliminates duplicate explanations, "
-        "formulates original Sanskrit shlokas for verified correspondences, and authors the multi-paragraph Marathi Udyoga Bhashya."
+        "1. Narada Bhakti Sutra Specialist Agent: Represents Devarshi Narada's experiential devotional school (84 sutras).\n"
+        "2. Shandilya Bhakti Sutra Specialist Agent: Represents Maharshi Shandilya's epistemological, rational school (100 sutras in ChromaDB).\n"
+        "3. Sutrakar Agent (Master Coordinator & Synthesizer): Enforces non-compulsory matching, eliminates duplicate explanations, "
+        "composes original Sanskrit shlokas for verified correspondences, and authors the multi-paragraph Marathi Udyoga Bhashya commentary."
     )
 
     # Section 3
-    doc.add_heading("3. Two Deployment Options & Quotation", level=1)
+    doc.add_heading("3. Technology Choices and Solution Options Explained", level=1)
     doc.add_paragraph(
-        "Option 1: Hybrid Architecture (ChatGPT + Gemini Sutrakar)\n"
+        "Option 1: Hybrid Solution (ChatGPT for Two Books + Google Gemini for Master Coordinator)\n"
         "• Narada Agent on ChatGPT (GPT-4o), Shandilya Agent on ChatGPT (GPT-4o), Sutrakar Agent on Google Gemini (Gemini 1.5 Pro).\n"
-        "• Sutrakar Agent uses Gemini for expert knowledge in Vedic literatures, classical Sanskrit translation, and huge context memory.\n"
-        "• Model & Infrastructure Cost: ₹18,000 INR\n"
-        "• Hiranyam AI Development, Publication & Proofreading Service Fee: ₹30,000 INR\n"
-        "• Total Option 1 Investment: ₹48,000 INR\n\n"
-        "Option 2: Pure Google DeepMind Gemini Specialized Architecture (Recommended)\n"
-        "• All three agents deployed on Google Gemini (Gemini 1.5 Pro Specialized).\n"
-        "• Deepest native corpus of Vedic literature, Sanskrit grammar, and nuanced Marathi translation.\n"
-        "• Native formulation of brand-new, original metered Sanskrit shlokas (new Udyoga Sutras) for approved pairs.\n"
+        "• Sutrakar Agent uses Gemini for expert knowledge in Vedic literatures, classical Sanskrit, and massive context memory.\n"
+        "• AI Compute & Cloud Infrastructure (50 cycles): Rs. 18,000 INR\n"
+        "• Hiranyam AI Development and Service Fee: Rs. 27,678 INR\n"
+        "• Total Option 1 Proposed Investment: Rs. 45,678 INR\n\n"
+        "Option 2: Dedicated Google Gemini Vedic Specialist Solution (Recommended)\n"
+        "• All three specialists deployed on Google Gemini (Gemini 1.5 Pro Specialized).\n"
+        "• Deepest native corpus of Vedic literature, Sanskrit grammar, and classical Marathi commentary.\n"
+        "• Composes brand-new, original metered Sanskrit shlokas (new Udyoga Sutras) for approved pairs.\n"
         "• Unified context caching ensuring zero duplicate explanations across 50 full cycles of canon re-generation.\n"
-        "• Model, Deep Caching & Infrastructure Cost: ₹45,000 INR\n"
-        "• Hiranyam AI Development, Publication & Proofreading Service Fee: ₹30,000 INR\n"
-        "• Total Option 2 Investment: ₹75,000 INR"
+        "• AI Compute, Deep Caching, High-Reasoning & Infrastructure: Rs. 45,000 INR\n"
+        "• Hiranyam AI Development and Service Fee: Rs. 33,910 INR\n"
+        "• Total Option 2 Proposed Investment: Rs. 78,910 INR"
     )
 
     # Section 4
-    doc.add_heading("4. Scope of Hiranyam AI Service Commitment (₹30,000 Fee)", level=1)
+    doc.add_heading("4. Scope of Services Covered under Hiranyam AI Development and Service Fees", level=1)
     doc.add_paragraph(
-        "• Full multi-agent software engineering, vector database setup, and prompt calibration.\n"
-        "• Senior Citizen (65+ Mode) Web Review Portal for Shri Shripad Kulkarni with dynamic font scaling and large touch affordances.\n"
-        "• Generating publication-ready PDF books for author proofreading and review.\n"
-        "• Up to 50 cycles of testing, re-communication, author revisions, and corrections until the finalized print-ready copy is achieved.\n"
-        "• Final pre-press typesetting and formatting ready for physical printing."
+        "Development and Service Fee by Option:\n"
+        "• Under Option 1: Hiranyam AI Development and Service Fee is Rs. 27,678 INR\n"
+        "• Under Option 2: Hiranyam AI Development and Service Fee is Rs. 33,910 INR\n\n"
+        "Included in Our Service Fee:\n"
+        "• Multi-agent software engineering, ChromaDB vector database setup, and prompt calibration.\n"
+        "• Senior Citizen (65+ Mode) Web Review Portal for Shri Shripad Kulkarni with extra-large fonts and simple layout.\n"
+        "• Pre-proofreading digital book PDF delivery with Devanagari Sanskrit verses and Marathi commentary for client review.\n"
+        "• Up to 50 cycles of testing, re-communication, author revisions, and corrections until the final text is approved.\n"
+        "• Delivery of finalized digital master PDF ready for client's publishing team.\n\n"
+        "*Note: Actual proofreading, physical printing, bookbinding, and publishing will be handled independently by the client."
     )
 
     # Section 5: Quotation Table
     doc.add_heading("5. Commercial Summary Table", level=1)
-    table = doc.add_table(rows=5, cols=3)
+    table = doc.add_table(rows=6, cols=3)
     table.alignment = WD_TABLE_ALIGNMENT.CENTER
     table.style = 'Light Shading Accent 1'
 
-    headers = ["Cost Component", "Option 1 (Hybrid)", "Option 2 (Gemini Dedicated)"]
+    headers = ["Cost Component", "Option 1 (Hybrid Solution)", "Option 2 (Gemini Dedicated)"]
     for i, h in enumerate(headers):
         table.rows[0].cells[i].text = h
 
-    row1 = ["AI Compute & Token Infrastructure (50 Cycles)", "₹18,000 INR", "₹45,000 INR"]
-    row2 = ["Hiranyam AI Development & Publication Fee", "₹30,000 INR", "₹30,000 INR"]
-    row3 = ["Proofreading PDF Delivery & Iterative Revisions", "Included", "Included (with Original Shlokas)"]
-    row4 = ["TOTAL INVESTMENT", "₹48,000 INR", "₹75,000 INR"]
+    row1 = ["AI Cloud Compute & Infrastructure (50 Cycles)", "Rs. 18,000 INR", "Rs. 45,000 INR"]
+    row2 = ["Hiranyam AI Development and Service Fee", "Rs. 27,678 INR", "Rs. 33,910 INR"]
+    row3 = ["Original Sanskrit Shloka Formulation", "Standard Synthesis", "Included (Original Sanskrit Shlokas)"]
+    row4 = ["Pre-Proofreading PDF Deliveries & 50 Revisions", "Included till Master Delivery", "Included till Master Delivery"]
+    row5 = ["TOTAL PROPOSED INVESTMENT", "Rs. 45,678 INR", "Rs. 78,910 INR"]
 
-    for row_idx, r_data in enumerate([row1, row2, row3, row4], start=1):
+    for row_idx, r_data in enumerate([row1, row2, row3, row4, row5], start=1):
         for col_idx, cell_data in enumerate(r_data):
             table.rows[row_idx].cells[col_idx].text = cell_data
 
     # Section 6: Acceptance
     doc.add_heading("6. Acceptance & Authorization", level=1)
     doc.add_paragraph(
-        "\nClient Signature: _______________________      Date: _______________\n"
+        "\nAccepted Option:  [  ] Option 1 (Rs. 45,678 INR)       [  ] Option 2 (Rs. 78,910 INR)\n\n"
+        "Client Signature: _______________________      Date: _______________\n"
         "Shri Shripad Kulkarni\n\n"
         "Provider Signature: ____________________      Date: _______________\n"
         "Hiranyam AI Labs (https://hiranyamai.com/)"
@@ -705,22 +748,35 @@ def build_docx_proposal(output_docx_path: Path):
 
 def main():
     print("=" * 80)
-    print(" HIRANYAM AI LABS: GENERATING FORMAL CLIENT PROPOSAL & QUOTATION")
+    print(" HIRANYAM AI LABS: GENERATING REVISED PROPOSAL & QUOTATION")
     print(" Client: Shri Shripad Kulkarni | Project: SK Sutras (Udyoga Sutras)")
     print("=" * 80)
 
     pdf_path = DOCS_DIR / "PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf"
+    pdf_fallback = DOCS_DIR / "PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_REVISED.pdf"
     docx_path = DOCS_DIR / "PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx"
+    docx_fallback = DOCS_DIR / "PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_REVISED.docx"
 
-    build_pdf_proposal(pdf_path)
-    build_docx_proposal(docx_path)
+    # PDF Build
+    try:
+        build_pdf_proposal(pdf_path)
+    except PermissionError:
+        print(f"[!] '{pdf_path.name}' is currently open in Adobe Acrobat / PDF viewer.")
+        print(f"[*] Generating revised copy to '{pdf_fallback.name}' instead...")
+        build_pdf_proposal(pdf_fallback)
+
+    # DOCX Build
+    try:
+        build_docx_proposal(docx_path)
+    except PermissionError:
+        print(f"[!] '{docx_path.name}' is currently open in Word. Generating fallback copy...")
+        build_docx_proposal(docx_fallback)
 
     print("=" * 80)
-    print(" PROPOSAL GENERATION COMPLETE!")
-    print(f" PDF:  {pdf_path.resolve()}")
-    print(f" DOCX: {docx_path.resolve()}")
+    print(" REVISED PROPOSAL GENERATION COMPLETE!")
     print("=" * 80)
 
 
 if __name__ == "__main__":
     main()
+

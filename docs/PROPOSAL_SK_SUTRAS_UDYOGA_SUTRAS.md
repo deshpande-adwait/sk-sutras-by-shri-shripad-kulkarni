@@ -1,8 +1,8 @@
 # Project Proposal & Commercial Quotation
-## Autonomous Tri-Agent AI Synthesis & Publication Framework for *SK Sutras (Udyoga Sutras)*
+## Autonomous Multi-Agent AI Synthesis & Digital Draft Framework for *SK Sutras (Udyoga Sutras)*
 
 > **Client & Primary Author:** Shri Shripad Kulkarni  
-> **Technology & Publication Partner:** [Hiranyam AI Labs](https://hiranyamai.com/)  
+> **Technology Partner:** [Hiranyam AI Labs](https://hiranyamai.com/)  
 > **Date:** October 23, 2026  
 > **Document Reference ID:** `HAIL-PROP-2026-SKS01`  
 > **Confidentiality Notice:** *Proprietory and Confidential- Hiranyam AI Labs*  
@@ -11,26 +11,26 @@
 
 ### 1. Executive Summary
 
-Hiranyam AI Labs is privileged to present this comprehensive project proposal and commercial quotation to **Shri Shripad Kulkarni** for the full-cycle research, multi-agent AI orchestration, and pre-press publication workflow of the monumental philosophical treatise: **_SK Sutras: Udyoga Sutras_**.
+Hiranyam AI Labs is privileged to present this comprehensive project proposal and commercial quotation to **Shri Shripad Kulkarni** for the full-cycle research, multi-agent AI orchestration, and digital draft preparation of the monumental philosophical treatise: **_SK Sutras: Udyoga Sutras_**.
 
 The mission of this project is to orchestrate a pioneering doctrinal synthesis between two foundational canons of Indian spiritual philosophy:
-1. **The 84 Narada Bhakti Sutras** (representing ecstatic, direct, experiential devotion — *Parama-Prema*).
+1. **The 84 Narada Bhakti Sutras** (representing direct, experiential devotion — *Parama-Prema*).
 2. **The 100 Shandilya Bhakti Sutras** (representing rational, epistemological Vedantic inquiry — *Bhakti-Jijnasa* and *Tarka*).
 
-Through an autonomous, dialectic **Tri-Agent AI architecture**, these traditions are systematically cross-examined, filtered against false or forced overlaps, and unified into an authoritative new treatise. This publication will feature **original Sanskrit shlokas** (*Udyoga Sutras*) and exhaustive classical **Marathi Udyoga Bhashya** commentary dedicated to enterprise ethics, daily workplace duty, and spiritual liberation.
+Through an autonomous, dialectic team of **three specialized AI agents**, these traditions are systematically cross-examined, filtered against false or forced overlaps, and unified into an authoritative new treatise. This digital manuscript will feature **original Sanskrit shlokas** (*new Udyoga Sutras*) and exhaustive classical **Marathi Udyoga Bhashya** commentary dedicated to enterprise ethics, daily workplace duty, and spiritual liberation.
 
 ---
 
-### 2. The Three-Agent AI Architecture
+### 2. How the Three Dedicated Book Specialists Work Together
 
-Traditional single-model prompts fail when addressing complex scriptural literature because a single model inevitably agrees with itself, producing superficial syncretism. Our proprietary solution deploys three distinct, specialized autonomous agents with contrasting cognitive perspectives that debate, cross-examine, and arbitrate each verse:
+Instead of relying on a single AI that attempts to handle everything at once, our system divides the work between three specialized digital scholars. Each book has its own dedicated specialist agent, and a third coordinator oversees the entire conversation to ensure deep authenticity and zero duplicate matches:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │               1. Narada Bhakti Sutra Specialist Agent                   │
 │   • Canon: 84 Narada Bhakti Sutras                                     │
 │   • Perspective: Devarshi Narada (Experiential & Ecstatic Devotion)    │
-│   • Function: Formulates devotional theses and inter-agent inquiries   │
+│   • Function: Studies verses, explains devotion, poses inquiries       │
 └───────────────────────────────────┬────────────────────────────────────┘
                                     │
                                     ▼ (Philosophical Proposition)
@@ -38,7 +38,7 @@ Traditional single-model prompts fail when addressing complex scriptural literat
 │              2. Shandilya Bhakti Sutra Specialist Agent                 │
 │   • Canon: 100 Shandilya Bhakti Sutras (Indexed in ChromaDB)           │
 │   • Perspective: Maharshi Shandilya (Rational Epistemology & Tarka)    │
-│   • Function: Semantic vector search, candidate retrieval & critiques  │
+│   • Function: Searches database, finds matches, provides logic         │
 └───────────────────────────────────┬────────────────────────────────────┘
                                     │
                                     ▼ (Top Candidate Matches & Distance Metrics)
@@ -46,10 +46,10 @@ Traditional single-model prompts fail when addressing complex scriptural literat
 │                        3. Sutrakar Agent                               │
 │      (Master Coordinator, Arbiter & Creative Synthesizer)              │
 │   • Perspective: Supreme Vedic Arbiter & Canonical Compiler            │
-│   • Non-Compulsory Logic: Rejects forced & superficial mappings        │
-│   • Anti-Duplicate Memory: Eliminates repeated themes across the book  │
-│   • Original Sanskrit Verse Formulation: Composes new Udyoga Sutras    │
-│   • Classical Marathi Bhashya: Authors 3-fold comprehensive commentary │
+│   • Prevents Forced Matches: Rejects 67 weak or superficial parallels  │
+│   • Prevents Repetitions: Ensures zero duplicate themes in the book    │
+│   • Composes Original Sanskrit Shlokas: Writes new Udyoga Sutras       │
+│   • Authors Comprehensive Marathi Commentary: 3-fold Udyoga Bhashya    │
 └───────────────────────────────────┬────────────────────────────────────┘
                                     │
                                     ▼ (Validated Manuscript Record)
@@ -57,24 +57,24 @@ Traditional single-model prompts fail when addressing complex scriptural literat
 │                  Senior Citizen (65+ Mode) Portal                      │
 │   • Hosted on SQLite repository (data/manuscript.db)                   │
 │   • Shri Shripad Kulkarni reviews, approves, or directs revisions      │
-│   • Automated Publication Typesetting (Print-Ready HTML / PDF)         │
+│   • Automated Pre-Proofreading Book PDF Delivery                       │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-#### Specialized Agent Capabilities:
+#### Specialized Agent Roles in Plain Words:
 
 1. **Narada Bhakti Sutra Specialist Agent:**
    - Deeply expounds each of the 84 Narada verses from the standpoint of unconditional love (*Parama-Prema*), inner surrender, and nectarine bliss (*Amrita-Svarupa*).
-   - Formulates structured philosophical messages to challenge the rational school.
+   - Formulates structured philosophical inquiries to invite the rational school into dialogue.
 
 2. **Shandilya Bhakti Sutra Specialist Agent:**
    - Maintains the complete 100-sutra canon in an embedded semantic vector database (ChromaDB).
-   - Analyzes incoming Narada propositions, calculates cosine semantic distance, and retrieves the top corresponding Shandilya aphorisms to provide a rigorous epistemological defense.
+   - Analyzes incoming Narada propositions, calculates mathematical similarity, and retrieves the closest corresponding Shandilya aphorisms to provide a rigorous epistemological defense.
 
 3. **Sutrakar Agent (Master Coordinator, Arbiter & Creative Synthesizer):**
-   - **Enforces Non-Compulsory Logic:** Firmly instructs both agents that matching is not mandatory. Out of 84 Narada verses, 67 non-matches or forced overlaps are actively omitted to preserve scholarly brevity and integrity.
-   - **Intelligent Duplicate & Similarity Scanning:** Actively tracks memory across the entire synthesis session to ensure zero recycled Shandilya sutras and zero repeated themes.
-   - **Formulation of Original Sanskrit Shlokas:** When an authentic philosophical convergence is finalized, the Sutrakar Agent **composes brand-new, metered Sanskrit verses (*Shlokas / Udyoga Sutras*)**, providing an original scriptural bridge between the two traditions.
+   - **Prevents Forced Matches:** Firmly instructs both agents that matching is not mandatory. Out of 84 Narada verses, 67 non-matches or forced overlaps are actively omitted to preserve scholarly brevity and integrity.
+   - **Intelligent Duplicate & Similarity Scanning:** Actively tracks memory across the entire synthesis session to ensure zero recycled Shandilya sutras and zero repeated explanations.
+   - **Composes Original Sanskrit Shlokas:** When an authentic philosophical convergence is finalized, the Sutrakar Agent **composes brand-new, metered Sanskrit verses (*Shlokas / new Udyoga Sutras*)**, establishing a brand-new canonical bridge between the two traditions.
    - **Bespoke Classical Marathi Commentary:** Authors multi-paragraph *Udyoga Bhashya* spanning:
      1. `[तात्त्विक समन्वय]` (Doctrinal & Epistemological Harmony)
      2. `[उद्योग आणि जीवन-साधना]` (Enterprise, Workplace Ethics & Daily Duty)
@@ -82,53 +82,60 @@ Traditional single-model prompts fail when addressing complex scriptural literat
 
 ---
 
-### 3. Detailed Deployment Options & LLM Selection
+### 3. Technology Choices and Solution Options Explained
 
-To provide strategic, linguistic, and financial clarity, we offer two distinct deployment options utilizing commercial frontier Large Language Models:
+To provide clear choices in capabilities and budget, we offer two distinct solution options based on leading commercial artificial intelligence engines:
 
-#### Option 1: Hybrid Architecture (ChatGPT + Google Gemini)
-- **Agent Configuration:**
-  - **Narada Agent:** OpenAI ChatGPT (GPT-4o)
-  - **Shandilya Agent:** OpenAI ChatGPT (GPT-4o)
-  - **Sutrakar Agent:** Google DeepMind Gemini (Gemini 1.5 Pro)
-- **Architectural Rationale:**
-  - OpenAI GPT-4o provides rapid conversational parsing and sharp structured output for individual aphorisms.
-  - Google Gemini 1.5 Pro is deployed on the crucial **Sutrakar Agent** due to Gemini's superior pre-training on ancient Indian Vedic literatures, classical Sanskrit grammar, Sanskrit-to-Marathi translation nuance, and massive context window (up to 2,000,000 tokens) to hold the evolving draft in memory and prevent duplicate matches.
-- **Financial Investment (Option 1):**
-  - AI Compute & Cloud Token Infrastructure: **₹18,000 INR** (approx. $215 USD)
-  - Hiranyam AI Development, Publication & Proofreading Service Fee: **₹30,000 INR**
-  - **Total Proposed Investment (Option 1): ₹48,000 INR** (approx. $570 USD)
-
----
-
-#### Option 2: Pure Google DeepMind Gemini Specialized Architecture (Recommended)
-- **Agent Configuration:**
-  - **Narada Agent:** Google Gemini (Gemini 1.5 Pro Specialized)
-  - **Shandilya Agent:** Google Gemini (Gemini 1.5 Pro Specialized)
-  - **Sutrakar Agent:** Google Gemini (Gemini 1.5 Pro / Advanced High-Reasoning)
-- **Architectural Rationale & Superiority:**
-  - **Universal Vedic & Sanskrit Domain Authority:** Gemini possesses the world's most expansive digitized repository of ancient Indian scriptures, Darshanas, and Vedic commentaries via Google Books Indic initiatives.
-  - **Original Sanskrit Shloka Formulation:** With all three agents running on Gemini, the Sutrakar Agent demonstrates exceptional creative mastery in composing **completely original, grammatically sound, metered Sanskrit shlokas** (new *Udyoga Sutras*) that stand as authentic poetic aphorisms.
-  - **Classical Marathi Nuance:** Exceptional grasp of scholarly Marathi philosophical vocabulary (*भावार्थ*), entirely avoiding mechanical transliterations.
-  - **Unified Context Caching:** Single-ecosystem context caching guarantees seamless harmonization across **50 full cycles of testing, re-communication, and canon re-arbitration**.
-- **Financial Investment (Option 2):**
-  - AI Compute, Deep Contextual Caching, High-Reasoning & Infrastructure: **₹45,000 INR** (approx. $535 USD)
-  - Hiranyam AI Development, Publication & Proofreading Service Fee: **₹30,000 INR**
-  - **Total Proposed Investment (Option 2): ₹75,000 INR** (approx. $895 USD)
+#### Option 1: Hybrid Solution (ChatGPT for Two Books + Google Gemini for Master Coordinator)
+- **Model Assignment:**
+  - **Narada Specialist:** OpenAI ChatGPT (GPT-4o)
+  - **Shandilya Specialist:** OpenAI ChatGPT (GPT-4o)
+  - **Sutrakar Master Coordinator:** Google DeepMind Gemini (Gemini 1.5 Pro)
+- **Why This Setup Works:**
+  - ChatGPT handles the active question-and-answer dialogue between the two books with speed and clarity.
+  - The **Sutrakar Master Coordinator is powered by Google Gemini** because Google Gemini has an enormous memory (up to 2,000,000 words at once). This allows the master coordinator to keep the entire book in mind continuously, ensuring that no explanation is ever repeated and that all Vedic references are carefully checked.
+- **Commercial Investment (Option 1):**
+  - AI Cloud Compute & Model Infrastructure (50 full cycles): **Rs. 18,000 INR** (approx. $215 USD)
+  - Hiranyam AI Development and Service Fee: **Rs. 27,678 INR** (approx. $329 USD)
+  - **Total Proposed Investment (Option 1): Rs. 45,678 INR** (approx. $544 USD)
 
 ---
 
-### 4. Hiranyam AI Development & Publication Scope (The ₹30,000 Commitment)
+#### Option 2: Dedicated Google Gemini Vedic Specialist Solution (Recommended)
+- **Model Assignment:**
+  - **Narada Specialist:** Google Gemini (Gemini 1.5 Pro Specialized)
+  - **Shandilya Specialist:** Google Gemini (Gemini 1.5 Pro Specialized)
+  - **Sutrakar Master Coordinator:** Google Gemini (Gemini 1.5 Pro / Advanced High-Reasoning)
+- **Why This Option Is Superior for Ancient Scriptures:**
+  - **Vast Knowledge of Indian Scriptures:** Google has digitized millions of ancient Indian books, Sanskrit commentaries, and Marathi historical texts through its global library archives.
+  - **Composes Brand-New Sanskrit Shlokas:** When an authentic match is approved, Gemini possesses the unique ability to **write brand-new, poetically metered Sanskrit verses (new Udyoga Sutras)** for the client's new book.
+  - **Authentic Classical Marathi:** Writes dignified, classical Marathi commentary (Bhavartha) naturally, without unnatural English-sounding phrasing.
+  - **Unified Memory Across 50 Full Cycles:** All three specialists share the exact same brain architecture, allowing completely seamless coordination across 50 full cycles of re-running and fine-tuning.
+- **Commercial Investment (Option 2):**
+  - AI Cloud Compute, Deep Caching, High-Reasoning & Infrastructure: **Rs. 45,000 INR** (approx. $535 USD)
+  - Hiranyam AI Development and Service Fee: **Rs. 33,910 INR** (approx. $404 USD)
+  - **Total Proposed Investment (Option 2): Rs. 78,910 INR** (approx. $939 USD)
 
-Our fixed development and publication service charge of **₹30,000 INR** covers the complete end-to-end engineering, editorial, and pre-press support until final sign-off:
+---
 
-1. **Multi-Agent System Engineering & LangGraph DAG:** Building and maintaining the custom state-machine orchestrating inter-agent communication between Narada, Shandilya, and Sutrakar.
-2. **ChromaDB Semantic Vector Database:** Parsing, embedding, and indexing all 100 Shandilya sutras and 84 Narada sutras for mathematical cosine similarity search.
-3. **Senior Citizen (65+ Mode) Web Review Portal:** Dedicated interactive digital environment configured for Shri Shripad Kulkarni with dynamic font scaling, high contrast, generous touch targets, and 1-click chapter export.
-4. **Proofreading Book PDF Deliveries:** Typesetting and generating beautifully formatted draft PDFs with Devanagari Sanskrit verses and Marathi commentary for the author's meticulous proofreading and review.
-5. **50 Cycles of Re-running, Rework & Corrections:** Performing all revisions, adjustments, re-evaluations, and re-arbitration runs per author feedback until the final text is approved.
-6. **Pre-Press Formatting & Print-Ready Master Files:** Professional book formatting with proper print margins, running headers, page numbers, cover branding, and publishing credits ready for immediate physical printing.
-7. **Zero-Defect QA Certification:** Guaranteeing zero duplicate verses, zero repeated paragraphs, and 100% schema validation.
+### 4. Scope of Services Covered under Hiranyam AI Development and Service Fees
+
+Our development and service fees cover the complete technical software engineering, database setup, and digital draft delivery up to the stage of the client's proofreading. The specific fee applies according to the option chosen:
+
+| Solution Option | Hiranyam AI Development & Service Fee | Key Technical Deliverables Included |
+| :--- | :---: | :--- |
+| **Option 1 (Hybrid Solution)** | **Rs. 27,678 INR** | Multi-agent setup, ChromaDB database, portal, pre-proofreading PDFs, up to 50 revision cycles. |
+| **Option 2 (Gemini Specialized)** | **Rs. 33,910 INR** | Multi-agent setup, ChromaDB database, portal, original Sanskrit shloka formulation, pre-proofreading PDFs, up to 50 revision cycles. |
+
+#### What Is Included in Our Service Fee:
+1. **Multi-Agent Software Engineering:** Building and fine-tuning the automated coordination system connecting the Narada, Shandilya, and Sutrakar specialists.
+2. **Scriptural Database Setup (ChromaDB):** Indexing all 100 Shandilya verses and 84 Narada verses for instant mathematical comparison and retrieval.
+3. **Senior Citizen (65+ Mode) Web Review Portal:** Setting up an easy-to-use digital reading portal for Shri Shripad Kulkarni with extra-large fonts, high contrast, and simple buttons.
+4. **Pre-Proofreading Book PDF Deliveries:** Generating clean, beautifully typeset digital PDF drafts containing Sanskrit verses and Marathi commentary for the client's internal proofreading.
+5. **Up to 50 Full Cycles of Re-running & Author Corrections:** Executing all adjustments, re-evaluations, and re-arbitration runs per author feedback until the final text is approved.
+6. **Delivery of Final Digital Master PDF:** Providing the finalized digital PDF manuscript ready for the client's publication and printing team.
+
+> **Important Note on Scope:** Actual proofreading, physical printing, bookbinding, and formal book publishing will be handled independently by the client. Hiranyam AI Labs delivers all digital manuscript materials ready up to the proofreading stage.
 
 ---
 
@@ -136,32 +143,35 @@ Our fixed development and publication service charge of **₹30,000 INR** covers
 
 | Milestone | Deliverable Description | Target Timeline | Payment Due |
 | :--- | :--- | :---: | :---: |
-| **Milestone 1: Project Kickoff & Setup** | ChromaDB ingestion of 184 sutras, Tri-Agent calibration, and Senior Citizen portal deployment. | Week 1 | **40%** Service Fee + LLM Infra Deposit |
-| **Milestone 2: First Proofreading PDF Draft** | Batch synthesis of all 84 Narada sutras against 100 Shandilya sutras. Generation of first complete *Udyoga Sutra* proofreading book PDF. | Week 2 | **30%** Service Fee |
-| **Milestone 3: Portal Review & Editorial Rework** | Author reviews verses in portal. Multi-agent revisions, corrections, and re-runs executed per author guidance. | Weeks 3 – 4 | — |
-| **Milestone 4: Final Sign-off & Print-Ready PDF** | Final approval by Shri Shripad Kulkarni. Delivery of publication-ready master PDF and archival database. | Week 5 | **30%** Final Balance |
+| **Milestone 1: Project Kickoff & Setup** | Database indexing of 184 sutras, setup of three specialists, and launch of Senior Citizen portal. | Week 1 | **40%** of Service Fee + AI Infra Deposit |
+| **Milestone 2: Delivery of Pre-Proofreading Draft PDF** | Complete batch execution of all 84 Narada verses against 100 Shandilya verses. Delivery of first complete pre-proofreading book PDF for client review. | Week 2 | **30%** of Service Fee |
+| **Milestone 3: Client Proofreading & Revisions** | Author reviews verses in portal and conducts proofreading. Multi-agent revisions and re-runs executed per author guidance. | Weeks 3 – 4 | — |
+| **Milestone 4: Final Approval & Master PDF Handover** | Final approval by Shri Shripad Kulkarni. Delivery of finalized master PDF manuscript ready for client's publishing team. | Week 5 | **30%** Final Balance |
 
 ---
 
 ### 6. Commercial Quotation Summary Table
 
-| Cost Component | Option 1: Hybrid Architecture<br/>(ChatGPT + Gemini Sutrakar) | Option 2: Gemini Specialized<br/>(All Agents on Google Gemini) |
+| Cost Component | Option 1: Hybrid Solution<br/>(ChatGPT + Gemini Sutrakar) | Option 2: Gemini Specialized<br/>(All Agents on Google Gemini) |
 | :--- | :---: | :---: |
-| **Autonomous AI Cloud Compute & Token Infrastructure**<br/>*(50 full canon passes, multi-million token volume, vector hosting)* | **₹18,000 INR**<br/>($215 USD approx.) | **₹45,000 INR**<br/>($535 USD approx.) |
-| **Hiranyam AI Development, Publication & Proofreading Service Fee**<br/>*(LangGraph DAG, portal, proofreading PDFs, 50 rework cycles)* | **₹30,000 INR**<br/>($357 USD approx.) | **₹30,000 INR**<br/>($357 USD approx.) |
-| **Sanskrit Shloka Formulation & Bespoke Marathi Bhashya** | Included (Standard Synthesis) | **Included (Original Sanskrit Shlokas)** |
-| **Proofreading PDF Book Deliveries & Revisions** | Included till Final Sign-off | Included till Final Sign-off |
-| **TOTAL PROPOSED INVESTMENT** | **₹48,000 INR**<br/>($572 USD) | **₹75,000 INR**<br/>($892 USD) |
+| **Autonomous AI Cloud Compute & Infrastructure**<br/>*(50 full canon passes, multi-million token volume, database hosting)* | **Rs. 18,000 INR**<br/>($215 USD approx.) | **Rs. 45,000 INR**<br/>($535 USD approx.) |
+| **Hiranyam AI Development and Service Fee**<br/>*(Software engineering, portal, pre-proofreading PDFs, up to 50 revisions)* | **Rs. 27,678 INR**<br/>($329 USD approx.) | **Rs. 33,910 INR**<br/>($404 USD approx.) |
+| **Original Sanskrit Shloka Formulation** | Standard Synthesis | **Included (Original Sanskrit Shlokas)** |
+| **Pre-Proofreading PDF Deliveries & 50 Revisions** | Included till Master Delivery | Included till Master Delivery |
+| **TOTAL PROPOSED INVESTMENT** | **Rs. 45,678 INR**<br/>($544 USD) | **Rs. 78,910 INR**<br/>($939 USD) |
+
+*Note: Proofreading, physical printing, bookbinding, and formal publishing will be arranged independently by the client. Hiranyam AI Labs delivers the finalized master digital PDF ready for printing upon completion of revisions.*
 
 ---
 
 ### 7. Document Deliverables & Location
 
-The publication-grade proposal is available in the repository in two official formats:
-1. **Master PDF Proposal (Print & Review):** [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf)
-2. **Master DOCX Proposal (Word Format with OpenXML Footer):** [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx)
+The proposal is available in the repository in three official formats:
+1. **Master PDF Proposal (Revised Edition):** [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_REVISED.pdf`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_REVISED.pdf)
+2. **Master Word Document:** [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx)
+3. **Markdown Documentation:** [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.md`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.md)
 
-*Both documents strictly embed the mandatory confidentiality footer on every page:*  
+*Every page of the PDF and Word document strictly embeds the mandatory confidentiality footer:*  
 `"Proprietory and Confidential- Hiranyam AI Labs"`
 
 ---

@@ -2,6 +2,62 @@
 
 All notable changes, architectural updates, and releases for **SK Sutras - by Shri Shripad Kulkarni** are documented in this client-facing log.
 
+## [v0.2.6-beta] - 2026-10-23
+
+### Executive Summary of Changes
+Refined and updated the client-facing **Project Proposal & Commercial Quotation** for **Shri Shripad Kulkarni** based on author feedback:
+1. **Layman-Friendly Section Titles**:
+   - Rephrased Section 2 from "The Autonomous Three-Agent Architecture" to **"2. How the Three Dedicated Book Specialists Work Together"**.
+   - Rephrased Section 3 from "Detailed Deployment Options & LLM Selection Rationale" to **"3. Technology Choices and Solution Options Explained"**.
+   - Rephrased Section 4 to **"4. Scope of Services Covered under Hiranyam AI Development and Service Fees"**.
+2. **Eliminated All Missing Font Glyphs & Unreadable Characters**:
+   - Replaced all currency symbols with clean, standard `"Rs."` formatting (e.g. `Rs. 18,000 INR`, `Rs. 27,678 INR`, `Rs. 45,678 INR`, `Rs. 45,000 INR`, `Rs. 33,910 INR`, `Rs. 78,910 INR`), eliminating Helvetica Type 1 glyph missing boxes across all PDF viewers.
+   - Replaced raw Devanagari in standard English strings with clean Roman transliteration (e.g. `(Bhavartha / Classical Commentary)`).
+3. **Exact Commercial Adjustments**:
+   - **Option 1 (Hybrid Solution)**:
+     - AI Compute & Cloud Token Infrastructure: **Rs. 18,000 INR**.
+     - Hiranyam AI Development & Service Fee: **Rs. 27,678 INR**.
+     - **Total Proposed Investment: Exactly Rs. 45,678 INR**.
+   - **Option 2 (Dedicated Google Gemini Specialized Solution)**:
+     - AI Compute, Deep Caching, High-Reasoning & Infrastructure: **Rs. 45,000 INR**.
+     - Hiranyam AI Development & Service Fee: **Rs. 33,910 INR**.
+     - **Total Proposed Investment: Exactly Rs. 78,910 INR**.
+4. **Clarification of Editorial & Publication Boundaries**:
+   - Clarified that **actual proofreading, physical printing, bookbinding, and formal book publication will be handled independently by the client**.
+   - Hiranyam AI's scope includes delivering digital pre-proofreading book PDF drafts, executing up to 50 cycles of revisions/corrections based on author feedback, and delivering the finalized digital master PDF.
+   - Separate development and service fees are explicitly documented per option in Section 4.
+5. **Multi-Format Generation & Lock Protection**:
+   - Generated revised PDF ([`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_REVISED.pdf`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_REVISED.pdf)) and DOCX ([`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx)) with graceful fallback handling for active PDF viewer locks.
+
+### Direct Client/User Benefits & Features Added
+* **Crystal-Clear Layman Terminology**: No confusing technical jargon for senior stakeholders; intuitive analogies of dedicated digital book scholars.
+* **Flawless PDF Typography**: Zero corrupted glyphs or unreadable characters across any PDF viewer.
+* **Exact Budgetary Precision**: Matches client targets of Rs. 45,678 INR (Option 1) and Rs. 78,910 INR (Option 2).
+* **Clear Division of Responsibilities**: Precise boundary between digital engineering deliverables and client-managed proofreading/printing.
+
+### Issues/Defects Resolved
+* Fixed unreadable prefix character in front of INR figures.
+* Fixed corrupted Marathi characters in Section 3, Point 3.
+* Adjusted fees to match exact desired figures: Rs. 45,678 and Rs. 78,910.
+* Removed claims of performing physical printing or independent proofreading.
+
+### Data/Knowledge Base Updates
+* Updated `docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.md`.
+* Regenerated `docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_REVISED.pdf` and `docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx`.
+* Updated generator script `scripts/generate_proposal_docs.py`.
+
+### Validation & Test Results
+* Validated PDF and DOCX compilation.
+* Verified exact math: Rs. 18,000 + Rs. 27,678 = Rs. 45,678; Rs. 45,000 + Rs. 33,910 = Rs. 78,910.
+* Automated QA suite green (19/19 tests passing).
+
+### Deployment Details
+* **Environment**: Version Control Repository & Documentation Suite.
+* **Target Documentation**: [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_REVISED.pdf`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_REVISED.pdf)
+* **Release Status**: Committed & Pushed to Remote Repository (`origin main`).
+
+---
+
 ## [v0.2.5-beta] - 2026-10-23
 
 ### Executive Summary of Changes
