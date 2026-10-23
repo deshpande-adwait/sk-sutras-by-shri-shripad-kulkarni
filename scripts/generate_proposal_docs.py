@@ -347,9 +347,9 @@ def build_pdf_proposal(output_pdf_path: Path):
                 "(up to 2,000,000 words at once). This allows the master coordinator to keep the entire book in mind continuously, "
                 "ensuring that no explanation is ever repeated and that all Vedic references are carefully checked.<br/><br/>"
                 "<b>Commercial Investment (Option 1):</b><br/>"
-                "• AI Cloud Compute & Model Infrastructure (50 full cycles): <b>Rs. 18,000 INR</b> (approx. $215 USD)<br/>"
-                "• Hiranyam AI Development and Service Fee: <b>Rs. 27,678 INR</b> (approx. $329 USD)<br/>"
-                "• <b>Total Proposed Investment (Option 1): Rs. 45,678 INR</b> (approx. $544 USD)",
+                "• AI Cloud Compute & Model Infrastructure (50 full cycles): <b>Rs. 18,000 INR</b><br/>"
+                "• Hiranyam AI Development and Service Fee: <b>Rs. 27,678 INR</b><br/>"
+                "• <b>Total Proposed Investment (Option 1): Rs. 45,678 INR</b>",
                 body_style
             )
         ]
@@ -386,9 +386,9 @@ def build_pdf_proposal(output_pdf_path: Path):
                 "3. <b>Authentic Classical Marathi:</b> Writes dignified, classical Marathi commentary (Bhavartha) naturally, without unnatural English-sounding phrasing.<br/>"
                 "4. <b>Unified Memory Across 50 Full Cycles:</b> All three specialists share the exact same brain architecture, allowing completely seamless coordination across 50 full cycles of re-running and fine-tuning.<br/><br/>"
                 "<b>Commercial Investment (Option 2):</b><br/>"
-                "• AI Cloud Compute, Deep Caching, High-Reasoning & Infrastructure: <b>Rs. 45,000 INR</b> (approx. $535 USD)<br/>"
-                "• Hiranyam AI Development and Service Fee: <b>Rs. 33,910 INR</b> (approx. $404 USD)<br/>"
-                "• <b>Total Proposed Investment (Option 2): Rs. 78,910 INR</b> (approx. $939 USD)",
+                "• AI Cloud Compute, Deep Caching, High-Reasoning & Infrastructure: <b>Rs. 45,000 INR</b><br/>"
+                "• Hiranyam AI Development and Service Fee: <b>Rs. 33,910 INR</b><br/>"
+                "• <b>Total Proposed Investment (Option 2): Rs. 78,910 INR</b>",
                 body_style
             )
         ]
@@ -524,13 +524,13 @@ def build_pdf_proposal(output_pdf_path: Path):
         ],
         [
             Paragraph("<b>Autonomous AI Cloud Compute & Infrastructure</b><br/>(50 full canon passes, multi-million token volume, database hosting)", meta_style),
-            Paragraph("Rs. 18,000 INR<br/><font size='8' color='#666'>($215 USD approx.)</font>", meta_style),
-            Paragraph("Rs. 45,000 INR<br/><font size='8' color='#666'>($535 USD approx.)</font>", meta_style),
+            Paragraph("Rs. 18,000 INR", meta_style),
+            Paragraph("Rs. 45,000 INR", meta_style),
         ],
         [
             Paragraph("<b>Hiranyam AI Development and Service Fee</b><br/>(Software engineering, portal, pre-proofreading PDFs, up to 50 revisions)", meta_style),
-            Paragraph("<b>Rs. 27,678 INR</b><br/><font size='8' color='#666'>($329 USD approx.)</font>", meta_style),
-            Paragraph("<b>Rs. 33,910 INR</b><br/><font size='8' color='#666'>($404 USD approx.)</font>", meta_style),
+            Paragraph("<b>Rs. 27,678 INR</b>", meta_style),
+            Paragraph("<b>Rs. 33,910 INR</b>", meta_style),
         ],
         [
             Paragraph("<b>Original Sanskrit Shloka Formulation</b>", meta_style),
@@ -544,8 +544,8 @@ def build_pdf_proposal(output_pdf_path: Path):
         ],
         [
             Paragraph("<b>TOTAL PROPOSED INVESTMENT</b>", ParagraphStyle("TotalLabel", parent=meta_style, fontName="Helvetica-Bold", fontSize=10.5, textColor=c_maroon)),
-            Paragraph("<b>Rs. 45,678 INR</b><br/><font size='8.5' color='#555'>($544 USD)</font>", ParagraphStyle("TotalVal1", parent=meta_style, fontName="Helvetica-Bold", fontSize=11, textColor=c_navy)),
-            Paragraph("<b>Rs. 78,910 INR</b><br/><font size='8.5' color='#555'>($939 USD)</font>", ParagraphStyle("TotalVal2", parent=meta_style, fontName="Helvetica-Bold", fontSize=11, textColor=c_maroon)),
+            Paragraph("<b>Rs. 45,678 INR</b>", ParagraphStyle("TotalVal1", parent=meta_style, fontName="Helvetica-Bold", fontSize=11, textColor=c_navy)),
+            Paragraph("<b>Rs. 78,910 INR</b>", ParagraphStyle("TotalVal2", parent=meta_style, fontName="Helvetica-Bold", fontSize=11, textColor=c_maroon)),
         ],
     ]
     t_quote = Table(quotation_data, colWidths=[2.6 * inch, 2.2 * inch, 2.2 * inch])

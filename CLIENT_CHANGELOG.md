@@ -2,6 +2,41 @@
 
 All notable changes, architectural updates, and releases for **SK Sutras - by Shri Shripad Kulkarni** are documented in this client-facing log.
 
+## [v0.2.8-beta] - 2026-10-23
+
+### Executive Summary of Changes
+Executed client-requested commercial presentation refinement across the official **Project Proposal & Commercial Quotation** for **Shri Shripad Kulkarni**:
+1. **Exclusive Indian Rupee (INR) Denomination**:
+   - Completely removed all US Dollar figures in parentheses (e.g. `(approx. $215 USD)`, `(approx. $329 USD)`, `(approx. $544 USD)`, `(approx. $535 USD)`, `(approx. $404 USD)`, and `(approx. $939 USD)`) across all proposal surfaces.
+   - Retained all authoritative INR figures completely intact:
+     - **Option 1**: Rs. 18,000 INR (AI Compute) + Rs. 27,678 INR (Hiranyam AI Development & Service) = **Rs. 45,678 INR Total**.
+     - **Option 2**: Rs. 45,000 INR (AI Compute) + Rs. 33,910 INR (Hiranyam AI Development & Service) = **Rs. 78,910 INR Total**.
+2. **Multi-Format Synchronization**:
+   - Synchronized change across all proposal deliverables: PDF (`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf`, `docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_v2.pdf`, `docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_REVISED.pdf`), Word (`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx`), and Markdown (`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.md`).
+
+### Direct Client/User Benefits & Features Added
+* **Streamlined Domestic Commercial Quotation**: Eliminates secondary currency conversions and foreign exchange references, presenting a focused, purely domestic INR quotation for the author.
+
+### Issues/Defects Resolved
+* Removed all bracketed US Dollar amounts across narrative bullet points and quotation tables.
+
+### Data/Knowledge Base Updates
+* Regenerated PDF proposals: [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf), [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_v2.pdf`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_v2.pdf), [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_REVISED.pdf`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_REVISED.pdf).
+* Regenerated Word proposal: [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx).
+* Updated markdown proposal: [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.md`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.md).
+* Updated build script: [`scripts/generate_proposal_docs.py`](scripts/generate_proposal_docs.py).
+
+### Validation & Test Results
+* Confirmed 0 occurrences of "USD" or "$" across the generated proposal documents.
+* Automated QA suite passed (19/19 tests passing).
+
+### Deployment Details
+* **Environment**: Version Control Repository & Documentation Suite.
+* **Target Documentation**: [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf), [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx).
+* **Release Status**: Committed & Pushed to Remote Repository (`origin main`).
+
+---
+
 ## [v0.2.7-beta] - 2026-10-23
 
 ### Executive Summary of Changes

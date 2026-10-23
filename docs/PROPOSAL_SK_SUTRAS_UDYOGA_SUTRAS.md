@@ -95,9 +95,9 @@ To provide clear choices in capabilities and budget, we offer two distinct solut
   - ChatGPT handles the active question-and-answer dialogue between the two books with speed and clarity.
   - The **Sutrakar Master Coordinator is powered by Google Gemini** because Google Gemini has an enormous memory (up to 2,000,000 words at once). This allows the master coordinator to keep the entire book in mind continuously, ensuring that no explanation is ever repeated and that all Vedic references are carefully checked.
 - **Commercial Investment (Option 1):**
-  - AI Cloud Compute & Model Infrastructure (50 full cycles): **Rs. 18,000 INR** (approx. $215 USD)
-  - Hiranyam AI Development and Service Fee: **Rs. 27,678 INR** (approx. $329 USD)
-  - **Total Proposed Investment (Option 1): Rs. 45,678 INR** (approx. $544 USD)
+  - AI Cloud Compute & Model Infrastructure (50 full cycles): **Rs. 18,000 INR**
+  - Hiranyam AI Development and Service Fee: **Rs. 27,678 INR**
+  - **Total Proposed Investment (Option 1): Rs. 45,678 INR**
 
 ---
 
@@ -112,9 +112,9 @@ To provide clear choices in capabilities and budget, we offer two distinct solut
   - **Authentic Classical Marathi:** Writes dignified, classical Marathi commentary (Bhavartha) naturally, without unnatural English-sounding phrasing.
   - **Unified Memory Across 50 Full Cycles:** All three specialists share the exact same brain architecture, allowing completely seamless coordination across 50 full cycles of re-running and fine-tuning.
 - **Commercial Investment (Option 2):**
-  - AI Cloud Compute, Deep Caching, High-Reasoning & Infrastructure: **Rs. 45,000 INR** (approx. $535 USD)
-  - Hiranyam AI Development and Service Fee: **Rs. 33,910 INR** (approx. $404 USD)
-  - **Total Proposed Investment (Option 2): Rs. 78,910 INR** (approx. $939 USD)
+  - AI Cloud Compute, Deep Caching, High-Reasoning & Infrastructure: **Rs. 45,000 INR**
+  - Hiranyam AI Development and Service Fee: **Rs. 33,910 INR**
+  - **Total Proposed Investment (Option 2): Rs. 78,910 INR**
 
 ---
 
@@ -154,11 +154,11 @@ Our development and service fees cover the complete technical software engineeri
 
 | Cost Component | Option 1: Hybrid Solution<br/>(ChatGPT + Gemini Sutrakar) | Option 2: Gemini Specialized<br/>(All Agents on Google Gemini) |
 | :--- | :---: | :---: |
-| **Autonomous AI Cloud Compute & Infrastructure**<br/>*(50 full canon passes, multi-million token volume, database hosting)* | **Rs. 18,000 INR**<br/>($215 USD approx.) | **Rs. 45,000 INR**<br/>($535 USD approx.) |
-| **Hiranyam AI Development and Service Fee**<br/>*(Software engineering, portal, pre-proofreading PDFs, up to 50 revisions)* | **Rs. 27,678 INR**<br/>($329 USD approx.) | **Rs. 33,910 INR**<br/>($404 USD approx.) |
+| **Autonomous AI Cloud Compute & Infrastructure**<br/>*(50 full canon passes, multi-million token volume, database hosting)* | **Rs. 18,000 INR** | **Rs. 45,000 INR** |
+| **Hiranyam AI Development and Service Fee**<br/>*(Software engineering, portal, pre-proofreading PDFs, up to 50 revisions)* | **Rs. 27,678 INR** | **Rs. 33,910 INR** |
 | **Original Sanskrit Shloka Formulation** | Standard Synthesis | **Included (Original Sanskrit Shlokas)** |
 | **Pre-Proofreading PDF Deliveries & 50 Revisions** | Included till Master Delivery | Included till Master Delivery |
-| **TOTAL PROPOSED INVESTMENT** | **Rs. 45,678 INR**<br/>($544 USD) | **Rs. 78,910 INR**<br/>($939 USD) |
+| **TOTAL PROPOSED INVESTMENT** | **Rs. 45,678 INR** | **Rs. 78,910 INR** |
 
 *Note: Proofreading, physical printing, bookbinding, and formal publishing will be arranged independently by the client. Hiranyam AI Labs delivers the finalized master digital PDF ready for printing upon completion of revisions.*
 
