@@ -21,7 +21,7 @@ Through an autonomous, dialectic team of **three specialized AI agents**, these 
 
 ---
 
-### 2. How the Three Dedicated Book Specialists Work Together
+### 2. How the Three Dedicated Book Specialists AI Agents Work Together
 
 Instead of relying on a single AI that attempts to handle everything at once, our system divides the work between three specialized digital scholars. Each book has its own dedicated specialist agent, and a third coordinator oversees the entire conversation to ensure deep authenticity and zero duplicate matches:
 

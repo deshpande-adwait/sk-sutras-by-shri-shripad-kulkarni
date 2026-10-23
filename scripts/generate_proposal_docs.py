@@ -269,9 +269,9 @@ def build_pdf_proposal(output_pdf_path: Path):
     story.append(Spacer(1, 8))
 
     # --------------------------------------------------------------------------
-    # 2. How the Three Dedicated Book Specialists Work Together
+    # 2. How the Three Dedicated Book Specialists AI Agents Work Together
     # --------------------------------------------------------------------------
-    story.append(Paragraph("2. How the Three Dedicated Book Specialists Work Together", h1_style))
+    story.append(Paragraph("2. How the Three Dedicated Book Specialists AI Agents Work Together", h1_style))
     story.append(Paragraph(
         "Instead of relying on a single AI that tries to do everything at once, our system divides the work between three specialized digital scholars. "
         "Each book has its own dedicated specialist agent, and a third coordinator oversees the entire conversation to ensure deep authenticity and zero duplicate matches:",
@@ -363,13 +363,15 @@ def build_pdf_proposal(output_pdf_path: Path):
         ('LEFTPADDING', (0, 0), (-1, -1), 10),
         ('RIGHTPADDING', (0, 0), (-1, -1), 10),
     ]))
-    story.append(t_opt1)
-    story.append(Spacer(1, 12))
+    story.append(KeepTogether(t_opt1))
 
-    # Option 2 Callout Box
+    # Dedicated PageBreak for Option 2 Box to ensure it sits cleanly on its own separate page
+    story.append(PageBreak())
+
+    # Option 2 Callout Box (Consistently styled in Blue c_navy, exactly matching Option 1)
     opt2_box_data = [
         [
-            Paragraph("<b>OPTION 2: Dedicated Google Gemini Vedic Specialist Solution (Recommended)</b>", ParagraphStyle("Opt2Title", parent=h2_style, textColor=c_maroon, spaceBefore=0)),
+            Paragraph("<b>OPTION 2: Dedicated Google Gemini Vedic Specialist Solution (Recommended)</b>", ParagraphStyle("Opt2Title", parent=h2_style, textColor=c_navy, spaceBefore=0)),
         ],
         [
             Paragraph(
@@ -393,14 +395,14 @@ def build_pdf_proposal(output_pdf_path: Path):
     ]
     t_opt2 = Table(opt2_box_data, colWidths=[7.0 * inch])
     t_opt2.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor("#FDF9F5")),
-        ('BOX', (0, 0), (-1, -1), 2, c_maroon),
+        ('BACKGROUND', (0, 0), (-1, -1), c_card_bg),
+        ('BOX', (0, 0), (-1, -1), 1.5, c_navy),  # Blue border matching Option 1
         ('TOPPADDING', (0, 0), (-1, -1), 8),
         ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
         ('LEFTPADDING', (0, 0), (-1, -1), 10),
         ('RIGHTPADDING', (0, 0), (-1, -1), 10),
     ]))
-    story.append(t_opt2)
+    story.append(KeepTogether(t_opt2))
     story.append(Spacer(1, 14))
 
     # --------------------------------------------------------------------------
@@ -670,7 +672,7 @@ def build_docx_proposal(output_docx_path: Path):
     )
 
     # Section 2
-    doc.add_heading("2. How the Three Dedicated Book Specialists Work Together", level=1)
+    doc.add_heading("2. How the Three Dedicated Book Specialists AI Agents Work Together", level=1)
     doc.add_paragraph(
         "1. Narada Bhakti Sutra Specialist Agent: Represents Devarshi Narada's experiential devotional school (84 sutras).\n"
         "2. Shandilya Bhakti Sutra Specialist Agent: Represents Maharshi Shandilya's epistemological, rational school (100 sutras in ChromaDB).\n"
@@ -746,37 +748,108 @@ def build_docx_proposal(output_docx_path: Path):
     print(f"[+] Successfully generated Proposal DOCX at: {output_docx_path.resolve()}")
 
 
+def get_writable_path(target_path: Path) -> Path:
+    """
+    =============================================================================
+    FUNCTION: get_writable_path
+    =============================================================================
+    PURPOSE:
+        Resolves a safe, non-locked target file path for writing deliverables on
+        Windows systems where PDF viewers (such as Adobe Acrobat Reader) or Word
+        processors enforce exclusive write-locks on currently opened documents.
+
+    PARAMETERS:
+        target_path (Path): Desired target file path.
+
+    RETURNS:
+        Path: A path guaranteed or tested to be available for write access. If the
+              base path is locked, it systematically tests fallback variations
+              (_REVISED, _v2, _v3, etc.) until an unlocked filename is secured.
+
+    MANUAL DEBUGGING NOTES:
+        If Adobe Acrobat or Word locks the primary proposal file, Windows raises
+        PermissionError (Errno 13). This function prevents build crashes by
+        gracefully redirecting the output to a versioned path while alerting the user.
+    =============================================================================
+    """
+    if not target_path.exists():
+        return target_path
+
+    # Probe primary path with append mode
+    try:
+        with open(target_path, "a+"):
+            pass
+        return target_path
+    except PermissionError:
+        pass
+
+    parent = target_path.parent
+    stem = target_path.stem
+    ext = target_path.suffix
+
+    # Probe _REVISED path
+    revised = parent / f"{stem}_REVISED{ext}"
+    try:
+        if not revised.exists():
+            return revised
+        with open(revised, "a+"):
+            pass
+        return revised
+    except PermissionError:
+        pass
+
+    # Probe versioned increments: _v2, _v3, _v4...
+    counter = 2
+    while True:
+        candidate = parent / f"{stem}_v{counter}{ext}"
+        try:
+            if not candidate.exists():
+                return candidate
+            with open(candidate, "a+"):
+                pass
+            return candidate
+        except PermissionError:
+            counter += 1
+
+
 def main():
+    """
+    =============================================================================
+    ROUTINE: main
+    =============================================================================
+    PURPOSE:
+        Orchestrates the generation of client proposal documents in both PDF and
+        Word (.docx) formats, complete with dynamic path probing for file-lock
+        resilience on Windows.
+    =============================================================================
+    """
     print("=" * 80)
     print(" HIRANYAM AI LABS: GENERATING REVISED PROPOSAL & QUOTATION")
     print(" Client: Shri Shripad Kulkarni | Project: SK Sutras (Udyoga Sutras)")
     print("=" * 80)
 
-    pdf_path = DOCS_DIR / "PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf"
-    pdf_fallback = DOCS_DIR / "PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_REVISED.pdf"
-    docx_path = DOCS_DIR / "PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx"
-    docx_fallback = DOCS_DIR / "PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_REVISED.docx"
+    base_pdf = DOCS_DIR / "PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.pdf"
+    base_docx = DOCS_DIR / "PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx"
 
-    # PDF Build
-    try:
-        build_pdf_proposal(pdf_path)
-    except PermissionError:
-        print(f"[!] '{pdf_path.name}' is currently open in Adobe Acrobat / PDF viewer.")
-        print(f"[*] Generating revised copy to '{pdf_fallback.name}' instead...")
-        build_pdf_proposal(pdf_fallback)
+    pdf_out = get_writable_path(base_pdf)
+    docx_out = get_writable_path(base_docx)
 
-    # DOCX Build
-    try:
-        build_docx_proposal(docx_path)
-    except PermissionError:
-        print(f"[!] '{docx_path.name}' is currently open in Word. Generating fallback copy...")
-        build_docx_proposal(docx_fallback)
+    if pdf_out != base_pdf:
+        print(f"[!] Primary PDF '{base_pdf.name}' is locked by a viewer. Writing to: '{pdf_out.name}'")
+    if docx_out != base_docx:
+        print(f"[!] Primary DOCX '{base_docx.name}' is locked. Writing to: '{docx_out.name}'")
+
+    build_pdf_proposal(pdf_out)
+    build_docx_proposal(docx_out)
 
     print("=" * 80)
     print(" REVISED PROPOSAL GENERATION COMPLETE!")
+    print(f" PDF Deliverable:  {pdf_out.resolve()}")
+    print(f" DOCX Deliverable: {docx_out.resolve()}")
     print("=" * 80)
 
 
 if __name__ == "__main__":
     main()
+
 

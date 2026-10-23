@@ -2,6 +2,49 @@
 
 All notable changes, architectural updates, and releases for **SK Sutras - by Shri Shripad Kulkarni** are documented in this client-facing log.
 
+## [v0.2.7-beta] - 2026-10-23
+
+### Executive Summary of Changes
+Delivered client feedback corrections and formatting enhancements to the official **Project Proposal & Commercial Quotation** for **Shri Shripad Kulkarni**:
+1. **Option 2 Callout Box Dedicated Page Placement & Page-Break Protection**:
+   - Diagnosed and resolved the visual split where the Option 2 callout header appeared at the bottom of Page 2 while its content fell onto Page 3.
+   - Inserted an explicit `PageBreak()` prior to Option 2 and wrapped the table in ReportLab's `KeepTogether(t_opt2)` to ensure the entire Option 2 callout box renders as a unified, indivisible card on its own dedicated page.
+2. **Visual Consistency (Blue Theme for Option 2)**:
+   - Aligned Option 2 styling with Option 1: updated the box border (1.5pt solid `#0B5394` / `c_navy`) and title color to the same authoritative navy blue, replacing the maroon accent.
+3. **Section 2 Title Refinement**:
+   - Updated the Section 2 title across the PDF, Word (.docx), and Markdown documentation to:
+     **"2. How the Three Dedicated Book Specialists AI Agents Work Together"**.
+4. **Dynamic Windows File-Locking Resilience (`get_writable_path`)**:
+   - Added automated non-blocking path probing in `scripts/generate_proposal_docs.py` (`get_writable_path`) to smoothly detect whether earlier proposal files are open in Adobe Acrobat or Word, automatically routing output to a clean versioned deliverable ([`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_v2.pdf`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_v2.pdf)) without failing or requiring process termination.
+
+### Direct Client/User Benefits & Features Added
+* **Uncompromised Document Presentation**: Option 2 is now presented prominently on its own dedicated page with a uniform blue design, eliminating unsightly table breaks across pages.
+* **Refined Layman AI Terminology**: Explicit mention of "AI Agents" in the Section 2 title provides clear, unambiguous context for non-technical leadership.
+* **Viewer Concurrency**: The author and stakeholders can keep existing proposal PDFs open in Adobe Acrobat without blocking subsequent automated regenerations.
+
+### Issues/Defects Resolved
+* Fixed orphaned Option 2 header and broken callout box split across pages.
+* Harmonized Option 2 border and title color from maroon to navy blue matching Option 1.
+* Fixed `PermissionError` on Windows when overwriting active viewer files.
+
+### Data/Knowledge Base Updates
+* Generated [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_v2.pdf`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_v2.pdf).
+* Regenerated [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx).
+* Updated [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.md`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.md).
+* Updated generator script [`scripts/generate_proposal_docs.py`](scripts/generate_proposal_docs.py).
+
+### Validation & Test Results
+* Verified PDF page layout: 7 full pages, Option 2 on a dedicated page with unified blue border and header.
+* Validated DOCX formatting and metadata table integrity.
+* Executed complete automated test suite (`pytest tests/ -v`): 19/19 tests passing (100% green).
+
+### Deployment Details
+* **Environment**: Version Control Repository & Documentation Suite.
+* **Target Documentation**: [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_v2.pdf`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS_v2.pdf), [`docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx`](docs/PROPOSAL_SK_SUTRAS_UDYOGA_SUTRAS.docx).
+* **Release Status**: Committed & Pushed to Remote Repository (`origin main`).
+
+---
+
 ## [v0.2.6-beta] - 2026-10-23
 
 ### Executive Summary of Changes
