@@ -348,6 +348,7 @@ class ManuscriptPDFGenerator:
 
     <div class="footer-branding">
         Powered by <a href="https://hiranyamai.com/" target="_blank" rel="noopener noreferrer">Hiranyam AI Labs</a>
+        <div style="font-size: 8pt; color: #777; margin-top: 8px;">Proprietory and Confidential- Hiranyam AI Labs</div>
     </div>
 </body>
 </html>"""

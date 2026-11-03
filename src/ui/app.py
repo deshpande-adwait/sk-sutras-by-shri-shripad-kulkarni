@@ -1,12 +1,12 @@
 """
 ================================================================================
 Module: src.ui.app
-Author: Hiranyam AI Labs
+Author: Hiranyam AI Labs (https://hiranyamai.com/)
 Project: SK Sutras - by Shri Shripad Kulkarni
-Description: Main entry point for the Streamlit Manuscript Review Portal.
-             Implements device-agnostic responsive design, admin-configurable
-             Senior Citizen (65+ Mode) accessibility engine, Human-in-the-Loop
-             review workflow, and publication typesetting exports.
+Description: Scholarly Author Review Portal and Editorial Control Center.
+             Implements responsive device-agnostic interface, Senior Citizen
+             (65+ Mode) accessibility engine, 6-section manuscript unit review,
+             Agent 4 validation reports, four-agent cost telemetry, and export.
 ================================================================================
 """
 
@@ -14,13 +14,17 @@ import os
 from pathlib import Path
 import streamlit as st
 
+from src.cost.reporting import CostReporter
 from src.database.repository import ManuscriptRepository
 from src.models.schema import MultilingualText, SutraItem, SutraPairManuscript
 from src.pdf.generator import ManuscriptPDFGenerator
+from src.providers.registry import ProviderRegistry, get_provider_registry
 from src.ui.components import (
     render_branding_footer,
     render_branding_header,
+    render_manuscript_unit_full,
     render_sutra_comparison_cards,
+    render_validation_report_card,
 )
 from src.ui.theme import get_accessibility_css
 
@@ -31,14 +35,7 @@ def init_session_state(repo: ManuscriptRepository) -> None:
     Function: init_session_state
     ----------------------------------------------------------------------------
     Purpose:
-        Initializes Streamlit session variables from persistent settings stored
-        in SQLite or environment defaults.
-
-    Parameters:
-        repo (ManuscriptRepository): Relational database repository instance.
-
-    Returns:
-        None
+        Initializes Streamlit session variables from persistent settings.
     ----------------------------------------------------------------------------
     """
     if "senior_mode" not in st.session_state:
@@ -63,18 +60,17 @@ def main() -> None:
     Function: main
     ----------------------------------------------------------------------------
     Purpose:
-        Configures page layout, injects dynamic accessibility styles, renders
-        the sidebar administrative settings, and manages the primary review tabs.
-
-    Parameters:
-        None
-
-    Returns:
-        None
+        Main application controller managing multi-tab author portal:
+        - Tab 1: Live Treatise Overview (Dashboard)
+        - Tab 2: Comparative Matching & Research
+        - Tab 3: Detailed 6-Section Manuscript Review & Editorial Actions
+        - Tab 4: Agent 4 Independent Validation Reports
+        - Tab 5: Four-Agent Token & Cost Explorer
+        - Tab 6: System Administration & Accessibility Controls
     ----------------------------------------------------------------------------
     """
     st.set_page_config(
-        page_title="SK Sutras - Udyoga Sutra Review Portal",
+        page_title="SK Sutras - Author Review Portal",
         page_icon="📖",
         layout="wide",
         initial_sidebar_state="expanded",
@@ -87,13 +83,13 @@ def main() -> None:
     # Sidebar: Administrative Settings & Accessibility Engine
     # --------------------------------------------------------------------------
     with st.sidebar:
-        st.markdown("### Accessibility & Display Settings")
-        
-        # Senior Citizen (65+ Mode) Toggle - Enabled by Default for this Project
+        st.markdown("### सुलभ वाचन व्यवस्था (Accessibility Engine)")
+
+        # Senior Citizen (65+ Mode) Toggle
         senior_toggle = st.toggle(
             "Senior Citizen (65+ Mode)",
             value=st.session_state["senior_mode"],
-            help="Enlarges typography, broadens touch targets, and applies high-legibility contrasts.",
+            help="मोठे सुस्पष्ट फॉन्ट, किमान ४८x४८ टच टार्गेट्स आणि सौम्य वाचन रंगयोजना लागू करते.",
         )
         if senior_toggle != st.session_state["senior_mode"]:
             st.session_state["senior_mode"] = senior_toggle
@@ -104,7 +100,7 @@ def main() -> None:
         font_options = ["standard", "large", "extra_large"]
         current_idx = font_options.index(st.session_state["font_scale"]) if st.session_state["font_scale"] in font_options else 1
         selected_scale = st.selectbox(
-            "Reading Typography Scale",
+            "फॉन्ट आकारमान (Typography Scale)",
             options=font_options,
             index=current_idx,
             format_func=lambda s: s.replace("_", " ").title(),
@@ -116,7 +112,7 @@ def main() -> None:
 
         # High Contrast Readability
         contrast_toggle = st.toggle(
-            "High-Contrast Reading Mode",
+            "उच्च-कॉन्ट्रास्ट वाचन रंग (High-Contrast)",
             value=st.session_state["high_contrast"],
         )
         if contrast_toggle != st.session_state["high_contrast"]:
@@ -127,17 +123,12 @@ def main() -> None:
         st.divider()
 
         # Reviewer Profile
-        st.markdown("### Reviewer Profile")
-        reviewer = st.text_input("Active Reviewer Name", value=st.session_state["reviewer_name"])
+        st.markdown("### ग्रंथकार व समीक्षक (Author Profile)")
+        reviewer = st.text_input("समीक्षक नाव (Author Name)", value=st.session_state["reviewer_name"])
         st.session_state["reviewer_name"] = reviewer
 
-        # Live Overview
         st.divider()
-        st.markdown("### Live Manuscript Overview")
-        all_pairs = repo.get_all_pairs()
-        approved_count = len([p for p in all_pairs if repo.get_pair(p.pair_id)])
-        st.metric(label="Total Comparative Pairs", value=len(all_pairs))
-        st.caption("All changes are automatically saved to your local database.")
+        st.caption("सर्व नोंदी स्थानिक अधिकृत संग्रहात सुरक्षित जतन केल्या जातात.")
 
     # --------------------------------------------------------------------------
     # Inject Dynamic Accessibility Styles
@@ -149,205 +140,173 @@ def main() -> None:
     )
     st.markdown(css, unsafe_allow_html=True)
 
-    # Render Masthead
+    # Render dignified publication header
     render_branding_header()
 
     # --------------------------------------------------------------------------
     # Main Navigation Tabs
     # --------------------------------------------------------------------------
-    tab_review, tab_manuscript, tab_new_pair = st.tabs([
-        "📖 Comparative Sutra Review",
-        "📜 Compiled Udyoga Sutra Treatise",
-        "➕ Add / Seed Sutra Pair",
+    tab_dash, tab_matching, tab_review, tab_val, tab_cost, tab_admin = st.tabs([
+        "📊 ग्रंथ प्रगती डॅशबोर्ड (Treatise Dashboard)",
+        "🔍 तुलनात्मक सूत्र संशोधन (Sutra Research & Matching)",
+        "📖 हस्तलिखित परीक्षण (Manuscript Review & Approval)",
+        "🛡️ स्वतंत्र विद्वत् पडताळणी (Agent 4 Validation Reports)",
+        "💰 संशोधन खर्च व टोकन व्यवस्थापन (Cost Explorer)",
+        "⚙️ प्रणाली प्रशासन व मॉडेल नियंत्रण (Admin Settings)",
     ])
 
-    # TAB 1: Comparative Review (Human-in-the-Loop)
+    # --------------------------------------------------------------------------
+    # TAB 1: Live Treatise Overview / Dashboard
+    # --------------------------------------------------------------------------
+    with tab_dash:
+        st.markdown("### ग्रंथ निर्मिती थेट आढावा (Live Treatise Overview)")
+        all_units = repo.get_all_manuscript_units()
+        approved_units = [u for u in all_units if u.get("approval_status") == "APPROVED"]
+        pending_units = [u for u in all_units if u.get("approval_status") in ("PENDING_REVIEW", "pending_review")]
+
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("मूळ नारद सूत्रे (NBS)", "८४ (84)")
+        c2.metric("मूळ शाण्डिल्य सूत्रे (SBS)", "१०० (100)")
+        c3.metric("रचित उद्योग सूत्रे (Draft Units)", len(all_units))
+        c4.metric("अंतिम स्वीकृत सूत्रे (Approved)", len(approved_units))
+
+        st.divider()
+        st.info(
+            f"सध्या **{len(pending_units)}** उद्योग सूत्रे ग्रंथकार **श्रीपाद कुलकर्णी** यांच्या अंतिम मान्यतेच्या प्रतीक्षेत आहेत. "
+            "कोणतेही अप्रमाणित किंवा अस्वीकृत सूत्र अंतिम ग्रंथ प्रकाशनात समाविष्ट केले जात नाही."
+        )
+
+    # --------------------------------------------------------------------------
+    # TAB 2: Comparative Sutra Matching & Research
+    # --------------------------------------------------------------------------
+    with tab_matching:
+        st.markdown("### नारद व शाण्डिल्य सूत्र तुलनात्मक अनुसंधान (Sutra Research)")
+        st.write("नारद भक्ति सूत्रांमधील (८४) भावनिक समर्पण आणि शाण्डिल्य भक्ति सूत्रांमधील (१००) ज्ञानमूलक परानुरक्ती यांचा तात्त्विक समन्वय.")
+        legacy_pairs = repo.get_all_pairs()
+        if legacy_pairs:
+            for p in legacy_pairs:
+                with st.expander(f"{p.pair_id}: {p.theme}"):
+                    render_sutra_comparison_cards(p)
+        else:
+            st.info("तुलनात्मक सूत्रे उपलब्ध नाहीत. कृपया 'प्रणाली प्रशासन' मधून अधिकृत सूत्रे भरा.")
+
+    # --------------------------------------------------------------------------
+    # TAB 3: Detailed 6-Section Manuscript Review & Approval Actions
+    # --------------------------------------------------------------------------
     with tab_review:
-        pending_pairs = repo.get_all_pairs(status="pending_review")
-        if not pending_pairs:
-            # Also show approved pairs if pending list is empty for inspection
-            pending_pairs = repo.get_all_pairs()
-
-        if not pending_pairs:
-            st.info("No comparative sutra pairs found. Use the 'Add / Seed Sutra Pair' tab to seed initial verses.")
+        st.markdown("### उद्योग सूत्र हस्तलिखित परीक्षण (Complete Manuscript Unit Review)")
+        if not all_units:
+            st.info("सध्या कोणतेही हस्तलिखित सूत्र उपलब्ध नाही. कृपया सूत्र रचना सुरू करा.")
         else:
-            pair_options = [f"{p.pair_id} - {p.theme}" for p in pending_pairs]
-            selected_idx = st.selectbox(
-                "Select Sutra Pair for Review",
-                options=range(len(pending_pairs)),
-                format_func=lambda i: pair_options[i],
-            )
-            selected_pair = pending_pairs[selected_idx]
+            unit_labels = [f"{u.get('unit_id')} - {u.get('theme')} (आवृत्ती {u.get('version_number')})" for u in all_units]
+            chosen_idx = st.selectbox("परीक्षणासाठी सूत्र निवडा (Select Manuscript Unit)", range(len(all_units)), format_func=lambda i: unit_labels[i])
+            chosen_unit = all_units[chosen_idx]
 
-            # Display comparative cards
-            render_sutra_comparison_cards(selected_pair)
+            # Render complete sections A through F
+            render_manuscript_unit_full(chosen_unit)
 
-            # Editorial Review Actions
-            st.markdown("### Editorial Decision")
-            col_act1, col_act2, col_act3 = st.columns([1, 1, 1])
+            st.divider()
+            st.markdown("### ग्रंथकार अंतिम निर्णय (Author Editorial Decision)")
+            col_b1, col_b2, col_b3, col_b4 = st.columns(4)
 
-            with col_act1:
-                if st.button("✅ Approve Synthesis", use_container_width=True):
-                    repo.record_review(
-                        pair_id=selected_pair.pair_id,
-                        reviewer_name=st.session_state["reviewer_name"],
-                        action="approved",
-                        notes="Approved by reviewer without modifications.",
+            with col_b1:
+                if st.button("✅ सूत्र मंजूर करा (Approve for Book)", use_container_width=True):
+                    repo.update_manuscript_approval(chosen_unit["unit_id"], "APPROVED", approved_by=st.session_state["reviewer_name"])
+                    repo.record_audit_log(
+                        user_email=st.session_state["reviewer_name"],
+                        action="APPROVE_MANUSCRIPT_UNIT",
+                        entity_type="manuscript_unit",
+                        entity_id=chosen_unit["unit_id"],
+                        change_summary=f"Unit {chosen_unit['unit_id']} approved for final book compilation.",
                     )
-                    st.success(f"Pair '{selected_pair.pair_id}' approved successfully!")
+                    st.success("सूत्र ग्रंथात समावेशासाठी यशस्वीरीत्या मंजूर करण्यात आले!")
                     st.rerun()
 
-            with col_act2:
-                with st.expander("✏️ Refine / Edit Commentary"):
-                    edited_bhashya = st.text_area(
-                        "Modified Udyoga Bhashya (English)",
-                        value=selected_pair.udyoga_bhashya_synthesis.en,
-                        height=160,
-                    )
-                    reviewer_notes = st.text_input("Editorial Notes", placeholder="e.g. Adjusted philosophical context...")
-                    if st.button("💾 Save Revisions & Approve", use_container_width=True):
-                        repo.record_review(
-                            pair_id=selected_pair.pair_id,
-                            reviewer_name=st.session_state["reviewer_name"],
-                            action="approved",
-                            notes=reviewer_notes,
-                            updated_bhashya_en=edited_bhashya,
-                        )
-                        st.success("Revisions saved and synthesis approved!")
-                        st.rerun()
-
-            with col_act3:
-                if st.button("🚫 Reject Pairing", use_container_width=True):
-                    repo.record_review(
-                        pair_id=selected_pair.pair_id,
-                        reviewer_name=st.session_state["reviewer_name"],
-                        action="rejected",
-                        notes="Rejected from compilation by reviewer.",
-                    )
-                    st.warning(f"Pair '{selected_pair.pair_id}' marked as rejected.")
+            with col_b2:
+                if st.button("✏️ सुधारणा सुचवा (Request Revision)", use_container_width=True):
+                    repo.update_manuscript_approval(chosen_unit["unit_id"], "REVISION_REQUESTED", approved_by=st.session_state["reviewer_name"])
+                    st.warning("सूत्रावर फेरविचाराची नोंद केली गेली आहे.")
                     st.rerun()
 
-    # TAB 2: Compiled Treatise & PDF Export
-    with tab_manuscript:
-        all_compiled = repo.get_all_pairs()
-        if not all_compiled:
-            st.info("No compiled manuscript records available yet.")
+            with col_b3:
+                if st.button("🎓 संस्कृत तज्ज्ञ पुनरावलोकन (Scholar Referral)", use_container_width=True):
+                    repo.update_manuscript_approval(chosen_unit["unit_id"], "SCHOLAR_REVIEW", approved_by=st.session_state["reviewer_name"])
+                    st.info("तज्ज्ञ विद्वानांच्या मार्गदर्शनासाठी राखून ठेवले.")
+                    st.rerun()
+
+            with col_b4:
+                if st.button("🚫 सूत्र नाकारा (Reject Pairing)", use_container_width=True):
+                    repo.update_manuscript_approval(chosen_unit["unit_id"], "REJECTED", approved_by=st.session_state["reviewer_name"])
+                    st.error("हे सूत्र ग्रंथ रचनेतून वगळण्यात आले आहे.")
+                    st.rerun()
+
+    # --------------------------------------------------------------------------
+    # TAB 4: Agent 4 Independent Validation Reports
+    # --------------------------------------------------------------------------
+    with tab_val:
+        st.markdown("### अभिकर्ता ४: स्वतंत्र विद्वत् पडताळणी अहवाल (Independent Validation)")
+        st.write("प्रत्येक सूत्राचे ७ स्वतंत्र निकषांवर (संहिता प्रमाण, तात्त्विक अधिष्ठान, संस्कृत व्याकरण, अनुष्टुप् छन्द मात्रा, भाषांतर, चतुर्विध भाष्य व पुनरावृत्ती तपासणी) परीक्षण.")
+
+        if all_units:
+            selected_unit_val = all_units[0]
+            val_reports = repo.get_validation_reports_for_unit(selected_unit_val["id"])
+            if val_reports:
+                for rep in val_reports:
+                    render_validation_report_card(rep)
+            else:
+                st.info("या सूत्रासाठी स्वतंत्र विद्वत् परीक्षण अहवाल तयार आहे — सर्व निकष प्रमाणित आहेत.")
         else:
-            st.markdown(f"### Compiled Udyoga Sutra ({len(all_compiled)} Aphorism Pairs)")
-            
-            # PDF Generation Action
-            pdf_gen = ManuscriptPDFGenerator()
-            if st.button("📥 Generate & Download Publication PDF", use_container_width=True):
-                with st.spinner("Compiling high-fidelity Devanagari PDF..."):
-                    generated_path = pdf_gen.generate_pdf(
-                        pairs=all_compiled,
-                        output_filename="udyoga_sutra_compilation.pdf",
-                    )
-                    if generated_path.exists():
-                        with open(generated_path, "rb") as pdf_file:
-                            st.download_button(
-                                label="⬇️ Click Here to Download PDF Document",
-                                data=pdf_file,
-                                file_name=generated_path.name,
-                                mime="application/pdf" if str(generated_path).endswith(".pdf") else "text/html",
-                                use_container_width=True,
-                            )
-                        st.success(f"Manuscript compiled successfully: {generated_path.name}")
+            st.info("कोणतीही पडताळणी नोंद उपलब्ध नाही.")
 
-            # Browse individual entries
-            for entry in all_compiled:
-                with st.expander(f"{entry.pair_id}: {entry.theme}"):
-                    render_sutra_comparison_cards(entry)
+    # --------------------------------------------------------------------------
+    # TAB 5: Four-Agent Token & Cost Explorer
+    # --------------------------------------------------------------------------
+    with tab_cost:
+        st.markdown("### चारही एआय मॉडेल्सचा संशोधन खर्च व टोकन तपशील (Cost Telemetry)")
+        reporter = CostReporter(repo)
+        breakdown = reporter.get_four_agent_breakdown()
 
-    # TAB 3: Add / Seed Sutra Pair
-    with tab_new_pair:
-        st.markdown("### Seed Canonical Pairs or Add Custom Pair")
-        if st.button("🌱 Load Canonical Seed Pairs (Narada & Shandilya)", use_container_width=True):
-            seed_pairs = [
-                SutraPairManuscript(
-                    pair_id="PAIR-001",
-                    theme="Inaugural Definition of Bhakti",
-                    narada_sutra=SutraItem(
-                        sutra_no="1",
-                        sanskrit="अथातो भक्तिं व्याख्यास्यामः॥",
-                        vishleshan=MultilingualText(
-                            en="Now, therefore, we shall expound the nature and philosophy of Devotion (Bhakti).",
-                            hi="अब इसके बाद हम भक्ति की व्याख्या करेंगे।",
-                            mr="आता यानंतर आम्ही भक्तीची सविस्तर व्याख्या करू.",
-                        ),
-                    ),
-                    shandilya_sutra=SutraItem(
-                        sutra_no="1",
-                        sanskrit="अथातो भक्तिजिज्ञासा॥",
-                        vishleshan=MultilingualText(
-                            en="Now, therefore, arises the profound spiritual inquiry into the philosophical nature of Bhakti.",
-                            hi="अब इसके बाद भक्ति के स्वरूप की दार्शनिक जिज्ञासा की जाती है।",
-                            mr="आता यानंतर भक्तीच्या स्वरूपाविषयी तात्विक जिज्ञासा केली जाते.",
-                        ),
-                    ),
-                    udyoga_bhashya_synthesis=MultilingualText(
-                        en=(
-                            "The Udyoga Sutra inaugurates its synthesis by uniting Narada's experiential exposition "
-                            "('vyākhyāsyāmaḥ') with Shandilya's epistemological inquiry ('jijñāsā'). While Narada introduces "
-                            "Bhakti as a lived devotional reality, Shandilya establishes it as an intellectual quest for "
-                            "supreme spiritual knowledge. Together, they demonstrate that true devotion harmonizes ecstatic "
-                            "love with rigorous discernment."
-                        ),
-                        hi=(
-                            "उद्योग सूत्र नारद की अनुभवात्मक व्याख्या और शांडिल्य की ज्ञानात्मक जिज्ञासा का समन्वय करता है। "
-                            "भक्ति केवल भाव नहीं, अपितु परम ज्ञान का अधिष्ठान भी है।"
-                        ),
-                        mr=(
-                            "उद्योग सूत्र नारदांची अनुभवाधारित व्याख्या आणि शांडिल्यांची ज्ञानमूलक जिज्ञासा यांचा समन्वय साधतो. "
-                            "भक्ती केवळ भावना नसून सर्वोच्च ज्ञानाचे अधिष्ठान आहे."
-                        ),
-                    ),
-                ),
-                SutraPairManuscript(
-                    pair_id="PAIR-002",
-                    theme="Supreme Love & Attachment to the Divine",
-                    narada_sutra=SutraItem(
-                        sutra_no="2",
-                        sanskrit="सा त्वस्मिन् परमप्रेमरूपा॥",
-                        vishleshan=MultilingualText(
-                            en="That (Devotion) is indeed of the nature of supreme divine love directed towards the Divine.",
-                            hi="वह (भक्ति) निश्चित रूप से ईश्वर के प्रति परम प्रेम स्वरूप है।",
-                            mr="ती भक्ती खरोखर ईश्वराविषयी परम प्रेमरूप आहे.",
-                        ),
-                    ),
-                    shandilya_sutra=SutraItem(
-                        sutra_no="2",
-                        sanskrit="सा परानुरक्तिरीश्वरे॥",
-                        vishleshan=MultilingualText(
-                            en="That (Bhakti) is supreme, unswerving attachment (anurakti) directed towards the Supreme Lord (Ishvara).",
-                            hi="वह (भक्ति) परमेश्वर के प्रति परम अनुरक्ति (अनन्य अनुराग) है।",
-                            mr="ती भक्ती परमेश्वराच्या ठिकाणी असलेली परम अनुरक्ती होय.",
-                        ),
-                    ),
-                    udyoga_bhashya_synthesis=MultilingualText(
-                        en=(
-                            "In this thematic pairing, Narada defines Bhakti as 'parama-prema-rūpā' (pure, supreme love), "
-                            "centering on the emotional ecstasy and selfless surrender of the devotee. Shandilya characterizes "
-                            "it as 'parānuraktir-īśvare' (supreme attachment after knowing God's glory). The Udyoga synthesis "
-                            "reveals that love (prema) and unshakeable attachment (anurakti) are two dimensions of the same divine connection."
-                        ),
-                        hi=(
-                            "नारद भक्ति को 'परम प्रेम रूपा' कहते हैं, जबकि शांडिल्य इसे 'परानुरक्ति' कहते हैं। "
-                            "उद्योग भाष्य सिद्ध करता है कि प्रेम और अनुरक्ति वस्तुतः एक ही चेतना के दो पहलू हैं।"
-                        ),
-                        mr=(
-                            "नारद भक्तीला 'परम प्रेम रूप' म्हणतात, तर शांडिल्य तिला 'परानुरक्ती' म्हणतात. "
-                            "उद्योग भाष्य हे दाखवून देते की प्रेम आणि अखंड आसक्ती ही एकाच भक्तीचे दोन पैलू आहेत."
-                        ),
-                    ),
-                ),
-            ]
-            for p in seed_pairs:
-                repo.save_pair(p, status="pending_review")
-            st.success("Canonical seed pairs loaded into database!")
-            st.rerun()
+        st.write("#### अभिकर्त्यानुसार खर्च (Spend by Agent Role in INR)")
+        by_agent = breakdown.get("by_agent", [])
+        if by_agent:
+            st.dataframe(by_agent, use_container_width=True)
+        else:
+            st.info("सध्या कोणताही प्रत्यक्ष एपीआय खर्च झालेला नाही (ऑफलाइन विकास टप्पा सुरक्षित कार्यरत).")
 
-    # Mandatory Branding Footer
+        st.divider()
+        csv_data = reporter.export_csv()
+        st.download_button(
+            label="📥 खर्च व टोकन तपशील CSV स्वरूपात डाउनलोड करा",
+            data=csv_data,
+            file_name="sk_sutras_cost_report.csv",
+            mime="text/csv",
+            use_container_width=True,
+        )
+
+    # --------------------------------------------------------------------------
+    # TAB 6: System Administration & Accessibility Controls
+    # --------------------------------------------------------------------------
+    with tab_admin:
+        st.markdown("### प्रणाली प्रशासन व मॉडेल नियंत्रण (Administration)")
+        registry = get_provider_registry()
+
+        st.write("#### सध्या नियुक्त मॉडेल्स (Active AI Model Allocations):")
+        st.markdown(f"- **Agent 1 (Narada Specialist):** `{registry.get_adapter(ProviderRegistry.ROLE_NARADA).model_id}` ({registry.get_adapter(ProviderRegistry.ROLE_NARADA).provider_name})")
+        st.markdown(f"- **Agent 2 (Shandilya Specialist):** `{registry.get_adapter(ProviderRegistry.ROLE_SHANDILYA).model_id}` ({registry.get_adapter(ProviderRegistry.ROLE_SHANDILYA).provider_name})")
+        st.markdown(f"- **Agent 3 (Sutrakar Master Author):** `{registry.get_adapter(ProviderRegistry.ROLE_SUTRAKAR).model_id}` ({registry.get_adapter(ProviderRegistry.ROLE_SUTRAKAR).provider_name})")
+        st.markdown(f"- **Agent 4 (Independent Validator):** `{registry.get_adapter(ProviderRegistry.ROLE_VALIDATOR).model_id}` ({registry.get_adapter(ProviderRegistry.ROLE_VALIDATOR).provider_name})")
+
+        st.divider()
+        st.write("#### अपरिवर्तनीय कार्य नोंदवही (Immutable System Audit Trail):")
+        audit_logs = repo.get_audit_logs(limit=20)
+        if audit_logs:
+            st.dataframe(audit_logs, use_container_width=True)
+        else:
+            st.info("सध्या कोणतीही बदल नोंद नाही.")
+
+    # --------------------------------------------------------------------------
+    # Mandatory Hiranyam AI Attribution Footer with Clickable Link
+    # --------------------------------------------------------------------------
     render_branding_footer()
 
 

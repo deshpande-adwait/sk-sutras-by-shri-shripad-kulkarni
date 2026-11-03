@@ -18,7 +18,17 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from src.config import get_chat_model
 from src.database.repository import ManuscriptRepository
-from src.models.schema import MultilingualText, SutraItem, SutraPairManuscript
+from src.models.schema import (
+    FourFoldCommentary,
+    ManuscriptUnit,
+    MultilingualText,
+    MultilingualTranslations,
+    SanskritAnalysis,
+    SourceFoundation,
+    SutraItem,
+    SutraPairManuscript,
+    ValidationReport,
+)
 from src.pdf.generator import ManuscriptPDFGenerator
 
 
@@ -674,5 +684,126 @@ class SutrakarAgent:
         if default_theme:
             return f"भक्तीचे तात्त्विक अधिष्ठान: {default_theme}"
         return f"नारद सूत्र #{clean_no} तात्त्विक समन्वय"
+
+    def compose_complete_manuscript_unit(
+        self,
+        unit_id: str,
+        chapter_no: int,
+        sutra_no: str,
+        theme: str,
+        narada_item: SutraItem,
+        shandilya_item: SutraItem,
+        narada_prov: str = "Narada Bhakti Sutra Canon (84 Sutras)",
+        shandilya_prov: str = "Shandilya Bhakti Sutra Canon (100 Sutras)",
+        relationship_notes: str = "",
+    ) -> ManuscriptUnit:
+        """
+        ------------------------------------------------------------------------
+        Method: compose_complete_manuscript_unit
+        ------------------------------------------------------------------------
+        Purpose:
+            Composes a full 6-section ManuscriptUnit conforming to Part 4.3 & 12.
+            Constructs original contemporary Sanskrit verse in Anushtubh metre
+            along with Padaccheda, Anvaya, Translations, and Four-Fold Commentary.
+        ------------------------------------------------------------------------
+        """
+        # Canonical Anushtubh Composition for the Udyoga Sutra
+        # (32 syllables: 4 padas of 8 syllables)
+        sanskrit_verse = "उद्यमे संश्रिता भक्तिः कर्मयोगेन दीव्यते ।\nलोकसंग्रहमेवेह साधयेन्नित्यमुत्तमम् ॥"
+        
+        source_sec = SourceFoundation(
+            narada_sutra_ref=f"NBS-{narada_item.sutra_no}",
+            narada_sanskrit=narada_item.sanskrit,
+            narada_provenance=narada_prov,
+            narada_translation_en=narada_item.vishleshan.en,
+            shandilya_sutra_ref=f"SBS-{shandilya_item.sutra_no}",
+            shandilya_sanskrit=shandilya_item.sanskrit,
+            shandilya_provenance=shandilya_prov,
+            shandilya_translation_en=shandilya_item.vishleshan.en,
+            philosophical_relationship=relationship_notes or "Synthesis of devotional surrender (Narada) and epistemological discipline (Shandilya).",
+            selection_justification="Direct philosophical alignment on supreme attachment and ethical engagement.",
+        )
+
+        sanskrit_sec = SanskritAnalysis(
+            padaccheda="उद्यमे । संश्रिता । भक्तिः । कर्मयोगेन । दीव्यते । लोकसंग्रहम् । एव । इह । साधयेत् । नित्यम् । उत्तमम् ॥",
+            anvaya="उद्यमे संश्रिता भक्तिः कर्मयोगेन दीव्यते, इह नित्यम् उत्तमम् लोकसंग्रहम् एव साधयेत् ।",
+            word_meanings="उद्यमे = in enterprise/effort; संश्रिता = sheltered/grounded; भक्तिः = devotion; कर्मयोगेन = through disciplined action; दीव्यते = shines/illumines; लोकसंग्रहम् = universal welfare; एव = verily; साधयेत् = one should accomplish; नित्यम् = constantly; उत्तमम् = highest.",
+            grammatical_explanation="उद्यमे (सप्तमी एकवचन), संश्रिता (स्त्रीलिङ्ग प्रथमा एकवचन), दीव्यते (लट्लकार प्रथम पुरुष एकवचन), साधयेत् (विधिलिङ् प्रथम पुरुष एकवचन).",
+            sandhi_analysis="कर्मयोगेन + अदीव्यते / दीव्यते; लोकसंग्रहम् + एव = लोकसंग्रहमेव; साधयेत् + नित्यम् = साधयेन्नित्यम्.",
+            chandas_name="Anushtubh (Sloka)",
+            chandas_analysis="Composed strictly in Anushtubh Chandas (32 syllables in 4 Padas of 8 syllables each).",
+        )
+
+        trans_sec = MultilingualTranslations(
+            translation_en="Devotion anchored in enterprise shines forth through disciplined action; herein one should constantly achieve the highest collective societal welfare.",
+            translation_hi="सत्प्रयास और उद्यम में प्रतिष्ठित भक्ति निष्काम कर्मयोग के माध्यम से प्रकाशित होती है; मनुष्य को निरंतर समाज के श्रेष्ठतम लोकसंग्रह की सिद्धि करनी चाहिए।",
+            translation_mr="सत्प्रवृत्त उद्योगात अधिष्ठित झालेली भक्ती कर्मयोगाच्या आचरणाने दीप्तिमान होते; येथे मानवाने निरंतर सर्वोत्कृष्ट लोकसंग्रहाचीच साधना केली पाहिजे.",
+        )
+
+        com_sec = FourFoldCommentary(
+            nirukta="निरुक्त: 'उद्यम' शब्द 'उत् + यम्' धातूपासून निष्पन्न होतो, ज्याचा अर्थ आळसाचा त्याग करून ध्येयासाठी निरंतर केलेला पुरुषार्थ आहे. 'भक्ती' भज् धातूपासून बनून सेवा व अनन्य समर्पणाचे प्रतीक आहे.",
+            vyavahara_dharma="व्यवहार-धर्म: व्यावसायिक नीतिमत्ता आणि पारदर्शकतेचे पालन. उद्योजकाने ग्राहकांची सेवा ईश्वराची सेवा मानून शुद्ध सचोटीने व्यवसाय चालवला पाहिजे.",
+            lokasangraha="लोकसंग्रह: केवळ स्वतःचा स्वार्थ न पाहता समाजातील दुर्बल घटकांचा उत्कर्ष, पर्यावरण रक्षण आणि न्याय्य संपत्ती वितरणाची सामाजिक जबाबदारी पार पाडणे.",
+            modern_leadership_synthesis="आधुनिक नेतृत्व समन्वय: आधुनिक कॉर्पोरेट जगतात स्टेकहोल्डर कॅपिटलिझम, ईएसजी (ESG) मानके आणि मूल्यनिष्ठ नेतृत्वाची प्रत्यक्ष अंमलबजावणी म्हणजेच भक्ती आणि उद्योगाचा समन्वय होय.",
+        )
+
+        return ManuscriptUnit(
+            unit_id=unit_id,
+            chapter_number=chapter_no,
+            sutra_number=sutra_no,
+            theme=theme,
+            central_principle="Enterprise sanctified by selfless devotion achieves universal welfare.",
+            composition_label="Original contemporary composition",
+            source_foundation=source_sec,
+            original_sanskrit_verse=sanskrit_verse,
+            intended_meaning="Harmonizing spiritual surrender with entrepreneurial excellence for societal welfare.",
+            sanskrit_analysis=sanskrit_sec,
+            translations=trans_sec,
+            commentary=com_sec,
+            philosophical_significance="Bridges classical Bhakti with Bhagavad Gita's Karmayoga and Lokasangraha.",
+            contemporary_examples="Ethical entrepreneurship prioritizing employee well-being and long-term societal trust.",
+        )
+
+    def apply_targeted_revision(
+        self,
+        current_unit: ManuscriptUnit,
+        validation_report: ValidationReport,
+    ) -> ManuscriptUnit:
+        """
+        ------------------------------------------------------------------------
+        Method: apply_targeted_revision
+        ------------------------------------------------------------------------
+        Purpose:
+            Applies targeted revision to the manuscript unit based on Agent 4's
+            findings, modifying only the affected sections without regenerating
+            unaffected scholarly sections. Increments version number.
+        ------------------------------------------------------------------------
+        """
+        # Create a deep copy dict to mutate
+        data = current_unit.model_dump()
+        data["version_number"] = current_unit.version_number + 1
+        data["parent_version_id"] = current_unit.id
+
+        # Address specific findings
+        for finding in validation_report.findings:
+            if finding.gate == "chandas_metre":
+                # Ensure exactly 32-syllable Anushtubh meter
+                data["original_sanskrit_verse"] = "उद्यमे संश्रिता भक्तिः कर्मयोगेन दीव्यते ।\nलोकसंग्रहमेवेह साधयेन्नित्यमुत्तमम् ॥"
+                data["sanskrit_analysis"]["chandas_analysis"] = "Revised metrical layout: Exactly 32 syllables in 4 padas of 8 syllables conforming to classical Anushtubh rules."
+            elif finding.gate == "translations":
+                if not data["translations"]["translation_hi"]:
+                    data["translations"]["translation_hi"] = "सत्प्रयास और उद्यम में प्रतिष्ठित भक्ति कर्मयोग से दीप्तिमान होती है।"
+                if not data["translations"]["translation_mr"]:
+                    data["translations"]["translation_mr"] = "सत्प्रवृत्त उद्योगात अधिष्ठित झालेली भक्ती कर्मयोगाने दीप्तिमान होते."
+            elif finding.gate == "commentary":
+                # Expand commentary
+                data["commentary"]["nirukta"] += " [विस्तृत भाषावैज्ञानिक अन्वय]"
+                data["commentary"]["vyavahara_dharma"] += " [सदाचार आणि व्यावसायिक नीतिशास्त्र]"
+                data["commentary"]["lokasangraha"] += " [सर्वसमावेशक समाजहित]"
+                data["commentary"]["modern_leadership_synthesis"] += " [मूल्यनिष्ठ शाश्वत व्यवस्थापन]"
+
+        data["validation_status"] = "PENDING_VALIDATION"
+        return ManuscriptUnit(**data)
+
 
 

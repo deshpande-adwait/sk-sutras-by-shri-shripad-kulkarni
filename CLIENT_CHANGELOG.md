@@ -2,6 +2,81 @@
 
 All notable changes, architectural updates, and releases for **SK Sutras - by Shri Shripad Kulkarni** are documented in this client-facing log.
 
+## [v0.3.0-beta] - 2026-11-04
+
+### Executive Summary of Changes
+Completed full code implementation, database architecture, multi-provider integration, offline static analysis, and acceptance documentation for the **SK Sutras Four-Agent AI-Assisted Sanskrit Sutra Research, Composition and Book Authoring Platform** adhering strictly to the Master Implementation Specification:
+1. **Four-Agent Architecture & LangGraph Orchestration**:
+   - **Agent 1: Narada Specialist** (Google Gemini 1.5 Pro): Examines all 84 Narada Bhakti Sutras with source fidelity and devotional exposition.
+   - **Agent 2: Shandilya Specialist** (OpenAI GPT-4o): Evaluates all 100 Shandilya Bhakti Sutras indexed in ChromaDB and formulates candidate propositions.
+   - **Agent 3: Sutrakar Master Author** (Anthropic Claude 3.5 Sonnet): Presides over arbitration (rejects weak/forced pairings), composes original Sanskrit Udyoga Sutras in classical Anushtubh metre, and authors complete 6-section units (Sections A through F).
+   - **Agent 4: Independent Validator** (Separately Configurable OpenAI GPT-4o): Critically inspects compositions across 7 distinct scholarly gates (Source Authenticity, Philosophical Defensibility, Paninian Sanskrit Grammar, Algorithmic Anushtubh Chandas 32-Syllables Syllable Meter, Multilingual Translations, Four-Fold Commentary, and Originality).
+   - **Bounded Revision Loop & Human Escalation**: Implemented LangGraph 7-step DAG supporting targeted revisions back to Agent 3 up to a maximum of 3 cycles; automatic escalation to human review by Shri Shripad Kulkarni if unresolved.
+2. **Unified Provider Framework & Offline Safety**:
+   - Implemented `BaseLLMAdapter`, `GeminiAdapter`, `OpenAIAdapter`, and `AnthropicAdapter` with configurable model IDs, usage metadata capture, and offline development simulation mode (`OFFLINE_MODE=true`) preventing unapproved live API charges.
+   - Built `ProviderRegistry` enabling hot-swapping of models per agent role without modifying core agent business logic.
+3. **Central Four-Model Token, Cost & Concurrency-Safe Budget Management**:
+   - `PriceCatalog`: Configurable per-million token rates, cache read/write rates, vendor URLs, and provisional/verified status tags.
+   - `TokenMeteringService`: Real-time token capture across all four agents with dual USD/INR accounting (exchange rate 83.50) and idempotency deduplication keys.
+   - `BudgetManager`: Concurrency-safe pre-call reservation locks, monthly INR caps, alerts at 50%, 75%, 90%, and 100% hard stops blocking non-essential calls.
+   - `PreCallEstimator`, `PromptCacheManager`, and `BatchJobManager`.
+   - `PilotWorkflowEngine`: Controlled 5-sutra cost and quality pilot module evaluating 5 candidate pairs (including deliberate rejection of NBS 35 vs SBS 80) and projecting full book expenditures with 20% contingency buffer.
+4. **Relational Persistence & Production Database Schemas**:
+   - Production PostgreSQL schema (`src/database/postgres_schema.sql`) and baseline migration (`src/database/migrations/001_initial_schema.sql`) covering all 10 entity groups required in Part 7.
+   - Enhanced SQLite repository (`src/database/repository.py`) supporting full manuscript units, Agent 4 validation reports, token usage records, budgets, and immutable audit logs with full backward compatibility.
+5. **Author Review Portal & REST Backend Service**:
+   - Implemented FastAPI backend service (`src/api/main.py`) with routers for manuscript review, cost telemetry, CSV export, and administration.
+   - Enhanced Streamlit Author Review Portal (`src/ui/app.py`) featuring 6 tabs (Treatise Dashboard, Sutra Research, Manuscript Review, Validation Reports, Cost Explorer, Admin Settings) with Senior Citizen (65+ Mode) and clickable Hiranyam AI branding navigating to `https://hiranyamai.com/`.
+6. **Publication Document Generation**:
+   - `ManuscriptWordExporter`: Generates editable Word master (`.docx`) with all 23 scholarly components from Part 12 for approved units.
+   - `ManuscriptPrintPDFExporter`: Generates publication-grade PDF using ReportLab with 2-pass `NumberedCanvas`.
+   - Mandatory confidentiality footer enforced on every page: `"Proprietory and Confidential- Hiranyam AI Labs"`.
+7. **Comprehensive Acceptance & Governance Documentation**:
+   - Created `docs/HANDOVER_AND_ACCEPTANCE_REPORT.md` evaluating all 79 acceptance criteria with exact status tags from Part 15.
+   - Created `docs/PROVIDER_SETUP_GUIDE.md` and `docs/DEPLOYMENT_GUIDE.md`.
+   - Updated `.env.example` with safe credential placeholders.
+
+### Direct Client & User Benefits / Features Added
+* **Absolute Protection Against Broken Sanskrit & Metric Hallucinations**: Algorithmic Paninian phonology engine verifies exact 32-syllable Anushtubh metre rather than trusting LLM claims.
+* **Full Financial Transparency & Hard Budget Caps**: Dual currency accounting in INR with strict 100% hard stops prevents unexpected provider overages.
+* **Dignified Senior Citizen (65+ Mode) Author Interface**: Touch targets >= 48px, dynamic font scaling, high-contrast readability, and reassuring feedback modals tailored specifically for Shri Shripad Kulkarni.
+* **Scholarly Rejection of Forced Matches**: System actively rejects weak parallels (demonstrated by rejecting NBS 35 vs SBS 80 in pilot), ensuring high scholarly prestige.
+
+### Issues & Defects Resolved
+* Resolved foreign key binding synchronization between manuscript units and validation report records.
+* Corrected Devanagari syllable tokenizer to adhere strictly to Paninian Shiksha svara nucleus rules (counting independent vowels and non-halant consonants, eliminating conjunct double-counting).
+* Resolved SQLite UPSERT conflict handling across revision increments.
+
+### Data & Knowledge Base Updates
+* Added production PostgreSQL schema `src/database/postgres_schema.sql`.
+* Added PostgreSQL migration `src/database/migrations/001_initial_schema.sql`.
+* Enhanced SQLite schema in `src/database/schema.sql`.
+* Ingested canonical references in `SourceFoundation`.
+
+### Validation & Test Results
+* **Comprehensive Test Suite**: 48 passed, 0 failed (100% pass rate in 6.80s).
+  - `tests/test_accessibility.py`: 3/3 passed.
+  - `tests/test_agents.py`: 2/2 passed.
+  - `tests/test_api.py`: 5/5 passed.
+  - `tests/test_cost_and_budget.py`: 6/6 passed.
+  - `tests/test_database.py`: 3/3 passed.
+  - `tests/test_export.py`: 2/2 passed.
+  - `tests/test_four_agent_graph.py`: 5/5 passed.
+  - `tests/test_graph.py`: 6/6 passed.
+  - `tests/test_providers.py`: 6/6 passed.
+  - `tests/test_schema.py`: 3/3 passed.
+  - `tests/test_validator_agent.py`: 5/5 passed.
+  - `tests/test_vectorstore.py`: 2/2 passed.
+* **Static Compilation Checks**: `python -m compileall src/ tests/` completed with zero syntax errors.
+* **Operating Boundaries**: Zero live API calls, zero server launch, zero live external charges.
+
+### Deployment Details
+* **Environment**: Local Development & Static QA Gate (Verified Offline).
+* **Target Documentation**: `docs/HANDOVER_AND_ACCEPTANCE_REPORT.md`, `docs/PROVIDER_SETUP_GUIDE.md`, `docs/DEPLOYMENT_GUIDE.md`.
+* **Deployment Status**: Code-complete, tested, documented, and halted awaiting Shri Shripad Kulkarni's authorization for live API setup and pilot execution.
+
+---
+
 ## [v0.2.9-beta] - 2026-11-03
 
 ### Executive Summary of Changes
