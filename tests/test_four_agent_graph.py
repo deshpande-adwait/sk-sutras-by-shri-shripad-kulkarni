@@ -48,6 +48,45 @@ def test_arbitration_node_accepts_strong_candidate():
     assert "Accepted by Sutrakar" in result["arbitration_notes"]
 
 
+def test_sutrakar_active_parishad_deliberation_dialogue():
+    """Verifies that Sutrakar actively participates in the Shastrartha discussion with Agent 1 and Agent 2."""
+    state: SutraSynthesisState = {
+        "current_pair": {
+            "candidate_info": {"sutra_no": "2", "shandilya_sutra_no": "2"},
+        },
+        "agent1_narada_output": {
+            "sutra_no": "2",
+            "thesis": "भक्ती हे परम प्रेमरूप आहे (निरतिशय प्रीती).",
+            "theme": "परम प्रेमरूप भक्ती आणि परानुरक्ती",
+        },
+        "agent2_shandilya_output": {
+            "sutra_no": "2",
+            "thesis": "ईश्वरावरील अखंड ज्ञानमूलक परानुरक्ती म्हणजेच भक्ती.",
+        },
+    }
+    result = synthesis_arbitration_node(state)
+    assert "parishad_deliberation" in result
+    delib = result["parishad_deliberation"]
+    assert "sutrakar_inquiry" in delib
+    assert "philosophical_tension" in delib
+    assert "synthetic_resolution" in delib
+    assert "deliberation_transcript" in delib
+    assert "विद्वत् परिषद संवाद" in delib["deliberation_transcript"]
+    assert "सूत्रकार विचारणा" in delib["sutrakar_inquiry"]
+    assert result["arbitration_verdict"] == "ACCEPTED"
+
+
+def test_source_prep_initializes_sutrakar_guidelines():
+    """Verifies that source_prep node provides Sutrakar's opening directive to other agents."""
+    state: SutraSynthesisState = {
+        "batch_queue": [{"sutra_no": "1", "sanskrit": "अथातो भक्तिं व्याख्यास्यामः॥", "theme": "Definition"}],
+        "current_index": 0,
+    }
+    result = source_preparation_node(state)
+    assert "sutrakar_guidelines" in result
+    assert "Sutrakar Arbiter Directive" in result["sutrakar_guidelines"]
+
+
 def test_arbitration_node_rejects_weak_candidate():
     """Verifies that Agent 3 actively rejects weak or forced candidate pairings."""
     state: SutraSynthesisState = {

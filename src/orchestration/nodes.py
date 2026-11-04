@@ -246,6 +246,7 @@ def source_preparation_node(state: SutraSynthesisState) -> Dict[str, Any]:
     ----------------------------------------------------------------------------
     """
     narada_agent = NaradaAgent()
+    sutrakar_agent = SutrakarAgent()
     idx = state.get("current_index", 0)
     queue = state.get("batch_queue", [])
 
@@ -260,6 +261,7 @@ def source_preparation_node(state: SutraSynthesisState) -> Dict[str, Any]:
 
     return {
         "workflow_stage": "source_prepared",
+        "sutrakar_guidelines": sutrakar_agent.issue_arbitration_guidelines(),
         "current_pair": {
             "candidate_info": cand,
             "pair_id": f"UDYOGA-{str(idx + 1).zfill(3)}",
@@ -339,27 +341,43 @@ def candidate_matching_node(state: SutraSynthesisState) -> Dict[str, Any]:
 def synthesis_arbitration_node(state: SutraSynthesisState) -> Dict[str, Any]:
     """
     ----------------------------------------------------------------------------
-    Step 4: SYNTHESIS AND ARBITRATION NODE
+    Step 4: SYNTHESIS AND ARBITRATION NODE (Vidvat Parishad Deliberation)
     ----------------------------------------------------------------------------
     Purpose:
-        Agent 3 (Sutrakar Master Author) evaluates candidate pairing:
-        Rejects weak, forced, or duplicate mappings. Composes only defensible pairs.
+        Agent 3 (Sutrakar Master Author / Claude) actively engages in the scholarly
+        discussion alongside Agent 1 (Narada) and Agent 2 (Shandilya).
+        
+        The Sutrakar does NOT sit outside as a late-stage receiver. Instead, Sutrakar:
+        1. Interrogates the experiential thesis of Narada and the epistemological
+           thesis of Shandilya.
+        2. Probes points of philosophical tension and tests whether the synthesis
+           is authentic or merely a forced lexical coincidence.
+        3. Deliberates on how the two positions reconcile into Udyoga (ethical enterprise).
+        4. Issues the formal Vidvat Nirnaya (arbitration ruling).
+        
+        If rejected, execution bypasses expensive composition; if accepted, proceeds.
     ----------------------------------------------------------------------------
     """
+    sutrakar = SutrakarAgent()
     curr = state.get("current_pair", {})
     cand_info = curr.get("candidate_info", {})
-    # Check if this was marked as deliberate rejection test
-    if cand_info.get("intended_test_type") == "deliberate_weak_rejection":
-        return {
-            "workflow_stage": "arbitration_complete",
-            "arbitration_verdict": "REJECTED_WEAK_MATCH",
-            "arbitration_notes": "Rejected by Sutrakar: Forced semantic overlap without defensible philosophical ground.",
-        }
+    a1_out = state.get("agent1_narada_output", {})
+    a2_out = state.get("agent2_shandilya_output", {})
+    theme = a1_out.get("theme", curr.get("theme", "Ethical Enterprise and Supreme Devotion"))
+
+    # Actively deliberate in the Vidvat Parishad
+    deliberation = sutrakar.deliberate_in_council(
+        narada_output=a1_out,
+        shandilya_output=a2_out,
+        candidate_info=cand_info,
+        theme=theme,
+    )
 
     return {
         "workflow_stage": "arbitration_complete",
-        "arbitration_verdict": "ACCEPTED",
-        "arbitration_notes": "Accepted by Sutrakar: Defensible synthesis of ecstatic devotion and epistemological discipline.",
+        "parishad_deliberation": deliberation,
+        "arbitration_verdict": deliberation["arbitration_verdict"],
+        "arbitration_notes": deliberation["arbitration_notes"],
     }
 
 

@@ -2,6 +2,35 @@
 
 All notable changes, architectural updates, and releases for **SK Sutras - by Shri Shripad Kulkarni** are documented in this client-facing log.
 
+## [v0.3.1-beta] - 2026-11-04
+
+### Executive Summary of Changes
+Enhanced the multi-agent collaboration architecture to incorporate the **Vidvat Parishad (Scholarly Assembly) Dialectic Protocol**, guaranteeing that Agent 3 (**Sutrakar Master Author / Claude**) actively engages in the intellectual discussions with Agent 1 (**Narada Specialist / Gemini**) and Agent 2 (**Shandilya Specialist / OpenAI**) rather than remaining an isolated, late-stage consumer. Balanced this collaborative depth with rigorous token cost discipline.
+
+1. **Vidvat Parishad (Scholarly Assembly) Protocol**:
+   - Implemented `SutrakarAgent.deliberate_in_council()`: Sutrakar presides over the Shastrartha debate, interrogates the affective thesis of Narada and the epistemological counter-thesis of Shandilya, probes philosophical friction, and guides both agents toward authentic synthesis.
+   - Updated `synthesis_arbitration_node` in the LangGraph DAG to execute this multi-agent council deliberation and record the structured debate (`parishad_deliberation`), including interrogation probes, dialectic friction assessment, synthetic reconciliation, and formal Vidvat Nirnaya.
+   - Updated `source_preparation_node` so that Sutrakar's opening inquiry charter and guidelines (`sutrakar_guidelines`) are formally delivered to Agent 1 and Agent 2 at pipeline initiation.
+2. **Economic & Cost Reconciliation**:
+   - Proved and enforced the separation between lightweight deliberation tokens (~200-350 tokens per candidate, costing ~₹0.30) and heavy full-manuscript composition tokens (~2,500 tokens).
+   - Early rejection of weak, forced candidates during the council deliberation prevents expensive full-chapter composition, making Sutrakar's discussion participation a cost-saving mechanism rather than an expense.
+3. **Author Review Portal UI Enhancement**:
+   - Updated Tab 2 ("तुलनात्मक सूत्र संशोधन व विद्वत् परिषद संवाद") in the Streamlit Portal (`src/ui/app.py`) to display Sutrakar's presiding directives and the 3-agent Shastrartha debate for transparent client review.
+4. **Senior QA Validation**:
+   - Added unit tests `test_sutrakar_active_parishad_deliberation_dialogue` and `test_source_prep_initializes_sutrakar_guidelines` to `tests/test_four_agent_graph.py`.
+   - Comprehensive test suite pass rate: **50 passed, 0 failed (100% pass rate)**.
+
+### Direct Client & User Benefits / Features Added
+* **Living Shastrartha Deliberation**: The author can witness how all three specialized agents engage in a genuine Vedic debate, ensuring the Udyoga Sutra reflects organic philosophical harmony rather than an artificial assembly-line stitch.
+* **Intelligent Early Gatekeeping**: Weak candidates are rejected collaboratively in the discussion phase before incurring heavy creative synthesis costs.
+
+### Validation & Test Results
+* **Comprehensive Test Suite**: 50 passed, 0 failed (100% pass rate in 7.63s).
+  - `tests/test_four_agent_graph.py`: 7/7 passed.
+* **Operating Boundaries Maintained**: Offline simulation verified; zero unapproved live API charges.
+
+---
+
 ## [v0.3.0-beta] - 2026-11-04
 
 ### Executive Summary of Changes

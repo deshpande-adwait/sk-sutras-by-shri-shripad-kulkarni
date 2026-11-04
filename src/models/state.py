@@ -39,6 +39,12 @@ class SutraSynthesisState(TypedDict, total=False):
             Structured analysis output from Agent 2 (Shandilya Specialist / OpenAI).
         candidate_relationship (Optional[Dict[str, Any]]):
             Comparative evaluation pairing Narada and Shandilya propositions.
+        sutrakar_guidelines (Optional[str]):
+            Presiding philosophical charter and guidelines issued by Sutrakar (Claude)
+            to Agent 1 and Agent 2 before and during inquiry.
+        parishad_deliberation (Optional[Dict[str, Any]]):
+            Active tri-party Shastrartha deliberation between Agent 1, Agent 2, and Agent 3
+            exploring philosophical tensions, doctrinal harmony, and arbitration ruling.
         arbitration_verdict (Optional[str]):
             Agent 3 arbitration decision: 'ACCEPTED' or 'REJECTED_WEAK_MATCH'.
         arbitration_notes (Optional[str]):
@@ -81,6 +87,8 @@ class SutraSynthesisState(TypedDict, total=False):
     agent1_narada_output: Optional[Dict[str, Any]]
     agent2_shandilya_output: Optional[Dict[str, Any]]
     candidate_relationship: Optional[Dict[str, Any]]
+    sutrakar_guidelines: Optional[str]
+    parishad_deliberation: Optional[Dict[str, Any]]
     arbitration_verdict: Optional[str]
     arbitration_notes: Optional[str]
     
