@@ -12,6 +12,7 @@ Description: Adapter for OpenAI GPT models (GPT-4o) designated for Agent 2
 import os
 from typing import Any, Dict, Optional
 
+from src.credentials import get_openai_key
 from src.providers.base import (
     BaseLLMAdapter,
     ProviderAuthenticationError,
@@ -19,6 +20,8 @@ from src.providers.base import (
     ProviderResponse,
     ProviderUsage,
 )
+
+_UNSET_KEY = object()
 
 
 class OpenAIAdapter(BaseLLMAdapter):
@@ -29,14 +32,15 @@ class OpenAIAdapter(BaseLLMAdapter):
     Purpose:
         Implements OpenAI API communication for the Shandilya Specialist and
         Independent Validator agents. Supports prompt caching metrics, token
-        accounting, and safe offline development modes.
+        accounting, and safe offline development modes. Reads the API key from
+        its separate dedicated credential file (keys/openai_key.txt).
     ----------------------------------------------------------------------------
     """
 
     def __init__(
         self,
         model_id: Optional[str] = None,
-        api_key: Optional[str] = None,
+        api_key: Any = _UNSET_KEY,
         temperature: float = 0.20,
         max_tokens: int = 4096,
         timeout_seconds: float = 60.0,
@@ -48,11 +52,11 @@ class OpenAIAdapter(BaseLLMAdapter):
         ------------------------------------------------------------------------
         Purpose:
             Initializes the OpenAI adapter with configurable model IDs
-            and safe environment key retrieval.
+            and safe key retrieval from keys/openai_key.txt.
         ------------------------------------------------------------------------
         """
         resolved_model = model_id or os.getenv("OPENAI_MODEL_ID", "gpt-4o")
-        resolved_key = api_key or os.getenv("OPENAI_API_KEY")
+        resolved_key = get_openai_key() if api_key is _UNSET_KEY else api_key
         resolved_offline = (
             offline_mode
             if offline_mode is not None

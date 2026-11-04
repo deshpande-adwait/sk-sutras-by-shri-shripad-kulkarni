@@ -22,6 +22,13 @@ try:
 except ImportError:
     pass
 
+# Synchronize API keys from dedicated separate files into environment if not already set
+try:
+    from src.credentials import get_api_key_for_provider, sync_keys_to_environment
+    sync_keys_to_environment(override=False)
+except ImportError:
+    pass
+
 # Root directory paths
 BASE_DIR: Path = Path(__file__).resolve().parent.parent
 DATA_DIR: Path = BASE_DIR / "data"
@@ -95,6 +102,11 @@ def get_chat_model(
     if resolved_provider == "ollama":
         ollama_base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
         kwargs.setdefault("base_url", ollama_base_url)
+    else:
+        # Retrieve key from dedicated separate file if not explicitly supplied
+        provider_key = get_api_key_for_provider(resolved_provider)
+        if provider_key and "api_key" not in kwargs:
+            kwargs["api_key"] = provider_key
 
     try:
         from langchain.chat_models import init_chat_model

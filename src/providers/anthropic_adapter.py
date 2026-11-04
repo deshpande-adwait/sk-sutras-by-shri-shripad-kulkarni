@@ -12,6 +12,7 @@ Description: Adapter for Anthropic Claude models (Claude 3.5 Sonnet) designated
 import os
 from typing import Any, Dict, Optional
 
+from src.credentials import get_claude_key
 from src.providers.base import (
     BaseLLMAdapter,
     ProviderAuthenticationError,
@@ -19,6 +20,8 @@ from src.providers.base import (
     ProviderResponse,
     ProviderUsage,
 )
+
+_UNSET_KEY = object()
 
 
 class AnthropicAdapter(BaseLLMAdapter):
@@ -29,14 +32,15 @@ class AnthropicAdapter(BaseLLMAdapter):
     Purpose:
         Implements Anthropic API communication for the Sutrakar Master Author.
         Supports Claude prompt caching headers, token accounting, and safe
-        offline development modes.
+        offline development modes. Reads the API key from its separate dedicated
+        credential file (keys/claude_key.txt).
     ----------------------------------------------------------------------------
     """
 
     def __init__(
         self,
         model_id: Optional[str] = None,
-        api_key: Optional[str] = None,
+        api_key: Any = _UNSET_KEY,
         temperature: float = 0.20,
         max_tokens: int = 4096,
         timeout_seconds: float = 60.0,
@@ -48,11 +52,11 @@ class AnthropicAdapter(BaseLLMAdapter):
         ------------------------------------------------------------------------
         Purpose:
             Initializes the Anthropic Claude adapter with configurable model IDs
-            and safe environment key retrieval.
+            and safe key retrieval from keys/claude_key.txt.
         ------------------------------------------------------------------------
         """
         resolved_model = model_id or os.getenv("ANTHROPIC_MODEL_ID", "claude-3-5-sonnet-20241022")
-        resolved_key = api_key or os.getenv("ANTHROPIC_API_KEY")
+        resolved_key = get_claude_key() if api_key is _UNSET_KEY else api_key
         resolved_offline = (
             offline_mode
             if offline_mode is not None

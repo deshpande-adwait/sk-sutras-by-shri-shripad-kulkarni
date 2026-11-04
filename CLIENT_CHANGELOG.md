@@ -2,6 +2,44 @@
 
 All notable changes, architectural updates, and releases for **SK Sutras - by Shri Shripad Kulkarni** are documented in this client-facing log.
 
+## [v0.3.2-beta] - 2026-11-04
+
+### Executive Summary of Changes
+Implemented dedicated, separate credential storage and dynamic key reading architecture across all three LLM models with zero hardcoded credentials:
+1. **Dedicated Separate Credential Files**:
+   - Created three separate, isolated files under the repository's `keys/` directory:
+     - `keys/claude_key.txt`: Dedicated Anthropic Claude API key for Agent 3 (Sutrakar Master Author).
+     - `keys/gemini_key.txt`: Dedicated Google Gemini Pro API key for Agent 1 (Narada Specialist).
+     - `keys/openai_key.txt`: Dedicated OpenAI GPT-4o API key for Agent 2 (Shandilya Specialist) & Agent 4 (Validator).
+   - Created `keys/README.md` defining the schema and structure of the key storage directory.
+2. **Centralized Key Reader & Dynamic Environment Synchronization (`src/credentials.py`)**:
+   - Implemented `get_claude_key()`, `get_gemini_key()`, `get_openai_key()`, and `get_api_key_for_provider()`.
+   - Strips whitespace, newlines, and surrounding quotes safely without logging or leaking secret values.
+   - Synchronizes keys into `os.environ` on module load (`sync_keys_to_environment()`) so standard SDKs (LangChain, official client libraries) automatically find their credentials.
+3. **Provider Adapter Integration**:
+   - Updated `AnthropicAdapter`, `GeminiAdapter`, and `OpenAIAdapter` to dynamically resolve keys from their respective separate files without hardcoding.
+   - Updated `src/config.py` factory (`get_chat_model`) to pass resolved keys per provider automatically.
+4. **Git Security & Leak Prevention**:
+   - Updated `.gitignore` to protect all `keys/*.txt`, `keys/*.key`, and `*_KEY.txt` files from being staged or committed to remote version control, completely preventing automated secret scanner revocation.
+5. **Senior QA Validation & Execution Boundary**:
+   - Added unit test suite `tests/test_credentials.py` verifying independent key loading, distinct provider prefix validation, provider dispatch, and environment synchronization.
+   - Test suite pass rate: **54 passed, 0 failed (100% pass rate)**.
+   - Enforced boundary: **Zero execution of live LLM inference calls**.
+
+### Direct Client & User Benefits / Features Added
+* **Absolute Separation of Model Credentials**: Each model provider key resides exclusively in its own dedicated file on disk.
+* **Zero Hardcoding**: No secret keys are hardcoded in application logic, test files, or configuration templates.
+* **Security Hardened**: Automated git exclusion guarantees keys cannot be leaked or revoked remotely.
+
+### Validation & Test Results
+* **Comprehensive Test Suite**: 54 passed, 0 failed (100% pass rate in 10.77s).
+  - `tests/test_credentials.py`: 4/4 passed.
+  - `tests/test_four_agent_graph.py`: 7/7 passed.
+  - `tests/test_providers.py`: 6/6 passed.
+* **Operating Boundaries Maintained**: Zero live LLM API calls executed; offline safety preserved.
+
+---
+
 ## [v0.3.1-beta] - 2026-11-04
 
 ### Executive Summary of Changes

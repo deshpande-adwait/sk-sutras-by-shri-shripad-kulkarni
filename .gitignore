@@ -30,6 +30,13 @@ ENV/
 .env
 .env.local
 
+# Dedicated separate LLM API key credential files
+keys/*.txt
+keys/*.key
+*_KEY.txt
+*_key.txt
+!keys/README.md
+
 # Database & persistence files
 *.db
 *.sqlite3

@@ -12,6 +12,7 @@ Description: Adapter for Google Gemini models (Gemini 1.5 Pro) designated for
 import os
 from typing import Any, Dict, Optional
 
+from src.credentials import get_gemini_key
 from src.providers.base import (
     BaseLLMAdapter,
     ProviderAuthenticationError,
@@ -19,6 +20,8 @@ from src.providers.base import (
     ProviderResponse,
     ProviderUsage,
 )
+
+_UNSET_KEY = object()
 
 
 class GeminiAdapter(BaseLLMAdapter):
@@ -30,13 +33,14 @@ class GeminiAdapter(BaseLLMAdapter):
         Implements Google Gemini API communication for the Narada Specialist Agent.
         Provides prompt caching integration, token consumption extraction, and
         safe offline development modes preventing unapproved live API calls.
+        Reads the API key from its separate dedicated credential file (keys/gemini_key.txt).
     ----------------------------------------------------------------------------
     """
 
     def __init__(
         self,
         model_id: Optional[str] = None,
-        api_key: Optional[str] = None,
+        api_key: Any = _UNSET_KEY,
         temperature: float = 0.20,
         max_tokens: int = 4096,
         timeout_seconds: float = 60.0,
@@ -48,11 +52,11 @@ class GeminiAdapter(BaseLLMAdapter):
         ------------------------------------------------------------------------
         Purpose:
             Initializes the Google Gemini adapter with configurable model IDs
-            and safe environment key retrieval.
+            and safe key retrieval from keys/gemini_key.txt.
         ------------------------------------------------------------------------
         """
         resolved_model = model_id or os.getenv("GEMINI_MODEL_ID", "gemini-1.5-pro")
-        resolved_key = api_key or os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+        resolved_key = get_gemini_key() if api_key is _UNSET_KEY else api_key
         # In this phase, offline mode defaults to True if credentials are absent or explicitly set
         resolved_offline = (
             offline_mode
