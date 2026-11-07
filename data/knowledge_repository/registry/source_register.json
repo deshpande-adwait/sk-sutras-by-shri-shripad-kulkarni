@@ -1,0 +1,49 @@
+{
+  "repository_name": "SK Sutras - Persistent Knowledge Repository",
+  "governance_authority": "Hiranyam AI Labs & Shri Shripad Kulkarni",
+  "last_updated": "2026-11-07T19:14:12.328062",
+  "documents": [
+    {
+      "document_id": "DOC-01",
+      "filename": "DOC-01_SHRIMAD_UDYAM_SUTRANI_100.txt",
+      "title": "श्रीमद् उद्यम सूत्राणि (सूत्र १ ते १००)",
+      "document_type": "Primary Reference Anthology & Commentary",
+      "date_received": "2026-11-07",
+      "version": "1.0-Anthology",
+      "last_modified": "2026-11-07",
+      "source_location": "data/knowledge_repository/sources/DOC-01_SHRIMAD_UDYAM_SUTRANI_100.txt",
+      "status": "Authoritative Reference (Subhashita & Classical Analogy Anthology)",
+      "is_authoritative": true,
+      "scope": "100 aphorisms covering execution, time, ethics, risk, team, and trusteeship with modern corporate cases.",
+      "known_conflicts": "Contains direct verbatim quotations of classical Gita, Arthashastra, and Hitopadesha verses treated as Udyam Sutras. Must not be directly plagiarized or paraphrased as original modern composition."
+    },
+    {
+      "document_id": "DOC-02",
+      "filename": "DOC-02_UDYAM_SUTRE_MANUSCRIPT_V17.txt",
+      "title": "उद्यमसूत्रे: भारतीय ज्ञानपरंपरेतून उद्योजकीय जीवनदर्शन (कार्यावृत्ती १७)",
+      "document_type": "Primary Working Manuscript Draft",
+      "date_received": "2026-11-07",
+      "version": "कार्यावृत्ती १७ (Revision 17)",
+      "last_modified": "2026-11-07",
+      "source_location": "data/knowledge_repository/sources/DOC-02_UDYAM_SUTRE_MANUSCRIPT_V17.txt",
+      "status": "Latest Master Working Draft (Comprehensive Canon & Appendices)",
+      "is_authoritative": true,
+      "scope": "Contains Chapters 1 to 6, complete commentary on Narada Bhakti Sutras 1 to 84, Appendices A to G, 6 case studies, 12-week course curriculum, and editorial verification checklist.",
+      "known_conflicts": "Explicitly notes that new Sanskrit Udyam Sutras must be recognized as independent modern compositions, never claiming ancient Vedic origin. Narada 84 order is primary; Shandilya is 100 sutras."
+    },
+    {
+      "document_id": "DOC-03",
+      "filename": "DOC-03_UDYAM_SUTRE_MANUSCRIPT_V05.txt",
+      "title": "उद्यमसूत्रे: भारतीय ज्ञानपरंपरेतून उद्योजकीय जीवनदर्शन (कार्यावृत्ती ०५)",
+      "document_type": "Intermediate Milestone Manuscript",
+      "date_received": "2026-11-07",
+      "version": "कार्यावृत्ती ०५ (Revision 05)",
+      "last_modified": "2026-11-07",
+      "source_location": "data/knowledge_repository/sources/DOC-03_UDYAM_SUTRE_MANUSCRIPT_V05.txt",
+      "status": "Superseded Milestone Draft (Baseline for Karma Yoga & Duty)",
+      "is_authoritative": false,
+      "scope": "Contains Chapters 1 to 5 concluding with Karma Yoga and Duty (कर्मयोग आणि कर्तव्य).",
+      "known_conflicts": "Superseded by Karyavritti 17 which adds Chapter 6, the full 84 Narada sutra commentary, and all 7 Appendices (A-G)."
+    }
+  ]
+}

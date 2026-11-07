@@ -1,0 +1,427 @@
+{
+  "repository_title": "Bharatiya Jnana Research Repository for SK Sutras",
+  "curator": "Agent 3 — Bharatiya Jnana Specialist",
+  "created_at": "2026-11-07T19:25:05.817513",
+  "entries": [
+    {
+      "sutra_no": 1,
+      "topic": "उद्यम-संकल्प व रणनीतिक जिज्ञासा (Inception & Diligent Inquiry)",
+      "timestamp": "2026-11-07T19:25:05.835607",
+      "research_content": {
+        "iks_text": "Kautilya's Arthashastra (Adhikarana 1, Adhyaya 19, Shloka 34)",
+        "sanskrit": "अनुत्थाने ध्रुवो नाशः प्राप्तस्यानागतस्य च ।\nप्राप्यते फलमुत्थानाल्लभते चार्थसम्पदम् ॥",
+        "context_and_meaning": "If a sovereign or leader is inactive, the destruction of both existing wealth and prospective acquisitions is certain. Through dynamic enterprise (Utthana), fruitful results are attained and prosperity multiplies.",
+        "doc_consulted": "DOC-01 (Sutra 1 & 4 analysis) and DOC-02 (Chapter 1, Section 1.3)",
+        "section": "DOC-01 Sutra 1 'अथातो उद्यमजिज्ञासा'; DOC-02 Ch 1 'उद्यम म्हणजे काय?'",
+        "finding": "Both documents stress that Jijnasa (inquiry) without dynamic action (Utthana) leads to stagnation.",
+        "distinction": "Direct scriptural statement on executive action versus passive fatalism; applied to entrepreneurial feasibility validation."
+      }
+    },
+    {
+      "sutra_no": 2,
+      "topic": "व्यावसायिक निष्ठा व उत्कृष्टतेचा ध्यास (Craftsmanship & Passion)",
+      "timestamp": "2026-11-07T19:25:05.845584",
+      "research_content": {
+        "iks_text": "Bhagavad Gita (Chapter 18, Verse 45)",
+        "sanskrit": "स्वे स्वे कर्मण्यभिरतः संसिद्धिं लभते नरः ।\nस्वकर्मनिरतः सिद्धिं यथा विन्दति तच्छृणु ॥",
+        "context_and_meaning": "Devoted each to his own rightful duty (Sva-karma), a human being attains the highest perfection. Listen now how one completely absorbed in his natural vocation achieves fulfillment.",
+        "doc_consulted": "DOC-01 (Sutra 3 'कर्मसु कौशलम्') and DOC-02 (Chapter 2, Section 2.3)",
+        "section": "DOC-01 Sutra 3 & 34; DOC-02 Ch 2 'श्रमातून जीवनाची उभारणी'",
+        "finding": "Excellence arises not from imitating another's domain, but from deep psychological and professional immersion in one's chosen craft.",
+        "distinction": "Classical Vedantic Svadharma applied to craftsmanship, zero-defect engineering, and organizational pride in product."
+      }
+    },
+    {
+      "sutra_no": 3,
+      "topic": "शाश्वत मूल्यनिर्मिती व संस्थागत अमरत्व (Institutional Longevity & Governance)",
+      "timestamp": "2026-11-07T19:25:05.856597",
+      "research_content": {
+        "iks_text": "Bhartrihari's Niti Shataka (Verse 68)",
+        "sanskrit": "निन्दन्तु नीतिनिपुणा यदि वा स्तुवन्तु लक्ष्मीः समाविशतु गच्छतु वा यथेष्टम् ।\nअद्यैव वा मरणमस्तु युगान्तरे वा न्यायात्पथः प्रविचलन्ति पदं न धीराः ॥",
+        "context_and_meaning": "Let master statesmen praise or censure; let wealth enter or depart as it pleases; let death come today or at the end of an eon—the steadfast and wise never deviate a single step from the path of justice.",
+        "doc_consulted": "DOC-01 (Sutra 49 'नीतिविहीनः उद्योगः क्षणभङ्गुरः') and DOC-02 (Chapter 3, Section 3.3)",
+        "section": "DOC-01 Sutra 49 & 96; DOC-02 Ch 3 'धर्म: उद्यमाला दिशा देणारी मूल्यव्यवस्था'",
+        "finding": "Wealth acquired through unjust deviations carries hidden terminal fragility; long-term institutional survival requires ethical incorruptibility.",
+        "distinction": "Classical ethical doctrine of Dhairya applied to corporate governance, transparency, and multi-generational trust."
+      }
+    },
+    {
+      "sutra_no": 4,
+      "topic": "लोभमुक्ती व आंतरिक समाधान (Contentment Over Greed)",
+      "timestamp": "2026-11-07T19:25:05.863681",
+      "research_content": {
+        "iks_text": "Isha Upanishad (Mantra 1)",
+        "sanskrit": "ईशा वास्यमिदं सर्वं यत्किञ्च जगत्यां जगत् ।\nतेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम् ॥",
+        "context_and_meaning": "All this, whatsoever moves in this transient universe, is enveloped by the Divine. Enjoy and sustain yourself through ethical detachment; do not covet anyone's wealth.",
+        "doc_consulted": "DOC-01 (Sutra 23) and DOC-02 (Chapter 1, Section 1.4; Chapter 3, Section 3.4)",
+        "section": "DOC-01 Sutra 23 'ईशावास्यमिदं सर्वं'; DOC-02 Ch 1.4 'ईशावास्योपनिषदातील संपत्तीविषयक संयमदृष्टी'",
+        "finding": "DOC-02 explicitly cautions that resource utilization is not a license for predatory extortion; wealth must be stewarded as a trust.",
+        "distinction": "Direct Upanishadic revelation on non-greed applied to anti-monopoly ethics, sustainable profit margins, and customer fairness."
+      }
+    },
+    {
+      "sutra_no": 5,
+      "topic": "सर्वहितचिंतन व अखंड समर्पण (Stakeholder Welfare & Trusteeship)",
+      "timestamp": "2026-11-07T19:25:05.875444",
+      "research_content": {
+        "iks_text": "Bhagavad Gita (Chapter 3, Verse 9)",
+        "sanskrit": "यज्ञार्थात्कर्मणोऽन्यत्र लोकोऽयं कर्मबन्धनः ।\nतदर्थं कर्म कौन्तेय मुक्तसङ्गः समाचर ॥",
+        "context_and_meaning": "Work done as a sacred offering for the collective good (Yajna) frees humanity from bondage. Work performed for narrow selfish grasping binds the soul. Therefore, execute work efficiently for that higher purpose, free from ego-attachment.",
+        "doc_consulted": "DOC-01 (Sutra 50 'सर्वकल्याणप्रदः उद्योगः') and DOC-02 (Chapter 2, Section 2.4; Chapter 5, Section 5.7)",
+        "section": "DOC-01 Sutra 50 & 80; DOC-02 Ch 5 'लोकसंग्रह: नेतृत्वाचा सामाजिक परिणाम'",
+        "finding": "Both documents emphasize that enterprise divorced from societal welfare degrades into extractive exploitation.",
+        "distinction": "Vedic Yajna principle mapped to stakeholder capitalism, employee dignity, and public-benefit corporate charters."
+      }
+    },
+    {
+      "sutra_no": 6,
+      "topic": "आघातजन्य-सामर्थ्य व विपत्ति-रूपांतरण (Antifragility & Adversarial Transformation)",
+      "timestamp": "2026-11-07T19:25:05.889951",
+      "research_content": {
+        "iks_text": "Mahabharata, Udyoga Parva (Chapter 134, Verse 14 - Vidula-Putra Samvada)",
+        "sanskrit": "उत्तिष्ठ हे कापुरुष मा शेष्वैवं पराजितः ।\nमुहूर्तं ज्वलितं श्रेयो न च धूमायितं चिरम् ॥",
+        "context_and_meaning": "Rise, o faint-hearted! Lie not defeated. Far better is it to flare up in brilliant flame even for an hour than to smolder dully with smoke for a long time.",
+        "doc_consulted": "DOC-01 (Sutra 51 'धैर्येण सर्वाः विपदः तरन्ति') and DOC-02 (Chapter 4, Section 4.8)",
+        "section": "DOC-01 Sutra 51 & 65; DOC-02 Ch 4 'अपयश, टीका आणि आत्मपरीक्षण'",
+        "finding": "DOC-01 views crisis passively (endurance); Vidula's discourse mandates active transformation of shock into heroic resurgence.",
+        "distinction": "Kshatriya valor and ontological grit applied to business antifragility, turnaround leadership, and market resilience."
+      }
+    },
+    {
+      "sutra_no": 7,
+      "topic": "प्रज्ञा-स्वायत्तता व स्वदेशी नवोन्मेष (Epistemic Sovereignty & Foundational IP)",
+      "timestamp": "2026-11-07T19:25:05.901139",
+      "research_content": {
+        "iks_text": "Bhagavad Gita (Chapter 3, Verse 35)",
+        "sanskrit": "श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात् ।\nस्वधर्मे निधनं श्रेयः परधर्मो भयावहः ॥",
+        "context_and_meaning": "Far better is one's own natural duty (Svadharma), though lacking in external polish, than the borrowed path of another well-executed. Destruction in one's own natural path is blessed; pursuing an alien path is perilous.",
+        "doc_consulted": "DOC-01 (Sutra 37 'स्वावलंबनेनैव स्वराज्यं') and DOC-02 (Chapter 5, Section 5.6)",
+        "section": "DOC-01 Sutra 37; DOC-02 Ch 5.6 'स्वधर्म आणि कौशल्याधिष्ठित कामवाटप'",
+        "finding": "DOC-02 warns against forcing roles; true autonomy requires operating from one's authentic genius rather than derivative imitation.",
+        "distinction": "Direct scriptural injunction against cognitive colonization; applied to native intellectual property, foundational R&D, and sovereign digital architecture."
+      }
+    },
+    {
+      "sutra_no": 8,
+      "topic": "ज्ञानसंक्रमण व संस्थागत सातत्य (Inter-generational Lineage & Succession)",
+      "timestamp": "2026-11-07T19:25:05.913054",
+      "research_content": {
+        "iks_text": "Taittiriya Upanishad, Shikshavalli (Anuvaka 11, Verse 1)",
+        "sanskrit": "स्वाध्यायान्मा प्रमदः । आचार्याय प्रियं धनमाहृत्य प्रजातन्तुं मा व्यवच्छेत्सीः ॥",
+        "context_and_meaning": "Do not swerve from self-study and truth. Having offered agreeable wealth to the preceptor, take care that the lineage of creative transmission (Praja-tantu) is never severed.",
+        "doc_consulted": "DOC-01 (Sutra 21 'न स्वामिनः सर्वं स्वयमेव कुर्यात्') and DOC-02 (Chapter 4, Section 4.5)",
+        "section": "DOC-01 Sutra 21 & 79; DOC-02 Ch 4.5 'आत्मनिर्भरता: स्वावलंबनासोबत परस्परावलंबन'",
+        "finding": "DOC-01 treats succession merely as managerial delegation; Taittiriya establishes succession as a sacred multi-generational transmission duty.",
+        "distinction": "Vedic convocation decree applied to grooming successor-custodians, founder ego dissolution, and corporate generational continuity."
+      }
+    },
+    {
+      "sutra_no": 9,
+      "topic": "प्राकृतिक दोहन व चक्रीय परिसंस्था (Regenerative Ecological Symbiosis)",
+      "timestamp": "2026-11-07T19:25:05.925150",
+      "research_content": {
+        "iks_text": "Atharvaveda, Prithvi Sukta (Kanda 12, Sukta 1, Verse 35)",
+        "sanskrit": "यत्ते भूमे विखनामि क्षिप्रं तदपि रोहतु ।\nमा ते मर्म विमृग्वरि मा ते हृदयमर्पिपम् ॥",
+        "context_and_meaning": "Whatever I excavate from Thee, O Mother Earth, may that quickly replenish and heal over. O cleanser of all, let me not strike into Thy vital core, nor pierce Thy living heart.",
+        "doc_consulted": "DOC-01 (Sutra 98 'शाश्वतविकासः एव अंतिमं लक्ष्यम्') and DOC-02 (Chapter 1, Section 1.4; Appendix A.2)",
+        "section": "DOC-01 Sutra 98; DOC-02 Appendix A 'संसाधन व शिस्त'",
+        "finding": "Both documents demand ecological limits; Atharvaveda provides the definitive non-extractive principle of cyclical replenishment (Dohana).",
+        "distinction": "Direct Vedic environmental mantra applied to circular economy, net-zero closed-loop supply chains, and industrial regenerative ecology."
+      }
+    },
+    {
+      "sutra_no": 10,
+      "topic": "वास्तविक मूल्यनिर्मिती व आभासी अर्थत्याग (Tangible Utility Over Speculation)",
+      "timestamp": "2026-11-07T19:25:05.936148",
+      "research_content": {
+        "iks_text": "Kautilya's Arthashastra (Adhikarana 1, Adhyaya 4, Sutra 1)",
+        "sanskrit": "कृषि-पशुपाल्ये वणिज्या च वार्ता । धान्य-पशु-हिरण्य-कुप्य-विष्टि-प्रदानाद् औपकारिकी ॥",
+        "context_and_meaning": "Agriculture, cattle-rearing, and commerce constitute Varta [real productive enterprise]. It is genuinely beneficial to humanity because it produces real physical grain, livestock, gold, materials, and employment.",
+        "doc_consulted": "DOC-01 (Sutra 12 'कोषपूर्वाः सर्वा रम्भाः') and DOC-02 (Chapter 1, Section 1.5; Chapter 2, Section 2.6)",
+        "section": "DOC-01 Sutra 12 & 91; DOC-02 Ch 1.5 'उद्यम आणि संपत्ती: साधन, ध्येय नव्हे'",
+        "finding": "DOC-02 explicitly establishes that wealth is merely a means; Chanakya emphasizes that Varta must generate physical tangible utility, not speculative manipulation.",
+        "distinction": "Classical political economy applied to real wealth generation, curing physical human suffering (Dukha-haritva), and rejecting speculative paper asset bubbles."
+      }
+    },
+    {
+      "sutra_no": 1,
+      "topic": "उद्यम-संकल्प व रणनीतिक जिज्ञासा (Inception & Diligent Inquiry)",
+      "timestamp": "2026-11-07T19:25:22.732568",
+      "research_content": {
+        "iks_text": "Kautilya's Arthashastra (Adhikarana 1, Adhyaya 19, Shloka 34)",
+        "sanskrit": "अनुत्थाने ध्रुवो नाशः प्राप्तस्यानागतस्य च ।\nप्राप्यते फलमुत्थानाल्लभते चार्थसम्पदम् ॥",
+        "context_and_meaning": "If a sovereign or leader is inactive, the destruction of both existing wealth and prospective acquisitions is certain. Through dynamic enterprise (Utthana), fruitful results are attained and prosperity multiplies.",
+        "doc_consulted": "DOC-01 (Sutra 1 & 4 analysis) and DOC-02 (Chapter 1, Section 1.3)",
+        "section": "DOC-01 Sutra 1 'अथातो उद्यमजिज्ञासा'; DOC-02 Ch 1 'उद्यम म्हणजे काय?'",
+        "finding": "Both documents stress that Jijnasa (inquiry) without dynamic action (Utthana) leads to stagnation.",
+        "distinction": "Direct scriptural statement on executive action versus passive fatalism; applied to entrepreneurial feasibility validation."
+      }
+    },
+    {
+      "sutra_no": 2,
+      "topic": "व्यावसायिक निष्ठा व उत्कृष्टतेचा ध्यास (Craftsmanship & Passion)",
+      "timestamp": "2026-11-07T19:25:22.742586",
+      "research_content": {
+        "iks_text": "Bhagavad Gita (Chapter 18, Verse 45)",
+        "sanskrit": "स्वे स्वे कर्मण्यभिरतः संसिद्धिं लभते नरः ।\nस्वकर्मनिरतः सिद्धिं यथा विन्दति तच्छृणु ॥",
+        "context_and_meaning": "Devoted each to his own rightful duty (Sva-karma), a human being attains the highest perfection. Listen now how one completely absorbed in his natural vocation achieves fulfillment.",
+        "doc_consulted": "DOC-01 (Sutra 3 'कर्मसु कौशलम्') and DOC-02 (Chapter 2, Section 2.3)",
+        "section": "DOC-01 Sutra 3 & 34; DOC-02 Ch 2 'श्रमातून जीवनाची उभारणी'",
+        "finding": "Excellence arises not from imitating another's domain, but from deep psychological and professional immersion in one's chosen craft.",
+        "distinction": "Classical Vedantic Svadharma applied to craftsmanship, zero-defect engineering, and organizational pride in product."
+      }
+    },
+    {
+      "sutra_no": 3,
+      "topic": "शाश्वत मूल्यनिर्मिती व संस्थागत अमरत्व (Institutional Longevity & Governance)",
+      "timestamp": "2026-11-07T19:25:22.758759",
+      "research_content": {
+        "iks_text": "Bhartrihari's Niti Shataka (Verse 68)",
+        "sanskrit": "निन्दन्तु नीतिनिपुणा यदि वा स्तुवन्तु लक्ष्मीः समाविशतु गच्छतु वा यथेष्टम् ।\nअद्यैव वा मरणमस्तु युगान्तरे वा न्यायात्पथः प्रविचलन्ति पदं न धीराः ॥",
+        "context_and_meaning": "Let master statesmen praise or censure; let wealth enter or depart as it pleases; let death come today or at the end of an eon—the steadfast and wise never deviate a single step from the path of justice.",
+        "doc_consulted": "DOC-01 (Sutra 49 'नीतिविहीनः उद्योगः क्षणभङ्गुरः') and DOC-02 (Chapter 3, Section 3.3)",
+        "section": "DOC-01 Sutra 49 & 96; DOC-02 Ch 3 'धर्म: उद्यमाला दिशा देणारी मूल्यव्यवस्था'",
+        "finding": "Wealth acquired through unjust deviations carries hidden terminal fragility; long-term institutional survival requires ethical incorruptibility.",
+        "distinction": "Classical ethical doctrine of Dhairya applied to corporate governance, transparency, and multi-generational trust."
+      }
+    },
+    {
+      "sutra_no": 4,
+      "topic": "लोभमुक्ती व आंतरिक समाधान (Contentment Over Greed)",
+      "timestamp": "2026-11-07T19:25:22.772958",
+      "research_content": {
+        "iks_text": "Isha Upanishad (Mantra 1)",
+        "sanskrit": "ईशा वास्यमिदं सर्वं यत्किञ्च जगत्यां जगत् ।\nतेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम् ॥",
+        "context_and_meaning": "All this, whatsoever moves in this transient universe, is enveloped by the Divine. Enjoy and sustain yourself through ethical detachment; do not covet anyone's wealth.",
+        "doc_consulted": "DOC-01 (Sutra 23) and DOC-02 (Chapter 1, Section 1.4; Chapter 3, Section 3.4)",
+        "section": "DOC-01 Sutra 23 'ईशावास्यमिदं सर्वं'; DOC-02 Ch 1.4 'ईशावास्योपनिषदातील संपत्तीविषयक संयमदृष्टी'",
+        "finding": "DOC-02 explicitly cautions that resource utilization is not a license for predatory extortion; wealth must be stewarded as a trust.",
+        "distinction": "Direct Upanishadic revelation on non-greed applied to anti-monopoly ethics, sustainable profit margins, and customer fairness."
+      }
+    },
+    {
+      "sutra_no": 5,
+      "topic": "सर्वहितचिंतन व अखंड समर्पण (Stakeholder Welfare & Trusteeship)",
+      "timestamp": "2026-11-07T19:25:22.784855",
+      "research_content": {
+        "iks_text": "Bhagavad Gita (Chapter 3, Verse 9)",
+        "sanskrit": "यज्ञार्थात्कर्मणोऽन्यत्र लोकोऽयं कर्मबन्धनः ।\nतदर्थं कर्म कौन्तेय मुक्तसङ्गः समाचर ॥",
+        "context_and_meaning": "Work done as a sacred offering for the collective good (Yajna) frees humanity from bondage. Work performed for narrow selfish grasping binds the soul. Therefore, execute work efficiently for that higher purpose, free from ego-attachment.",
+        "doc_consulted": "DOC-01 (Sutra 50 'सर्वकल्याणप्रदः उद्योगः') and DOC-02 (Chapter 2, Section 2.4; Chapter 5, Section 5.7)",
+        "section": "DOC-01 Sutra 50 & 80; DOC-02 Ch 5 'लोकसंग्रह: नेतृत्वाचा सामाजिक परिणाम'",
+        "finding": "Both documents emphasize that enterprise divorced from societal welfare degrades into extractive exploitation.",
+        "distinction": "Vedic Yajna principle mapped to stakeholder capitalism, employee dignity, and public-benefit corporate charters."
+      }
+    },
+    {
+      "sutra_no": 6,
+      "topic": "आघातजन्य-सामर्थ्य व विपत्ति-रूपांतरण (Antifragility & Adversarial Transformation)",
+      "timestamp": "2026-11-07T19:25:22.798062",
+      "research_content": {
+        "iks_text": "Mahabharata, Udyoga Parva (Chapter 134, Verse 14 - Vidula-Putra Samvada)",
+        "sanskrit": "उत्तिष्ठ हे कापुरुष मा शेष्वैवं पराजितः ।\nमुहूर्तं ज्वलितं श्रेयो न च धूमायितं चिरम् ॥",
+        "context_and_meaning": "Rise, o faint-hearted! Lie not defeated. Far better is it to flare up in brilliant flame even for an hour than to smolder dully with smoke for a long time.",
+        "doc_consulted": "DOC-01 (Sutra 51 'धैर्येण सर्वाः विपदः तरन्ति') and DOC-02 (Chapter 4, Section 4.8)",
+        "section": "DOC-01 Sutra 51 & 65; DOC-02 Ch 4 'अपयश, टीका आणि आत्मपरीक्षण'",
+        "finding": "DOC-01 views crisis passively (endurance); Vidula's discourse mandates active transformation of shock into heroic resurgence.",
+        "distinction": "Kshatriya valor and ontological grit applied to business antifragility, turnaround leadership, and market resilience."
+      }
+    },
+    {
+      "sutra_no": 7,
+      "topic": "प्रज्ञा-स्वायत्तता व स्वदेशी नवोन्मेष (Epistemic Sovereignty & Foundational IP)",
+      "timestamp": "2026-11-07T19:25:22.810063",
+      "research_content": {
+        "iks_text": "Bhagavad Gita (Chapter 3, Verse 35)",
+        "sanskrit": "श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात् ।\nस्वधर्मे निधनं श्रेयः परधर्मो भयावहः ॥",
+        "context_and_meaning": "Far better is one's own natural duty (Svadharma), though lacking in external polish, than the borrowed path of another well-executed. Destruction in one's own natural path is blessed; pursuing an alien path is perilous.",
+        "doc_consulted": "DOC-01 (Sutra 37 'स्वावलंबनेनैव स्वराज्यं') and DOC-02 (Chapter 5, Section 5.6)",
+        "section": "DOC-01 Sutra 37; DOC-02 Ch 5.6 'स्वधर्म आणि कौशल्याधिष्ठित कामवाटप'",
+        "finding": "DOC-02 warns against forcing roles; true autonomy requires operating from one's authentic genius rather than derivative imitation.",
+        "distinction": "Direct scriptural injunction against cognitive colonization; applied to native intellectual property, foundational R&D, and sovereign digital architecture."
+      }
+    },
+    {
+      "sutra_no": 8,
+      "topic": "ज्ञानसंक्रमण व संस्थागत सातत्य (Inter-generational Lineage & Succession)",
+      "timestamp": "2026-11-07T19:25:22.821085",
+      "research_content": {
+        "iks_text": "Taittiriya Upanishad, Shikshavalli (Anuvaka 11, Verse 1)",
+        "sanskrit": "स्वाध्यायान्मा प्रमदः । आचार्याय प्रियं धनमाहृत्य प्रजातन्तुं मा व्यवच्छेत्सीः ॥",
+        "context_and_meaning": "Do not swerve from self-study and truth. Having offered agreeable wealth to the preceptor, take care that the lineage of creative transmission (Praja-tantu) is never severed.",
+        "doc_consulted": "DOC-01 (Sutra 21 'न स्वामिनः सर्वं स्वयमेव कुर्यात्') and DOC-02 (Chapter 4, Section 4.5)",
+        "section": "DOC-01 Sutra 21 & 79; DOC-02 Ch 4.5 'आत्मनिर्भरता: स्वावलंबनासोबत परस्परावलंबन'",
+        "finding": "DOC-01 treats succession merely as managerial delegation; Taittiriya establishes succession as a sacred multi-generational transmission duty.",
+        "distinction": "Vedic convocation decree applied to grooming successor-custodians, founder ego dissolution, and corporate generational continuity."
+      }
+    },
+    {
+      "sutra_no": 9,
+      "topic": "प्राकृतिक दोहन व चक्रीय परिसंस्था (Regenerative Ecological Symbiosis)",
+      "timestamp": "2026-11-07T19:25:22.841631",
+      "research_content": {
+        "iks_text": "Atharvaveda, Prithvi Sukta (Kanda 12, Sukta 1, Verse 35)",
+        "sanskrit": "यत्ते भूमे विखनामि क्षिप्रं तदपि रोहतु ।\nमा ते मर्म विमृग्वरि मा ते हृदयमर्पिपम् ॥",
+        "context_and_meaning": "Whatever I excavate from Thee, O Mother Earth, may that quickly replenish and heal over. O cleanser of all, let me not strike into Thy vital core, nor pierce Thy living heart.",
+        "doc_consulted": "DOC-01 (Sutra 98 'शाश्वतविकासः एव अंतिमं लक्ष्यम्') and DOC-02 (Chapter 1, Section 1.4; Appendix A.2)",
+        "section": "DOC-01 Sutra 98; DOC-02 Appendix A 'संसाधन व शिस्त'",
+        "finding": "Both documents demand ecological limits; Atharvaveda provides the definitive non-extractive principle of cyclical replenishment (Dohana).",
+        "distinction": "Direct Vedic environmental mantra applied to circular economy, net-zero closed-loop supply chains, and industrial regenerative ecology."
+      }
+    },
+    {
+      "sutra_no": 10,
+      "topic": "वास्तविक मूल्यनिर्मिती व आभासी अर्थत्याग (Tangible Utility Over Speculation)",
+      "timestamp": "2026-11-07T19:25:22.853782",
+      "research_content": {
+        "iks_text": "Kautilya's Arthashastra (Adhikarana 1, Adhyaya 4, Sutra 1)",
+        "sanskrit": "कृषि-पशुपाल्ये वणिज्या च वार्ता । धान्य-पशु-हिरण्य-कुप्य-विष्टि-प्रदानाद् औपकारिकी ॥",
+        "context_and_meaning": "Agriculture, cattle-rearing, and commerce constitute Varta [real productive enterprise]. It is genuinely beneficial to humanity because it produces real physical grain, livestock, gold, materials, and employment.",
+        "doc_consulted": "DOC-01 (Sutra 12 'कोषपूर्वाः सर्वा रम्भाः') and DOC-02 (Chapter 1, Section 1.5; Chapter 2, Section 2.6)",
+        "section": "DOC-01 Sutra 12 & 91; DOC-02 Ch 1.5 'उद्यम आणि संपत्ती: साधन, ध्येय नव्हे'",
+        "finding": "DOC-02 explicitly establishes that wealth is merely a means; Chanakya emphasizes that Varta must generate physical tangible utility, not speculative manipulation.",
+        "distinction": "Classical political economy applied to real wealth generation, curing physical human suffering (Dukha-haritva), and rejecting speculative paper asset bubbles."
+      }
+    },
+    {
+      "sutra_no": 1,
+      "topic": "उद्यम-संकल्प व रणनीतिक जिज्ञासा (Inception & Diligent Inquiry)",
+      "timestamp": "2026-11-07T19:25:50.438027",
+      "research_content": {
+        "iks_text": "Kautilya's Arthashastra (Adhikarana 1, Adhyaya 19, Shloka 34)",
+        "sanskrit": "अनुत्थाने ध्रुवो नाशः प्राप्तस्यानागतस्य च ।\nप्राप्यते फलमुत्थानाल्लभते चार्थसम्पदम् ॥",
+        "context_and_meaning": "If a sovereign or leader is inactive, the destruction of both existing wealth and prospective acquisitions is certain. Through dynamic enterprise (Utthana), fruitful results are attained and prosperity multiplies.",
+        "doc_consulted": "DOC-01 (Sutra 1 & 4 analysis) and DOC-02 (Chapter 1, Section 1.3)",
+        "section": "DOC-01 Sutra 1 'अथातो उद्यमजिज्ञासा'; DOC-02 Ch 1 'उद्यम म्हणजे काय?'",
+        "finding": "Both documents stress that Jijnasa (inquiry) without dynamic action (Utthana) leads to stagnation.",
+        "distinction": "Direct scriptural statement on executive action versus passive fatalism; applied to entrepreneurial feasibility validation."
+      }
+    },
+    {
+      "sutra_no": 2,
+      "topic": "व्यावसायिक निष्ठा व उत्कृष्टतेचा ध्यास (Craftsmanship & Passion)",
+      "timestamp": "2026-11-07T19:25:50.458303",
+      "research_content": {
+        "iks_text": "Bhagavad Gita (Chapter 18, Verse 45)",
+        "sanskrit": "स्वे स्वे कर्मण्यभिरतः संसिद्धिं लभते नरः ।\nस्वकर्मनिरतः सिद्धिं यथा विन्दति तच्छृणु ॥",
+        "context_and_meaning": "Devoted each to his own rightful duty (Sva-karma), a human being attains the highest perfection. Listen now how one completely absorbed in his natural vocation achieves fulfillment.",
+        "doc_consulted": "DOC-01 (Sutra 3 'कर्मसु कौशलम्') and DOC-02 (Chapter 2, Section 2.3)",
+        "section": "DOC-01 Sutra 3 & 34; DOC-02 Ch 2 'श्रमातून जीवनाची उभारणी'",
+        "finding": "Excellence arises not from imitating another's domain, but from deep psychological and professional immersion in one's chosen craft.",
+        "distinction": "Classical Vedantic Svadharma applied to craftsmanship, zero-defect engineering, and organizational pride in product."
+      }
+    },
+    {
+      "sutra_no": 3,
+      "topic": "शाश्वत मूल्यनिर्मिती व संस्थागत अमरत्व (Institutional Longevity & Governance)",
+      "timestamp": "2026-11-07T19:25:50.473835",
+      "research_content": {
+        "iks_text": "Bhartrihari's Niti Shataka (Verse 68)",
+        "sanskrit": "निन्दन्तु नीतिनिपुणा यदि वा स्तुवन्तु लक्ष्मीः समाविशतु गच्छतु वा यथेष्टम् ।\nअद्यैव वा मरणमस्तु युगान्तरे वा न्यायात्पथः प्रविचलन्ति पदं न धीराः ॥",
+        "context_and_meaning": "Let master statesmen praise or censure; let wealth enter or depart as it pleases; let death come today or at the end of an eon—the steadfast and wise never deviate a single step from the path of justice.",
+        "doc_consulted": "DOC-01 (Sutra 49 'नीतिविहीनः उद्योगः क्षणभङ्गुरः') and DOC-02 (Chapter 3, Section 3.3)",
+        "section": "DOC-01 Sutra 49 & 96; DOC-02 Ch 3 'धर्म: उद्यमाला दिशा देणारी मूल्यव्यवस्था'",
+        "finding": "Wealth acquired through unjust deviations carries hidden terminal fragility; long-term institutional survival requires ethical incorruptibility.",
+        "distinction": "Classical ethical doctrine of Dhairya applied to corporate governance, transparency, and multi-generational trust."
+      }
+    },
+    {
+      "sutra_no": 4,
+      "topic": "लोभमुक्ती व आंतरिक समाधान (Contentment Over Greed)",
+      "timestamp": "2026-11-07T19:25:50.490023",
+      "research_content": {
+        "iks_text": "Isha Upanishad (Mantra 1)",
+        "sanskrit": "ईशा वास्यमिदं सर्वं यत्किञ्च जगत्यां जगत् ।\nतेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम् ॥",
+        "context_and_meaning": "All this, whatsoever moves in this transient universe, is enveloped by the Divine. Enjoy and sustain yourself through ethical detachment; do not covet anyone's wealth.",
+        "doc_consulted": "DOC-01 (Sutra 23) and DOC-02 (Chapter 1, Section 1.4; Chapter 3, Section 3.4)",
+        "section": "DOC-01 Sutra 23 'ईशावास्यमिदं सर्वं'; DOC-02 Ch 1.4 'ईशावास्योपनिषदातील संपत्तीविषयक संयमदृष्टी'",
+        "finding": "DOC-02 explicitly cautions that resource utilization is not a license for predatory extortion; wealth must be stewarded as a trust.",
+        "distinction": "Direct Upanishadic revelation on non-greed applied to anti-monopoly ethics, sustainable profit margins, and customer fairness."
+      }
+    },
+    {
+      "sutra_no": 5,
+      "topic": "सर्वहितचिंतन व अखंड समर्पण (Stakeholder Welfare & Trusteeship)",
+      "timestamp": "2026-11-07T19:25:50.510831",
+      "research_content": {
+        "iks_text": "Bhagavad Gita (Chapter 3, Verse 9)",
+        "sanskrit": "यज्ञार्थात्कर्मणोऽन्यत्र लोकोऽयं कर्मबन्धनः ।\nतदर्थं कर्म कौन्तेय मुक्तसङ्गः समाचर ॥",
+        "context_and_meaning": "Work done as a sacred offering for the collective good (Yajna) frees humanity from bondage. Work performed for narrow selfish grasping binds the soul. Therefore, execute work efficiently for that higher purpose, free from ego-attachment.",
+        "doc_consulted": "DOC-01 (Sutra 50 'सर्वकल्याणप्रदः उद्योगः') and DOC-02 (Chapter 2, Section 2.4; Chapter 5, Section 5.7)",
+        "section": "DOC-01 Sutra 50 & 80; DOC-02 Ch 5 'लोकसंग्रह: नेतृत्वाचा सामाजिक परिणाम'",
+        "finding": "Both documents emphasize that enterprise divorced from societal welfare degrades into extractive exploitation.",
+        "distinction": "Vedic Yajna principle mapped to stakeholder capitalism, employee dignity, and public-benefit corporate charters."
+      }
+    },
+    {
+      "sutra_no": 6,
+      "topic": "आघातजन्य-सामर्थ्य व विपत्ति-रूपांतरण (Antifragility & Adversarial Transformation)",
+      "timestamp": "2026-11-07T19:25:50.533743",
+      "research_content": {
+        "iks_text": "Mahabharata, Udyoga Parva (Chapter 134, Verse 14 - Vidula-Putra Samvada)",
+        "sanskrit": "उत्तिष्ठ हे कापुरुष मा शेष्वैवं पराजितः ।\nमुहूर्तं ज्वलितं श्रेयो न च धूमायितं चिरम् ॥",
+        "context_and_meaning": "Rise, o faint-hearted! Lie not defeated. Far better is it to flare up in brilliant flame even for an hour than to smolder dully with smoke for a long time.",
+        "doc_consulted": "DOC-01 (Sutra 51 'धैर्येण सर्वाः विपदः तरन्ति') and DOC-02 (Chapter 4, Section 4.8)",
+        "section": "DOC-01 Sutra 51 & 65; DOC-02 Ch 4 'अपयश, टीका आणि आत्मपरीक्षण'",
+        "finding": "DOC-01 views crisis passively (endurance); Vidula's discourse mandates active transformation of shock into heroic resurgence.",
+        "distinction": "Kshatriya valor and ontological grit applied to business antifragility, turnaround leadership, and market resilience."
+      }
+    },
+    {
+      "sutra_no": 7,
+      "topic": "प्रज्ञा-स्वायत्तता व स्वदेशी नवोन्मेष (Epistemic Sovereignty & Foundational IP)",
+      "timestamp": "2026-11-07T19:25:50.556994",
+      "research_content": {
+        "iks_text": "Bhagavad Gita (Chapter 3, Verse 35)",
+        "sanskrit": "श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात् ।\nस्वधर्मे निधनं श्रेयः परधर्मो भयावहः ॥",
+        "context_and_meaning": "Far better is one's own natural duty (Svadharma), though lacking in external polish, than the borrowed path of another well-executed. Destruction in one's own natural path is blessed; pursuing an alien path is perilous.",
+        "doc_consulted": "DOC-01 (Sutra 37 'स्वावलंबनेनैव स्वराज्यं') and DOC-02 (Chapter 5, Section 5.6)",
+        "section": "DOC-01 Sutra 37; DOC-02 Ch 5.6 'स्वधर्म आणि कौशल्याधिष्ठित कामवाटप'",
+        "finding": "DOC-02 warns against forcing roles; true autonomy requires operating from one's authentic genius rather than derivative imitation.",
+        "distinction": "Direct scriptural injunction against cognitive colonization; applied to native intellectual property, foundational R&D, and sovereign digital architecture."
+      }
+    },
+    {
+      "sutra_no": 8,
+      "topic": "ज्ञानसंक्रमण व संस्थागत सातत्य (Inter-generational Lineage & Succession)",
+      "timestamp": "2026-11-07T19:25:50.584565",
+      "research_content": {
+        "iks_text": "Taittiriya Upanishad, Shikshavalli (Anuvaka 11, Verse 1)",
+        "sanskrit": "स्वाध्यायान्मा प्रमदः । आचार्याय प्रियं धनमाहृत्य प्रजातन्तुं मा व्यवच्छेत्सीः ॥",
+        "context_and_meaning": "Do not swerve from self-study and truth. Having offered agreeable wealth to the preceptor, take care that the lineage of creative transmission (Praja-tantu) is never severed.",
+        "doc_consulted": "DOC-01 (Sutra 21 'न स्वामिनः सर्वं स्वयमेव कुर्यात्') and DOC-02 (Chapter 4, Section 4.5)",
+        "section": "DOC-01 Sutra 21 & 79; DOC-02 Ch 4.5 'आत्मनिर्भरता: स्वावलंबनासोबत परस्परावलंबन'",
+        "finding": "DOC-01 treats succession merely as managerial delegation; Taittiriya establishes succession as a sacred multi-generational transmission duty.",
+        "distinction": "Vedic convocation decree applied to grooming successor-custodians, founder ego dissolution, and corporate generational continuity."
+      }
+    },
+    {
+      "sutra_no": 9,
+      "topic": "प्राकृतिक दोहन व चक्रीय परिसंस्था (Regenerative Ecological Symbiosis)",
+      "timestamp": "2026-11-07T19:25:50.614015",
+      "research_content": {
+        "iks_text": "Atharvaveda, Prithvi Sukta (Kanda 12, Sukta 1, Verse 35)",
+        "sanskrit": "यत्ते भूमे विखनामि क्षिप्रं तदपि रोहतु ।\nमा ते मर्म विमृग्वरि मा ते हृदयमर्पिपम् ॥",
+        "context_and_meaning": "Whatever I excavate from Thee, O Mother Earth, may that quickly replenish and heal over. O cleanser of all, let me not strike into Thy vital core, nor pierce Thy living heart.",
+        "doc_consulted": "DOC-01 (Sutra 98 'शाश्वतविकासः एव अंतिमं लक्ष्यम्') and DOC-02 (Chapter 1, Section 1.4; Appendix A.2)",
+        "section": "DOC-01 Sutra 98; DOC-02 Appendix A 'संसाधन व शिस्त'",
+        "finding": "Both documents demand ecological limits; Atharvaveda provides the definitive non-extractive principle of cyclical replenishment (Dohana).",
+        "distinction": "Direct Vedic environmental mantra applied to circular economy, net-zero closed-loop supply chains, and industrial regenerative ecology."
+      }
+    },
+    {
+      "sutra_no": 10,
+      "topic": "वास्तविक मूल्यनिर्मिती व आभासी अर्थत्याग (Tangible Utility Over Speculation)",
+      "timestamp": "2026-11-07T19:25:50.638212",
+      "research_content": {
+        "iks_text": "Kautilya's Arthashastra (Adhikarana 1, Adhyaya 4, Sutra 1)",
+        "sanskrit": "कृषि-पशुपाल्ये वणिज्या च वार्ता । धान्य-पशु-हिरण्य-कुप्य-विष्टि-प्रदानाद् औपकारिकी ॥",
+        "context_and_meaning": "Agriculture, cattle-rearing, and commerce constitute Varta [real productive enterprise]. It is genuinely beneficial to humanity because it produces real physical grain, livestock, gold, materials, and employment.",
+        "doc_consulted": "DOC-01 (Sutra 12 'कोषपूर्वाः सर्वा रम्भाः') and DOC-02 (Chapter 1, Section 1.5; Chapter 2, Section 2.6)",
+        "section": "DOC-01 Sutra 12 & 91; DOC-02 Ch 1.5 'उद्यम आणि संपत्ती: साधन, ध्येय नव्हे'",
+        "finding": "DOC-02 explicitly establishes that wealth is merely a means; Chanakya emphasizes that Varta must generate physical tangible utility, not speculative manipulation.",
+        "distinction": "Classical political economy applied to real wealth generation, curing physical human suffering (Dukha-haritva), and rejecting speculative paper asset bubbles."
+      }
+    }
+  ]
+}
