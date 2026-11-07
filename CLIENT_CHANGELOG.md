@@ -2,6 +2,30 @@
 
 All notable changes, architectural updates, and releases for **SK Sutras - by Shri Shripad Kulkarni** are documented in this client-facing log.
 
+## [v0.3.6-beta] - 2026-11-07
+
+### Executive Summary of Changes
+1. **Concise Three-Element Word Manuscript Generation (`scripts/generate_five_new_sutras_minimal_report.py`)**:
+   - Engineered and generated `docs/UDYAM_SUTRAS_MATCHING_PAIRS_AND_NEW_SHLOKAS.docx` (and synchronized with brain artifacts).
+   - Tailored specifically to display **exclusively the 3 core elements** for each of the 5 newly derived Udyam Sutras:
+     1. **Matching Source Pair:** Original Sanskrit verse from Narada Bhakti Sutras and Shandilya Bhakti Sutras.
+     2. **Newly Derived Shloka:** The new Sanskrit composition by the Sutrakara Agent in classical Anushtubh metre.
+     3. **Translations of Each Shloka:** Complete, accessible English and Marathi translations for both source sutras and the new composition.
+   - Removed all auxiliary dossier layers to provide a clean, uncluttered review document for author Shri Shripad Kulkarni.
+2. **Hiranyam AI Protocol Compliance**:
+   - Enforced the standardized confidentiality footer on every page: `"Proprietory and Confidential- Hiranyam AI Labs"`.
+   - Maintained clean corporate typography and bilingual readability.
+
+### Direct Client & User Benefits / Features Added
+* **Minimalist, High-Focus Document**: Zero extraneous commentary—allows immediate reading of original Sanskrit sources, the newly composed verse, and their precise meanings.
+* **Dual Language Access**: English and Marathi translations side-by-side for rapid evaluation.
+
+### Validation & Test Results
+* **Document Integrity**: Validated OpenXML format, 29 paragraphs, 11 structured tables, and continuous footer binding.
+* **Pass Rate**: 100% compliant with client specification.
+
+---
+
 ## [v0.3.5-beta] - 2026-11-07
 
 ### Executive Summary of Changes
