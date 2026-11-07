@@ -102,6 +102,23 @@ def test_arbitration_node_rejects_weak_candidate():
     assert "Rejected by Sutrakar" in result["arbitration_notes"]
 
 
+def test_arbitration_node_rejects_surface_token_collision():
+    """Verifies that Agent 3 actively rejects superficial token collision matches like NBS 5 & SBS 5."""
+    state: SutraSynthesisState = {
+        "current_pair": {
+            "candidate_info": {
+                "sutra_no": "5",
+                "shandilya_sutra_no": "5",
+            }
+        },
+        "agent1_narada_output": {"sutra_no": "5", "sanskrit": "यत्प्राप्य न किञ्चिद् वाञ्छति न शोचति न द्वेष्टि..."},
+        "agent2_shandilya_output": {"sutra_no": "5", "sanskrit": "द्वेषप्रतिद्वन्द्विभावाद्रसशब्दाच्च॥"},
+    }
+    result = synthesis_arbitration_node(state)
+    assert result["arbitration_verdict"] == "REJECTED_WEAK_MATCH"
+    assert "Superficial token collision" in result["arbitration_notes"]
+
+
 def test_targeted_revision_node_increments_counter():
     """Verifies that targeted_revision_node increments the revision counter."""
     # Compose initial unit

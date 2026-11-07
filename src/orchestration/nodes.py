@@ -21,6 +21,7 @@ from src.agents.validator_agent import ValidatorAgent
 from src.database.repository import ManuscriptRepository
 from src.models.schema import ManuscriptUnit, SutraItem, SutraPairManuscript, ValidationReport
 from src.models.state import SutraSynthesisState
+from src.orchestration.council_logger import default_council_logger
 
 
 def narada_agent_node(state: SutraSynthesisState) -> Dict[str, Any]:
@@ -308,18 +309,59 @@ def candidate_matching_node(state: SutraSynthesisState) -> Dict[str, Any]:
     Purpose:
         Agent 2 (Shandilya Specialist) matches corresponding aphorisms from
         the 100-sutra Shandilya corpus in ChromaDB and formulates propositions.
+        Enforces non-compulsory matching: uses semantic vector search across
+        all 100 Shandilya aphorisms rather than hardcoding identical indices.
     ----------------------------------------------------------------------------
     """
     shandilya_agent = ShandilyaAgent()
     agent1_out = state.get("agent1_narada_output", {})
-    n_no = agent1_out.get("sutra_no", "1")
+    curr = state.get("current_pair", {})
+    cand_info = curr.get("candidate_info", {})
+    n_no = str(agent1_out.get("sutra_no", "1")).strip()
+    theme = agent1_out.get("theme", curr.get("theme", "Comparative Devotion"))
 
-    # Authoritative mapping or vector search
-    s_sutra = shandilya_agent.get_sutra_by_number(n_no) or shandilya_agent.knowledge_base[0]
+    # If candidate_info explicitly specifies shandilya_sutra_no, respect it
+    explicit_s_no = cand_info.get("shandilya_sutra_no")
+    if explicit_s_no:
+        s_sutra = shandilya_agent.get_sutra_by_number(explicit_s_no) or shandilya_agent.knowledge_base[0]
+        similarity_score = 0.90
+        default_council_logger.log_event(
+            stage="CANDIDATE_MATCHING",
+            agent_name="Agent2_Shandilya",
+            message=f"Targeted match specified for Narada #{n_no} -> Shandilya #{explicit_s_no}",
+            metadata={"narada_no": n_no, "shandilya_no": explicit_s_no},
+        )
+    else:
+        # Dynamically query ChromaDB semantic index across all 100 Shandilya sutras
+        from src.models.schema import SutraItem, MultilingualText
+        narada_item = SutraItem(
+            sutra_no=n_no,
+            sanskrit=agent1_out.get("sanskrit", ""),
+            vishleshan=MultilingualText(**agent1_out.get("vishleshan", {"en": agent1_out.get("thesis", "")})),
+        )
+        candidates = shandilya_agent.search_candidates(
+            narada_sutra=narada_item,
+            theme=theme,
+            top_k=5,
+        )
+        if candidates:
+            best_cand = candidates[0]
+            s_sutra = shandilya_agent.get_sutra_by_number(best_cand["sutra_no"]) or best_cand
+            similarity_score = round(1.0 - float(best_cand.get("distance", 0.12)), 2)
+            default_council_logger.log_event(
+                stage="SEMANTIC_VECTOR_SEARCH",
+                agent_name="Agent2_Shandilya",
+                message=f"Searched 100 Shandilya Sutras for Narada #{n_no}. Best semantic match: Shandilya #{s_sutra.get('sutra_no')} (Score: {similarity_score})",
+                metadata={"narada_no": n_no, "candidates": [c.get("sutra_no") for c in candidates]},
+            )
+        else:
+            s_sutra = shandilya_agent.get_sutra_by_number(n_no) or shandilya_agent.knowledge_base[0]
+            similarity_score = 0.70
+
     shandilya_exp = shandilya_agent.expound_sutra(
         sutra_dict=s_sutra,
         narada_prompt=agent1_out.get("thesis", ""),
-        theme=agent1_out.get("theme", "Comparative Devotion"),
+        theme=theme,
     )
 
     return {
@@ -333,7 +375,7 @@ def candidate_matching_node(state: SutraSynthesisState) -> Dict[str, Any]:
         "candidate_relationship": {
             "narada_sutra_no": n_no,
             "shandilya_sutra_no": str(s_sutra.get("sutra_no", "1")),
-            "similarity_score": 0.88,
+            "similarity_score": similarity_score,
         },
     }
 
@@ -371,6 +413,16 @@ def synthesis_arbitration_node(state: SutraSynthesisState) -> Dict[str, Any]:
         shandilya_output=a2_out,
         candidate_info=cand_info,
         theme=theme,
+    )
+
+    # Log the complete Vidvat Parishad dialogue to console & persistent audit disk
+    default_council_logger.log_dialogue(
+        sutra_id=curr.get("pair_id", f"UDYOGA-{a1_out.get('sutra_no', '1')}"),
+        theme=theme,
+        agent1_narada=a1_out,
+        agent2_shandilya=a2_out,
+        sutrakar_arbitration=deliberation,
+        print_to_console=True,
     )
 
     return {
@@ -443,6 +495,13 @@ def independent_validation_node(state: SutraSynthesisState) -> Dict[str, Any]:
     report = validator.validate_manuscript_unit(unit, revision_cycle=rev_count)
 
     escalate = (report.overall_status == "HUMAN_REVIEW_REQUIRED" or report.overall_status == "FAIL")
+
+    default_council_logger.log_event(
+        stage="INDEPENDENT_VALIDATION",
+        agent_name="Agent4_Validator",
+        message=f"Agent 4 reviewed {unit.unit_id}: Overall {report.overall_status} (Chandas: {report.chandas_metre_check}, Grammar: {report.sanskrit_grammar_check})",
+        metadata={"overall_status": report.overall_status, "unit_id": unit.unit_id},
+    )
 
     return {
         "workflow_stage": "validation_complete",

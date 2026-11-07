@@ -260,3 +260,68 @@ class ShandilyaAgent:
             "candidates": candidates,
         }
 
+    def expound_sutra(
+        self,
+        sutra_dict: Dict[str, Any],
+        narada_prompt: str = "",
+        theme: str = "",
+    ) -> Dict[str, Any]:
+        """
+        ------------------------------------------------------------------------
+        Method: expound_sutra
+        ------------------------------------------------------------------------
+        Purpose:
+            Expounds an individual Shandilya Bhakti Sutra verse from an
+            epistemological and analytical viewpoint (Jnana-pradhana). Produces
+            a validated SutraItem and formats the scholarly counter-thesis
+            addressed to the Sutrakar Master Arbiter.
+
+        Parameters:
+            sutra_dict (Dict[str, Any]): Dictionary containing sutra_no, sanskrit,
+                                         and meaning.
+            narada_prompt (str): Incoming devotional proposition from NaradaAgent.
+            theme (str): Unifying thematic context.
+
+        Returns:
+            Dict[str, Any]: Dictionary containing:
+                - 'sutra_item': Validated SutraItem object.
+                - 'agent_message_to_sutrakar': Formal counter-thesis message.
+                - 'theme': Associated theme.
+
+        Errors Handled:
+            - Missing translation keys gracefully default to analytical text.
+
+        Manual Debugging Notes:
+            - Adopts Maharshi Shandilya's analytical persona: logic (Hetu),
+              scriptural testimony (Pramana), and rational discernment.
+        ------------------------------------------------------------------------
+        """
+        s_no = str(sutra_dict.get("sutra_no", "1"))
+        sanskrit = sutra_dict.get("sanskrit", "अथातो भक्तिजिज्ञासा॥")
+        meaning_dict = sutra_dict.get("meaning", {}) or sutra_dict.get("initial_meaning", {})
+
+        en_m = meaning_dict.get("en", "Inquiry into devotion grounded in cognition and scriptural authority.")
+        hi_m = meaning_dict.get("hi", "ज्ञान और प्रमाण पर आधारित भक्तिजिज्ञासा।")
+        mr_m = meaning_dict.get("mr", "ज्ञान आणि प्रमाणावर आधारलेली भक्तीची तात्त्विक जिज्ञासा.")
+
+        sutra_item = SutraItem(
+            sutra_no=s_no,
+            sanskrit=sanskrit,
+            vishleshan=MultilingualText(en=en_m, hi=hi_m, mr=mr_m),
+        )
+
+        counter_thesis = (
+            f"Respected Sutrakar and Narada Agent: In response to Narada Sutra #{s_no}, "
+            f"the Shandilya tradition advances Sutra #{s_no} ('{sanskrit}'). "
+            f"Devotion is not unexamined emotional fervour; it is Paranurakti—supreme "
+            f"cognitive attachment grounded in discriminative inquiry (Jijnasa) and Pramana. "
+            f"We submit this analytical thesis to the council for synthesis into Udyoga."
+        )
+
+        return {
+            "sutra_item": sutra_item,
+            "agent_message_to_sutrakar": counter_thesis,
+            "theme": theme or sutra_dict.get("theme", "Epistemological Devotion"),
+        }
+
+

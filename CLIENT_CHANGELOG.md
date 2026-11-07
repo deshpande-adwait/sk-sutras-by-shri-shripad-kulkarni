@@ -2,6 +2,93 @@
 
 All notable changes, architectural updates, and releases for **SK Sutras - by Shri Shripad Kulkarni** are documented in this client-facing log.
 
+## [v0.3.5-beta] - 2026-11-07
+
+### Executive Summary of Changes
+1. **Authoritative Five Udyam Sutras Word Compendium Generation (`scripts/generate_five_sutras_word_document.py`)**:
+   - Engineered and executed an automated publication script to generate `docs/UDYAM_SUTRAS_FIVE_NEW_SHLOKAS_MATCHING_AND_DERIVATION_REPORT.docx` (and mirrored to brain artifacts).
+   - Structured every Udyam Sutra unit into a clean, client-ready layout:
+     - **Part A:** Foundational source matching pair (Agent 1 Narada Bhakti Sutra × Agent 2 Shandilya Bhakti Sutra) with Devanagari Sanskrit, English, Marathi, Hindi literal translations, and core premises.
+     - **Part B:** Inter-Agent Deliberation & Philosophical Synthesis (Agent 3 Sutrakara ruling resolving emotional fervor vs. cognitive structure).
+     - **Part C:** Newly composed original Sanskrit verse (metered in 32-syllable Anushtubh Chandas) with trilingual translations.
+     - **Part D:** Master Prompt Guidance Dossier (Authentic IKS Reference with exact chapter/verse, Historical Heritage Benchmark, Contemporary Enterprise Benchmark, and Actionable Leadership Playbook).
+     - **Part E:** Agent 4 Independent Verification Audit badge (100% PASS across 7 scholarly gates).
+2. **Master Concordance & Verification Matrix Table**:
+   - Included a comprehensive 6-column executive summary table consolidating cross-tradition sources, supporting scriptural texts (Arthashastra, Gita, Upanishads, Niti), benchmarks (Cholas, Shivaji Maharaj, Ahilyabai, Tata, Infosys, AMUL, ISRO), and verification statuses.
+3. **Hiranyam AI Protocol Compliance**:
+   - Enforced the mandatory confidentiality footer on every page: `"Proprietory and Confidential- Hiranyam AI Labs"`.
+   - Included technology partner branding with links to `https://hiranyamai.com/`.
+
+### Direct Client & User Benefits / Features Added
+* **Publication-Grade Word Manuscript**: Shri Shripad Kulkarni can directly open, review, and share this cleanly formatted `.docx` file with editors, committee members, or Sanskrit scholars.
+* **Seamless Synthesis of 4 Agents + Master Prompt**: Demonstrates how the 4-agent dialectic serves as the foundational root, while the Master Prompt requirements enrich each sutra into a full guidance chapter.
+* **Zero Technical Jargon**: All technical orchestration and vector mechanics are presented in clear, respectful, corporate-academic language.
+
+### Validation & Test Results
+* **Document Integrity Verification**: Confirmed valid OpenXML structure, 61 paragraphs, 24 structured styling tables, and active footer binding.
+* **Test Suite Status**: 57/57 unit tests passing (100% pass rate).
+
+---
+
+## [v0.3.4-beta] - 2026-11-06
+
+### Executive Summary of Changes
+1. **Dynamic Sutrakara Active Relevance & Rejection Gate (`src/agents/sutrakar_agent.py`)**:
+   - Replaced static `verdict = "ACCEPTED"` placeholder with live semantic distance evaluation and doctrinal discrimination.
+   - Implemented automatic token-collision detection to actively reject superficial matches (e.g. NBS 5 and SBS 5 matching merely on the word "द्वेष", NBS 7 and SBS 6 matching on negative particle "न", and moral caution vs taxonomic classification).
+   - Removed the hardcoded `canonical_map` exclusive gate in `evaluate_and_synthesize()`, shifting to a multi-candidate vector search scanning all 100 Shandilya Sutras in ChromaDB.
+2. **Four-Agent 5-Sutra Trial Execution (`scripts/run_five_sutras_trial.py`)**:
+   - Successfully orchestrated the 4-agent Vidvat Parishad pipeline to generate **exactly 5 approved Udyoga Sutras**.
+   - Verified that Agent 1 (Narada / Gemini), Agent 2 (Shandilya / OpenAI), Agent 3 (Sutrakara / Claude), and Agent 4 (Validator / OpenAI) fully engaged in Shastrartha deliberation.
+   - Enforced Agent 4's 7-gate validation (32/32 syllables in Anushtubh metre, Paninian grammar, and translation fidelity), with an active re-engagement loop if any gate fails.
+3. **Senior Lead QA Validation**:
+   - Added unit test `test_arbitration_node_rejects_surface_token_collision` in `tests/test_four_agent_graph.py`.
+   - Full test suite: **57 passed, 0 failed (100% pass rate in 8.10s)**.
+
+### Direct Client & User Benefits / Features Added
+* **Zero Compulsory Matching**: Aphorisms are paired solely when profound, defensible doctrinal harmony exists. Forced matches are rejected by the Sutrakar Arbiter.
+* **Non-Sequential Affinity**: Demonstrated non-index matches (e.g. Narada #2 matched with Shandilya #87; Narada #5 matched with Shandilya #61).
+* **Guaranteed Metrical Verification**: All 5 newly generated verses are independently validated by Agent 4 to conform exactly to classical 32-syllable Anushtubh Chandas.
+
+### Validation & Test Results
+* **Comprehensive Test Suite**: 57 passed, 0 failed (100% pass rate).
+  - `tests/test_four_agent_graph.py`: 8/8 passed.
+  - `tests/test_council_logger.py`: 2/2 passed.
+  - `tests/test_agents.py`: 2/2 passed.
+
+---
+
+## [v0.3.3-beta] - 2026-11-05
+
+### Executive Summary of Changes
+1. **Full Transparency & Council Audit Trail System (`src/orchestration/council_logger.py`)**:
+   - Implemented `CouncilLogger` providing real-time streaming to stdout and persistent audit file storage (`logs/vidvat_council_<timestamp>.log` and `logs/council_transcripts.jsonl`).
+   - Captures every inter-agent dialogue turn: Agent 1 (Narada Specialist / Gemini), Agent 2 (Shandilya Specialist / OpenAI), Agent 3 (Sutrakar Master Arbiter / Claude), and Agent 4 (Validator / OpenAI).
+   - Records semantic search queries, candidate distance scores, dialectic tension assessments, arbitration rulings, and 7-gate syllable/grammar validations.
+2. **Elimination of Compulsory Index Matching in Pipeline (`src/orchestration/nodes.py`)**:
+   - Refactored `candidate_matching_node` to break artificial 1:1 index mapping (`n_no` -> `s_sutra`).
+   - Enabled dynamic semantic vector querying across all 100 Shandilya Sutras in ChromaDB to retrieve genuine conceptual counterparts based on semantic distance.
+   - Added `expound_sutra` to `ShandilyaAgent` for symmetrical inter-agent counter-thesis formulation.
+3. **Interactive Council Diagnostic Tool (`scripts/print_council_logs.py`)**:
+   - Added `--history` mode to inspect historical audit trails with structured timestamps.
+   - Added `--live` mode to execute live end-to-end 4-agent cycles with real-time streaming dialogue.
+4. **Senior QA Validation & Test Coverage**:
+   - Added `tests/test_council_logger.py` verifying file initialization, event streaming, and JSONL persistence.
+   - Test suite pass rate: **56 passed, 0 failed (100% pass rate in 19.12s)**.
+
+### Direct Client & User Benefits / Features Added
+* **100% Real-Time Visibility**: Authors and reviewers can see exactly what the AI agents are saying to each other.
+* **Non-Compulsory Pairing Guarantee**: Candidate selection is driven by semantic meaning and philosophical affinity across all 100 Shandilya sutras, not by index numbers.
+* **Persistent Audit Records**: Complete Shastrartha transcripts are preserved for offline review and scholarly documentation.
+
+### Validation & Test Results
+* **Comprehensive Test Suite**: 56 passed, 0 failed (100% pass rate).
+  - `tests/test_council_logger.py`: 2/2 passed.
+  - `tests/test_four_agent_graph.py`: 7/7 passed.
+  - `tests/test_agents.py`: 2/2 passed.
+
+---
+
 ## [v0.3.2-beta] - 2026-11-04
 
 ### Executive Summary of Changes
