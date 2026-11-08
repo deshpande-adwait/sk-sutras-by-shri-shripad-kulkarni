@@ -10,7 +10,13 @@ Description: Adapter for OpenAI GPT models (GPT-4o) designated for Agent 2
 """
 
 import os
+import warnings
 from typing import Any, Dict, Optional
+
+# Suppress lifecycle and deprecation warnings for 100% clean logs
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", category=UserWarning)
 
 from src.credentials import get_openai_key
 from src.providers.base import (

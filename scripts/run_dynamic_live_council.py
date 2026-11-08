@@ -27,9 +27,15 @@ import shutil
 import sqlite3
 import sys
 import uuid
+import warnings
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
+
+# Suppress all lifecycle and deprecation warnings for 100% clean console logs
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", category=UserWarning)
 
 # Configure Windows UTF-8 console output
 if sys.platform.startswith("win"):
@@ -319,8 +325,8 @@ class DynamicLiveCouncilRunner:
         sys_prompt = "You are the Sutrakar Master Arbiter. You strictly reject superficial, forced, or lexical-only matches."
         resp = self.agent4_sutrakar.generate(prompt=prompt, system_prompt=sys_prompt)
         self.log_token_usage(
-            provider="openai_or_anthropic",
-            model_id=self.agent4_sutrakar.model_id,
+            provider=getattr(resp, "provider", "anthropic"),
+            model_id=getattr(resp, "model_id", self.agent4_sutrakar.model_id),
             agent_role="Agent 4 (Sutrakar Arbiter)",
             input_tokens=resp.usage.input_tokens,
             output_tokens=resp.usage.output_tokens,
@@ -437,8 +443,8 @@ class DynamicLiveCouncilRunner:
         sys_prompt = "You are a master Sanskrit poet and corporate philosopher. You compose original, grammatically impeccable Sanskrit verses."
         resp = self.agent4_sutrakar.generate(prompt=prompt, system_prompt=sys_prompt)
         self.log_token_usage(
-            provider="openai_or_anthropic",
-            model_id=self.agent4_sutrakar.model_id,
+            provider=getattr(resp, "provider", "anthropic"),
+            model_id=getattr(resp, "model_id", self.agent4_sutrakar.model_id),
             agent_role="Agent 4 (Sutrakar Author)",
             input_tokens=resp.usage.input_tokens,
             output_tokens=resp.usage.output_tokens,

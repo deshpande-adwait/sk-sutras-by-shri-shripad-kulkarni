@@ -10,7 +10,13 @@ Description: Adapter for Google Gemini models (Gemini 1.5 Pro) designated for
 """
 
 import os
+import warnings
 from typing import Any, Dict, Optional
+
+# Suppress Python version lifecycle and package deprecation warnings for 100% clean logs
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", category=UserWarning)
 
 from src.credentials import get_gemini_key
 from src.providers.base import (
@@ -155,24 +161,38 @@ class GeminiAdapter(BaseLLMAdapter):
 
         # When authorized live mode is triggered by owner
         try:
-            import google.generativeai as genai
-            genai.configure(api_key=self.api_key)
-            model = genai.GenerativeModel(
-                model_name=self.model_id,
-                system_instruction=system_prompt,
+            # Modern official Google GenAI SDK (google-genai)
+            from google import genai
+            from google.genai import types
+
+            client = genai.Client(api_key=self.api_key)
+            config = types.GenerateContentConfig(
+                temperature=self.temperature,
+                max_output_tokens=self.max_tokens,
+                system_instruction=system_prompt if system_prompt else None,
             )
-            response = model.generate_content(
-                prompt,
-                generation_config=genai.types.GenerationConfig(
-                    temperature=self.temperature,
-                    max_output_tokens=self.max_tokens,
-                ),
+            response = client.models.generate_content(
+                model=self.model_id,
+                contents=prompt,
+                config=config,
             )
-            
+
             raw_usage = getattr(response, "usage_metadata", None)
-            input_toks = getattr(raw_usage, "prompt_token_count", self.estimate_tokens(prompt)) if raw_usage else self.estimate_tokens(prompt)
-            output_toks = getattr(raw_usage, "candidates_token_count", 200) if raw_usage else 200
-            cached_toks = getattr(raw_usage, "cached_content_token_count", 0) if raw_usage else 0
+            input_toks = (
+                getattr(raw_usage, "prompt_token_count", self.estimate_tokens(prompt))
+                if raw_usage
+                else self.estimate_tokens(prompt)
+            )
+            output_toks = (
+                getattr(raw_usage, "candidates_token_count", 200)
+                if raw_usage
+                else 200
+            )
+            cached_toks = (
+                getattr(raw_usage, "cached_content_token_count", 0)
+                if raw_usage
+                else 0
+            )
 
             usage = ProviderUsage(
                 input_tokens=input_toks,
@@ -183,16 +203,64 @@ class GeminiAdapter(BaseLLMAdapter):
                 currency="USD",
             )
             return ProviderResponse(
-                content=response.text,
+                content=response.text or "",
                 usage=usage,
                 model_id=self.model_id,
                 provider=self.provider_name,
                 finish_reason="stop",
             )
         except Exception as exc:
-            raise ProviderError(
-                message=f"Gemini generation failed: {str(exc)}",
-                provider=self.provider_name,
-                model_id=self.model_id,
-                raw_error=exc,
-            )
+            # Fallback to legacy google.generativeai if google.genai experiences transient client issues
+            try:
+                import google.generativeai as legacy_genai
+
+                legacy_genai.configure(api_key=self.api_key)
+                model = legacy_genai.GenerativeModel(
+                    model_name=self.model_id,
+                    system_instruction=system_prompt,
+                )
+                response = model.generate_content(
+                    prompt,
+                    generation_config=legacy_genai.types.GenerationConfig(
+                        temperature=self.temperature,
+                        max_output_tokens=self.max_tokens,
+                    ),
+                )
+                raw_usage = getattr(response, "usage_metadata", None)
+                input_toks = (
+                    getattr(raw_usage, "prompt_token_count", self.estimate_tokens(prompt))
+                    if raw_usage
+                    else self.estimate_tokens(prompt)
+                )
+                output_toks = (
+                    getattr(raw_usage, "candidates_token_count", 200)
+                    if raw_usage
+                    else 200
+                )
+                cached_toks = (
+                    getattr(raw_usage, "cached_content_token_count", 0)
+                    if raw_usage
+                    else 0
+                )
+                usage = ProviderUsage(
+                    input_tokens=input_toks,
+                    output_tokens=output_toks,
+                    cached_input_tokens=cached_toks,
+                    total_tokens=input_toks + output_toks,
+                    estimated_cost_usd=self.estimate_cost(input_toks, output_toks),
+                    currency="USD",
+                )
+                return ProviderResponse(
+                    content=response.text or "",
+                    usage=usage,
+                    model_id=self.model_id,
+                    provider=self.provider_name,
+                    finish_reason="stop",
+                )
+            except Exception as fb_exc:
+                raise ProviderError(
+                    message=f"Gemini generation failed: {str(exc)} (legacy fallback: {str(fb_exc)})",
+                    provider=self.provider_name,
+                    model_id=self.model_id,
+                    raw_error=exc,
+                )
