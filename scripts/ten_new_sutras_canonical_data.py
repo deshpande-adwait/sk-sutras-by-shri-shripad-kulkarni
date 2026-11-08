@@ -1,536 +1,283 @@
-# Canonical Data for Ten New Udyog Sutras
+# Canonical Data for Ten Approved Udyam Sutras (Reformatted)
 TEN_NEW_UDYOG_SUTRAS_CANON = [
   {
     "sutra_no": 1,
-    "theme": "Inaugural Inquiry into the Philosophy of Bhakti; भक्तीच्या तत्त्वज्ञानाचा प्रारंभिक शोध",
-    "matching_pair": {
-      "narada": {
-        "sutra_no": "1",
-        "sanskrit": "अथातो भक्तिं व्याख्यास्यामः॥",
-        "meaning_en": "",
-        "meaning_mr": ""
-      },
-      "shandilya": {
-        "sutra_no": "1",
-        "sanskrit": "अथातो भक्तिजिज्ञासा॥",
-        "meaning_en": "Now, therefore, arises the profound spiritual and philosophical inquiry into the nature of Devotion (Bhakti-Jijnasa).",
-        "meaning_mr": "आता यानंतर भक्तीच्या खऱ्या स्वरूपाविषयी तात्विक जिज्ञासा केली जाते."
-      },
-      "thematic_harmony": "Under theme 'Inaugural Inquiry into the Philosophy of Bhakti; भक्तीच्या तत्त्वज्ञानाचा प्रारंभिक शोध', Narada #1 provides motivational devotional fervor, Shandilya #1 provides cognitive certitude, DOC-01/02/03 supply practical enterprise architecture, and Sant Tukaram Maharaj (DOC-04) anchors moral transactional purity (Satya-Vyavahara)."
+    "title": "उद्यम-संकल्प व रणनीतिक जिज्ञासा (Inception & Diligent Inquiry)",
+    "shloka_devanagari": "अथातो व्यवहारेऽस्मिन् धर्म्यमुद्योगमारभेत् ।\nजिज्ञासा कार्यदक्षाणां सर्वसिद्धेः प्रसाधिका ॥",
+    "shloka_iast": "athāto vyavahāre'smin dharmyam udyogam ārabhet |\njijñāsā kāryadakṣāṇāṁ sarvasiddheḥ prasādhikā ||",
+    "sources": {
+      "narada": "Narada Bhakti Sutra 1 — अथातो भक्तिं व्याख्यास्यामः ॥",
+      "shandilya": "Shandilya Bhakti Sutra 1 — अथातो भक्तिजिज्ञासा ॥",
+      "bharatiya_jnana": "Kautilya's Arthashastra (Adhikarana 1, Adhyaya 19, Shloka 34) — अनुत्थाने ध्रुवो नाशः प्राप्तस्यानागतस्य च । प्राप्यते फलमुत्थानाल्लभते चार्थसम्पदम् ॥"
     },
-    "bharatiya_jnana_foundation": {
-      "doc01_mahadgrantha": "DOC-01 (Udyam Sutras Mahagrantha): उद्यमेन हि सिध्यन्ति कार्याणि न मनोरथैः। कौशलं धृतिः शक्तिः सहकार्यं च राष्ट्रवर्धनम्। (Exhorts diligence, mastery of craft, perseverance, and corporate nation-building).",
-      "doc02_karyavritti17": "DOC-02 (Karyavritti 17): धर्मसंमतः अर्थलाभः। लोककल्याणार्थं वाणिज्यम्। निष्कामभावेन उद्योगपरिपालनम्। (Emphasizes lawful righteous wealth creation, ethical trade, and Karmayoga).",
-      "doc03_karyavritti05": "DOC-03 (Karyavritti 05): स्वावलम्बनं परमं सुखम्। आत्मसंयमः संकटे धैर्यम्। (Exhorts self-reliance, rigorous self-discipline, and enduring patience in business crises).",
-      "doc04_sant_tukaram": "DOC-04 (Sant Tukaram Maharaj): 'जोडोनियां धन उत्तम व्यवहारे । उदास विचारे वेच करी ॥' (Wealth earned through impeccable integrity must be dispensed with detached social stewardship).",
-      "iks_scriptural_references": "IKS Traditions: Bhagavad Gita 3.20 (Lokasangraha), Taittiriya Upanishad 1.11 (Kushalan na pramaditavyam), Kautilya Arthashastra 1.7 (Sukhasya mulam dharmah, dharmasya mulam arthah)."
-    },
-    "new_udyog_sutra": {
-      "sanskrit_verse": "उद्यत्सु भक्तिजिज्ञासु धर्मेणार्थं समाचरेत्। स्वावलम्बनसंयुक्तः कौशलं च निरन्तरम्॥",
-      "padaccheda": "उद्यत्सु भक्तिजिज्ञासु धर्मेण अर्थं समाचरेत्। स्वावलम्बनसंयुक्तः कौशलं च निरन्तरम्॥",
-      "anvaya": "उद्यत्सु भक्तिजिज्ञासु धर्मेण अर्थं समाचरेत्, स्वावलम्बनसंयुक्तः कौशलं च निरन्तरम्।",
-      "nirukta": {
-        "उद्यत्सु": "उद्यमशीलः, those who are industrious",
-        "भक्तिजिज्ञासु": "भक्तेः जिज्ञासुः, seekers of the knowledge of devotion",
-        "धर्मेण": "धर्मस्य अनुसारतः, in accordance with righteousness",
-        "अर्थं": "धनं, wealth",
-        "समाचरेत्": "कुर्यात्, should perform",
-        "स्वावलम्बनसंयुक्तः": "स्वावलम्बनेन संयुक्तः, endowed with self-reliance",
-        "कौशलं": "दक्षता, skill",
-        "च": "एव, and",
-        "निरन्तरम्": "सततम्, continuously"
-      },
-      "translation_en": "Those who are industrious and seekers of the knowledge of devotion should perform wealth creation in accordance with righteousness, continuously endowed with self-reliance and skill.",
-      "translation_mr": "उद्योजक आणि भक्तीच्या ज्ञानाचे शोधक यांनी धर्माच्या मार्गाने धनसंपादन करावे, स्वावलंबन आणि कौशल्याने सतत कार्यरत राहावे.",
-      "practical_enterprise_guidance": "Modern entrepreneurs should integrate devotion and ethical inquiry into their business practices, ensuring that wealth creation aligns with righteousness. They should cultivate self-reliance and continuously enhance their skills to sustain and grow their enterprises."
-    },
-    "validation": {
-      "score": 95,
-      "gates_passed": 13,
-      "auditor": "Agent 5 — Independent Verification Specialist (OpenAI gpt-4o)",
-      "commentary": "The New Udyog Sutra #1 successfully passes all 13 qualitative verification gates. The Sanskrit grammatical structure and meter are authentic, and the sutra maintains fidelity to both the Narada Bhakti Sutra thesis and the Shandilya Bhakti Sutra counter-thesis. It is well-grounded in Bharatiya Jnana as per the referenced documents. The sutra offers practical business applicability with a clear emphasis on ethical integrity, aligning wealth creation with righteousness. It is original and non-plagiarized, with complete multilingual translations in Sanskrit, English, and Marathi. There is no evidence of forced lexical matching, and the padaccheda and anvaya are clear. The sutra is relevant to modern leadership and enterprise, free from hallucination, and provides actionable pragmatic guidance for entrepreneurs."
-    }
+    "english_translation": "Now, in this arena of worldly commerce, one must initiate righteous enterprise; the rigorous, strategic inquiry of skilled professionals accomplishes all success.",
+    "marathi_purport": "कोणताही व्यवसाय केवळ उत्साहाच्या भरात सुरू करू नये. व्यवहारात उतरताना पहिली पायरी म्हणजे आपला उद्योग नीती आणि न्यायावर आधारलेला असावा. त्याचबरोबर कार्यकुशल उद्योजकाने बाजारातील गरज, ग्राहकांची समस्या आणि तंत्रज्ञान याविषयी सातत्याने सखोल चौकशी (जिज्ञासा) केली पाहिजे. अभ्यासपूर्ण विचार आणि नैतिक संकल्प यांच्या संयोगातूनच सर्व उद्दिष्टे यशस्वी होतात.",
+    "philosophical_foundation": "नारदभक्तिसूत्राचा पहिला शब्द 'अथातो' संकल्पाची आणि आंतरिक समर्पणाची घोषणा करतो; शांडिल्यभक्तिसूत्रातील 'जिज्ञासा' हा शब्द अंधश्रद्धेला नाकारून बुद्धिनिष्ठ संशोधनाचा आग्रह धरतो. कौटिलीय अर्थशास्त्र स्पष्ट करते की 'उत्थान' म्हणजे सक्रिय उद्यम नसेल, तर मिळालेली आणि मिळणारी संपत्ती नष्ट होते. मूळ शास्त्रात हे अध्यात्म आणि राज्यव्यवस्थेसाठी आले आहे; उद्योगात त्याचा अर्थ असा की व्यवसाय सुरू करण्यापूर्वी कल्पनेची बाजारपेठेत कसून चाचणी (Feasibility Validation) करणे अनिवार्य आहे.",
+    "practical_applications": [
+      [
+        "नवउद्योजकांसाठी",
+        "व्यवसाय सुरू करताना केवळ भावनेच्या भरात भांडवल गुंतवू नका; ग्राहकांशी प्रत्यक्ष बोलून समस्येची सत्यता तपासा."
+      ],
+      [
+        "व्यवस्थापकांसाठी",
+        "नवीन प्रकल्प हाती घेताना खर्च, जोखीम आणि तंत्रज्ञानाचा प्राथमिक अभ्यास (Due Diligence) कागदावर नव्हे तर प्रत्यक्षात करा."
+      ],
+      [
+        "नेतृत्वासाठी",
+        "संस्थेचा पाया सुरुवातीपासूनच पारदर्शक आणि कायदेशीर नियमांवर उभा करा."
+      ]
+    ]
   },
   {
     "sutra_no": 2,
-    "theme": "Supreme Attachment to the Divine as Unconditional Love (English) / परमेश्वराशी सर्वोच्च आसक्ती म्हणजेच निरपेक्ष प्रेम (Marathi)",
-    "matching_pair": {
-      "narada": {
-        "sutra_no": "2",
-        "sanskrit": "सा त्वस्मिन् परमप्रेमरूपा॥",
-        "meaning_en": "",
-        "meaning_mr": ""
-      },
-      "shandilya": {
-        "sutra_no": "2",
-        "sanskrit": "सा परानुरक्तिरीश्वरे॥",
-        "meaning_en": "That devotion is of the nature of supreme, transcendental attachment (anurakti) directed towards the Supreme Lord (Ishvara).",
-        "meaning_mr": "ती भक्ती परमेश्वराच्या ठिकाणी असलेली परम अनुरक्ती होय."
-      },
-      "thematic_harmony": "Under theme 'Supreme Attachment to the Divine as Unconditional Love (English) / परमेश्वराशी सर्वोच्च आसक्ती म्हणजेच निरपेक्ष प्रेम (Marathi)', Narada #2 provides motivational devotional fervor, Shandilya #2 provides cognitive certitude, DOC-01/02/03 supply practical enterprise architecture, and Sant Tukaram Maharaj (DOC-04) anchors moral transactional purity (Satya-Vyavahara)."
+    "title": "व्यावसायिक निष्ठा व उत्कृष्टतेचा ध्यास (Craftsmanship & Passion)",
+    "shloka_devanagari": "स्वाधिकारे परा प्रीतिरुद्योगे सिद्धिदायिनी ।\nअनुरागवतां यत्नः सुदृढो नैव सीदति ॥",
+    "shloka_iast": "svādhikāre parā prītir udyoge siddhidāyinī |\nanurāgavatāṁ yatnaḥ sudṛḍho naiva sīdati ||",
+    "sources": {
+      "narada": "Narada Bhakti Sutra 2 — सा त्वस्मिन् परमप्रेमरूपा ॥",
+      "shandilya": "Shandilya Bhakti Sutra 2 — सा परानुरक्तिरीश्वरे ॥",
+      "bharatiya_jnana": "Bhagavad Gita (Chapter 18, Verse 45) — स्वे स्वे कर्मण्यभिरतः संसिद्धिं लभते नरः । स्वकर्मनिरतः सिद्धिं यथा विन्दति तच्छृणु ॥"
     },
-    "bharatiya_jnana_foundation": {
-      "doc01_mahadgrantha": "DOC-01 (Udyam Sutras Mahagrantha): उद्यमेन हि सिध्यन्ति कार्याणि न मनोरथैः। कौशलं धृतिः शक्तिः सहकार्यं च राष्ट्रवर्धनम्। (Exhorts diligence, mastery of craft, perseverance, and corporate nation-building).",
-      "doc02_karyavritti17": "DOC-02 (Karyavritti 17): धर्मसंमतः अर्थलाभः। लोककल्याणार्थं वाणिज्यम्। निष्कामभावेन उद्योगपरिपालनम्। (Emphasizes lawful righteous wealth creation, ethical trade, and Karmayoga).",
-      "doc03_karyavritti05": "DOC-03 (Karyavritti 05): स्वावलम्बनं परमं सुखम्। आत्मसंयमः संकटे धैर्यम्। (Exhorts self-reliance, rigorous self-discipline, and enduring patience in business crises).",
-      "doc04_sant_tukaram": "DOC-04 (Sant Tukaram Maharaj): 'जोडोनियां धन उत्तम व्यवहारे । उदास विचारे वेच करी ॥' (Wealth earned through impeccable integrity must be dispensed with detached social stewardship).",
-      "iks_scriptural_references": "IKS Traditions: Bhagavad Gita 3.20 (Lokasangraha), Taittiriya Upanishad 1.11 (Kushalan na pramaditavyam), Kautilya Arthashastra 1.7 (Sukhasya mulam dharmah, dharmasya mulam arthah)."
-    },
-    "new_udyog_sutra": {
-      "sanskrit_verse": "उद्योगे भक्तिरात्मन्येव, धर्मेणार्थः समृद्धये।\nनिष्कामभावेन कार्यं, राष्ट्रस्य हितमस्तु च॥",
-      "padaccheda": "उद्योगे भक्तिः आत्मनि एव, धर्मेण अर्थः समृद्धये। निष्कामभावेन कार्यं, राष्ट्रस्य हितम् अस्तु च॥",
-      "anvaya": "उद्योगे आत्मनि एव भक्तिः, धर्मेण अर्थः समृद्धये। निष्कामभावेन कार्यं अस्तु, राष्ट्रस्य च हितम्॥",
-      "nirukta": {
-        "उद्योगे": "in enterprise",
-        "भक्तिः": "devotion",
-        "आत्मनि": "in oneself",
-        "एव": "indeed",
-        "धर्मेण": "through righteousness",
-        "अर्थः": "wealth",
-        "समृद्धये": "for prosperity",
-        "निष्कामभावेन": "with selfless intent",
-        "कार्यं": "action",
-        "राष्ट्रस्य": "of the nation",
-        "हितम्": "welfare",
-        "अस्तु": "let it be",
-        "च": "and"
-      },
-      "translation_en": "In enterprise, devotion lies within oneself, and wealth is for prosperity through righteousness. Let actions be performed with selfless intent, for the welfare of the nation.",
-      "translation_mr": "उद्योगात भक्ती ही आत्म्यातच असते, आणि धर्माने संपत्ती समृद्धीसाठी असते. कार्य निष्कामभावाने केले जावे, राष्ट्राच्या हितासाठी.",
-      "practical_enterprise_guidance": "Entrepreneurs should cultivate a deep personal commitment to their ventures, ensuring that their actions are rooted in ethical principles. Wealth should be pursued not just for personal gain but for the greater good, with a focus on sustainable and ethical practices. Actions should be driven by a selfless intent, aiming to contribute positively to society and the nation as a whole."
-    },
-    "validation": {
-      "score": 95,
-      "gates_passed": 13,
-      "auditor": "Agent 5 — Independent Verification Specialist (OpenAI gpt-4o)",
-      "commentary": "The New Udyog Sutra #2 successfully passes all 13 qualitative verification gates. The Sanskrit verse maintains grammatical and metric authenticity, aligning well with the thematic essence of supreme attachment to the divine as unconditional love. It harmonizes with the Narada Bhakti Sutra's thesis and the Shandilya Bhakti Sutra's counter-thesis, providing a balanced grounding in Bharatiya Jnana as per the referenced documents. The sutra offers practical business applicability, emphasizing ethical integrity and originality. It is multilingual complete, with accurate translations in Sanskrit, English, and Marathi, and avoids forced lexical matching. The clarity of padaccheda and anvaya is maintained, ensuring comprehension. The sutra is relevant to modern leadership and enterprise, free from hallucination, and provides actionable pragmatic guidance for entrepreneurs, focusing on selfless intent and societal welfare."
-    }
+    "english_translation": "Supreme love toward one’s rightful work yields accomplishment in enterprise; the disciplined effort of passionate creators never falters.",
+    "marathi_purport": "आपल्या वाट्याला आलेल्या कामावर आणि जबाबदारीवर मनापासून प्रेम असणे हेच उद्योगातील यशाचे खरे गमक आहे. केवळ पैशासाठी केलेले काम थकवा आणते; पण ज्या कामात आत्मीयता आणि उत्कृष्टतेचा ध्यास असतो, त्या कामात कितीही अडचणी आल्या तरी माणसाचा प्रयत्न खचत नाही. अशी निष्ठाच उत्पादनाला जागतिक दर्जा मिळवून देते.",
+    "philosophical_foundation": "नारदांचे 'परमप्रेम' हे भावनिक समर्पणाचे शिखर आहे, तर शांडिल्यांची 'परानुरक्ती' ही सर्वोच्च तत्त्वाशी असलेली अढळ बौद्धिक बांधिलकी आहे. गीतेतील १८.४५ श्लोक सांगतो की स्वतःच्या स्वाभाविक कर्तव्यात जो पूर्णपणे गढून जातो, तोच सिद्धी पावतो. मूळ शास्त्रातील ईश्वरभक्तीचा हा भाव उद्योगात 'कामावरील पूजाभाव' (Craftsmanship) म्हणून रूपांतरित होतो.",
+    "practical_applications": [
+      [
+        "उत्पादन गुणवत्तेसाठी",
+        "'शून्य-त्रुटी' (Zero Defect) ही केवळ घोषणा न ठेवता कामात अभिमान बाळगणारी संस्कृती तयार करा."
+      ],
+      [
+        "कर्मचारी व्यवस्थापनासाठी",
+        "कर्मचाऱ्यांना केवळ वेतनाचे मजूर न मानता त्यांच्या कौशल्याचा आदर करा; कामात स्वायत्तता द्या."
+      ],
+      [
+        "व्यावसायिक जीवनासाठी",
+        "तात्पुरत्या ट्रेंडच्या मागे धावण्याऐवजी स्वतःच्या मूळ कौशल्यात निपुणता मिळवा."
+      ]
+    ]
   },
   {
     "sutra_no": 3,
-    "theme": "Realization Born of Devotional Grace",
-    "matching_pair": {
-      "narada": {
-        "sutra_no": "3",
-        "sanskrit": "अमृतस्वरूपा च॥",
-        "meaning_en": "",
-        "meaning_mr": ""
-      },
-      "shandilya": {
-        "sutra_no": "36",
-        "sanskrit": "स च भक्तिप्रसादात्॥",
-        "meaning_en": "And that direct realization occurs solely through the sweet grace and favor of devotion.",
-        "meaning_mr": "आणि असा साक्षात्कार केवळ भक्तीच्या कृपेनेच साध्य होतो."
-      },
-      "thematic_harmony": "Under theme 'Realization Born of Devotional Grace', Narada #3 provides motivational devotional fervor, Shandilya #36 provides cognitive certitude, DOC-01/02/03 supply practical enterprise architecture, and Sant Tukaram Maharaj (DOC-04) anchors moral transactional purity (Satya-Vyavahara)."
+    "title": "शाश्वत मूल्यनिर्मिती व संस्थागत अमरत्व (Institutional Longevity & Governance)",
+    "shloka_devanagari": "अमृतत्वाय धर्म्या स्याद् वाणिज्ये शुभसन्ततिः ।\nन्यायोपार्जितवित्तेन चिरं जीवति संस्था ॥",
+    "shloka_iast": "amṛtatvāya dharmyā syād vāṇijye śubhasantatiḥ |\nnyāyopārjitavittena ciraṁ jīvati saṁsthā ||",
+    "sources": {
+      "narada": "Narada Bhakti Sutra 3 — अमृतस्वरूपा च ॥",
+      "shandilya": "Shandilya Bhakti Sutra 3 — तत्संस्थस्यामृतत्वोपदेशात् ॥",
+      "bharatiya_jnana": "Bhartrihari's Niti Shataka (Verse 68) — निन्दन्तु नीतिनिपुणा यदि वा स्तुवन्तु लक्ष्मीः समाविशतु गच्छतु वा यथेष्टम् । अद्यैव वा मरणमस्तु युगान्तरे वा न्यायात्पथः प्रविचलन्ति पदं न धीराः ॥"
     },
-    "bharatiya_jnana_foundation": {
-      "doc01_mahadgrantha": "DOC-01 (Udyam Sutras Mahagrantha): उद्यमेन हि सिध्यन्ति कार्याणि न मनोरथैः। कौशलं धृतिः शक्तिः सहकार्यं च राष्ट्रवर्धनम्। (Exhorts diligence, mastery of craft, perseverance, and corporate nation-building).",
-      "doc02_karyavritti17": "DOC-02 (Karyavritti 17): धर्मसंमतः अर्थलाभः। लोककल्याणार्थं वाणिज्यम्। निष्कामभावेन उद्योगपरिपालनम्। (Emphasizes lawful righteous wealth creation, ethical trade, and Karmayoga).",
-      "doc03_karyavritti05": "DOC-03 (Karyavritti 05): स्वावलम्बनं परमं सुखम्। आत्मसंयमः संकटे धैर्यम्। (Exhorts self-reliance, rigorous self-discipline, and enduring patience in business crises).",
-      "doc04_sant_tukaram": "DOC-04 (Sant Tukaram Maharaj): 'जोडोनियां धन उत्तम व्यवहारे । उदास विचारे वेच करी ॥' (Wealth earned through impeccable integrity must be dispensed with detached social stewardship).",
-      "iks_scriptural_references": "IKS Traditions: Bhagavad Gita 3.20 (Lokasangraha), Taittiriya Upanishad 1.11 (Kushalan na pramaditavyam), Kautilya Arthashastra 1.7 (Sukhasya mulam dharmah, dharmasya mulam arthah)."
-    },
-    "new_udyog_sutra": {
-      "sanskrit_verse": "भक्तिप्रसादेन हि सिद्धिरस्तु, उद्यमेन च धर्मसंमतः अर्थः। स्वावलम्बनं च धृतिः सह कार्ये, राष्ट्रवर्धनं च लोकहिताय॥",
-      "padaccheda": "भक्तिप्रसादेन हि सिद्धिः अस्तु, उद्यमेन च धर्मसंमतः अर्थः। स्वावलम्बनं च धृतिः सह कार्ये, राष्ट्रवर्धनं च लोकहिताय॥",
-      "anvaya": "भक्तिप्रसादेन हि सिद्धिः अस्तु, उद्यमेन च धर्मसंमतः अर्थः। कार्ये स्वावलम्बनं च धृतिः सह, राष्ट्रवर्धनं च लोकहिताय।",
-      "nirukta": {
-        "भक्तिप्रसादेन": "by the grace of devotion",
-        "हि": "indeed",
-        "सिद्धिः": "realization",
-        "अस्तु": "let there be",
-        "उद्यमेन": "through enterprise",
-        "च": "and",
-        "धर्मसंमतः": "righteously approved",
-        "अर्थः": "wealth",
-        "स्वावलम्बनं": "self-reliance",
-        "धृतिः": "perseverance",
-        "सह": "with",
-        "कार्ये": "in work",
-        "राष्ट्रवर्धनं": "nation-building",
-        "लोकहिताय": "for the welfare of the world"
-      },
-      "translation_en": "Let realization be attained through the grace of devotion, and wealth be righteously earned through enterprise. In work, let there be self-reliance and perseverance, and let nation-building be for the welfare of the world.",
-      "translation_mr": "भक्तीच्या कृपेनेच सिद्धी प्राप्त होवो, आणि उद्योगाने धर्मानुसार संपत्ती मिळवावी. कार्यात स्वावलंबन आणि धैर्य असावे, आणि राष्ट्रवर्धन लोककल्याणासाठी असावे.",
-      "practical_enterprise_guidance": "Modern entrepreneurs should cultivate a deep sense of devotion to their work, allowing grace to guide their endeavors. They should focus on ethical wealth creation, ensuring their business practices align with righteous principles. Self-reliance and perseverance are crucial in overcoming challenges, while their ultimate goal should be the welfare of society and the nation."
-    },
-    "validation": {
-      "score": 96,
-      "gates_passed": 13,
-      "auditor": "Agent 5 — Independent Verification Specialist (OpenAI gpt-4o)",
-      "commentary": "The New Udyog Sutra #3 successfully passes all 13 qualitative verification gates. The Sanskrit verse maintains grammatical and metric authenticity, with clear padaccheda and anvaya. It aligns with the thematic essence of the Narada Bhakti Sutra and offers a counter-thesis to the Shandilya Bhakti Sutra, balancing devotion with practical enterprise. The sutra is well-grounded in Bharatiya Jnana, as referenced in DOC-01 to DOC-04, and provides actionable guidance for modern business practices. Ethical integrity is upheld, with a focus on righteous wealth creation and societal welfare. The translations in English and Marathi are complete and accurate, maintaining the original meaning. The sutra is original, free from plagiarism, and avoids forced lexical matching. It offers clear, pragmatic guidance for modern leadership and enterprise relevance, without any hallucinations."
-    }
+    "english_translation": "For an enterprise to attain enduring legacy, its conduct must be righteous; an institution founded on ethically acquired wealth endures long.",
+    "marathi_purport": "व्यापाराला दीर्घायुष्य लाभावे असे वाटत असेल, तर व्यवसायातील प्रत्येक व्यवहार आणि निर्णय नैतिकतेच्या परंपरेला धरून असला पाहिजे. अन्यायाने, कर चुकवून किंवा ग्राहकाला फसवून मिळवलेला नफा फुग्यासारखा फुटतो. याउलट, न्यायाने आणि सचोटीने मिळवलेल्या पैशावरच एखादी संस्था पिढ्यानपिढ्या ताठ मानेने जिवंत राहते.",
+    "philosophical_foundation": "नारद आणि शांडिल्य दोघेही भक्तीला 'अमृतस्वरूप' मानतात—जी व्यक्तीला मृत्यूच्या पलीकडे नेते. भर्तृहरीच्या नीतिशतकात स्पष्ट केले आहे की संपत्ती येवो वा जावो, धीर पुरुष न्यायाचा मार्ग सोडत नाहीत. मूळ शास्त्रातील मोक्षाचे अमरत्व येथे संस्थात्मक अमरत्वात (Corporate Longevity) रूपांतरित होते.",
+    "practical_applications": [
+      [
+        "लेखांकनासाठी",
+        "आर्थिक व्यवहारात १००% पारदर्शकता ठेवा; ताळेबंदात फेरफार करून तात्पुरते मूल्यांकन फुगवू नका."
+      ],
+      [
+        "ब्रँड विश्वासासाठी",
+        "ग्राहकांशी केलेले करार आणि आश्वासने तोट्यात गेलात तरी पाळा."
+      ],
+      [
+        "संस्था बांधणीसाठी",
+        "एका पिढीपुरता व्यवसाय न पाहता पुढील १०० वर्षे टिकेल अशी नियमाधिष्ठित व्यवस्था उभारा."
+      ]
+    ]
   },
   {
     "sutra_no": 4,
-    "theme": "Promise of Immortality and Perfection through Divine Establishment",
-    "matching_pair": {
-      "narada": {
-        "sutra_no": "4",
-        "sanskrit": "यल्लब्ध्वा पुमान् सिद्धो भवति अमृतो भवति तृप्तो भवति॥",
-        "meaning_en": "",
-        "meaning_mr": ""
-      },
-      "shandilya": {
-        "sutra_no": "3",
-        "sanskrit": "तत्संस्थस्यामृतत्वोपदेशात्॥",
-        "meaning_en": "Because immortality (Moksha) is declared by the Upanishadic scriptures for one who remains firmly established in That Divine.",
-        "meaning_mr": "कारण त्या ईश्वरात स्थिर झालेल्या पुरुषाला अमृतत्वाची (मोक्षाची) प्राप्ती होते असा शास्त्राधार आहे."
-      },
-      "thematic_harmony": "Under theme 'Promise of Immortality and Perfection through Divine Establishment', Narada #4 provides motivational devotional fervor, Shandilya #3 provides cognitive certitude, DOC-01/02/03 supply practical enterprise architecture, and Sant Tukaram Maharaj (DOC-04) anchors moral transactional purity (Satya-Vyavahara)."
+    "title": "लोभमुक्ती व आंतरिक समाधान (Contentment Over Greed)",
+    "shloka_devanagari": "तृप्तो भवति धर्मेण न लुब्धो विनशिष्यति ।\nअन्यायेनार्जितं वित्तं क्षिप्रं नश्यति मूलतः ॥",
+    "shloka_iast": "tṛpto bhavati dharmeṇa na lubdho vinaśiṣyati |\nanyāyenārjitaṁ vittaṁ kṣipraṁ naśyati mūlataḥ ||",
+    "sources": {
+      "narada": "Narada Bhakti Sutra 4 — यल्लव्ध्वा पुमान् सिद्धो भवति अमृतो भवति तृप्तो भवति ॥",
+      "shandilya": "Shandilya Bhakti Sutra 7 — हेतावप्रतिष्ठानात् ॥",
+      "bharatiya_jnana": "Isha Upanishad (Mantra 1) — ईशा वास्यमिदं सर्वं यत्किञ्च जगत्यां जगत् । तेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम् ॥"
     },
-    "bharatiya_jnana_foundation": {
-      "doc01_mahadgrantha": "DOC-01 (Udyam Sutras Mahagrantha): उद्यमेन हि सिध्यन्ति कार्याणि न मनोरथैः। कौशलं धृतिः शक्तिः सहकार्यं च राष्ट्रवर्धनम्। (Exhorts diligence, mastery of craft, perseverance, and corporate nation-building).",
-      "doc02_karyavritti17": "DOC-02 (Karyavritti 17): धर्मसंमतः अर्थलाभः। लोककल्याणार्थं वाणिज्यम्। निष्कामभावेन उद्योगपरिपालनम्। (Emphasizes lawful righteous wealth creation, ethical trade, and Karmayoga).",
-      "doc03_karyavritti05": "DOC-03 (Karyavritti 05): स्वावलम्बनं परमं सुखम्। आत्मसंयमः संकटे धैर्यम्। (Exhorts self-reliance, rigorous self-discipline, and enduring patience in business crises).",
-      "doc04_sant_tukaram": "DOC-04 (Sant Tukaram Maharaj): 'जोडोनियां धन उत्तम व्यवहारे । उदास विचारे वेच करी ॥' (Wealth earned through impeccable integrity must be dispensed with detached social stewardship).",
-      "iks_scriptural_references": "IKS Traditions: Bhagavad Gita 3.20 (Lokasangraha), Taittiriya Upanishad 1.11 (Kushalan na pramaditavyam), Kautilya Arthashastra 1.7 (Sukhasya mulam dharmah, dharmasya mulam arthah)."
-    },
-    "new_udyog_sutra": {
-      "sanskrit_verse": "उद्यमेनैव सिद्धिः स्यात् धर्मेणैव च सम्पदः। आत्मसंयमयोगेन मोक्षः स्यात् कर्मणां फलम्॥",
-      "padaccheda": "उद्यमेन एव सिद्धिः स्यात् धर्मेण एव च सम्पदः। आत्मसंयमयोगेन मोक्षः स्यात् कर्मणां फलम्॥",
-      "anvaya": "उद्यमेन एव सिद्धिः स्यात्, धर्मेण एव च सम्पदः। आत्मसंयमयोगेन मोक्षः स्यात्, कर्मणां फलम्॥",
-      "nirukta": {
-        "उद्यमेन": "by diligence",
-        "एव": "indeed",
-        "सिद्धिः": "success",
-        "स्यात्": "may be",
-        "धर्मेण": "by righteousness",
-        "च": "and",
-        "सम्पदः": "prosperity",
-        "आत्मसंयमयोगेन": "by the practice of self-discipline",
-        "मोक्षः": "liberation",
-        "कर्मणां": "of actions",
-        "फलम्": "fruit"
-      },
-      "translation_en": "Success is achieved through diligence, and prosperity through righteousness. Liberation is attained through the practice of self-discipline, which is the true fruit of actions.",
-      "translation_mr": "उद्योगानेच यश मिळते, आणि धर्मानेच संपत्ती प्राप्त होते. आत्मसंयमाच्या योगाने मोक्ष मिळतो, जो कर्मांचा खरा फल आहे.",
-      "practical_enterprise_guidance": "Entrepreneurs should focus on diligent efforts and ethical practices to achieve success and prosperity. Emphasizing self-discipline will lead to personal and professional liberation, ensuring that actions yield their true benefits."
-    },
-    "validation": {
-      "score": 95,
-      "gates_passed": 13,
-      "auditor": "Agent 5 — Independent Verification Specialist (OpenAI gpt-4o)",
-      "commentary": "The New Udyog Sutra #4 successfully passes all 13 qualitative verification gates. The Sanskrit grammatical structure and metric authenticity are intact, ensuring fidelity to classical standards. The sutra aligns well with the thematic essence of both the Narada Bhakti Sutra and Shandilya Bhakti Sutra, providing a balanced perspective on divine establishment. It is well-grounded in Bharatiya Jnana, as referenced in the provided documents. The sutra offers practical business applicability, emphasizing diligence, ethical integrity, and self-discipline, which are crucial for modern leadership and enterprise relevance. The translations in English and Marathi are accurate and complete, maintaining the original meaning without forced lexical matching. The padaccheda and anvaya are clear, and the guidance is actionable, providing pragmatic insights for entrepreneurs. No hallucinations or plagiarism were detected, ensuring originality and ethical integrity."
-    }
+    "english_translation": "One contented through integrity prospers, while the greedy faces ruin; wealth amassed through injustice rapidly perishes at its root.",
+    "marathi_purport": "धर्माने आणि प्रामाणिक कष्टाने काम करणारा व्यावसायिक आंतरिक समाधानाने समृद्ध होतो. याउलट, अमर्याद लोभाच्या आहारी जाऊन नफा मिळवणारा स्वतःचाच विनाश ओढवून घेतो. कामगारांचे शोषण करून किंवा ग्राहकांची फसवणूक करून मिळवलेले धन कितीही मोठे दिसले, तरी ते मुळासकट लवकरच नष्ट होते.",
+    "philosophical_foundation": "नारद सूत्रातील 'तृप्तो भवति' हा आत्मिक समाधानाचा निकष आहे; शांडिल्यांचे 'हेतावप्रतिष्ठानात्' सांगते की केवळ स्वार्थी हेतूंना जगात स्थिर अधिष्ठान नसते. ईशावास्योपनिषदातील 'मा गृधः कस्यस्विद्धनम्' कोणाच्याही धनाचा लोभ धरू नका हा आदेश देतो. हा विचार व्यवसायात शोषणात्मक नफ्याऐवजी 'वाजवी नफा आणि नैतिक मर्यादा' (Fair Pricing & Value Restraint) शिकवतो.",
+    "practical_applications": [
+      [
+        "मूल्य निर्धारण",
+        "ग्राहकांवर अव्वाच्या सव्वा नफा लादण्याऐवजी सेवा आणि खर्चाशी सुसंगत किंमत ठेवा."
+      ],
+      [
+        "कामगार संबंध",
+        "कामगारांच्या श्रमाचा योग्य मोबदला वेळेवर द्या; त्यांचे शोषण करून नफा वाढवू नका."
+      ],
+      [
+        "गुंतवणूक धोरण",
+        "रातोरात श्रीमंत करणाऱ्या संशयास्पद आणि अनैतिक योजनांपासून सावध राहा."
+      ]
+    ]
   },
   {
     "sutra_no": 5,
-    "theme": "The Fulfillment of Devotion; भक्तीचे फळ",
-    "matching_pair": {
-      "narada": {
-        "sutra_no": "5",
-        "sanskrit": "यत्प्राप्य न किञ्चिद् वाञ्छति न शोचति न द्वेष्टि न रमते नोत्साही भवति॥",
-        "meaning_en": "",
-        "meaning_mr": ""
-      },
-      "shandilya": {
-        "sutra_no": "68",
-        "sanskrit": "भक्तिमतः सर्वं सफलं भवति॥",
-        "meaning_en": "For one endowed with genuine devotion, every humble act becomes spiritually fruitful and sublime.",
-        "meaning_mr": "भक्तियुक्त अंतःकरणाने केलेले प्रत्येक साधे कर्मही फलद्रूप आणि पावन होते."
-      },
-      "thematic_harmony": "Under theme 'The Fulfillment of Devotion; भक्तीचे फळ', Narada #5 provides motivational devotional fervor, Shandilya #68 provides cognitive certitude, DOC-01/02/03 supply practical enterprise architecture, and Sant Tukaram Maharaj (DOC-04) anchors moral transactional purity (Satya-Vyavahara)."
+    "title": "सर्वहितचिंतन व अखंड समर्पण (Stakeholder Welfare & Trusteeship)",
+    "shloka_devanagari": "हितं सर्वजनस्यापि चिन्तयेत् सततं बुधः ।\nयज्ञार्थं वर्तते कर्म तन्न बन्धाय कल्पते ॥",
+    "shloka_iast": "hitaṁ sarvajanasyāpi cintayet satataṁ budhaḥ |\nyajñārthaṁ vartate karma tanna bandhāya kalpate ||",
+    "sources": {
+      "narada": "Narada Bhakti Sutra 19 — नारदस्तु तदर्पिताखिलाचारता तद्विस्मरणे परमव्याकुलतेति ॥",
+      "shandilya": "Shandilya Bhakti Sutra 87 — सर्वथा वर्तमानोऽपि न स संसारी भवति ॥",
+      "bharatiya_jnana": "Bhagavad Gita (Chapter 3, Verse 9) — यज्ञार्थात्कर्मणोऽन्यत्र लोकोऽयं कर्मबन्धनः । तदर्थं कर्म कौन्तेय मुक्तसङ्गः समाचर ॥"
     },
-    "bharatiya_jnana_foundation": {
-      "doc01_mahadgrantha": "DOC-01 (Udyam Sutras Mahagrantha): उद्यमेन हि सिध्यन्ति कार्याणि न मनोरथैः। कौशलं धृतिः शक्तिः सहकार्यं च राष्ट्रवर्धनम्। (Exhorts diligence, mastery of craft, perseverance, and corporate nation-building).",
-      "doc02_karyavritti17": "DOC-02 (Karyavritti 17): धर्मसंमतः अर्थलाभः। लोककल्याणार्थं वाणिज्यम्। निष्कामभावेन उद्योगपरिपालनम्। (Emphasizes lawful righteous wealth creation, ethical trade, and Karmayoga).",
-      "doc03_karyavritti05": "DOC-03 (Karyavritti 05): स्वावलम्बनं परमं सुखम्। आत्मसंयमः संकटे धैर्यम्। (Exhorts self-reliance, rigorous self-discipline, and enduring patience in business crises).",
-      "doc04_sant_tukaram": "DOC-04 (Sant Tukaram Maharaj): 'जोडोनियां धन उत्तम व्यवहारे । उदास विचारे वेच करी ॥' (Wealth earned through impeccable integrity must be dispensed with detached social stewardship).",
-      "iks_scriptural_references": "IKS Traditions: Bhagavad Gita 3.20 (Lokasangraha), Taittiriya Upanishad 1.11 (Kushalan na pramaditavyam), Kautilya Arthashastra 1.7 (Sukhasya mulam dharmah, dharmasya mulam arthah)."
-    },
-    "new_udyog_sutra": {
-      "sanskrit_verse": "भक्त्या सिद्ध्यन्ति कार्याणि धर्मेणैव च सम्पदः। उद्योगे निश्चलं चित्तं सुखं सम्पद्यते ध्रुवम्॥",
-      "padaccheda": "भक्त्या सिद्ध्यन्ति कार्याणि धर्मेण एव च सम्पदः। उद्योगे निश्चलं चित्तं सुखं सम्पद्यते ध्रुवम्॥",
-      "anvaya": "भक्त्या कार्याणि सिद्ध्यन्ति, धर्मेण एव सम्पदः च। उद्योगे निश्चलं चित्तं ध्रुवं सुखं सम्पद्यते॥",
-      "nirukta": {
-        "भक्त्या": "by devotion",
-        "सिद्ध्यन्ति": "are accomplished",
-        "कार्याणि": "tasks",
-        "धर्मेण": "by righteousness",
-        "एव": "indeed",
-        "च": "and",
-        "सम्पदः": "wealth",
-        "उद्योगे": "in enterprise",
-        "निश्चलं": "steady",
-        "चित्तं": "mind",
-        "सुखं": "happiness",
-        "सम्पद्यते": "is attained",
-        "ध्रुवम्": "certainly"
-      },
-      "translation_en": "Through devotion, tasks are accomplished; through righteousness, wealth is indeed secured. In enterprise, a steady mind certainly attains happiness.",
-      "translation_mr": "भक्तीमुळे कार्ये सिद्ध होतात; धर्मामुळे संपत्ती निश्चित होते. उद्योगात स्थिर चित्त निश्चितपणे सुख प्राप्त करते.",
-      "practical_enterprise_guidance": "Cultivate unwavering devotion to your mission and uphold ethical standards in all business dealings. This will not only ensure the successful completion of tasks but also secure sustainable wealth. Maintain a steady and focused mind amidst the challenges of enterprise to achieve lasting happiness and fulfillment."
-    },
-    "validation": {
-      "score": 96,
-      "gates_passed": 13,
-      "auditor": "Agent 5 — Independent Verification Specialist (OpenAI gpt-4o)",
-      "commentary": "The New Udyog Sutra #5 successfully passes all 13 qualitative verification gates. The Sanskrit verse adheres to grammatical and metric authenticity, maintaining fidelity to both the Narada Bhakti Sutra thesis and the Shandilya Bhakti Sutra counter-thesis. The sutra is well-grounded in Bharatiya Jnana as per the referenced documents. It demonstrates practical business applicability and upholds ethical integrity, emphasizing devotion and righteousness. The content is original and non-plagiarized, with complete multilingual translations in Sanskrit, English, and Marathi. There is no evidence of forced lexical matching, and the clarity of padaccheda and anvaya is maintained. The sutra is relevant to modern leadership and enterprise contexts, free from hallucinations, and provides actionable pragmatic guidance for achieving success and fulfillment in business endeavors."
-    }
+    "english_translation": "A wise leader constantly safeguards the welfare of all stakeholders; when professional work is conducted as a dedicated sacrifice, it causes no bondage.",
+    "marathi_purport": "सुजाण उद्योजकाने केवळ स्वतःच्या खिशाचा विचार न करता ग्राहक, कामगार, पुरवठादार आणि समाज या सर्वांच्या हिताचा सतत विचार करावा. जेव्हा आपला व्यवसाय हा समाजाच्या सेवेसाठी चालवलेला एक पवित्र यज्ञ बनतो, तेव्हा त्यातील नफा-तोटा किंवा चढउतार माणसाला मानसिक बंधनात किंवा तणावात अडकवत नाहीत.",
+    "philosophical_foundation": "नारदांचे 'तदर्पिताखिलाचारता' आपले सर्व आचरण ईश्वराला अर्पण करण्याचे सांगते; शांडिल्यांचे 'सर्वथा वर्तमानोऽपि' सांगते की जगात सक्रिय राहूनही माणूस बंधनामुक्त राहू शकतो. गीतेतील ३.९ श्लोक 'यज्ञार्थ कर्म' बंधनकारक ठरत नसल्याचे स्पष्ट करतो. आधुनिक भाषेत यालाच 'Stakeholder Capitalism' किंवा विश्वस्त व्यवस्था (Trusteeship) म्हणतात.",
+    "practical_applications": [
+      [
+        "कंपनी धोरण",
+        "कंपनीच्या वार्षिक उद्दिष्टांमध्ये केवळ EBITDA न ठेवता पर्यावरण आणि कर्मचारी समाधानाचे निकष ठेवा."
+      ],
+      [
+        "पुरवठा साखळी",
+        "लहान पुरवठादारांची देयके अडकवून न ठेवता त्यांना वेळेवर पैसे देऊन सक्षम करा."
+      ],
+      [
+        "संकट व्यवस्थापन",
+        "मंदीच्या काळात कामगारांना कामावरून काढण्याऐवजी व्यवस्थापकीय खर्चात कपात करा."
+      ]
+    ]
   },
   {
     "sutra_no": 6,
-    "theme": "Attainment of the Supreme Abode upon Exhaustion of Karma",
-    "matching_pair": {
-      "narada": {
-        "sutra_no": "6",
-        "sanskrit": "यज्ज्ञात्वा मत्तो भवति स्तब्धो भवति आत्मारामो भवति॥",
-        "meaning_en": "",
-        "meaning_mr": ""
-      },
-      "shandilya": {
-        "sutra_no": "89",
-        "sanskrit": "प्रारब्धक्षये परमं पदम्॥",
-        "meaning_en": "Upon the natural exhaustion of past bodily momentum (Prarabdha), the devotee merges into the supreme abode.",
-        "meaning_mr": "प्रारब्ध कर्म संपल्यावर भक्त ईश्वराच्या परम पदाला प्राप्त होतो."
-      },
-      "thematic_harmony": "Under theme 'Attainment of the Supreme Abode upon Exhaustion of Karma', Narada #6 provides motivational devotional fervor, Shandilya #89 provides cognitive certitude, DOC-01/02/03 supply practical enterprise architecture, and Sant Tukaram Maharaj (DOC-04) anchors moral transactional purity (Satya-Vyavahara)."
+    "title": "आघातजन्य-सामर्थ्य व विपत्ति-रूपांतरण (Antifragility & Adversarial Transformation)",
+    "shloka_devanagari": "आघातोत्पीडितः प्राज्ञो दीप्यते न तु सीदति ।\nविपद्भवति सामर्थ्यं यस्योद्योगः स्वभावजः ॥",
+    "shloka_iast": "āghātotpīḍitaḥ prājño dīpyate na tu sīdati |\nvipad bhavati sāmarthyaṁ yasyodyogaḥ svabhāvajaḥ ||",
+    "sources": {
+      "narada": "Narada Bhakti Sutra 78 — अहिंसासत्यशौचदयास्तिक्यादिचारित्र्याणि परिपालनीयानि ॥",
+      "shandilya": "Shandilya Bhakti Sutra 61 — तदैक्यान्नानात्वम् ॥",
+      "bharatiya_jnana": "Mahabharata, Udyoga Parva (Chapter 134, Verse 14 - Vidula-Putra Samvada) — उत्तिष्ठ हे कापुरुष मा शेष्वैवं पराजितः । मुहूर्तं ज्वलितं श्रेयो न च धूमायितं चिरम् ॥"
     },
-    "bharatiya_jnana_foundation": {
-      "doc01_mahadgrantha": "DOC-01 (Udyam Sutras Mahagrantha): उद्यमेन हि सिध्यन्ति कार्याणि न मनोरथैः। कौशलं धृतिः शक्तिः सहकार्यं च राष्ट्रवर्धनम्। (Exhorts diligence, mastery of craft, perseverance, and corporate nation-building).",
-      "doc02_karyavritti17": "DOC-02 (Karyavritti 17): धर्मसंमतः अर्थलाभः। लोककल्याणार्थं वाणिज्यम्। निष्कामभावेन उद्योगपरिपालनम्। (Emphasizes lawful righteous wealth creation, ethical trade, and Karmayoga).",
-      "doc03_karyavritti05": "DOC-03 (Karyavritti 05): स्वावलम्बनं परमं सुखम्। आत्मसंयमः संकटे धैर्यम्। (Exhorts self-reliance, rigorous self-discipline, and enduring patience in business crises).",
-      "doc04_sant_tukaram": "DOC-04 (Sant Tukaram Maharaj): 'जोडोनियां धन उत्तम व्यवहारे । उदास विचारे वेच करी ॥' (Wealth earned through impeccable integrity must be dispensed with detached social stewardship).",
-      "iks_scriptural_references": "IKS Traditions: Bhagavad Gita 3.20 (Lokasangraha), Taittiriya Upanishad 1.11 (Kushalan na pramaditavyam), Kautilya Arthashastra 1.7 (Sukhasya mulam dharmah, dharmasya mulam arthah)."
-    },
-    "new_udyog_sutra": {
-      "sanskrit_verse": "उद्यमेन धर्मलाभः कर्मक्षये परं पदम्।\nनिष्कामेन च योगेन लोकसंग्रह एव च॥",
-      "padaccheda": "उद्यमेन धर्मलाभः कर्मक्षये परं पदम्।\nनिष्कामेन च योगेन लोकसंग्रहः एव च॥",
-      "anvaya": "उद्यमेन धर्मलाभः, कर्मक्षये परं पदम्। निष्कामेन योगेन च लोकसंग्रहः एव च॥",
-      "nirukta": {
-        "उद्यमेन": "by diligence",
-        "धर्मलाभः": "acquisition of righteousness",
-        "कर्मक्षये": "upon exhaustion of karma",
-        "परं": "supreme",
-        "पदम्": "abode",
-        "निष्कामेन": "with selfless",
-        "योगेन": "union or practice",
-        "लोकसंग्रहः": "welfare of the world",
-        "एव": "indeed",
-        "च": "and"
-      },
-      "translation_en": "Through diligence, one attains righteousness; upon the exhaustion of karma, the supreme abode is reached. With selfless practice and for the welfare of the world, indeed.",
-      "translation_mr": "उद्यमा द्वारे धर्माची प्राप्ती होते; कर्माच्या क्षयाने परमपद प्राप्त होते. निष्काम योगाने आणि लोककल्याणासाठी हेच खरे.",
-      "practical_enterprise_guidance": "Entrepreneurs should focus on diligent efforts to achieve ethical success. As past actions culminate, aim for higher goals with selfless dedication, ensuring that business practices contribute to societal welfare."
-    },
-    "validation": {
-      "score": 95,
-      "gates_passed": 13,
-      "auditor": "Agent 5 — Independent Verification Specialist (OpenAI gpt-4o)",
-      "commentary": "New Udyog Sutra #6 successfully passes all 13 qualitative verification gates. The Sanskrit verse maintains grammatical and metric authenticity, aligning with classical standards. It reflects the thematic essence of the Narada Bhakti Sutra and provides a counter-thesis to the Shandilya Bhakti Sutra. The sutra is well-grounded in Bharatiya Jnana, as evidenced by its alignment with DOC-01 to DOC-04. It offers practical business applicability, encouraging ethical entrepreneurship and societal welfare. The sutra upholds ethical integrity, is original, and presents multilingual completeness in Sanskrit, English, and Marathi. There is no forced lexical matching, and the padaccheda and anvaya are clear. The sutra is relevant to modern leadership and enterprise contexts, free from hallucinations, and provides actionable, pragmatic guidance."
-    }
+    "english_translation": "Buffeted by external shocks and hostility, the wise leader blazes forth and never collapses; adversity itself transforms into enduring capability for one whose enterprise is born of innate purpose.",
+    "marathi_purport": "जेव्हा उद्योगावर अचानक संकटे, आर्थिक मंदी किंवा स्पर्धकांचे आक्रमक हल्ले होतात, तेव्हा खरा सुजाण उद्योजक खचून जात नाही. तो उलट नव्या जोमाने उजळून निघतो. ज्याचा व्यवसाय केवळ नफ्यासाठी नसून स्वतःच्या आंतरिक ध्येयातून उभा राहिला आहे, त्याच्यासाठी बाह्य संकटेच नव्या क्षमतेची आणि यशाची कारणे बनतात.",
+    "philosophical_foundation": "नारदांचे ७८वे सूत्र संकटातही आंतरिक मूल्यांचे रक्षण करण्यास सांगते; शांडिल्यांचे ६१वे सूत्र सांगते की विविधतेचा समेट एकात्मिक तत्त्वात होतो. महाभारतातील विदुला-संवाद पराभवातून उठून पराक्रम गाजवण्याची प्रेरणा देतो. हा विचार केवळ संकटात टिकून राहणे (Resilience) नव्हे, तर संकटातून अधिक बळकट होणे (Antifragility) शिकवतो.",
+    "practical_applications": [
+      [
+        "मंदीच्या काळात",
+        "व्यवसाय थंडावला असल्यास कर्मचाऱ्यांना काढून टाकण्याऐवजी नवीन उत्पादनांच्या संशोधनावर (R&D) भर द्या."
+      ],
+      [
+        "स्पर्धेला सामोरे जाताना",
+        "मोठ्या स्पर्धकाने किंमत युद्ध सुरू केले तर स्वतःच्या सेवेत विशिष्ट गुणवत्ता (Niche Specialization) निर्माण करा."
+      ],
+      [
+        "तंत्रज्ञान बदलात",
+        "जुने तंत्रज्ञान बंद पडत असताना लगेच नव्या तंत्रज्ञानाचा स्वीकार करून स्वतःला आघाडीवर न्या."
+      ]
+    ]
   },
   {
     "sutra_no": 7,
-    "theme": "Supreme Love as the Sole Goal | परम प्रेम हे एकमेव ध्येय",
-    "matching_pair": {
-      "narada": {
-        "sutra_no": "7",
-        "sanskrit": "सा न कामयमाना निरोधरूपत्वात्॥",
-        "meaning_en": "",
-        "meaning_mr": ""
-      },
-      "shandilya": {
-        "sutra_no": "43",
-        "sanskrit": "तत्र परा साध्या॥",
-        "meaning_en": "Among all disciplines, transcendental Supreme Love (Para Bhakti) is the ultimate goal to be realized.",
-        "meaning_mr": "सर्व साधनांमध्ये परा भक्ती हेच अंतिम साध्य आहे."
-      },
-      "thematic_harmony": "Under theme 'Supreme Love as the Sole Goal | परम प्रेम हे एकमेव ध्येय', Narada #7 provides motivational devotional fervor, Shandilya #43 provides cognitive certitude, DOC-01/02/03 supply practical enterprise architecture, and Sant Tukaram Maharaj (DOC-04) anchors moral transactional purity (Satya-Vyavahara)."
+    "title": "प्रज्ञा-स्वायत्तता व स्वदेशी नवोन्मेष (Epistemic Sovereignty & Foundational IP)",
+    "shloka_devanagari": "परप्रज्ञोपजीवेन न स्वराज्यं प्रसिद्ध्यति ।\nस्वात्ममूल्यान्वेषणेन विश्वं जयति बुद्धिमान् ॥",
+    "shloka_iast": "paraprajñopajīvena na svarājyaṁ prasiddhyati |\nsvātmamūlyānveṣaṇena viśvaṁ jayati buddhimān ||",
+    "sources": {
+      "narada": "Narada Bhakti Sutra 10 — अन्याश्रयाणां त्यागोऽनन्यता ॥",
+      "shandilya": "Shandilya Bhakti Sutra 8 — तद्वतः प्रपत्तिरन्यथा पातित्यात् ॥",
+      "bharatiya_jnana": "Bhagavad Gita (Chapter 3, Verse 35) — श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात् । स्वधर्मे निधनं श्रेयः परधर्मो भयावहः ॥"
     },
-    "bharatiya_jnana_foundation": {
-      "doc01_mahadgrantha": "DOC-01 (Udyam Sutras Mahagrantha): उद्यमेन हि सिध्यन्ति कार्याणि न मनोरथैः। कौशलं धृतिः शक्तिः सहकार्यं च राष्ट्रवर्धनम्। (Exhorts diligence, mastery of craft, perseverance, and corporate nation-building).",
-      "doc02_karyavritti17": "DOC-02 (Karyavritti 17): धर्मसंमतः अर्थलाभः। लोककल्याणार्थं वाणिज्यम्। निष्कामभावेन उद्योगपरिपालनम्। (Emphasizes lawful righteous wealth creation, ethical trade, and Karmayoga).",
-      "doc03_karyavritti05": "DOC-03 (Karyavritti 05): स्वावलम्बनं परमं सुखम्। आत्मसंयमः संकटे धैर्यम्। (Exhorts self-reliance, rigorous self-discipline, and enduring patience in business crises).",
-      "doc04_sant_tukaram": "DOC-04 (Sant Tukaram Maharaj): 'जोडोनियां धन उत्तम व्यवहारे । उदास विचारे वेच करी ॥' (Wealth earned through impeccable integrity must be dispensed with detached social stewardship).",
-      "iks_scriptural_references": "IKS Traditions: Bhagavad Gita 3.20 (Lokasangraha), Taittiriya Upanishad 1.11 (Kushalan na pramaditavyam), Kautilya Arthashastra 1.7 (Sukhasya mulam dharmah, dharmasya mulam arthah)."
-    },
-    "new_udyog_sutra": {
-      "sanskrit_verse": "उद्योगे प्रेमसारं हि, धर्मेणैव समृद्धये। निष्कामभावयुक्तेन, लोकहितं च साध्यते॥",
-      "padaccheda": "उद्योगे प्रेमसारं हि, धर्मेण एव समृद्धये। निष्कामभावयुक्तेन, लोकहितं च साध्यते॥",
-      "anvaya": "उद्योगे हि प्रेमसारं, धर्मेण एव समृद्धये। निष्कामभावयुक्तेन च लोकहितं साध्यते॥",
-      "nirukta": {
-        "उद्योगे": "in enterprise",
-        "प्रेमसारं": "essence of love",
-        "हि": "indeed",
-        "धर्मेण": "through righteousness",
-        "एव": "only",
-        "समृद्धये": "for prosperity",
-        "निष्कामभावयुक्तेन": "with a selfless attitude",
-        "लोकहितं": "welfare of the world",
-        "च": "and",
-        "साध्यते": "is achieved"
-      },
-      "translation_en": "In enterprise, the essence of love indeed lies, and prosperity is achieved through righteousness alone. With a selfless attitude, the welfare of the world is also accomplished.",
-      "translation_mr": "उद्योगात प्रेमाचा सारांश खरोखरच आहे, आणि समृद्धी धर्मानेच साध्य होते. निष्कामभावाने, लोककल्याण देखील साध्य होते.",
-      "practical_enterprise_guidance": "For modern entrepreneurs, integrating the essence of love into business practices ensures not only personal fulfillment but also sustainable growth. Uphold righteousness in all dealings to achieve true prosperity. Adopt a selfless attitude to contribute to societal welfare, thereby creating a lasting impact."
-    },
-    "validation": {
-      "score": 95,
-      "gates_passed": 13,
-      "auditor": "Agent 5 — Independent Verification Specialist (OpenAI gpt-4o)",
-      "commentary": "New Udyog Sutra #7 successfully passes all 13 qualitative verification gates. The Sanskrit verse maintains grammatical and metric authenticity, aligning with classical standards. It resonates with the thesis of Narada Bhakti Sutra by emphasizing love as a core principle and aligns with the counter-thesis of Shandilya Bhakti Sutra by incorporating selflessness and righteousness. The sutra is well-grounded in Bharatiya Jnana, as evidenced by its alignment with DOC-01 through DOC-04. It offers practical business applicability by advocating for love and righteousness in enterprise, ensuring ethical integrity. The content is original and non-plagiarized, with complete multilingual translations in Sanskrit, English, and Marathi. There is no forced lexical matching, and the clarity of padaccheda and anvaya is maintained. The sutra is relevant to modern leadership and enterprise, providing actionable guidance without hallucination. Overall, it offers pragmatic advice for integrating love and ethics into business practices."
-    }
+    "english_translation": "True sovereignty is never achieved by living on borrowed intellect and derivative frameworks; by originating foundational value from one's own core genius, the wise creator commands the world.",
+    "marathi_purport": "परकीय तंत्रज्ञानाची केवळ नक्कल करून किंवा दुसऱ्यांच्या उसन्या विचारांवर अवलंबून राहून कोणताही देश किंवा उद्योग स्वावलंबी होऊ शकत नाही. जेव्हा बुद्धिमान उद्योजक आपल्या स्वतःच्या मूळ प्रतिभेचा आणि कौशल्याचा शोध घेऊन मूलभूत संशोधन करतो, तेव्हाच तो जागतिक बाजारपेठेत स्वतःचे स्वतंत्र आणि सन्माननीय स्थान निर्माण करतो.",
+    "philosophical_foundation": "नारदांचे 'अन्याश्रयाणां त्यागो' इतर बाह्य आधारांचा त्याग करण्यास सांगते; शांडिल्यांचे 'तद्वतः प्रपत्तिरन्यथा पातित्यात्' स्वतःच्या सत्याला सोडून दुसऱ्यावर विसंबल्यास पतन निश्चित असल्याचे सांगते. गीतेतील 'स्वधर्मे निधनं श्रेयः' दुसऱ्याचे अनुकरण धोकादायक ठरवते. हे तत्त्व तंत्रज्ञान क्षेत्रात 'पेटंट्स आणि स्वदेशी आर्किटेक्चर' (Foundational IP) चे महत्त्व अधोरेखित करते.",
+    "practical_applications": [
+      [
+        "सॉफ्टवेअर व आयटी",
+        "पाश्चात्त्य साधनांचे केवळ व्हेंडर न बनता स्वतःचे मूळ सॉफ्टवेअर प्लॅटफॉर्म्स आणि अल्गोरिदम्स विकसित करा."
+      ],
+      [
+        "उत्पादन क्षेत्र",
+        "आयात मालावर अवलंबून न राहता स्थानिक पातळीवर घटक निर्मितीची क्षमता उभी करा."
+      ],
+      [
+        "बौद्धिक संपदा",
+        "आपल्या संशोधनाचे पेटंट घेऊन जागतिक स्तरावर रॉयल्टी मिळवणारी संस्था बना."
+      ]
+    ]
   },
   {
     "sutra_no": 8,
-    "theme": "Surrender of All Actions in Devotion / भक्तीत सर्व क्रियांचा समर्पण",
-    "matching_pair": {
-      "narada": {
-        "sutra_no": "8",
-        "sanskrit": "निरोधस्तु लोकवेदव्यापारन्यासः॥",
-        "meaning_en": "",
-        "meaning_mr": ""
-      },
-      "shandilya": {
-        "sutra_no": "30",
-        "sanskrit": "तन्न्यासश्च भक्तौ॥",
-        "meaning_en": "The ultimate culmination of karma is the dedicated renunciation of its fruits into devotion.",
-        "meaning_mr": "सर्व कर्मांचे ईश्वराला समर्पण करणे हीच कर्माची परिपूर्णता आहे."
-      },
-      "thematic_harmony": "Under theme 'Surrender of All Actions in Devotion / भक्तीत सर्व क्रियांचा समर्पण', Narada #8 provides motivational devotional fervor, Shandilya #30 provides cognitive certitude, DOC-01/02/03 supply practical enterprise architecture, and Sant Tukaram Maharaj (DOC-04) anchors moral transactional purity (Satya-Vyavahara)."
+    "title": "ज्ञानसंक्रमण व संस्थागत सातत्य (Inter-generational Lineage & Succession)",
+    "shloka_devanagari": "न केवलं धनं स्थाप्यं स्थापनीया परम्परा ।\nयोग्यशिष्ये समर्पितं कार्यं तिष्ठति शाश्वतम् ॥",
+    "shloka_iast": "na kevalaṁ dhanaṁ sthāpyaṁ sthāpanīyā paramparā |\nyogyaśiṣye samarpitaṁ kāryaṁ tiṣṭhati śāśvatam ||",
+    "sources": {
+      "narada": "Narada Bhakti Sutra 38 — महत्सङ्गस्तु दुर्लभोऽगम्योऽमोघश्च ॥",
+      "shandilya": "Shandilya Bhakti Sutra 91 — परम्परातो ज्ञानसंसिद्धिः ॥",
+      "bharatiya_jnana": "Taittiriya Upanishad, Shikshavalli (Anuvaka 11, Verse 1) — स्वाध्यायान्मा प्रमदः । आचार्याय प्रियं धनमाहृत्य प्रजातन्तुं मा व्यवच्छेत्सीः ॥"
     },
-    "bharatiya_jnana_foundation": {
-      "doc01_mahadgrantha": "DOC-01 (Udyam Sutras Mahagrantha): उद्यमेन हि सिध्यन्ति कार्याणि न मनोरथैः। कौशलं धृतिः शक्तिः सहकार्यं च राष्ट्रवर्धनम्। (Exhorts diligence, mastery of craft, perseverance, and corporate nation-building).",
-      "doc02_karyavritti17": "DOC-02 (Karyavritti 17): धर्मसंमतः अर्थलाभः। लोककल्याणार्थं वाणिज्यम्। निष्कामभावेन उद्योगपरिपालनम्। (Emphasizes lawful righteous wealth creation, ethical trade, and Karmayoga).",
-      "doc03_karyavritti05": "DOC-03 (Karyavritti 05): स्वावलम्बनं परमं सुखम्। आत्मसंयमः संकटे धैर्यम्। (Exhorts self-reliance, rigorous self-discipline, and enduring patience in business crises).",
-      "doc04_sant_tukaram": "DOC-04 (Sant Tukaram Maharaj): 'जोडोनियां धन उत्तम व्यवहारे । उदास विचारे वेच करी ॥' (Wealth earned through impeccable integrity must be dispensed with detached social stewardship).",
-      "iks_scriptural_references": "IKS Traditions: Bhagavad Gita 3.20 (Lokasangraha), Taittiriya Upanishad 1.11 (Kushalan na pramaditavyam), Kautilya Arthashastra 1.7 (Sukhasya mulam dharmah, dharmasya mulam arthah)."
-    },
-    "new_udyog_sutra": {
-      "sanskrit_verse": "कर्मणां फलन्यासो भक्तौ संप्रत्ययेन च। उद्यमः कौशलं धृत्या राष्ट्रं वर्धयते सदा॥",
-      "padaccheda": "कर्मणाम् फलन्यासः भक्तौ संप्रत्ययेन च। उद्यमः कौशलम् धृत्या राष्ट्रम् वर्धयते सदा॥",
-      "anvaya": "कर्मणाम् फलन्यासः भक्तौ संप्रत्ययेन च, उद्यमः कौशलम् धृत्या च राष्ट्रम् सदा वर्धयते।",
-      "nirukta": {
-        "कर्मणाम्": "of actions",
-        "फलन्यासः": "dedication of fruits",
-        "भक्तौ": "in devotion",
-        "संप्रत्ययेन": "with certitude",
-        "च": "and",
-        "उद्यमः": "enterprise",
-        "कौशलम्": "skill",
-        "धृत्या": "with perseverance",
-        "राष्ट्रम्": "nation",
-        "वर्धयते": "enhances",
-        "सदा": "always"
-      },
-      "translation_en": "The dedication of the fruits of actions in devotion, with certitude, along with enterprise, skill, and perseverance, always enhances the nation.",
-      "translation_mr": "कर्मांच्या फळांचा भक्तीत समर्पण, विश्वासाने, उद्यम, कौशल्य आणि धैर्याने राष्ट्राला नेहमीच वृद्धिंगत करतो.",
-      "practical_enterprise_guidance": "Entrepreneurs should dedicate the outcomes of their efforts to a higher purpose, maintaining unwavering faith. By combining diligence, skill, and perseverance, they can contribute to the growth and prosperity of their organization and nation. This approach fosters ethical business practices and sustainable development."
-    },
-    "validation": {
-      "score": 95,
-      "gates_passed": 13,
-      "auditor": "Agent 5 — Independent Verification Specialist (OpenAI gpt-4o)",
-      "commentary": "New Udyog Sutra #8 successfully passes all 13 qualitative verification gates. The Sanskrit verse maintains grammatical and metric authenticity, aligning well with the thematic elements of devotion and enterprise. It adheres to the principles of the Narada Bhakti Sutra and offers a counter-thesis to the Shandilya Bhakti Sutra, ensuring a balanced grounding in Bharatiya Jnana. The sutra provides practical business applicability, promoting ethical integrity and originality. Multilingual translations are complete and accurate, with no forced lexical matching. The padaccheda and anvaya are clear, supporting modern leadership and enterprise relevance. The sutra avoids hallucination and offers actionable, pragmatic guidance for entrepreneurs, emphasizing dedication, skill, and perseverance for national growth."
-    }
+    "english_translation": "A leader must not merely leave behind monetary wealth; one must establish an enduring lineage of wisdom and values. An enterprise entrusted to a worthy successor endures eternally.",
+    "marathi_purport": "संस्थापकाने केवळ बँक बॅलन्स किंवा मालमत्ता मागे सोडून जाणे पुरेसे नाही; त्याने आपल्या मूल्यांची आणि कार्यसंस्कृतीची एक जिवंत परंपरा निर्माण केली पाहिजे. जेव्हा एखादा उद्योग स्वतःच्या रक्ताच्या नात्यापेक्षा योग्य, कुशल आणि चारित्र्यवान शिष्याकडे विश्वासाने सोपवला जातो, तेव्हाच तो व्यवसाय काळाच्या ओघात अमर होतो.",
+    "philosophical_foundation": "नारदांचे 'महत्सङ्गस्तु' महान विभूतींचा सहवास दुर्लभ असल्याचे सांगते; शांडिल्यांचे 'परम्परातो' ज्ञान केवळ अखंड गुरु-शिष्य परंपरेतून टिकत असल्याचे स्पष्ट करते. तैत्तिरीय उपनिषदातील 'प्रजातन्तुं मा व्यवच्छेत्सीः' ज्ञानाची अखंड साखळी कधीही तोडू नये असा आदेश देते. हे तत्त्व आधुनिक कॉर्पोरेट जगतात 'Succession Planning' आणि नेतृत्व निर्मितीचे मूळ आहे.",
+    "practical_applications": [
+      [
+        "कौटुंबिक व्यवसाय",
+        "केवळ मुलाला मालकी न देता योग्य गुणवत्ता आणि क्षमता असेल तरच सर्वोच्च पदाची जबाबदारी द्या."
+      ],
+      [
+        "कॉर्पोरेट नेतृत्व",
+        "आपल्या कार्यकाळातच पुढील पिढीचे ३ ते ५ सक्षम नेते तयार करा (Talent Pipeline)."
+      ],
+      [
+        "कार्यसंस्कृती",
+        "व्यवसायाचे अलिखित नियम आणि ग्राहकांशी असलेले नाते नवीन पिढीपर्यंत पोहचवा."
+      ]
+    ]
   },
   {
     "sutra_no": 9,
-    "theme": "Components of Secondary Devotion",
-    "matching_pair": {
-      "narada": {
-        "sutra_no": "9",
-        "sanskrit": "तस्मिन्ननन्यता तद्विरोधिषूदासीनता च॥",
-        "meaning_en": "",
-        "meaning_mr": ""
-      },
-      "shandilya": {
-        "sutra_no": "15",
-        "sanskrit": "तदङ्गानि च यथायथम्॥",
-        "meaning_en": "Its auxiliary practices should be adopted appropriately according to the temperament of the aspirant.",
-        "meaning_mr": "साधन भक्तीच्या विविध अंगांचे साधकाने आपल्या अधिकारानुसार योग्य पालन करावे."
-      },
-      "thematic_harmony": "Under theme 'Components of Secondary Devotion', Narada #9 provides motivational devotional fervor, Shandilya #15 provides cognitive certitude, DOC-01/02/03 supply practical enterprise architecture, and Sant Tukaram Maharaj (DOC-04) anchors moral transactional purity (Satya-Vyavahara)."
+    "title": "प्राकृतिक दोहन व चक्रीय परिसंस्था (Regenerative Ecological Symbiosis)",
+    "shloka_devanagari": "दोहनेन यथा धेनुः पालिता न तु हिंसिता ।\nतथैव प्रकृतेर्भोगाद् उद्योगः फलवान् भवेत् ॥",
+    "shloka_iast": "dohanena yathā dhenuḥ pālitā na tu hiṁsitā |\ntathaiva prakṛter bhogād udyogaḥ phalavān bhavet ||",
+    "sources": {
+      "narada": "Narada Bhakti Sutra 67 — तन्मया हि ते ॥",
+      "shandilya": "Shandilya Bhakti Sutra 96 — प्राणेषु सर्वभूतानां समत्वम् ॥",
+      "bharatiya_jnana": "Atharvaveda, Prithvi Sukta (Kanda 12, Sukta 1, Verse 35) — यत्ते भूमे विखनामि क्षिप्रं तदपि रोहतु । मा ते मर्म विमृग्वरि मा ते हृदयमर्पिपम् ॥"
     },
-    "bharatiya_jnana_foundation": {
-      "doc01_mahadgrantha": "DOC-01 (Udyam Sutras Mahagrantha): उद्यमेन हि सिध्यन्ति कार्याणि न मनोरथैः। कौशलं धृतिः शक्तिः सहकार्यं च राष्ट्रवर्धनम्। (Exhorts diligence, mastery of craft, perseverance, and corporate nation-building).",
-      "doc02_karyavritti17": "DOC-02 (Karyavritti 17): धर्मसंमतः अर्थलाभः। लोककल्याणार्थं वाणिज्यम्। निष्कामभावेन उद्योगपरिपालनम्। (Emphasizes lawful righteous wealth creation, ethical trade, and Karmayoga).",
-      "doc03_karyavritti05": "DOC-03 (Karyavritti 05): स्वावलम्बनं परमं सुखम्। आत्मसंयमः संकटे धैर्यम्। (Exhorts self-reliance, rigorous self-discipline, and enduring patience in business crises).",
-      "doc04_sant_tukaram": "DOC-04 (Sant Tukaram Maharaj): 'जोडोनियां धन उत्तम व्यवहारे । उदास विचारे वेच करी ॥' (Wealth earned through impeccable integrity must be dispensed with detached social stewardship).",
-      "iks_scriptural_references": "IKS Traditions: Bhagavad Gita 3.20 (Lokasangraha), Taittiriya Upanishad 1.11 (Kushalan na pramaditavyam), Kautilya Arthashastra 1.7 (Sukhasya mulam dharmah, dharmasya mulam arthah)."
-    },
-    "new_udyog_sutra": {
-      "sanskrit_verse": "उद्योगे भक्तिरारब्धा, धर्मेण सहिता सदा।\nकौशलं च धृतिः शान्तिः, लोकसंग्रहकारिणी॥",
-      "padaccheda": "उद्योगे भक्तिः आरब्धा, धर्मेण सहिता सदा। कौशलं च धृतिः शान्तिः, लोकसंग्रहकारिणी॥",
-      "anvaya": "उद्योगे आरब्धा भक्तिः, सदा धर्मेण सहिता। कौशलं च धृतिः शान्तिः, लोकसंग्रहकारिणी॥",
-      "nirukta": {
-        "उद्योगे": "in enterprise",
-        "भक्तिः": "devotion",
-        "आरब्धा": "initiated",
-        "धर्मेण": "with righteousness",
-        "सहिता": "accompanied",
-        "सदा": "always",
-        "कौशलं": "skill",
-        "धृतिः": "perseverance",
-        "शान्तिः": "peace",
-        "लोकसंग्रहकारिणी": "promoting the welfare of the world"
-      },
-      "translation_en": "In enterprise, devotion is initiated, always accompanied by righteousness. Skill, perseverance, and peace promote the welfare of the world.",
-      "translation_mr": "उद्योगात भक्ती आरंभिली जाते, ती नेहमी धर्मासह असते. कौशल्य, धैर्य आणि शांती हे लोककल्याणासाठी कार्य करतात.",
-      "practical_enterprise_guidance": "Entrepreneurs should initiate their ventures with a sense of devotion, ensuring that their actions are always aligned with ethical principles. Mastery of skills, perseverance in the face of challenges, and maintaining inner peace are essential for contributing positively to society and achieving sustainable success."
-    },
-    "validation": {
-      "score": 98,
-      "gates_passed": 13,
-      "auditor": "Agent 5 — Independent Verification Specialist (OpenAI gpt-4o)",
-      "commentary": "New Udyog Sutra #9 successfully passes all 13 qualitative verification gates. The Sanskrit verse maintains grammatical and metric authenticity, aligning well with the thematic essence of devotion in enterprise. It adheres to the principles of both Narada and Shandilya Bhakti Sutras, ensuring a balanced grounding in Bharatiya Jnana as per the referenced documents. The sutra is practically applicable to modern business contexts, emphasizing ethical integrity and originality. Multilingual translations are complete and accurate, with no forced lexical matching. The padaccheda and anvaya are clear, and the sutra provides actionable guidance for modern leadership and enterprise relevance. There is no evidence of hallucination, and the guidance is pragmatic and actionable."
-    }
+    "english_translation": "Just as a cow is lovingly nurtured and gently milked—never harmed or destroyed—so must an enterprise utilize nature’s resources through regeneration, thereby yielding enduring fruit.",
+    "marathi_purport": "ज्याप्रमाणे सुजाण शेतकरी गाईचे आधी उत्तम पोषण करतो, तिच्या वासराला पुरेसे दूध पाजतो आणि मगच उरलेले दूध प्रेमाने काढतो—तिला कधीही इजा पोहोचवत नाही; अगदी त्याचप्रमाणे उद्योजकाने निसर्गातील संसाधनांचा वापर करताना तिचे संवर्धन केले पाहिजे. निसर्गाचे शोषण न करता तिचे पुनरुज्जीवन करणारा उद्योगच दीर्घकाळ भरभराटीस येतो.",
+    "philosophical_foundation": "नारदांचे 'तन्मया हि ते' चराचराशी एकरूप होणे शिकवते; शांडिल्यांचे 'प्राणेषु समत्वम्' सर्व प्राणिमात्रांविषयी समभावाची मागणी करते. अथर्ववेदातील पृथ्वी सूक्त स्पष्ट सांगते: 'हे माते, तुझ्याकडून जेवढे घेईन तेवढे तातडीने पुन्हा निर्माण होवो; तुझ्या मर्मावर कधीही आघात होणार नाही.' हे तत्त्व 'चक्रीय अर्थव्यवस्था' (Circular Economy & Net-Zero) चे सर्वोच्च भारतीय रूप आहे.",
+    "practical_applications": [
+      [
+        "कारखान्यांसाठी",
+        "सांडपाणी प्रक्रिया (Zero Liquid Discharge) करून पाणी पुन्हा वापरा; नद्या प्रदूषित करू नका."
+      ],
+      [
+        "पॅकेजिंग",
+        "प्लास्टिकचा वापर बंद करून १००% विघटनशील (Biodegradable) साहित्याचा वापर करा."
+      ],
+      [
+        "ऊर्जा व्यवस्थापन",
+        "छतावर सौर ऊर्जा प्रकल्प बसवून स्वतःची वीज स्वतः निर्माण करा."
+      ]
+    ]
   },
   {
     "sutra_no": 10,
-    "theme": "Elaboration of Specific Characteristics",
-    "matching_pair": {
-      "narada": {
-        "sutra_no": "10",
-        "sanskrit": "अन्याश्रयाणां त्यागोऽनन्यता॥",
-        "meaning_en": "",
-        "meaning_mr": ""
-      },
-      "shandilya": {
-        "sutra_no": "42",
-        "sanskrit": "अथ लक्षणानां विस्तरः॥",
-        "meaning_en": "Now follows the comprehensive exposition of the specific characteristics of devotion.",
-        "meaning_mr": "आता भक्तीच्या विशिष्ट लक्षणांचे सविस्तर निरूपण केले जाते."
-      },
-      "thematic_harmony": "Under theme 'Elaboration of Specific Characteristics', Narada #10 provides motivational devotional fervor, Shandilya #42 provides cognitive certitude, DOC-01/02/03 supply practical enterprise architecture, and Sant Tukaram Maharaj (DOC-04) anchors moral transactional purity (Satya-Vyavahara)."
+    "title": "वास्तविक मूल्यनिर्मिती व आभासी अर्थत्याग (Tangible Utility Over Speculation)",
+    "shloka_devanagari": "आभासिकं त्यजेल्लोभं वस्तुसत्यं विचिन्तयेत् ।\nलोकस्य दुःखहारित्वाद् उद्योगो महते श्रिये ॥",
+    "shloka_iast": "ābhāsikaṁ tyajel lobhaṁ vastusatyaṁ vicintayet |\nlokasya duḥkhahāritvād udyogo mahate śriye ||",
+    "sources": {
+      "narada": "Narada Bhakti Sutra 7 — सा न कामयमाना निरोधरूपत्वात् ॥",
+      "shandilya": "Shandilya Bhakti Sutra 6 — न क्रिया परप्रयोजनाभावात् ॥",
+      "bharatiya_jnana": "Kautilya's Arthashastra (Adhikarana 1, Adhyaya 4, Sutra 1) — कृषि-पशुपाल्ये वणिज्या च वार्ता । धान्य-पशु-हिरण्य-कुप्य-विष्टि-प्रदानाद् औपकारिकी ॥"
     },
-    "bharatiya_jnana_foundation": {
-      "doc01_mahadgrantha": "DOC-01 (Udyam Sutras Mahagrantha): उद्यमेन हि सिध्यन्ति कार्याणि न मनोरथैः। कौशलं धृतिः शक्तिः सहकार्यं च राष्ट्रवर्धनम्। (Exhorts diligence, mastery of craft, perseverance, and corporate nation-building).",
-      "doc02_karyavritti17": "DOC-02 (Karyavritti 17): धर्मसंमतः अर्थलाभः। लोककल्याणार्थं वाणिज्यम्। निष्कामभावेन उद्योगपरिपालनम्। (Emphasizes lawful righteous wealth creation, ethical trade, and Karmayoga).",
-      "doc03_karyavritti05": "DOC-03 (Karyavritti 05): स्वावलम्बनं परमं सुखम्। आत्मसंयमः संकटे धैर्यम्। (Exhorts self-reliance, rigorous self-discipline, and enduring patience in business crises).",
-      "doc04_sant_tukaram": "DOC-04 (Sant Tukaram Maharaj): 'जोडोनियां धन उत्तम व्यवहारे । उदास विचारे वेच करी ॥' (Wealth earned through impeccable integrity must be dispensed with detached social stewardship).",
-      "iks_scriptural_references": "IKS Traditions: Bhagavad Gita 3.20 (Lokasangraha), Taittiriya Upanishad 1.11 (Kushalan na pramaditavyam), Kautilya Arthashastra 1.7 (Sukhasya mulam dharmah, dharmasya mulam arthah)."
-    },
-    "new_udyog_sutra": {
-      "sanskrit_verse": "उद्योगे भक्तिः सदा धर्मनिष्ठा। कौशलं धृतिः च राष्ट्रवर्धनम्॥ आत्मसंयमः चित्तशुद्धिः च। निष्कामभावेन कार्यं साधयेत्॥",
-      "padaccheda": "उद्योगे भक्तिः सदा धर्मनिष्ठा। कौशलं धृतिः च राष्ट्रवर्धनम्॥ आत्मसंयमः चित्तशुद्धिः च। निष्कामभावेन कार्यं साधयेत्॥",
-      "anvaya": "उद्योगे सदा भक्तिः धर्मनिष्ठा च। कौशलं धृतिः च राष्ट्रवर्धनम्। आत्मसंयमः च चित्तशुद्धिः। निष्कामभावेन कार्यं साधयेत्॥",
-      "nirukta": {
-        "उद्योगे": "in enterprise",
-        "भक्तिः": "devotion",
-        "सदा": "always",
-        "धर्मनिष्ठा": "steadfastness in righteousness",
-        "कौशलं": "skill",
-        "धृतिः": "perseverance",
-        "राष्ट्रवर्धनम्": "nation-building",
-        "आत्मसंयमः": "self-discipline",
-        "चित्तशुद्धिः": "purity of mind",
-        "निष्कामभावेन": "with selfless intent",
-        "कार्यं": "task",
-        "साधयेत्": "should accomplish"
-      },
-      "translation_en": "In enterprise, always maintain devotion and steadfastness in righteousness. Skill and perseverance contribute to nation-building. With self-discipline and purity of mind, accomplish tasks with selfless intent.",
-      "translation_mr": "उद्योगात नेहमी भक्ती आणि धर्मनिष्ठा ठेवा. कौशल्य आणि धैर्य राष्ट्रवर्धनास हातभार लावतात. आत्मसंयम आणि चित्तशुद्धीने, निष्कामभावाने कार्य साधावे.",
-      "practical_enterprise_guidance": "Entrepreneurs should integrate devotion and ethical steadfastness into their business practices. Mastery of skills and perseverance are essential for contributing to the larger goal of nation-building. Cultivate self-discipline and maintain purity of intent, focusing on selfless service to achieve sustainable success."
-    },
-    "validation": {
-      "score": 96,
-      "gates_passed": 13,
-      "auditor": "Agent 5 — Independent Verification Specialist (OpenAI gpt-4o)",
-      "commentary": "The New Udyog Sutra #10 successfully passes all 13 qualitative verification gates. The Sanskrit verse maintains grammatical and metric authenticity, aligning with classical standards. It demonstrates fidelity to both the Narada Bhakti Sutra thesis and the Shandilya Bhakti Sutra counter-thesis, providing a balanced perspective rooted in Bharatiya Jnana. The sutra is practically applicable to modern business contexts, emphasizing ethical integrity and originality. It is presented in a multilingual format with accurate translations in Sanskrit, English, and Marathi, ensuring completeness. The absence of forced lexical matching and hallucination is noted, with clear padaccheda and anvaya provided. The sutra offers actionable and pragmatic guidance relevant to modern leadership and enterprise, focusing on devotion, ethical steadfastness, skill mastery, perseverance, self-discipline, and selfless service for sustainable success."
-    }
+    "english_translation": "Let an entrepreneur renounce the illusory greed of paper speculation and concentrate upon real, tangible utility; an enterprise that alleviates the genuine suffering of the people attains monumental glory.",
+    "marathi_purport": "केवळ कागदी मूल्यांकन फुगवण्याच्या किंवा सट्टेबाजीच्या आभासी लोभाचा उद्योजकाने त्याग करावा. आपल्या उत्पादनाची समाजात खरी गरज काय आहे आणि ते लोकांचे नेमके कोणते दुःख किंवा अडचण दूर करते, यावरच आपले लक्ष केंद्रित असावे. जो व्यवसाय लोकांच्या दैनंदिन जीवनातील अडचणी सोडवतो, त्याला कधीही ग्राहक कमी पडत नाहीत आणि तोच चिरंतन संपत्ती निर्माण करतो.",
+    "philosophical_foundation": "नारदांचे ७वे सूत्र फसव्या कामनेचा निरोध करते; शांडिल्यांचे ६वे सूत्र सांगते की ज्या कर्माला ठोस प्रयोजन नाही, ती केवळ पोकळ हालचाल असते. कौटिलीय अर्थशास्त्रातील 'वार्ता' तत्त्वज्ञान शेती, पशुपालन आणि व्यापार यांनाच खरी संपत्ती मानणारे आहे, कारण ते प्रत्यक्ष धान्य व जीवनोपयोगी वस्तू देते. हा विचार हायपर-फायनान्स आणि स्टार्टअप मूल्यांकनाच्या फुग्यांवर कडक प्रहार करतो.",
+    "practical_applications": [
+      [
+        "स्टार्टअप संस्थापकांसाठी",
+        "पुढील फंडिंग राउंडच्या व्हॅल्युएशनवर नव्हे, तर तुमच्या उत्पादनाने ग्राहकांची कोणती खरी समस्या सुटली यावर लक्ष द्या."
+      ],
+      [
+        "व्यवसाय निवड",
+        "केवळ ट्रेडिंग करण्याऐवजी प्रत्यक्ष उपयुक्त वस्तूंचे उत्पादन किंवा आवश्यक सेवा देणारा उद्योग निवडा."
+      ],
+      [
+        "शाश्वत नफा",
+        "ज्या दिवशी उत्पादन ग्राहकाचे दुःख दूर करते, त्या दिवशी कंपनीचा महसूल नैसर्गिकरीत्या वाढतो."
+      ]
+    ]
   }
 ]
