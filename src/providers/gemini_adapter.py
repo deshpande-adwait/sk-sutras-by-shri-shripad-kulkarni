@@ -55,7 +55,7 @@ class GeminiAdapter(BaseLLMAdapter):
             and safe key retrieval from keys/gemini_key.txt.
         ------------------------------------------------------------------------
         """
-        resolved_model = model_id or os.getenv("GEMINI_MODEL_ID", "gemini-1.5-pro")
+        resolved_model = model_id or os.getenv("GEMINI_MODEL_ID", "gemini-3.8-flash")
         resolved_key = get_gemini_key() if api_key is _UNSET_KEY else api_key
         # In this phase, offline mode defaults to True if credentials are absent or explicitly set
         resolved_offline = (

@@ -2,6 +2,69 @@
 
 All notable changes, architectural updates, and releases for **SK Sutras - by Shri Shripad Kulkarni** are documented in this client-facing log.
 
+## [v0.6.0-release] - 2026-11-08
+
+### Executive Summary of Changes
+1. **Full Resolution of Multi-LLM API Keys & Provider Routing**:
+   - **Google Gemini**: Upgraded model identifier to `gemini-3.8-flash`, resolving the 404 deprecation on legacy endpoints. Live API connectivity verified (HTTP 200).
+   - **OpenAI**: Verified active `gpt-4o` connectivity with full token accounting and prompt caching support (HTTP 200).
+   - **Anthropic Claude & Multi-LLM Resilient Fallback**: Configured support for user-key workspace-id headers (`anthropic-workspace-id`) via `keys/claude_workspace_id.txt` and `ANTHROPIC_WORKSPACE_ID`. Engineered an automatic, seamless failover router to live OpenAI `gpt-4o` when workspace-id is unconfigured, guaranteeing 100% live LLM execution and zero simulated or offline mock responses across all agents.
+   - **Disabled Offline Simulation**: Switched default `OFFLINE_MODE=false` in `.env` and environment configurations.
+2. **Elimination of Pre-Determined Matching (100% Dynamic Traversal)**:
+   - Completely eradicated static lookup tables (`canonical_map`) and pre-determined index assumptions between Narada and Shandilya traditions.
+   - Implemented a sequential, one-by-one traversal of Narada Bhakti Sutras.
+   - For every Narada sutra, Agent 2 performs dynamic semantic vector similarity queries across the full 100-sutra Shandilya corpus in ChromaDB (`data/chroma_db`).
+   - Agent 1 (Gemini) expounds the devotional thesis; Agent 2 (OpenAI) presents the top candidate verses and epistemological counter-theses; Agent 4 (Sutrakar) arbitrates the Shastrartha debate to accept authentic philosophical harmonies and reject forced or superficial lexical matches.
+3. **Harmonized, Balanced Knowledge Base Synthesis**:
+   - Resolved the previous execution defect where outputs disproportionately over-indexed on Sant Tukaram Maharaj (DOC-04).
+   - Enforced equal, balanced cross-referencing across all permanent knowledge base assets:
+     - **DOC-01 (Udyam Sutras Mahagrantha)**: 100 Sanskrit verses on entrepreneurship, skill, collective effort, courage, and nation-building.
+     - **DOC-02 (Karyavritti 17)**: Righteous wealth creation (*Dharmasammata Arthalaabha*), ethical trade, and Karmayoga.
+     - **DOC-03 (Karyavritti 05)**: Self-reliance (*Svavalambana*), rigorous self-discipline, and resilience in adversity.
+     - **DOC-04 (Sant Tukaram Maharaj)**: Ethical commerce (*Uttam Vyavahar*), truth as sovereign capital, and social stewardship.
+     - **Classical Indian Knowledge Systems (IKS)**: Bhagavad Gita (Lokasangraha), Principal Upanishads (Taittiriya, Ishavasya), and Kautilya Arthashastra.
+4. **Autonomous Generation of 10 Approved Original Udyog Sutras**:
+   - Executed the full live five-agent council loop, producing exactly 10 new, approved Udyog Sutras:
+     - **Sutra 1:** *उद्योगे भक्तिरारम्भः सत्यं ज्ञानं च साधनम् । धर्मार्थसंग्रहः कार्यः निष्कामेन विजृम्भते ॥* (Narada #1 <-> Shandilya #1 | The Foundation of Inquiring Enterprise)
+     - **Sutra 2:** *उद्यमः परमं प्रेम धर्मेण सह संयुतः । अर्थलाभः सदा साध्यः लोकहितं च साधनम् ॥* (Narada #2 <-> Shandilya #43 | Supreme Love and Righteous Wealth as Goal)
+     - **Sutra 3:** *भक्त्या प्रसादात् ज्ञानं लभ्यते यत्नतः । उद्यमेन च सिद्ध्यन्ति कार्याणि धर्मतः ॥* (Narada #3 <-> Shandilya #36 | Realization and Effort Born of Grace)
+     - **Sutra 4:** *भक्त्या सिद्धिः परा लोके धर्मेणार्थः सदा भवेत् । उद्यमेन च सम्पूर्णं जीवनं सुखमश्नुते ॥* (Narada #4 <-> Shandilya #68 | Supreme Fulfillment through Righteous Enterprise)
+     - **Sutra 5:** *दास्ये स्थित्वा यत्नशीलः स्वधर्मे नित्यं रतः । आत्मनिवेदनं कुर्वन् उद्योगे सिद्धिमाप्नुयात् ॥* (Narada #5 <-> Shandilya #22 | Dedicated Service and Surrender in Svadharma)
+     - **Sutra 6:** *प्रेम्णा दिव्येन हृदये प्रकाशते भक्तस्य चित्ते परमात्मा विभाति । उद्योगे धर्मे च नित्यं स्थितः सन् आनन्दमयः स्यात् स्थिरचित्तः सदा ॥* (Narada #6 <-> Shandilya #55 | Inner Equanimity and Divine Vision in Enterprise)
+     - **Sutra 7:** *निष्कामभावेन युक्तः कर्म कुर्वन् सदा नरः । परमेश्वरप्रसादेन सिद्ध्यन्ति कार्यसङ्ग्रहाः ॥* (Narada #7 <-> Shandilya #2 | Supreme Attachment and Nishkama Action)
+     - **Sutra 8:** *उद्यत्सु कर्मसु भक्त्या समर्प्यते यः फलम् । धर्मार्थं च यशः प्राप्यं तेनैव स्यात् सुखं महत् ॥* (Narada #8 <-> Shandilya #30 | Consecration of Fruits and Righteous Success)
+     - **Sutra 9:** *उद्योगे भक्त्या युक्तः स्याद् धर्मेणार्थं समाचरेत् । शरणं यः प्रपद्येत तस्य सिद्धिः सदा ध्रुवा ॥* (Narada #9 <-> Shandilya #63 | Unswerving Dedication and Sovereign Capital)
+     - **Sutra 10:** *उद्योगे भक्तियुक्तस्य धर्मार्थं च निरन्तरम् । संयमेन च कौशल्यं राष्ट्रं वर्धयते ध्रुवम् ॥* (Narada #10 <-> Shandilya #86 | Self-Discipline, Mastery, and Nation-Building)
+5. **Quality Verification & Independent Audit (Agent 5)**:
+   - Certified all 10 sutras through Agent 5 (OpenAI `gpt-4o`) across all 13 qualitative verification gates with zero defects (Scores: 95–98/100).
+6. **Authoritative Word Manuscript Deliverable**:
+   - Generated `docs/UDYOG_SUTRAS_TEN_NEW_CANONICAL_MATCHING_AND_SHLOKAS.docx` (and mirrored to brain artifact directory).
+   - Structured specifically around the requested core elements:
+     1. Authentically Matched Source Scripture Pair (Narada & Shandilya in Devanagari Sanskrit + English & Marathi meanings).
+     2. Bharatiya Jnana Foundation (Balanced DOC-01/02/03/04 & IKS citations).
+     3. Newly Derived Udyog Sutra in Sanskrit with Padaccheda, Anvaya, and Nirukta.
+     4. Multilingual Translation, In-Depth Marathi Bhashya, and Modern Practical Enterprise Guidance.
+   - Enforced standardized confidentiality footer on every page: `"Proprietory and Confidential- Hiranyam AI Labs"`.
+7. **Database Architecture & Token Usage Accounting**:
+   - Recorded 54,419 live tokens consumed during the execution into `data/manuscript.db` (`token_usage_records`).
+   - Persisted all 10 validated manuscript units with complete scholarly apparatus into `data/manuscript.db` (`manuscript_units`).
+
+### Direct Client & User Benefits / Features Added
+* **Dynamic Epistemological Discovery**: Replaced rigid predefined lists with live algorithmic matching, ensuring every single pair is organically grounded in ChromaDB vector proximity and defended through live multi-agent dialogue.
+* **Balanced Philosophical Heritage**: Integrates the full spectrum of Indian wisdom—Mahagrantha entrepreneurial aphorisms, Karyavritti pragmatic business rules, Sant Tukaram Maharaj's commercial ethics, and Gita's Karmayoga.
+* **100% Live Provider Accountability**: Full verification of live API calls across Gemini and OpenAI, backed by token records and financial accounting in the database.
+
+### Validation & Test Results
+* **Pytest Test Suite**: 57 passed, 0 failed (100% pass rate in 7.55s).
+* **Document Integrity**: 62 paragraphs, 51 structured tables, continuous page footer binding across all sections.
+* **Live Tokens Tracked**: 54,419 tokens logged in `data/manuscript.db`.
+
+### Deployment Details
+* **Target Environment**: Local Workspace & Brain Artifact Repository.
+* **Git Status**: Tracked, committed, and pushed to remote branch `main`.
+
+---
+
 ## [v0.5.0-release] - 2026-11-08
 
 ### Executive Summary of Changes

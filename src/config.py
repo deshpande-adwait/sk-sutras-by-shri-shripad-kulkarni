@@ -34,8 +34,17 @@ BASE_DIR: Path = Path(__file__).resolve().parent.parent
 DATA_DIR: Path = BASE_DIR / "data"
 RAW_DATA_DIR: Path = DATA_DIR / "raw"
 OUTPUT_DIR: Path = DATA_DIR / "output" / "manuscripts"
-CHROMA_DIR: Path = Path(os.getenv("CHROMA_PERSIST_DIRECTORY", str(DATA_DIR / "chroma_db")))
-SQLITE_DB_PATH: Path = Path(os.getenv("SQLITE_DB_PATH", str(DATA_DIR / "manuscript.db")))
+_chroma_env = os.getenv("CHROMA_PERSIST_DIRECTORY")
+if _chroma_env and not Path(_chroma_env).is_absolute():
+    CHROMA_DIR: Path = (BASE_DIR / _chroma_env).resolve()
+else:
+    CHROMA_DIR: Path = Path(_chroma_env or (DATA_DIR / "chroma_db"))
+
+_sqlite_env = os.getenv("SQLITE_DB_PATH")
+if _sqlite_env and not Path(_sqlite_env).is_absolute():
+    SQLITE_DB_PATH: Path = (BASE_DIR / _sqlite_env).resolve()
+else:
+    SQLITE_DB_PATH: Path = Path(_sqlite_env or (DATA_DIR / "manuscript.db"))
 
 # Ensure necessary data directories exist
 DATA_DIR.mkdir(parents=True, exist_ok=True)

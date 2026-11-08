@@ -29,6 +29,13 @@ CLAUDE_KEY_PATHS: List[Path] = [
     BASE_DIR / "claude_key.txt",
 ]
 
+CLAUDE_WORKSPACE_ID_PATHS: List[Path] = [
+    KEYS_DIR / "claude_workspace_id.txt",
+    KEYS_DIR / "anthropic_workspace_id.txt",
+    BASE_DIR / "claude_workspace_id.txt",
+    BASE_DIR / "anthropic_workspace_id.txt",
+]
+
 GEMINI_KEY_PATHS: List[Path] = [
     KEYS_DIR / "gemini_key.txt",
     KEYS_DIR / "gemini.key",
@@ -110,6 +117,33 @@ def get_claude_key() -> Optional[str]:
     if file_key:
         return file_key
     return os.getenv("ANTHROPIC_API_KEY") or os.getenv("CLAUDE_API_KEY")
+
+
+def get_claude_workspace_id() -> Optional[str]:
+    """
+    ----------------------------------------------------------------------------
+    Function: get_claude_workspace_id
+    ----------------------------------------------------------------------------
+    Purpose:
+        Retrieves the Anthropic Workspace ID required when using Anthropic
+        user-scoped API keys (sk-ant-usr-...). Searches dedicated files
+        (e.g., keys/claude_workspace_id.txt) or ANTHROPIC_WORKSPACE_ID env var.
+
+    Parameters:
+        None
+
+    Returns:
+        Optional[str]: Workspace ID string (e.g. 'wrkspc_...'), or None.
+
+    Manual Debugging Notes:
+        - Anthropic enforces 'anthropic-workspace-id' header for User keys.
+        - Place the ID in keys/claude_workspace_id.txt or export ANTHROPIC_WORKSPACE_ID.
+    ----------------------------------------------------------------------------
+    """
+    file_ws = _read_key_from_file_paths(CLAUDE_WORKSPACE_ID_PATHS)
+    if file_ws:
+        return file_ws
+    return os.getenv("ANTHROPIC_WORKSPACE_ID") or os.getenv("CLAUDE_WORKSPACE_ID")
 
 
 def get_gemini_key() -> Optional[str]:
@@ -218,6 +252,10 @@ def sync_keys_to_environment(override: bool = False) -> Dict[str, bool]:
     if c_key and (override or not os.getenv("ANTHROPIC_API_KEY")):
         os.environ["ANTHROPIC_API_KEY"] = c_key
         results["claude"] = True
+
+    c_ws = get_claude_workspace_id()
+    if c_ws and (override or not os.getenv("ANTHROPIC_WORKSPACE_ID")):
+        os.environ["ANTHROPIC_WORKSPACE_ID"] = c_ws
 
     g_key = get_gemini_key()
     if g_key and (override or not os.getenv("GOOGLE_API_KEY")):
