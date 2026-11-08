@@ -1,7 +1,7 @@
 {
   "repository_name": "SK Sutras - Persistent Knowledge Repository",
   "governance_authority": "Hiranyam AI Labs & Shri Shripad Kulkarni",
-  "last_updated": "2026-11-07T19:14:12.328062",
+  "last_updated": "2026-11-08T11:55:00.000000",
   "documents": [
     {
       "document_id": "DOC-01",
@@ -44,6 +44,20 @@
       "is_authoritative": false,
       "scope": "Contains Chapters 1 to 5 concluding with Karma Yoga and Duty (कर्मयोग आणि कर्तव्य).",
       "known_conflicts": "Superseded by Karyavritti 17 which adds Chapter 6, the full 84 Narada sutra commentary, and all 7 Appendices (A-G)."
+    },
+    {
+      "document_id": "DOC-04",
+      "filename": "DOC-04_SANT_TUKARAM_MAHARAJ_DISCOURSE_AND_ABHANGAS.txt",
+      "title": "संत तुकाराम महाराज: उद्योग, संपत्ती आणि नीतिमत्ता विचारसंग्रह (डिग्रजकर निरूपण व अभंग)",
+      "document_type": "Mandatory Saint Literature & Scholarly Discourse Reference",
+      "date_received": "2026-11-08",
+      "version": "1.0-DeglurkarDiscourse",
+      "last_modified": "2026-11-08",
+      "source_location": "data/knowledge_repository/sources/DOC-04_SANT_TUKARAM_MAHARAJ_DISCOURSE_AND_ABHANGAS.txt",
+      "status": "Authoritative Research Input (Sant Tukaram & Varkari Parampara)",
+      "is_authoritative": true,
+      "scope": "Covers Kondopant Lokre copper coin parable, five foundations of prosperity (Arth-Purushartha), Uttam Vyavahar, Daan/Bhog/Asakti, Daivacha Putla, and authentic Tukaram Abhangas on wealth, truth, and vigilance.",
+      "known_conflicts": "Kondopant Lokre story is a traditional homiletic parable (Upakhyana) in oral discourse, not an independently documented historical event. Must be cited with accurate provenance."
     }
   ]
 }

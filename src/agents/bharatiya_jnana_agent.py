@@ -52,6 +52,7 @@ class BharatiyaJnanaAgent:
             "DOC-01": self.sources_dir / "DOC-01_SHRIMAD_UDYAM_SUTRANI_100.txt",
             "DOC-02": self.sources_dir / "DOC-02_UDYAM_SUTRE_MANUSCRIPT_V17.txt",
             "DOC-03": self.sources_dir / "DOC-03_UDYAM_SUTRE_MANUSCRIPT_V05.txt",
+            "DOC-04": self.sources_dir / "DOC-04_SANT_TUKARAM_MAHARAJ_DISCOURSE_AND_ABHANGAS.txt",
         }
         for doc_id, path in doc_files.items():
             if path.exists():
@@ -201,6 +202,96 @@ class BharatiyaJnanaAgent:
                 "section": "DOC-01 Sutra 12 & 91; DOC-02 Ch 1.5 'उद्यम आणि संपत्ती: साधन, ध्येय नव्हे'",
                 "finding": "DOC-02 explicitly establishes that wealth is merely a means; Chanakya emphasizes that Varta must generate physical tangible utility, not speculative manipulation.",
                 "distinction": "Classical political economy applied to real wealth generation, curing physical human suffering (Dukha-haritva), and rejecting speculative paper asset bubbles."
+            },
+            11: {
+                "iks_text": "Sant Tukaram Maharaj Abhanga 1 (DOC-04 Section 2.1) & Brihaspati Niti Shastra",
+                "sanskrit": "जोडोनिया धन उत्तम व्यवहारे । उदास विचारे वेच करी ॥",
+                "context_and_meaning": "Acquire wealth through righteous commerce and transparent ethical conduct; distribute and spend it with an elevated, detached mind.",
+                "doc_consulted": "DOC-04 (Section 1.3 & Section 2.1) and DOC-02 (Chapter 3, Section 3.2)",
+                "section": "DOC-04 Sec 1.3 'Uttam Vyavahar'; DOC-02 Ch 3 'नीती आणि व्यवहार'",
+                "finding": "Wealth earned through unethical means corrupts the enterprise; pure commerce coupled with detached allocation creates lasting prosperity.",
+                "distinction": "Varkari saintly economic ethics applied to honest value creation, fair pricing, and non-attached capital allocation."
+            },
+            12: {
+                "iks_text": "Sant Tukaram Maharaj: Parable of the Copper Coin (DOC-04 Section 1.1) & Chanakya Niti",
+                "sanskrit": "विश्वासघातिनां लोके न प्रायश्चित्तं विद्यते ।",
+                "context_and_meaning": "In this world, there is no expiation or recovery for those who commit breach of fiduciary trust (Vishvasa-bhanga).",
+                "doc_consulted": "DOC-04 (Section 1.1) and DOC-01 (Sutra 45 'विश्वासः एव मूलधनम्')",
+                "section": "DOC-04 Sec 1.1 'The Parable of the Copper Coin'; DOC-01 Sutra 45",
+                "finding": "The loss of Kondopant's miraculous abundance demonstrates that greed instantly terminates the fountain of goodwill; trust once broken is irreversible.",
+                "distinction": "Homiletic discourse parable applied to counterparty integrity, fiduciary stewardship, and long-term customer goodwill."
+            },
+            13: {
+                "iks_text": "Sant Tukaram Maharaj: Five Foundations of Prosperity (DOC-04 Section 1.2) & Bhagavad Gita 18.14",
+                "sanskrit": "पञ्चैतानि महाबाहो कारणानि निबोध मे । साङ्ख्ये कृतान्ते प्रोक्तानि सिद्धये सर्वकर्मणाम् ॥",
+                "context_and_meaning": "Learn the five causal factors declared for the accomplishment of all actions: the seat of action, the agent, instruments, diverse efforts, and cosmic providence (Daiva).",
+                "doc_consulted": "DOC-04 (Section 1.2) and DOC-02 (Chapter 2, Section 2.5)",
+                "section": "DOC-04 Sec 1.2 'Five Foundations of Prosperity'; DOC-02 Ch 2.5 'प्रारब्ध आणि प्रयत्न'",
+                "finding": "Human exertion (Purushartha) must be harmonized with grace, mentorship, and circumstance, preventing both fatalistic lethargy and founder arrogance.",
+                "distinction": "Synthesis of Arth-Purushartha with Gita's five factors, applied to balanced execution, risk appreciation, and humility."
+            },
+            14: {
+                "iks_text": "Sant Tukaram Maharaj on Daan, Bhog, and Asakti (DOC-04 Section 1.3) & Bhartrihari Niti Shataka 43",
+                "sanskrit": "दानं भोगो नाशस्तिस्रो गतयो भवन्ति वित्तस्य । यो न ददाति न भुङ्क्ते तस्य तृतीया गतिर्भवति ॥",
+                "context_and_meaning": "Charity, enjoyment, and destruction are the three destinations of wealth. For him who neither gives nor enjoys, the third fate (total destruction) is inevitable.",
+                "doc_consulted": "DOC-04 (Section 1.3) and DOC-02 (Chapter 1, Section 1.5)",
+                "section": "DOC-04 Sec 1.3 'Tri-fold Allocation'; DOC-02 Ch 1.5 'संपत्तीचा सदुपयोग'",
+                "finding": "Hoarding wealth out of obsessive attachment (Asakti) causes decay. Proper enterprise wealth must circulate into social upliftment (Daan) and legitimate reward (Bhog).",
+                "distinction": "Saintly economic balance applied to corporate philanthropy, employee welfare, and non-greedy capital discipline."
+            },
+            15: {
+                "iks_text": "Sant Tukaram Maharaj: Daivacha Putla (DOC-04 Section 1.4) & Bhagavad Gita 3.21",
+                "sanskrit": "यद्यदाचरति श्रेष्ठस्तत्तदेवेतरो जनः । स यत्प्रमाणं कुरुते लोकस्तदनुवर्तते ॥",
+                "context_and_meaning": "Whatever standard the exemplary leader sets by personal conduct, that alone common people follow. What he demonstrates becomes the authoritative law.",
+                "doc_consulted": "DOC-04 (Section 1.4) and DOC-02 (Chapter 5, Section 5.1)",
+                "section": "DOC-04 Sec 1.4 'Daivacha Putla'; DOC-02 Ch 5.1 'नेतृत्व आणि आदर्श आचार'",
+                "finding": "Values cannot be commanded through empty slogans; the leader must personally embody the ethical statue of fortune (Daivacha Putla).",
+                "distinction": "Varkari embodiment doctrine applied to tone-at-the-top, transparent governance, and leadership credibility."
+            },
+            16: {
+                "iks_text": "Sant Tukaram Maharaj Abhanga 2 (DOC-04 Section 2.2) & Mahabharata Shanti Parva",
+                "sanskrit": "सत्य तेचि भांडवल आम्हा । आणिक नाही प्रेमा ॥",
+                "context_and_meaning": "Truth alone is our working capital and merchandise; we recognize no other currency or attachment.",
+                "doc_consulted": "DOC-04 (Section 2.2) and DOC-01 (Sutra 2 'सत्यमेव जयते नानृतम्')",
+                "section": "DOC-04 Sec 2.2 'Truth as Sovereign Capital'; DOC-01 Sutra 2",
+                "finding": "Deceit yields illusory quick gains, but truth alone constitutes permanent, unliquidatable balance sheet capital.",
+                "distinction": "Epistemological honesty applied to financial auditing, product safety disclosures, and marketing integrity."
+            },
+            17: {
+                "iks_text": "Sant Tukaram Maharaj Abhanga 3 (DOC-04 Section 2.3) & Hitopadesha",
+                "sanskrit": "लहानपण देगा देवा । मुंगी साखरेचा रवा ॥ ऐरावत रत्न थोर । तया अंकुशाचा मार ॥",
+                "context_and_meaning": "Grant me humility and smallness, O Lord! The humble ant enjoys grains of sugar, while the mighty elephant Airavata receives blows of the mahout's hook.",
+                "doc_consulted": "DOC-04 (Section 2.3) and DOC-02 (Chapter 4, Section 4.7)",
+                "section": "DOC-04 Sec 2.3 'Humility at the Peak'; DOC-02 Ch 4.7 'अहंकाराचा त्याग'",
+                "finding": "Hubris born of corporate scale invites vulnerability and blind spots; humility shields the organization from catastrophic regulatory and market shocks.",
+                "distinction": "Poetic saintly contrast applied to anti-monopoly humility, lean agile operations, and egoless leadership."
+            },
+            18: {
+                "iks_text": "Sant Tukaram Maharaj Abhanga 4 (DOC-04 Section 2.4) & Lokmanya Tilak's Gita Rahasya",
+                "sanskrit": "जे का रंजले गांजले । त्यांसी म्हणे जो आपुले ॥ तोचि साधु ओळखावा । देव तेथेचि जाणावा ॥",
+                "context_and_meaning": "He who embraces the suffering, oppressed, and neglected as his own family—recognize him alone as a true saint; God resides verily in him.",
+                "doc_consulted": "DOC-04 (Section 2.4) and DOC-02 (Chapter 5, Section 5.8)",
+                "section": "DOC-04 Sec 2.4 'Social Capitalism'; DOC-02 Ch 5.8 'लोकसंग्रह आणि सर्वसमावेशक विकास'",
+                "finding": "Tilak's Gita Rahasya proves that selfless action culminates in Lokasangraha; business must lift the distressed rather than exploiting their vulnerability.",
+                "distinction": "Social empathy applied to inclusive capitalism, base-of-the-pyramid innovations, and affordable healthcare/education solutions."
+            },
+            19: {
+                "iks_text": "Sant Tukaram Maharaj Abhanga 5 (DOC-04 Section 2.5) & Kautilya's Arthashastra 1.15.54",
+                "sanskrit": "आपुलिया हिता जो असे जागता । धन्य त्याची माता सुकृती तो ॥",
+                "context_and_meaning": "Blessed is the mother of that person who remains ceaselessly vigilant towards his genuine welfare and purpose; he alone achieves true success.",
+                "doc_consulted": "DOC-04 (Section 2.5) and DOC-01 (Sutra 14 'कालो हि दुरतिक्रमः')",
+                "section": "DOC-04 Sec 2.5 'Ceaseless Vigilance'; DOC-01 Sutra 14 & 88",
+                "finding": "Strategic complacency and operational negligence (Pramada) invite immediate downfall; relentless focus on core purpose ensures resilience.",
+                "distinction": "Spiritual alertness translated into operational risk management, cash-runway awareness, and zero complacency."
+            },
+            20: {
+                "iks_text": "Sant Tukaram Maharaj Abhanga 6 (DOC-04 Section 2.6) & Bhagavad Gita 2.48",
+                "sanskrit": "ठेविले अनंते तैसेचि रहावे । चित्ती असो द्यावे समाधान ॥",
+                "context_and_meaning": "Remain poised in whatever circumstance Providence places you; let inner peace and contentment reside in the heart while performing duty.",
+                "doc_consulted": "DOC-04 (Section 2.6) and DOC-02 (Chapter 4, Section 4.9)",
+                "section": "DOC-04 Sec 2.6 'Equanimity Amid Turbulence'; DOC-02 Ch 4.9 'मानसिक स्थैर्य आणि समाधान'",
+                "finding": "Anxious panic destroys decision quality during economic downturns; inner equanimity enables rational long-term strategic execution.",
+                "distinction": "Varkari Samadhana coupled with Vedantic Samatva Yoga, applied to crisis management, burnout prevention, and emotional intelligence."
             }
         }
 

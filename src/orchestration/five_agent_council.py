@@ -98,7 +98,7 @@ class FiveAgentCouncil:
             "notes": []
         }
 
-        required_docs = ["DOC-01", "DOC-02", "DOC-03"]
+        required_docs = ["DOC-01", "DOC-02", "DOC-03", "DOC-04"]
         for doc in self.register_data.get("documents", []):
             d_id = doc.get("document_id")
             path = BASE_DIR / doc.get("source_location")
@@ -114,8 +114,11 @@ class FiveAgentCouncil:
                 audit_results["status"] = "FAIL"
                 audit_results["notes"].append(f"Missing mandatory document: {d_id}")
 
-        # Verify Agent 3 access
-        a3_access = len(self.agent3_bharatiya.source_documents.get("DOC-01", "")) > 1000
+        # Verify Agent 3 access to DOC-01 and DOC-04
+        a3_access = (
+            len(self.agent3_bharatiya.source_documents.get("DOC-01", "")) > 1000
+            and len(self.agent3_bharatiya.source_documents.get("DOC-04", "")) > 1000
+        )
         audit_results["access_checks"]["agent3_source_access"] = "VERIFIED" if a3_access else "FAILED"
 
         # Verify Agent 4 access
