@@ -62,7 +62,7 @@ class AnthropicAdapter(BaseLLMAdapter):
             safe key retrieval from keys/claude_key.txt, and optional workspace ID.
         ------------------------------------------------------------------------
         """
-        resolved_model = model_id or os.getenv("ANTHROPIC_MODEL_ID", "claude-3-5-sonnet-20241022")
+        resolved_model = model_id or os.getenv("ANTHROPIC_MODEL_ID", "claude-sonnet-5-5")
         resolved_key = get_claude_key() if api_key is _UNSET_KEY else api_key
         resolved_ws = (
             workspace_id
@@ -189,13 +189,17 @@ class AnthropicAdapter(BaseLLMAdapter):
                     "cache_control": {"type": "ephemeral"},
                 })
 
-            message = client.messages.create(
-                model=self.model_id,
-                max_tokens=self.max_tokens,
-                temperature=self.temperature,
-                system=system_blocks if system_blocks else None,
-                messages=[{"role": "user", "content": prompt}],
-            )
+            create_kwargs = {
+                "model": self.model_id,
+                "max_tokens": self.max_tokens,
+                "messages": [{"role": "user", "content": prompt}],
+            }
+            if self.workspace_id:
+                create_kwargs["workspace_id"] = self.workspace_id
+            if system_blocks:
+                create_kwargs["system"] = system_blocks
+
+            message = client.messages.create(**create_kwargs)
 
             raw_usage = message.usage
             input_toks = getattr(raw_usage, "input_tokens", self.estimate_tokens(prompt))
