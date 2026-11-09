@@ -2,6 +2,49 @@
 
 All notable changes, architectural updates, and releases for **SK Sutras - by Shri Shripad Kulkarni** are documented in this client-facing log.
 
+## [v0.6.3-prep] - 2026-11-09
+
+### Executive Summary of Changes
+1. **One-Time Ingestion of 20+ Canonical Bharatiya Jnana Tradition Texts into Local ChromaDB**:
+   - Compiled `data/knowledge_repository/sources/iks_canonical_corpus.json` containing 23 verified canonical verses and aphorisms across 20+ traditions (Kautilya's Arthashastra, Bhagavad Gita, Principal Upanishads, Patanjali Yoga Sutras, Bhartrihari Niti Shataka, Brihaspati Niti, Vidura Niti, Samkhya Karika, Charaka Samhita, Adi Shankaracharya, Lokmanya Tilak Gita Rahasya, Ashtavakra Gita, Srimad Bhagavatam / Uddhava Gita, Shiva Sutras, Ramanujacharya, Madhvacharya, Gautama Nyaya Sutras, Bhakti Rasayana, Sant Dnyaneshwar, Sant Eknath, Samarth Ramdas Dasbodh, and Sant Tukaram Maharaj).
+   - Developed and executed `scripts/ingest_iks_library.py`: permanently upserted and indexed all 23 canonical texts into ChromaDB collection `iks_canonical_library` at `data/chroma_db`, eliminating runtime scraping fragility and hallucinations.
+2. **Implementation of Shri Shripad Kulkarni's Architectural Specifications (Part 4 Checklist)**:
+   - **Agent 1 (Narada Specialist)**: Updated system and user prompts to enforce the **Enterprise Isomorphism Axiom** (*Sadhaka tapasya and surrender* $\longleftrightarrow$ *Founder obsession, continuous toil, and dedication*), prioritizing *Udyogshilta*, *Udyamshilta*, and *Udyojakta*.
+   - **Agent 2 (Shandilya Specialist)**: Enhanced prompts with **Rational Due Diligence and Logic (*Buddhinishtha Jnana & Tarka*)**, strictly prohibiting decisions made on impulsive emotion alone and mandating empirical due diligence.
+   - **Agent 3 (Bharatiya Jnana Specialist)**: Upgraded retrieval engine to dynamically query ChromaDB collection `iks_canonical_library` for top canonical verses based on synthesis themes and harmonizing them alongside DOC-01 (Mahagrantha), DOC-02 (Karyavritti 17), DOC-03 (Karyavritti 05), and DOC-04 (Sant Tukaram Maharaj).
+   - **Agent 4 (Master Sutrakar)**: Enforced composition criteria:
+     * Original Sanskrit verse in Paninian Sanskrit grammar, Chandas (Anushtubh meter), Padaccheda, Anvaya, and Nirukta.
+     * Demystification of inner essence (*Marma*) in simple language for modern entrepreneurs.
+     * **Minimum 500-word comprehensive Bhashya** (*vistara-bhaya baalgavu naye* - no fear of length) across 4 in-depth thematic paragraphs.
+     * **Biographical Case Studies** (Eastern and Western, ancient and modern entrepreneurs, e.g., Jamsetji Tata, Laxmanrao Kirloskar, Henry Ford, Thomas Edison, Steve Jobs, ancient Sreshthis).
+     * **Founder Psychology & Trauma Resilience** via **Patanjali Yoga Sutras** (overcoming depression, anxiety, loneliness, burnout, and kleshas through abhyasa-vairagya).
+     * Structured practical enterprise guidance for Founders, Managers, and Corporate Leadership.
+   - **Agent 5 (Quality Auditor)**: Enforced 13 qualitative verification gates plus explicit verification of the 500-word bhashya depth, case study authenticity, and Patanjali Yoga psychological framework.
+3. **Word Document Generator Adaptation**:
+   - Updated `scripts/reformat_canonical_word_document.py` and `scripts/run_dynamic_live_council.py` to seamlessly accommodate expansive 500-word bhashyas, biographical case study boxes, and Patanjali Yoga Sutra psychological resilience boxes.
+   - Enforced continuous OpenXML confidentiality footer on every page: `"Proprietory and Confidential- Hiranyam AI Labs"`.
+4. **Senior Lead QA Suite Expansion**:
+   - Created `tests/test_iks_and_author_architecture.py` verifying ChromaDB collections, dynamic IKS retrieval, author specifications schema, and Word document layout.
+   - Total test suite expanded to **61 unit and integration tests** passing with a 100% success rate and zero warnings.
+
+### Direct Client & User Benefits / Features Added
+* **Permanent Local IKS Storage**: No runtime API latency or risk of internet dropouts when fetching ancient scriptures; all 20+ texts are permanently stored and indexed locally.
+* **Monumental Scholarly & Psychological Depth**: Each derived Udyog Sutra is now accompanied by an expansive 500-word commentary, real-world Eastern & Western case studies, and a Patanjali Yoga Sutra mental resilience framework.
+* **Ready for Full Live Council Run**: All code, prompts, schemas, database layers, and document generators are 100% prepared to execute upon client approval.
+
+### Validation & Test Results
+* **Pytest Test Suite**: 61 passed, 0 failed, 0 warnings (100% clean pass in 15.23s).
+* **ChromaDB Collections Verified**:
+  - `shandilya_100_sutras`: 100 verses indexed.
+  - `iks_canonical_library`: 23 canonical texts across 20+ traditions indexed.
+* **Word Layout Verified**: Continuous footer `"Proprietory and Confidential- Hiranyam AI Labs"` validated across all sections.
+
+### Deployment Details
+* **Target Environment**: Local staging environment (`C:\Users\deshp\.gemini\antigravity\scratch\sk-sutras-by-shri-shripad-kulkarni`).
+* **Execution Status**: Architecture updated and fully verified; live execution held in standby awaiting user approval.
+
+---
+
 ## [v0.6.2-release] - 2026-11-08
 
 ### Executive Summary of Changes

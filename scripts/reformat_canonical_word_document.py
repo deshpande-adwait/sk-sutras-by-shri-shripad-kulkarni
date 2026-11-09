@@ -290,9 +290,16 @@ TEN_SUTRAS_DATA = [
     }
 ]
 
-def build_reformatted_canonical_document():
-    """Compiles the complete Word document matching the client's exact format."""
+def build_reformatted_canonical_document(sutras_data=None, output_path=None):
+    """
+    Compiles the complete Word document matching the client's exact required format.
+    Supports expansive 500-word bhashyas, biographical case studies (Eastern/Western),
+    and Patanjali Yoga Sutras psychological resilience frameworks, while strictly
+    maintaining the mandatory footer on every page.
+    """
     doc = Document()
+    target_data = sutras_data or TEN_SUTRAS_DATA
+    target_output = output_path or OUTPUT_DOCX
 
     # Configure Margins & Continuous Mandatory Footer on EVERY section
     for section in doc.sections:
@@ -378,12 +385,12 @@ def build_reformatted_canonical_document():
     div_p.paragraph_format.space_after = Pt(8)
 
     # ==================== TEN CANONICAL SUTRAS ====================
-    for idx, s in enumerate(TEN_SUTRAS_DATA):
+    for idx, s in enumerate(target_data):
         if idx > 0:
             doc.add_page_break()
 
-        s_num = s["sutra_no"]
-        s_title = s["title"]
+        s_num = s.get("sutra_no", idx + 1)
+        s_title = s.get("title", f"उद्यम सूत्र #{s_num}")
 
         # 1. Header Banner
         h_tbl = doc.add_table(rows=1, cols=1)
@@ -416,22 +423,45 @@ def build_reformatted_canonical_document():
         sp = s_cell.paragraphs[0]
         sp.alignment = WD_ALIGN_PARAGRAPH.CENTER
         sp.paragraph_format.space_after = Pt(4)
-        r_dev = sp.add_run(f"{s['shloka_devanagari']}\n")
+        shloka_dev = s.get("shloka_devanagari") or s.get("original_sanskrit_verse", "")
+        r_dev = sp.add_run(f"{shloka_dev}\n")
         r_dev.font.name = "Georgia"
         r_dev.font.size = Pt(12)
         r_dev.font.bold = True
         r_dev.font.color.rgb = C_MAROON
 
-        r_iast = sp.add_run(s['shloka_iast'])
-        r_iast.font.name = "Georgia"
-        r_iast.font.size = Pt(9.5)
-        r_iast.font.italic = True
-        r_iast.font.color.rgb = C_SLATE
+        if s.get("shloka_iast"):
+            r_iast = sp.add_run(s['shloka_iast'])
+            r_iast.font.name = "Georgia"
+            r_iast.font.size = Pt(9.5)
+            r_iast.font.italic = True
+            r_iast.font.color.rgb = C_SLATE
 
-        # Spacing
-        sp2 = doc.add_paragraph()
-        sp2.paragraph_format.space_before = Pt(6)
-        sp2.paragraph_format.space_after = Pt(2)
+        # Padaccheda & Anvaya (if available)
+        if s.get("padaccheda") or s.get("anvaya"):
+            pa_p = doc.add_paragraph()
+            pa_p.paragraph_format.space_before = Pt(4)
+            pa_p.paragraph_format.space_after = Pt(2)
+            if s.get("padaccheda"):
+                r_pl = pa_p.add_run("पदच्छेद: ")
+                r_pl.font.name = "Arial"
+                r_pl.font.size = Pt(8.5)
+                r_pl.font.bold = True
+                r_pl.font.color.rgb = C_NAVY
+                r_pv = pa_p.add_run(f"{s['padaccheda']}\n")
+                r_pv.font.name = "Georgia"
+                r_pv.font.size = Pt(8.5)
+                r_pv.font.color.rgb = C_SLATE
+            if s.get("anvaya"):
+                r_al = pa_p.add_run("अन्वय: ")
+                r_al.font.name = "Arial"
+                r_al.font.size = Pt(8.5)
+                r_al.font.bold = True
+                r_al.font.color.rgb = C_NAVY
+                r_av = pa_p.add_run(f"{s['anvaya']}")
+                r_av.font.name = "Georgia"
+                r_av.font.size = Pt(8.5)
+                r_av.font.color.rgb = C_SLATE
 
         # 3. Source References (Foundational Texts) Heading
         src_head_p = doc.add_paragraph()
@@ -446,10 +476,11 @@ def build_reformatted_canonical_document():
         # Source References Table (3 Rows x 2 Cols)
         src_tbl = doc.add_table(rows=3, cols=2)
         src_tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
+        sources = s.get("sources", {})
         src_rows = [
-            ("Narad Bhakti Sutra:", s["sources"]["narada"]),
-            ("Shandilya Bhakti Sutra:", s["sources"]["shandilya"]),
-            ("Bharatiya Jnana Tradition:", s["sources"]["bharatiya_jnana"]),
+            ("Narad Bhakti Sutra:", sources.get("narada", "")),
+            ("Shandilya Bhakti Sutra:", sources.get("shandilya", "")),
+            ("Bharatiya Jnana Tradition:", sources.get("bharatiya_jnana", "")),
         ]
         for r_i, (label, val_text) in enumerate(src_rows):
             c_lbl = src_tbl.cell(r_i, 0)
@@ -477,54 +508,99 @@ def build_reformatted_canonical_document():
             rv.font.size = Pt(8.5)
             rv.font.color.rgb = C_DARK_TEXT
 
-        # Spacing
-        sp3 = doc.add_paragraph()
-        sp3.paragraph_format.space_before = Pt(6)
-        sp3.paragraph_format.space_after = Pt(0)
-
         # 4. English Translation
-        en_p = doc.add_paragraph()
-        en_p.paragraph_format.space_before = Pt(4)
-        en_p.paragraph_format.space_after = Pt(4)
-        r_enl = en_p.add_run("English Translation: ")
-        r_enl.font.name = "Arial"
-        r_enl.font.size = Pt(9)
-        r_enl.font.bold = True
-        r_enl.font.color.rgb = C_MAROON
-        r_ent = en_p.add_run(s["english_translation"])
-        r_ent.font.name = "Arial"
-        r_ent.font.size = Pt(9)
-        r_ent.font.color.rgb = C_DARK_TEXT
+        if s.get("english_translation") or s.get("translation_en"):
+            en_p = doc.add_paragraph()
+            en_p.paragraph_format.space_before = Pt(4)
+            en_p.paragraph_format.space_after = Pt(4)
+            r_enl = en_p.add_run("English Translation: ")
+            r_enl.font.name = "Arial"
+            r_enl.font.size = Pt(9)
+            r_enl.font.bold = True
+            r_enl.font.color.rgb = C_MAROON
+            r_ent = en_p.add_run(s.get("english_translation") or s.get("translation_en", ""))
+            r_ent.font.name = "Arial"
+            r_ent.font.size = Pt(9)
+            r_ent.font.color.rgb = C_DARK_TEXT
 
-        # 5. Marathi Purport (मराठी विवेचन व भावार्थ)
+        # 5. Marathi Purport & Expansive Bhashya (५००+ शब्द)
+        bhashya_content = s.get("comprehensive_bhashya_mr") or s.get("comprehensive_bhashya") or s.get("marathi_purport", "")
         mr_p = doc.add_paragraph()
         mr_p.paragraph_format.space_before = Pt(4)
         mr_p.paragraph_format.space_after = Pt(4)
-        r_mrl = mr_p.add_run("मराठी विवेचन व भावार्थ: ")
+        r_mrl = mr_p.add_run("मराठी विवेचन व सखोल भाष्य: ")
         r_mrl.font.name = "Arial"
         r_mrl.font.size = Pt(9)
         r_mrl.font.bold = True
         r_mrl.font.color.rgb = C_MAROON
-        r_mrt = mr_p.add_run(s["marathi_purport"])
+        r_mrt = mr_p.add_run(bhashya_content)
         r_mrt.font.name = "Georgia"
         r_mrt.font.size = Pt(9)
         r_mrt.font.color.rgb = C_DARK_TEXT
 
         # 6. Philosophical Foundation (तत्त्वज्ञानात्मक अधिष्ठान)
-        phil_p = doc.add_paragraph()
-        phil_p.paragraph_format.space_before = Pt(4)
-        phil_p.paragraph_format.space_after = Pt(4)
-        r_pl = phil_p.add_run("Philosophical Foundation (तत्त्वज्ञानात्मक अधिष्ठान): ")
-        r_pl.font.name = "Arial"
-        r_pl.font.size = Pt(9)
-        r_pl.font.bold = True
-        r_pl.font.color.rgb = C_NAVY
-        r_pt = phil_p.add_run(s["philosophical_foundation"])
-        r_pt.font.name = "Georgia"
-        r_pt.font.size = Pt(9)
-        r_pt.font.color.rgb = C_DARK_TEXT
+        if s.get("philosophical_foundation") or s.get("philosophical_foundation_mr"):
+            phil_p = doc.add_paragraph()
+            phil_p.paragraph_format.space_before = Pt(4)
+            phil_p.paragraph_format.space_after = Pt(4)
+            r_pl = phil_p.add_run("Philosophical Foundation (तत्त्वज्ञानात्मक अधिष्ठान): ")
+            r_pl.font.name = "Arial"
+            r_pl.font.size = Pt(9)
+            r_pl.font.bold = True
+            r_pl.font.color.rgb = C_NAVY
+            r_pt = phil_p.add_run(s.get("philosophical_foundation") or s.get("philosophical_foundation_mr", ""))
+            r_pt.font.name = "Georgia"
+            r_pt.font.size = Pt(9)
+            r_pt.font.color.rgb = C_DARK_TEXT
 
-        # 7. Practical Application in Business & Management
+        # 7. Biographical Case Studies (if present)
+        case_studies = s.get("biographical_case_studies", [])
+        if case_studies:
+            cs_head_p = doc.add_paragraph()
+            cs_head_p.paragraph_format.space_before = Pt(4)
+            cs_head_p.paragraph_format.space_after = Pt(2)
+            r_csh = cs_head_p.add_run("Biographical Case Studies (केस स्टडीज व व्यावहारिक दृष्टांत):")
+            r_csh.font.name = "Arial"
+            r_csh.font.size = Pt(9)
+            r_csh.font.bold = True
+            r_csh.font.color.rgb = C_NAVY
+
+            for cs in case_studies:
+                cs_p = doc.add_paragraph()
+                cs_p.paragraph_format.left_indent = Inches(0.25)
+                cs_p.paragraph_format.space_before = Pt(1)
+                cs_p.paragraph_format.space_after = Pt(2)
+                if isinstance(cs, dict):
+                    r_csl = cs_p.add_run(f"• {cs.get('name')} [{cs.get('category')}]: ")
+                    r_csl.font.bold = True
+                    r_csl.font.color.rgb = C_DARK_TEXT
+                    r_cst = cs_p.add_run(cs.get("case_summary", ""))
+                    r_cst.font.color.rgb = C_SLATE
+                else:
+                    cs_p.add_run(f"• {cs}")
+
+        # 8. Founder Mental Resilience via Patanjali Yoga Sutras (if present)
+        yg = s.get("mental_resilience_yoga_sutras")
+        if yg and isinstance(yg, dict):
+            yg_head_p = doc.add_paragraph()
+            yg_head_p.paragraph_format.space_before = Pt(4)
+            yg_head_p.paragraph_format.space_after = Pt(2)
+            r_ygh = yg_head_p.add_run("Founder Mental Resilience — Patanjali Yoga Sutras (मानसिक स्वास्थ्य):")
+            r_ygh.font.name = "Arial"
+            r_ygh.font.size = Pt(9)
+            r_ygh.font.bold = True
+            r_ygh.font.color.rgb = C_GOLD
+
+            yg_p = doc.add_paragraph()
+            yg_p.paragraph_format.left_indent = Inches(0.25)
+            yg_p.paragraph_format.space_before = Pt(1)
+            yg_p.paragraph_format.space_after = Pt(2)
+            r_ygt = yg_p.add_run(f"{yg.get('sutra_reference')}: {yg.get('sanskrit')} — {yg.get('psychological_framework')}")
+            r_ygt.font.name = "Georgia"
+            r_ygt.font.size = Pt(8.5)
+            r_ygt.font.color.rgb = C_SLATE
+
+        # 9. Practical Application in Business & Management
         app_head_p = doc.add_paragraph()
         app_head_p.paragraph_format.space_before = Pt(4)
         app_head_p.paragraph_format.space_after = Pt(2)
@@ -534,27 +610,45 @@ def build_reformatted_canonical_document():
         r_apl.font.bold = True
         r_apl.font.color.rgb = C_GOLD
 
-        for bullet_label, bullet_text in s["practical_applications"]:
+        practical_items = s.get("practical_applications") or s.get("practical_enterprise_guidance", [])
+        for item in practical_items:
             b_p = doc.add_paragraph()
             b_p.paragraph_format.left_indent = Inches(0.25)
             b_p.paragraph_format.space_before = Pt(1)
             b_p.paragraph_format.space_after = Pt(2)
-            r_bl = b_p.add_run(f"• {bullet_label}: ")
-            r_bl.font.name = "Arial"
-            r_bl.font.size = Pt(8.5)
-            r_bl.font.bold = True
-            r_bl.font.color.rgb = C_DARK_TEXT
-            r_bt = b_p.add_run(bullet_text)
-            r_bt.font.name = "Georgia"
-            r_bt.font.size = Pt(8.5)
-            r_bt.font.color.rgb = C_SLATE
+            if isinstance(item, tuple) and len(item) == 2:
+                bullet_label, bullet_text = item
+                r_bl = b_p.add_run(f"• {bullet_label}: ")
+                r_bl.font.name = "Arial"
+                r_bl.font.size = Pt(8.5)
+                r_bl.font.bold = True
+                r_bl.font.color.rgb = C_DARK_TEXT
+                r_bt = b_p.add_run(bullet_text)
+                r_bt.font.name = "Georgia"
+                r_bt.font.size = Pt(8.5)
+                r_bt.font.color.rgb = C_SLATE
+            elif isinstance(item, dict):
+                r_bl = b_p.add_run(f"• {item.get('role')}: ")
+                r_bl.font.name = "Arial"
+                r_bl.font.size = Pt(8.5)
+                r_bl.font.bold = True
+                r_bl.font.color.rgb = C_DARK_TEXT
+                r_bt = b_p.add_run(item.get('guidance', ''))
+                r_bt.font.name = "Georgia"
+                r_bt.font.size = Pt(8.5)
+                r_bt.font.color.rgb = C_SLATE
+            else:
+                b_p.add_run(f"• {item}")
 
     # Save to disk and mirror to brain artifact directory
-    doc.save(str(OUTPUT_DOCX))
-    artifact_path = ARTIFACT_DIR / OUTPUT_DOCX.name
-    shutil.copyfile(str(OUTPUT_DOCX), str(artifact_path))
-    print(f"[Successfully generated document]: {OUTPUT_DOCX}")
+    doc.save(str(target_output))
+    artifact_path = ARTIFACT_DIR / target_output.name
+    shutil.copyfile(str(target_output), str(artifact_path))
+    print(f"[Successfully generated document]: {target_output}")
     print(f"[Successfully mirrored to brain artifact]: {artifact_path}")
+
+if __name__ == "__main__":
+    build_reformatted_canonical_document()
 
 if __name__ == "__main__":
     build_reformatted_canonical_document()
