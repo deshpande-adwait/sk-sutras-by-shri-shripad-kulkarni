@@ -126,4 +126,109 @@ class FiveAgentCouncil:
         a4_access = doc01_file.exists() and doc01_file.stat().st_size > 1000
         audit_results["access_checks"]["agent4_source_access"] = "VERIFIED" if a4_access else "FAILED"
 
+        # Verify Agent 3 access to ChromaDB 20+ Canonical IKS Collection
+        iks_coll_accessible = (
+            hasattr(self.agent3_bharatiya, "iks_collection")
+            and self.agent3_bharatiya.iks_collection is not None
+            and self.agent3_bharatiya.iks_collection.count() >= 20
+        )
+        audit_results["access_checks"]["chromadb_iks_collection_access"] = (
+            "VERIFIED" if iks_coll_accessible else "FAILED"
+        )
+        if not iks_coll_accessible:
+            audit_results["status"] = "FAIL"
+            audit_results["notes"].append("ChromaDB iks_canonical_library collection missing or unindexed (< 20 entries).")
+
         return audit_results
+
+    # ==========================================================================
+    # CANONICAL ENTERPRISE TOPIC DOMAINS (DOMAINS A THROUGH Q)
+    # Decouples forced 1:1 pairing and introduces topic-driven IKS derivation
+    # ==========================================================================
+    ENTERPRISE_DOMAINS: List[Dict[str, Any]] = [
+        {
+            "domain_id": "A",
+            "theme": "Enterprise Vision, Sankalpa & Inception",
+            "concept": "Passionate entrepreneurial inception, commitment, and single-pointed vision",
+            "narada_target": "1",
+            "iks_focus": "Kautilya Arthashastra (Utthana) & Taittiriya Upanishad",
+        },
+        {
+            "domain_id": "B",
+            "theme": "Rational Due Diligence, Feasibility & Logic (Tarka)",
+            "concept": "Empirical scrutiny, market validation, and disciplined capital allocation",
+            "narada_target": "2",
+            "iks_focus": "Gautama Nyaya Sutras & Brihaspati Niti Shastra",
+        },
+        {
+            "domain_id": "C",
+            "theme": "Svadharma, Craftsmanship & Operational Precision",
+            "concept": "Zero-defect engineering, pride in production, and sacred dedication to duty",
+            "narada_target": "3",
+            "iks_focus": "Bhagavad Gita 18.45 & Sant Dnyaneshwar Dnyaneshwari",
+        },
+        {
+            "domain_id": "D",
+            "theme": "Ethical Governance & Incorruptible Integrity (Satya-Vyavahara)",
+            "concept": "Uncompromising moral rectitude, transparency, and multi-generational trust",
+            "narada_target": "4",
+            "iks_focus": "Bhartrihari Niti Shataka 68 & Chanakya Niti",
+        },
+        {
+            "domain_id": "E",
+            "theme": "Sustainable Capital Stewardship & Non-Greed (Trusteeship)",
+            "concept": "Non-extractive commerce, circulation of wealth, and fair stakeholder sharing",
+            "narada_target": "5",
+            "iks_focus": "Isha Upanishad Mantra 1 & Sant Tukaram Maharaj Abhanga 1",
+        },
+        {
+            "domain_id": "F",
+            "theme": "Founder Mental Health & Psychological Resilience (Patanjali)",
+            "concept": "Overcoming anxiety, depression, burnout, and acute market volatility through inner mastery",
+            "narada_target": "6",
+            "iks_focus": "Patanjali Yoga Sutras 1.12-14 (Abhyasa-Vairagya)",
+        },
+        {
+            "domain_id": "G",
+            "theme": "Team Alignment, Shared Purpose & Sangha Power",
+            "concept": "Cohesive organizational culture, psychological safety, and collective intelligence",
+            "narada_target": "7",
+            "iks_focus": "Rigveda Samhita 10.191 (Sangacchadhvam) & Vidura Niti",
+        },
+        {
+            "domain_id": "H",
+            "theme": "Executive Strategic Vigilance & Enterprise Risk Management",
+            "concept": "Zero complacency, cash runway awareness, and robust corporate defense",
+            "narada_target": "8",
+            "iks_focus": "Kautilya Arthashastra 1.15 & Vidura Niti 33.16",
+        },
+        {
+            "domain_id": "I",
+            "theme": "Leadership by Example & Tone-at-the-Top (Shreshtha Achara)",
+            "concept": "Embodied ethical leadership, moral stature, and culture creation by demonstration",
+            "narada_target": "9",
+            "iks_focus": "Bhagavad Gita 3.21 & Samarth Ramdas Dasbodh",
+        },
+        {
+            "domain_id": "J",
+            "theme": "Crisis Equanimity, Patience & Agility in Volatility",
+            "concept": "Inner poise amid economic storms, anti-fragile adaptability, and unhurried strategy",
+            "narada_target": "10",
+            "iks_focus": "Bhagavad Gita 2.48 & Sant Eknath Maharaj",
+        },
+    ]
+
+    def get_enterprise_domain(self, domain_id: str) -> Optional[Dict[str, Any]]:
+        """
+        ------------------------------------------------------------------------
+        Method: get_enterprise_domain
+        ------------------------------------------------------------------------
+        Purpose:
+            Looks up an enterprise thematic domain by ID (e.g. 'A', 'B') to guide
+            decoupled Shastrartha topic routing.
+        ------------------------------------------------------------------------
+        """
+        for d in self.ENTERPRISE_DOMAINS:
+            if d["domain_id"].upper() == domain_id.upper():
+                return d
+        return None

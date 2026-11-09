@@ -124,7 +124,7 @@ def build_matching_document():
     p_sub = doc.add_paragraph()
     p_sub.paragraph_format.space_after = Pt(14)
     r_sub = p_sub.add_run(
-        "पाच-एजंट प्रणालीचे ताजे संशोधन: नारद व शांडिल्य भक्तिसूत्रे × संत तुकाराम महाराज विचार (उत्तम व्यवहार, तांब्याचे नाणे, समृद्धीचे ५ आधार, दाविएचा पुतळा)\n"
+        "पाच-एजंट प्रणालीचे ताजे संशोधन: नारद व शांडिल्य भक्तिसूत्रे × २०+ भारतीय ज्ञानपरंपरा (कौटिलीय अर्थशास्त्र, भगवद्गीता, १०८ उपनिषदे, पतंजली योगसूत्रे, नीतिशास्त्र व संतसाहित्य)\n"
         "Technology & Research Partner: Hiranyam AI Labs (https://hiranyamai.com/) | संकलन तारीख: "
         + datetime.now().strftime("%d %B %Y")
     )
@@ -142,11 +142,11 @@ def build_matching_document():
     p_intro.paragraph_format.space_after = Pt(0)
     r_intro = p_intro.add_run(
         "प्रस्तुत दस्तऐवजात श्रीपाद कुलकर्णी यांच्या 'उद्योग सूत्रे' प्रकल्पासाठी ५-एजंट स्वायत्त प्रणालीने तयार केलेली "
-        "१० नवीन व मौलिक उद्योग सूत्रे (सूत्र क्र. ११ ते २०) संकलित केली आहेत. प्रत्येक सूत्रासाठी: "
+        "१० नवीन व मौलिक उद्योग सूत्रे संकलित केली आहेत. प्रत्येक सूत्रासाठी: "
         "(१) नारद व शांडिल्य भक्तिसूत्रांची मूळ संस्कृत आधार जोडी व भाषांतर, "
-        "(२) संत तुकाराम महाराजांचे विचार व प्रमाण अभंग, "
+        "(२) २०+ भारतीय ज्ञानपरंपरा ग्रंथांमधील प्रमाण श्लोक व संदर्भ, "
         "(३) नव्याने रचिलेले संस्कृत उद्योग सूत्र, पदच्छेद व अन्वय, आणि "
-        "(४) पदशः अर्थ, इंग्रजी भाषांतर, अस्खलित मराठी निरूपण व उद्योजकीय मानसशास्त्र सादर केले आहे."
+        "(४) पदशः अर्थ, इंग्रजी भाषांतर, अस्खलित मराठी निरूपण (किमान ५०० शब्द), पतंजली योगसूत्रे मानसिक स्वास्थ्य आणि चरित्रपर केस स्टडीज सादर केले आहेत."
     )
     r_intro.font.name = "Georgia"
     r_intro.font.size = Pt(9.5)
@@ -265,11 +265,12 @@ def build_matching_document():
         doc.add_paragraph().paragraph_format.space_after = Pt(4)
 
         # ----------------------------------------------------------------------
-        # COMPONENT 2: Bharatiya Jnana & Sant Tukaram Maharaj Basis
+        # COMPONENT 2: Dynamic Bharatiya Jnana Tradition Basis (20+ Traditions)
         # ----------------------------------------------------------------------
+        source_trad_name = item.get("bharatiya_jnana_basis", {}).get("source", "भारतीय ज्ञानपरंपरा").split("(")[0].strip()
         p_s2 = doc.add_paragraph()
         p_s2.paragraph_format.space_after = Pt(2)
-        r_s2 = p_s2.add_run("२. संत तुकाराम महाराज व भारतीय ज्ञानपरंपरा संदर्भ:")
+        r_s2 = p_s2.add_run(f"२. भारतीय ज्ञानपरंपरा संदर्भ ({source_trad_name}):")
         r_s2.font.name = "Arial"
         r_s2.font.size = Pt(10)
         r_s2.font.bold = True

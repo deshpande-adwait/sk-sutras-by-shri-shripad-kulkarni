@@ -161,25 +161,8 @@ class AnthropicAdapter(BaseLLMAdapter):
                 model_id=self.model_id,
             )
 
-        # Proactive check for user-scoped keys (sk-ant-usr-) missing anthropic-workspace-id
-        is_user_key = bool(self.api_key and str(self.api_key).startswith("sk-ant-usr-"))
-        if is_user_key and not self.workspace_id:
-            from src.providers.openai_adapter import OpenAIAdapter
-
-            fallback_adapter = OpenAIAdapter(
-                model_id=os.getenv("OPENAI_MODEL_ID", "gpt-4o"),
-                temperature=self.temperature,
-                max_tokens=self.max_tokens,
-                offline_mode=False,
-            )
-            return fallback_adapter.generate(
-                prompt=prompt,
-                system_prompt=system_prompt,
-                cached_context=cached_context,
-                **kwargs,
-            )
-
-        # When authorized live mode is triggered by owner
+        # Dedicated Anthropic Claude direct live execution
+        # (Silent OpenAI bypass removed as requested; direct live Anthropic client used)
         try:
             import anthropic
 
@@ -242,30 +225,7 @@ class AnthropicAdapter(BaseLLMAdapter):
                 finish_reason=message.stop_reason or "end_turn",
             )
         except Exception as exc:
-            # Resilient fallback: If Anthropic user key requires anthropic-workspace-id header,
-            # execute via live OpenAI gpt-4o so the generation never stalls or produces mocks.
-            if "workspace-id" in str(exc).lower() or "not scoped to a workspace" in str(exc).lower() or not self.workspace_id:
-                try:
-                    from src.providers.openai_adapter import OpenAIAdapter
-                    fallback_adapter = OpenAIAdapter(
-                        model_id=os.getenv("OPENAI_MODEL_ID", "gpt-4o"),
-                        temperature=self.temperature,
-                        max_tokens=self.max_tokens,
-                        offline_mode=False,
-                    )
-                    return fallback_adapter.generate(
-                        prompt=prompt,
-                        system_prompt=system_prompt,
-                        cached_context=cached_context,
-                        **kwargs,
-                    )
-                except Exception as fb_exc:
-                    raise ProviderError(
-                        message=f"Anthropic generation failed ({str(exc)}) and OpenAI fallback failed: {str(fb_exc)}",
-                        provider=self.provider_name,
-                        model_id=self.model_id,
-                        raw_error=exc,
-                    )
+            # Direct transparent error propagation: zero silent fallback to OpenAI
             raise ProviderError(
                 message=f"Anthropic generation failed: {str(exc)}",
                 provider=self.provider_name,

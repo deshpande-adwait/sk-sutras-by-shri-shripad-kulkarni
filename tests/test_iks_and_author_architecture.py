@@ -178,3 +178,55 @@ def test_reformatted_word_document_generation(tmp_path: Path):
     assert "UDYAM SUTRA" in all_text
     assert "Shri Shripad Kulkarni" in all_text
     assert "Source References" in all_text
+
+
+def test_bharatiya_jnana_agent_dynamic_chromadb_retrieval():
+    """Verifies that BharatiyaJnanaAgent dynamically queries ChromaDB and does not hardcode Tukaram for Sutra 11."""
+    from src.agents.bharatiya_jnana_agent import BharatiyaJnanaAgent
+
+    agent = BharatiyaJnanaAgent()
+    assert hasattr(agent, "iks_collection")
+    assert agent.iks_collection is not None
+    assert agent.iks_collection.count() >= 20
+
+    # Query for Sutra 11 with ethical commerce topic
+    res = agent.research_for_concept(11, "Ethical Commerce, Wealth Circulation and Fair Pricing")
+    assert "iks_text" in res
+    assert "sanskrit" in res
+    assert "iks_retrieved_entries" in res
+    assert len(res["iks_retrieved_entries"]) > 0
+
+
+def test_five_agent_council_pre_execution_audit_and_enterprise_domains():
+    """Verifies that FiveAgentCouncil checks ChromaDB and provides enterprise domains A-Q."""
+    from src.orchestration.five_agent_council import FiveAgentCouncil
+
+    council = FiveAgentCouncil()
+    audit = council.run_pre_execution_audit()
+    assert audit["status"] == "PASS"
+    assert audit["access_checks"]["chromadb_iks_collection_access"] == "VERIFIED"
+
+    # Verify domain lookup
+    domain_a = council.get_enterprise_domain("A")
+    assert domain_a is not None
+    assert domain_a["theme"] == "Enterprise Vision, Sankalpa & Inception"
+    assert domain_a["domain_id"] == "A"
+
+    domain_f = council.get_enterprise_domain("F")
+    assert domain_f is not None
+    assert "Patanjali" in domain_f["theme"] or "Patanjali" in domain_f["iks_focus"]
+
+
+def test_anthropic_adapter_bypass_eradication():
+    """Verifies that AnthropicAdapter has zero silent fallback to OpenAI."""
+    from src.providers.anthropic_adapter import AnthropicAdapter
+    from src.providers.base import ProviderAuthenticationError, ProviderError
+
+    # Offline mode behaves properly
+    offline_adapter = AnthropicAdapter(offline_mode=True)
+    assert offline_adapter.provider_name == "anthropic"
+
+    # Missing API key raises ProviderAuthenticationError
+    missing_key_adapter = AnthropicAdapter(api_key=None, offline_mode=False)
+    with pytest.raises(ProviderAuthenticationError):
+        missing_key_adapter.generate(prompt="Test prompt")
