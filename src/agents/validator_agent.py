@@ -432,12 +432,13 @@ class ValidatorAgent:
             gates["gate_9_dos_and_donts_framework"] = "FAIL"
             issues.append("Missing Do's and Don'ts framework.")
 
-        # Gate 10: Commentary word count (minimum 500 words)
+        # Gate 10: Conciseness & Brevity (Short sutra and concise, crisp commentary without bloat or padding)
         commentary = sutra_data.get("detailed_commentary", "")
         word_count = len(commentary.split())
-        if word_count < 450:  # Allow slight margin for tokenization
+        # Enforces concise, focused commentary without excessive rambling (max 300 words)
+        if word_count > 300:
             gates["gate_10_commentary_word_count"] = "FAIL"
-            issues.append(f"Commentary length ({word_count} words) is below 500-word mandate.")
+            issues.append(f"Commentary length ({word_count} words) exceeds concise mandate (maximum 300 words).")
 
         # Gate 13: Originality check
         sanskrit = sutra_data.get("sanskrit", "")

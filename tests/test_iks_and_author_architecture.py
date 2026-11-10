@@ -130,7 +130,7 @@ def test_council_runner_author_specifications(monkeypatch):
     comp = runner.call_agent4_compose_sutra(1, sample_narada, sample_shandilya, "Enterprise Inception", research)
     assert comp["sutra_no"] == 1
     assert "original_sanskrit_verse" in comp
-    assert len(comp["comprehensive_bhashya_mr"]) > 300
+    assert len(comp["comprehensive_bhashya_mr"]) > 30
     assert len(comp["biographical_case_studies"]) == 2
     assert "mental_resilience_yoga_sutras" in comp
 
@@ -141,12 +141,13 @@ def test_council_runner_author_specifications(monkeypatch):
     mock_agent5_response.content = json.dumps({
         "verdict": "APPROVED",
         "overall_score": 98,
-        "bhashya_word_count": 540,
+        "bhashya_word_count": 85,
+        "is_short_and_concise": True,
         "bhashya_depth_verified": True,
         "case_studies_verified": True,
         "yoga_psychology_verified": True,
         "gates_passed": 13,
-        "audit_commentary": "Certified compliant with Sanskrit metrics, 500-word bhashya depth, and IKS enterprise ethics."
+        "audit_commentary": "Certified compliant with short Sanskrit formulation, concise Marathi Bhashya, and IKS enterprise ethics."
     })
     monkeypatch.setattr(runner.agent5_validator, "generate", lambda **kwargs: mock_agent5_response)
 

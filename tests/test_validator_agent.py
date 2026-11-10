@@ -9,8 +9,10 @@ Description: QA unit tests verifying Agent 4 (Independent Validator), Anushtubh
 ================================================================================
 """
 
+from pathlib import Path
 from src.agents.sutrakar_agent import SutrakarAgent
 from src.agents.validator_agent import SanskritMetreValidator, ValidatorAgent
+from src.database.repository import ManuscriptRepository
 from src.models.schema import MultilingualText, SutraItem
 
 
@@ -31,9 +33,10 @@ def test_anushtubh_metre_validator_rejection_on_mismatched_length():
     assert "Syllable count deviation" in result["deviation_notes"]
 
 
-def test_validator_agent_complete_pass():
+def test_validator_agent_complete_pass(tmp_path: Path):
     """Verifies that a properly formatted manuscript unit passes all 7 validation gates."""
-    sutrakar = SutrakarAgent()
+    repo = ManuscriptRepository(db_path=tmp_path / "test_val1.db")
+    sutrakar = SutrakarAgent(repository=repo)
     narada_item = SutraItem(
         sutra_no="2",
         sanskrit="सा त्वस्मिन् परमप्रेमरूपा॥",
@@ -62,9 +65,10 @@ def test_validator_agent_complete_pass():
     assert report.overall_status in ("PASS", "NEEDS_REVISION")
 
 
-def test_validator_escalates_to_human_after_three_revisions():
+def test_validator_escalates_to_human_after_three_revisions(tmp_path: Path):
     """Verifies Part 4.4 Rule 6: After three unsuccessful revisions, escalate to human review."""
-    sutrakar = SutrakarAgent()
+    repo = ManuscriptRepository(db_path=tmp_path / "test_val2.db")
+    sutrakar = SutrakarAgent(repository=repo)
     narada_item = SutraItem(
         sutra_no="2",
         sanskrit="सा त्वस्मिन् परमप्रेमरूपा॥",
@@ -95,9 +99,10 @@ def test_validator_escalates_to_human_after_three_revisions():
     assert report.major_issues_count > 0
 
 
-def test_sutrakar_targeted_revision_increments_version():
+def test_sutrakar_targeted_revision_increments_version(tmp_path: Path):
     """Verifies that applying targeted revision preserves identity while incrementing version number."""
-    sutrakar = SutrakarAgent()
+    repo = ManuscriptRepository(db_path=tmp_path / "test_val3.db")
+    sutrakar = SutrakarAgent(repository=repo)
     narada_item = SutraItem(
         sutra_no="1",
         sanskrit="अथातो भक्तिं व्याख्यास्यामः॥",
