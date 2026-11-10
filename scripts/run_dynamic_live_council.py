@@ -95,10 +95,11 @@ class DynamicLiveCouncilRunner:
             metadata={"description": "20+ Canonical Bharatiya Jnana Tradition Texts"},
         )
 
-        # Initialize live LLM adapters
+        # Initialize live LLM adapters across all three premier providers
         self.agent1_gemini = GeminiAdapter(model_id="gemini-3.8-flash", offline_mode=False)
         self.agent2_openai = OpenAIAdapter(model_id="gpt-4o", offline_mode=False)
-        self.agent4_sutrakar = AnthropicAdapter(model_id="claude-3-5-sonnet-20241022", offline_mode=False)
+        self.agent3_claude = AnthropicAdapter(model_id="claude-sonnet-5-5", offline_mode=False)
+        self.agent4_sutrakar = AnthropicAdapter(model_id="claude-sonnet-5-5", offline_mode=False)
         self.agent5_validator = OpenAIAdapter(model_id="gpt-4o", offline_mode=False)
 
         # Load Source Scripture Corpora
@@ -458,6 +459,38 @@ class DynamicLiveCouncilRunner:
             for e in iks_retrieved_entries
         )
 
+        # Live Claude 5.5 Sonnet Scholarly Synthesis for Agent 3
+        scholarly_bridge = ""
+        try:
+            a3_prompt = (
+                f"You are Agent 3 — Bharatiya Jnana Tradition Specialist in Shri Shripad Kulkarni's council.\n"
+                f"Topic: {theme}\n"
+                f"Narada Devotional Premise (#{n_no}): {narada_sutra.get('sanskrit')}\n"
+                f"Shandilya Logical Premise (#{s_no}): {shandilya_sutra.get('sanskrit')}\n"
+                f"Dynamically Retrieved Canonical IKS Verses:\n{iks_formatted}\n\n"
+                f"Synthesize an authoritative research bridge (100-150 words) integrating these classical sources into enterprise ethics, leadership psychology, and trusteeship."
+            )
+            a3_resp = self.agent3_claude.generate(
+                prompt=a3_prompt,
+                system_prompt="You are a senior scholar of Indian Knowledge Systems (IKS), Arthashastra, Gita, Upanishads, and Sant Sahitya."
+            )
+            self.log_token_usage(
+                provider="anthropic",
+                model_id=self.agent3_claude.model_id,
+                agent_role="Agent 3 (Bharatiya Jnana Specialist)",
+                input_tokens=a3_resp.usage.input_tokens,
+                output_tokens=a3_resp.usage.output_tokens,
+                unit_id=f"research_{n_no}_{s_no}",
+            )
+            scholarly_bridge = a3_resp.content.strip()
+        except Exception as e:
+            print(f"Warning: Agent 3 Claude research fallback: {e}")
+            scholarly_bridge = (
+                f"Under theme '{theme}', Narada #{n_no} provides motivational devotional fervor, "
+                f"Shandilya #{s_no} provides cognitive certitude, DOC-01/02/03 supply practical enterprise "
+                f"architecture, and dynamically retrieved IKS texts provide ethical trusteeship and psychological resilience."
+            )
+
         research_summary = {
             "theme": theme,
             "narada_ref": f"Narada Bhakti Sutra #{n_no}",
@@ -468,12 +501,7 @@ class DynamicLiveCouncilRunner:
             "doc04_foundation": doc04_excerpt,
             "iks_scriptural_foundation": iks_formatted,
             "iks_retrieved_entries": iks_retrieved_entries,
-            "scholarly_bridge": (
-                f"Under theme '{theme}', Narada #{n_no} provides motivational devotional fervor, "
-                f"Shandilya #{s_no} provides cognitive certitude, DOC-01/02/03 supply practical enterprise "
-                f"architecture, Sant Tukaram Maharaj (DOC-04) anchors moral transactional purity (Satya-Vyavahara), "
-                f"and retrieved IKS texts provide ethical trusteeship and psychological resilience."
-            ),
+            "scholarly_bridge": scholarly_bridge,
         }
         return research_summary
 
