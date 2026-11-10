@@ -440,11 +440,15 @@ class ValidatorAgent:
             gates["gate_10_commentary_word_count"] = "FAIL"
             issues.append(f"Commentary length ({word_count} words) exceeds concise mandate (maximum 300 words).")
 
-        # Gate 13: Originality check
-        sanskrit = sutra_data.get("sanskrit", "")
-        if known_existing_sutras and sanskrit in known_existing_sutras:
-            gates["gate_13_originality_anti_plagiarism"] = "FAIL"
-            issues.append(f"Sanskrit formulation is a duplicate of previously accepted canon: {sanskrit}")
+        # Gate 13: Originality and Duplicate Detection across treatise
+        sanskrit = sutra_data.get("sanskrit", "") or sutra_data.get("original_sanskrit_verse", "")
+        norm_sanskrit = re.sub(r"[\s॥।\d०-९]", "", sanskrit)
+        if known_existing_sutras and norm_sanskrit:
+            for existing in known_existing_sutras:
+                if norm_sanskrit == re.sub(r"[\s॥।\d०-९]", "", existing):
+                    gates["gate_13_originality_anti_plagiarism"] = "FAIL"
+                    issues.append(f"Sanskrit formulation is a duplicate of previously accepted canon: {sanskrit}")
+                    break
 
         passed_count = sum(1 for status in gates.values() if status == "PASS")
         overall_status = "APPROVED" if passed_count == 13 else "NEEDS_REVISION"

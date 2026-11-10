@@ -1129,13 +1129,13 @@ def generate_canonical_word_document(canon: List[Dict[str, Any]], output_path: P
     r_t2.font.bold = True
     r_t2.font.color.rgb = C_NAVY
 
-    r_t3 = title_p.add_run("Dynamic Synthesis of Narada & Shandilya Bhakti Sutras with the Complete Bharatiya Jnana Parampara\n")
+    r_t3 = title_p.add_run("दस प्रामाणिक उद्योग सूत्रे : मूळ संदर्भ, सुलभ निरूपण व दैनंदिन आचरण\n")
     r_t3.font.name = "Georgia"
-    r_t3.font.size = Pt(10)
+    r_t3.font.size = Pt(11)
     r_t3.font.italic = True
     r_t3.font.color.rgb = C_SLATE
 
-    # Metadata Banner
+    # Metadata Banner (Clean, Professional, Zero Technical Jargon)
     meta_tbl = doc.add_table(rows=1, cols=1)
     meta_tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
     meta_cell = meta_tbl.cell(0, 0)
@@ -1144,16 +1144,14 @@ def generate_canonical_word_document(canon: List[Dict[str, Any]], output_path: P
     m_p = meta_cell.paragraphs[0]
     m_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     m_run = m_p.add_run(
-        f"Author: Shri Shripad Kulkarni  |  Orchestrated by: Five-Agent Multi-LLM AI System\n"
-        f"Sources: Narada Bhakti Sutras, Shandilya Bhakti Sutras (100 Sutras), DOC-01 (100 Mahagrantha), "
-        f"DOC-02 (Karyavritti 17), DOC-03 (Karyavritti 05), DOC-04 (Sant Tukaram Maharaj), Bhagavad Gita & Arthashastra\n"
-        f"Execution Mode: 100% Live Multi-LLM (Google Gemini gemini-3.8-flash, OpenAI gpt-4o, Anthropic claude-sonnet-5-5)\n"
-        f"Editorial Axiom: 'सूत्र लहान, विचार महान, निरूपण सुटसुटीत, संक्षिप्त आणि आचरण व्यावहारिक.'\n"
-        f"Verification: 13/13 Quality Gates Certified by Agent 5  |  Date: {datetime.now().strftime('%B %d, %Y')}\n"
-        f"Powered by Hiranyam AI Labs (https://hiranyamai.com/)"
+        f"ग्रंथकार (Author): श्री श्रीपाद कुलकर्णी (Shri Shripad Kulkarni)\n"
+        f"मार्गदर्शक तत्त्व: 'सूत्र लहान, विचार महान, निरूपण सुटसुटीत, संक्षिप्त आणि आचरण व्यावहारिक'\n"
+        f"सद्ग्रंथ प्रेरणा: नारद भक्ती सूत्रे, शांडिल्य भक्ती सूत्रे, भगवद्गीता, कौटिलीय अर्थशास्त्र, "
+        f"संत तुकाराम महाराज अभंगगाथा, समर्थ रामदास दासबोध, ईशावास्योपनिषद, पतंजली योगसूत्रे आणि भर्तृहरी नीतिशतक\n"
+        f"प्रकाशन: २०२६ | Powered by Hiranyam AI Labs (https://hiranyamai.com/)"
     )
     m_run.font.name = "Arial"
-    m_run.font.size = Pt(8.5)
+    m_run.font.size = Pt(9)
     m_run.font.color.rgb = C_SLATE
 
     doc.add_paragraph().paragraph_format.space_after = Pt(8)
@@ -1473,19 +1471,16 @@ def generate_canonical_word_document(canon: List[Dict[str, Any]], output_path: P
         else:
             p_pe.add_run(_to_str(nus.get("practical_enterprise_guidance")))
 
-        # Quality Gate Pass Badge
+        # Dignified Publishing Separator (No AI badges or test scores)
         q_p = doc.add_paragraph()
-        q_p.paragraph_format.space_before = Pt(3)
-        q_p.paragraph_format.space_after = Pt(12)
-        q_p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-        qr = q_p.add_run(
-            f"✓ Quality Audit: Score {val['score']}/100 | 13/13 Gates Verified Pass | "
-            f"Sutra: Concise & Memorable | Bhashya: Short & Crisp ({val.get('bhashya_word_count', 85)} words) | {val['auditor']}"
-        )
-        qr.font.name = "Arial"
-        qr.font.size = Pt(7.5)
-        qr.font.bold = True
-        qr.font.color.rgb = C_GREEN
+        q_p.paragraph_format.space_before = Pt(6)
+        q_p.paragraph_format.space_after = Pt(14)
+        q_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        qr = q_p.add_run("॥ शुभं भवतु — उद्योगेनैव सिध्यन्ति कार्याणि ॥")
+        qr.font.name = "Georgia"
+        qr.font.size = Pt(8.5)
+        qr.font.italic = True
+        qr.font.color.rgb = C_GOLD
 
     # Save to Docs and Brain Artifacts
     doc.save(str(output_path))
