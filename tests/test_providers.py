@@ -60,8 +60,8 @@ def test_provider_authentication_error_when_online_without_key() -> None:
         adapter.generate(prompt="Test live prompt")
 
 
-def test_provider_registry_four_agent_allocations() -> None:
-    """Verifies that the registry allocates all four distinct agents correctly."""
+def test_provider_registry_five_agent_allocations() -> None:
+    """Verifies that the registry allocates all five distinct council agents correctly."""
     registry = ProviderRegistry(offline_mode=True)
 
     agent1 = registry.get_adapter(ProviderRegistry.ROLE_NARADA)
@@ -70,11 +70,14 @@ def test_provider_registry_four_agent_allocations() -> None:
     agent2 = registry.get_adapter(ProviderRegistry.ROLE_SHANDILYA)
     assert agent2.provider_name == "openai"
 
-    agent3 = registry.get_adapter(ProviderRegistry.ROLE_SUTRAKAR)
+    agent3 = registry.get_adapter(ProviderRegistry.ROLE_BHARATIYA_JNANA)
     assert agent3.provider_name == "anthropic"
 
-    agent4 = registry.get_adapter(ProviderRegistry.ROLE_VALIDATOR)
-    assert agent4.provider_name == "openai"
+    agent4 = registry.get_adapter(ProviderRegistry.ROLE_SUTRAKAR)
+    assert agent4.provider_name == "anthropic"
+
+    agent5 = registry.get_adapter(ProviderRegistry.ROLE_VALIDATOR)
+    assert agent5.provider_name == "openai"
 
 
 def test_provider_registry_dynamic_model_switch() -> None:

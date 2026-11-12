@@ -14,6 +14,7 @@
       "source_location": "data/knowledge_repository/sources/DOC-01_SHRIMAD_UDYAM_SUTRANI_100.txt",
       "status": "Authoritative Reference (Subhashita & Classical Analogy Anthology)",
       "is_authoritative": true,
+      "sha256": "3744e80343ed10bad6e873bf2082a2c94727a6429af9e0592556fedeb4d77523",
       "scope": "100 aphorisms covering execution, time, ethics, risk, team, and trusteeship with modern corporate cases.",
       "known_conflicts": "Contains direct verbatim quotations of classical Gita, Arthashastra, and Hitopadesha verses treated as Udyam Sutras. Must not be directly plagiarized or paraphrased as original modern composition."
     },
@@ -28,6 +29,7 @@
       "source_location": "data/knowledge_repository/sources/DOC-02_UDYAM_SUTRE_MANUSCRIPT_V17.txt",
       "status": "Latest Master Working Draft (Comprehensive Canon & Appendices)",
       "is_authoritative": true,
+      "sha256": "c43eec51256d15436d74b860a90b7506ad63bf01502b2d77c89cfc75b6201a8d",
       "scope": "Contains Chapters 1 to 6, complete commentary on Narada Bhakti Sutras 1 to 84, Appendices A to G, 6 case studies, 12-week course curriculum, and editorial verification checklist.",
       "known_conflicts": "Explicitly notes that new Sanskrit Udyam Sutras must be recognized as independent modern compositions, never claiming ancient Vedic origin. Narada 84 order is primary; Shandilya is 100 sutras."
     },
@@ -42,6 +44,7 @@
       "source_location": "data/knowledge_repository/sources/DOC-03_UDYAM_SUTRE_MANUSCRIPT_V05.txt",
       "status": "Superseded Milestone Draft (Baseline for Karma Yoga & Duty)",
       "is_authoritative": false,
+      "sha256": "9fc34f8206da810887039278b63397f99e2105abd9bf648785bb7ffccc5f79a7",
       "scope": "Contains Chapters 1 to 5 concluding with Karma Yoga and Duty (कर्मयोग आणि कर्तव्य).",
       "known_conflicts": "Superseded by Karyavritti 17 which adds Chapter 6, the full 84 Narada sutra commentary, and all 7 Appendices (A-G)."
     },
@@ -56,6 +59,7 @@
       "source_location": "data/knowledge_repository/sources/DOC-04_SANT_TUKARAM_MAHARAJ_DISCOURSE_AND_ABHANGAS.txt",
       "status": "Authoritative Research Input (Sant Tukaram & Varkari Parampara)",
       "is_authoritative": true,
+      "sha256": "46e0efea4647c0479c0afefb76693911a50981ed98f0e50416bab3e8126fbc77",
       "scope": "Covers Kondopant Lokre copper coin parable, five foundations of prosperity (Arth-Purushartha), Uttam Vyavahar, Daan/Bhog/Asakti, Daivacha Putla, and authentic Tukaram Abhangas on wealth, truth, and vigilance.",
       "known_conflicts": "Kondopant Lokre story is a traditional homiletic parable (Upakhyana) in oral discourse, not an independently documented historical event. Must be cited with accurate provenance."
     }

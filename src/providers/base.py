@@ -49,6 +49,20 @@ class ProviderBudgetExceededError(ProviderError):
     pass
 
 
+class OutputTruncationError(ProviderError):
+    """
+    ----------------------------------------------------------------------------
+    Class: OutputTruncationError
+    ----------------------------------------------------------------------------
+    Purpose:
+        Raised when an LLM provider halts generation because the output token
+        limit (max_tokens) was reached before the structured response was fully
+        emitted, causing incomplete syntax or truncated text.
+    ----------------------------------------------------------------------------
+    """
+    pass
+
+
 # ==============================================================================
 # Usage & Response Data Contracts
 # ==============================================================================
@@ -107,6 +121,20 @@ class ProviderResponse(BaseModel):
     model_id: str = Field(..., description="Provider model ID utilized")
     provider: str = Field(..., description="Provider platform identifier")
     finish_reason: Optional[str] = Field(default="stop", description="Stop condition")
+    is_truncated: bool = Field(default=False, description="Whether output hit max_tokens / length limit")
+
+    @property
+    def was_truncated(self) -> bool:
+        """
+        ------------------------------------------------------------------------
+        Method: was_truncated
+        ------------------------------------------------------------------------
+        Purpose:
+            Returns True if the LLM output was terminated prematurely by output
+            token exhaustion (e.g. stop_reason 'max_tokens' or 'length').
+        ------------------------------------------------------------------------
+        """
+        return self.is_truncated or (self.finish_reason in ("max_tokens", "length"))
 
 
 # ==============================================================================

@@ -49,7 +49,7 @@ class AnthropicAdapter(BaseLLMAdapter):
         api_key: Any = _UNSET_KEY,
         workspace_id: Optional[str] = None,
         temperature: float = 0.20,
-        max_tokens: int = 4096,
+        max_tokens: int = 8192,
         timeout_seconds: float = 60.0,
         offline_mode: Optional[bool] = None,
     ) -> None:
@@ -221,12 +221,14 @@ class AnthropicAdapter(BaseLLMAdapter):
                 estimated_cost_usd=self.estimate_cost(input_toks, output_toks),
                 currency="USD",
             )
+            is_trunc = (message.stop_reason == "max_tokens")
             return ProviderResponse(
                 content=content,
                 usage=usage,
                 model_id=self.model_id,
                 provider=self.provider_name,
                 finish_reason=message.stop_reason or "end_turn",
+                is_truncated=is_trunc,
             )
         except Exception as exc:
             # Direct transparent error propagation: zero silent fallback to OpenAI
@@ -236,3 +238,89 @@ class AnthropicAdapter(BaseLLMAdapter):
                 model_id=self.model_id,
                 raw_error=exc,
             )
+
+    def generate_with_continuation(
+        self,
+        prompt: str,
+        system_prompt: Optional[str] = None,
+        cached_context: Optional[str] = None,
+        max_continuations: int = 3,
+        **kwargs: Any,
+    ) -> ProviderResponse:
+        """
+        ------------------------------------------------------------------------
+        Method: generate_with_continuation
+        ------------------------------------------------------------------------
+        Purpose:
+            Executes generation and automatically recovers from output-token
+            exhaustion (stop_reason 'max_tokens'). If the model output is truncated
+            before completing its structured payload, issues continuation requests
+            that append to the assistant's stream until completion.
+        Parameters:
+            prompt (str): User instruction or task prompt.
+            system_prompt (Optional[str]): Role-specific system instructions.
+            cached_context (Optional[str]): Static context for ephemeral caching.
+            max_continuations (int): Maximum recovery attempts (default: 3).
+        Returns:
+            ProviderResponse: Merged response with cumulative token metrics.
+        ------------------------------------------------------------------------
+        """
+        initial_resp = self.generate(
+            prompt=prompt,
+            system_prompt=system_prompt,
+            cached_context=cached_context,
+            **kwargs,
+        )
+
+        if not initial_resp.was_truncated or self.offline_mode:
+            return initial_resp
+
+        accumulated_content = initial_resp.content
+        total_input = initial_resp.usage.input_tokens
+        total_output = initial_resp.usage.output_tokens
+        total_cached = initial_resp.usage.cached_input_tokens
+        total_cost = initial_resp.usage.estimated_cost_usd
+        last_finish_reason = initial_resp.finish_reason
+
+        for attempt in range(max_continuations):
+            if last_finish_reason not in ("max_tokens", "length"):
+                break
+
+            continuation_prompt = (
+                "You reached the maximum output token limit. Continue directly from the exact "
+                "character where your previous output ended. Do not repeat any completed text, "
+                "do not add conversational pleasantries, and complete all remaining JSON keys cleanly."
+            )
+
+            # Generate continuation via multi-turn conversation
+            cont_resp = self.generate(
+                prompt=f"{prompt}\n\n[Previous Partial Output]:\n{accumulated_content[-1500:]}\n\n[Instruction]: {continuation_prompt}",
+                system_prompt=system_prompt,
+                cached_context=cached_context,
+                **kwargs,
+            )
+
+            accumulated_content += cont_resp.content
+            total_input += cont_resp.usage.input_tokens
+            total_output += cont_resp.usage.output_tokens
+            total_cached += cont_resp.usage.cached_input_tokens
+            total_cost += cont_resp.usage.estimated_cost_usd
+            last_finish_reason = cont_resp.finish_reason
+
+        merged_usage = ProviderUsage(
+            input_tokens=total_input,
+            output_tokens=total_output,
+            cached_input_tokens=total_cached,
+            total_tokens=total_input + total_output,
+            estimated_cost_usd=total_cost,
+            currency="USD",
+        )
+
+        return ProviderResponse(
+            content=accumulated_content,
+            usage=merged_usage,
+            model_id=self.model_id,
+            provider=self.provider_name,
+            finish_reason=str(last_finish_reason) if last_finish_reason is not None else None,
+            is_truncated=(str(last_finish_reason) in ("max_tokens", "length")),
+        )

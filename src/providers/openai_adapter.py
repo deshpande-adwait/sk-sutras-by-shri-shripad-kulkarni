@@ -188,12 +188,14 @@ class OpenAIAdapter(BaseLLMAdapter):
                 estimated_cost_usd=self.estimate_cost(input_toks, output_toks),
                 currency="USD",
             )
+            f_reason = completion.choices[0].finish_reason or "stop"
             return ProviderResponse(
                 content=content,
                 usage=usage,
                 model_id=self.model_id,
                 provider=self.provider_name,
-                finish_reason=completion.choices[0].finish_reason or "stop",
+                finish_reason=f_reason,
+                is_truncated=(f_reason in ("length", "max_tokens")),
             )
         except Exception as exc:
             raise ProviderError(

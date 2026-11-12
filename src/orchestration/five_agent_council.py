@@ -23,6 +23,7 @@ from typing import Any, Dict, List, Optional, Tuple
 from src.agents.bharatiya_jnana_agent import BharatiyaJnanaAgent
 from src.agents.narada_agent import NaradaAgent
 from src.agents.shandilya_agent import ShandilyaAgent
+from src.agents.sutrakar_agent import SutrakarAgent
 from src.agents.validator_agent import SanskritMetreValidator, ValidatorAgent
 from src.config import BASE_DIR
 
@@ -48,6 +49,7 @@ class FiveAgentCouncil:
         self.agent1_narada = NaradaAgent()
         self.agent2_shandilya = ShandilyaAgent(force_reindex=False)
         self.agent3_bharatiya = BharatiyaJnanaAgent(repo_dir=self.repo_dir)
+        self.agent4_sutrakar = SutrakarAgent(shandilya_agent=self.agent2_shandilya)
         self.agent5_validator = ValidatorAgent()
 
         # Load Document Register

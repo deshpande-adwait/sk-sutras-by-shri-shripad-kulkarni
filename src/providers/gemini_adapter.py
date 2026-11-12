@@ -202,12 +202,17 @@ class GeminiAdapter(BaseLLMAdapter):
                 estimated_cost_usd=self.estimate_cost(input_toks, output_toks),
                 currency="USD",
             )
+            cand_finish = "stop"
+            if hasattr(response, "candidates") and response.candidates:
+                cand_finish = str(getattr(response.candidates[0], "finish_reason", "stop")).lower()
+
             return ProviderResponse(
                 content=response.text or "",
                 usage=usage,
                 model_id=self.model_id,
                 provider=self.provider_name,
-                finish_reason="stop",
+                finish_reason=cand_finish,
+                is_truncated=("max_tokens" in cand_finish or "length" in cand_finish),
             )
         except Exception as exc:
             # Fallback to legacy google.generativeai if google.genai experiences transient client issues

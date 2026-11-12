@@ -32,6 +32,7 @@ class ProviderRegistry:
 
     ROLE_NARADA = "narada_specialist"
     ROLE_SHANDILYA = "shandilya_specialist"
+    ROLE_BHARATIYA_JNANA = "bharatiya_jnana_specialist"
     ROLE_SUTRAKAR = "sutrakar_master"
     ROLE_VALIDATOR = "independent_validator"
 
@@ -41,7 +42,7 @@ class ProviderRegistry:
         Method: __init__
         ------------------------------------------------------------------------
         Purpose:
-            Initializes the registry with the default 4-agent provider allocations.
+            Initializes the registry with the canonical 5-agent provider allocations.
         ------------------------------------------------------------------------
         """
         self._offline_mode = offline_mode
@@ -54,16 +55,17 @@ class ProviderRegistry:
         Method: _initialize_default_adapters
         ------------------------------------------------------------------------
         Purpose:
-            Instantiates the standard role allocations defined in Part 3 of
-            the Master Specification:
-            - Agent 1 (Narada): Google Gemini 1.5 Pro
-            - Agent 2 (Shandilya): OpenAI GPT-4o
-            - Agent 3 (Sutrakar): Anthropic Claude 3.5 Sonnet
-            - Agent 4 (Validator): OpenAI GPT-4o (independent configuration)
+            Instantiates the canonical 5-agent role allocations defined in the
+            Master Specification:
+            - Agent 1 (Narada): Google Gemini (gemini-3.8-flash)
+            - Agent 2 (Shandilya): OpenAI (gpt-4o)
+            - Agent 3 (Bharatiya Jnana): Anthropic Claude (claude-sonnet-5-5)
+            - Agent 4 (Sutrakar): Anthropic Claude (claude-sonnet-5-5)
+            - Agent 5 (Validator): OpenAI (gpt-4o)
         ------------------------------------------------------------------------
         """
         # Agent 1: Narada Specialist -> Google Gemini
-        narada_model = os.getenv("AGENT1_MODEL_ID", os.getenv("GEMINI_MODEL_ID", "gemini-1.5-pro"))
+        narada_model = os.getenv("AGENT1_MODEL_ID", os.getenv("GEMINI_MODEL_ID", "gemini-3.8-flash"))
         self._adapters[self.ROLE_NARADA] = GeminiAdapter(
             model_id=narada_model,
             offline_mode=self._offline_mode,
@@ -76,15 +78,22 @@ class ProviderRegistry:
             offline_mode=self._offline_mode,
         )
 
-        # Agent 3: Sutrakar Master Author -> Anthropic Claude
-        sutrakar_model = os.getenv("AGENT3_MODEL_ID", os.getenv("ANTHROPIC_MODEL_ID", "claude-3-5-sonnet-20241022"))
+        # Agent 3: Bharatiya Jnana Specialist -> Anthropic Claude
+        bj_model = os.getenv("AGENT3_MODEL_ID", os.getenv("ANTHROPIC_MODEL_ID", "claude-sonnet-5-5"))
+        self._adapters[self.ROLE_BHARATIYA_JNANA] = AnthropicAdapter(
+            model_id=bj_model,
+            offline_mode=self._offline_mode,
+        )
+
+        # Agent 4: Sutrakar Master Author -> Anthropic Claude
+        sutrakar_model = os.getenv("AGENT4_MODEL_ID", os.getenv("ANTHROPIC_MODEL_ID", "claude-sonnet-5-5"))
         self._adapters[self.ROLE_SUTRAKAR] = AnthropicAdapter(
             model_id=sutrakar_model,
             offline_mode=self._offline_mode,
         )
 
-        # Agent 4: Independent Validator -> Separately configurable OpenAI model
-        validator_model = os.getenv("AGENT4_MODEL_ID", os.getenv("OPENAI_VALIDATOR_MODEL_ID", "gpt-4o"))
+        # Agent 5: Independent Validator -> OpenAI GPT-4o
+        validator_model = os.getenv("AGENT5_MODEL_ID", os.getenv("OPENAI_VALIDATOR_MODEL_ID", "gpt-4o"))
         self._adapters[self.ROLE_VALIDATOR] = OpenAIAdapter(
             model_id=validator_model,
             offline_mode=self._offline_mode,

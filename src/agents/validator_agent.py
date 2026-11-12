@@ -370,6 +370,86 @@ class ValidatorAgent:
             required_corrections=required_corrections,
         )
 
+    @staticmethod
+    def normalize_sutra_text(text: str) -> str:
+        """
+        ------------------------------------------------------------------------
+        Method: normalize_sutra_text
+        ------------------------------------------------------------------------
+        Purpose:
+            Normalizes Sanskrit aphorism text by removing punctuation, dandas,
+            spaces, and numerals (both Latin 0-9 and Devanagari ०-९) for robust
+            duplicate detection across varying formatting styles.
+        ------------------------------------------------------------------------
+        """
+        if not text:
+            return ""
+        # Remove dandas, numbers, whitespace, hyphens, and brackets
+        cleaned = re.sub(r"[\s॥।\d०-९\-_\(\)\[\]]", "", str(text))
+        return unicodedata.normalize("NFC", cleaned)
+
+    @classmethod
+    def check_duplicate_or_near_duplicate(
+        cls,
+        candidate_sanskrit: str,
+        existing_sutras: List[str],
+        similarity_threshold: float = 0.85,
+    ) -> Tuple[bool, Optional[str], float]:
+        """
+        ------------------------------------------------------------------------
+        Method: check_duplicate_or_near_duplicate
+        ------------------------------------------------------------------------
+        Purpose:
+            Performs multi-layer duplicate detection comparing candidate Sanskrit
+            against all existing canon members. Checks:
+            - Exact normalized string identity (Layer 2).
+            - Character-level Levenshtein similarity ratio (Layer 3).
+        Parameters:
+            candidate_sanskrit (str): Newly proposed aphorism text.
+            existing_sutras (List[str]): List of already approved aphorism texts.
+            similarity_threshold (float): Threshold above which near-duplicates
+                                          are flagged (default: 0.85).
+        Returns:
+            Tuple[bool, Optional[str], float]: (is_dup, duplicate_match, score).
+        ------------------------------------------------------------------------
+        """
+        norm_cand = cls.normalize_sutra_text(candidate_sanskrit)
+        if not norm_cand or not existing_sutras:
+            return False, None, 0.0
+
+        for existing in existing_sutras:
+            norm_exist = cls.normalize_sutra_text(existing)
+            if not norm_exist:
+                continue
+
+            # Layer 2: Exact normalized equality
+            if norm_cand == norm_exist:
+                return True, existing, 1.0
+
+            # Layer 3: Character overlap / similarity
+            # Simple fast Longest Common Subsequence or character bigram overlap
+            len_cand = len(norm_cand)
+            len_exist = len(norm_exist)
+            if max(len_cand, len_exist) == 0:
+                continue
+
+            # Check substring containment if length >= 6
+            if len_cand >= 6 and (norm_cand in norm_exist or norm_exist in norm_cand):
+                overlap_ratio = min(len_cand, len_exist) / max(len_cand, len_exist)
+                if overlap_ratio >= 0.75:
+                    return True, existing, overlap_ratio
+
+            # Bigram similarity
+            bigrams_cand = {norm_cand[i:i+2] for i in range(len(norm_cand)-1)}
+            bigrams_exist = {norm_exist[i:i+2] for i in range(len(norm_exist)-1)}
+            if bigrams_cand and bigrams_exist:
+                intersection = len(bigrams_cand & bigrams_exist)
+                dice_score = (2.0 * intersection) / (len(bigrams_cand) + len(bigrams_exist))
+                if dice_score >= similarity_threshold:
+                    return True, existing, dice_score
+
+        return False, None, 0.0
+
     def validate_extended_udyog_sutra(
         self,
         sutra_data: Dict[str, Any],
@@ -440,15 +520,20 @@ class ValidatorAgent:
             gates["gate_10_commentary_word_count"] = "FAIL"
             issues.append(f"Commentary length ({word_count} words) exceeds concise mandate (maximum 300 words).")
 
-        # Gate 13: Originality and Duplicate Detection across treatise
+        # Gate 13: Originality and Multi-Layer Duplicate Detection across treatise
         sanskrit = sutra_data.get("sanskrit", "") or sutra_data.get("original_sanskrit_verse", "")
-        norm_sanskrit = re.sub(r"[\s॥।\d०-९]", "", sanskrit)
-        if known_existing_sutras and norm_sanskrit:
-            for existing in known_existing_sutras:
-                if norm_sanskrit == re.sub(r"[\s॥।\d०-९]", "", existing):
-                    gates["gate_13_originality_anti_plagiarism"] = "FAIL"
-                    issues.append(f"Sanskrit formulation is a duplicate of previously accepted canon: {sanskrit}")
-                    break
+        if known_existing_sutras and sanskrit:
+            is_dup, match_text, sim_score = self.check_duplicate_or_near_duplicate(
+                candidate_sanskrit=sanskrit,
+                existing_sutras=known_existing_sutras,
+                similarity_threshold=0.85,
+            )
+            if is_dup:
+                gates["gate_13_originality_anti_plagiarism"] = "FAIL"
+                issues.append(
+                    f"Sanskrit formulation is a duplicate or near-duplicate (similarity {sim_score:.2f}) "
+                    f"of previously accepted canon: '{match_text}'"
+                )
 
         passed_count = sum(1 for status in gates.values() if status == "PASS")
         overall_status = "APPROVED" if passed_count == 13 else "NEEDS_REVISION"
@@ -463,3 +548,11 @@ class ValidatorAgent:
             "issues": issues,
             "commentary_word_count": word_count
         }
+
+
+# ==============================================================================
+# Module-Level Convenience Functions for Classical Verification
+# ==============================================================================
+normalize_sutra_text = ValidatorAgent.normalize_sutra_text
+check_duplicate_or_near_duplicate = ValidatorAgent.check_duplicate_or_near_duplicate
+

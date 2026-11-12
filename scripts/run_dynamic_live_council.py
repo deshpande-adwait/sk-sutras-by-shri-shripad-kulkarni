@@ -66,6 +66,12 @@ from src.providers.gemini_adapter import GeminiAdapter
 from src.providers.openai_adapter import OpenAIAdapter
 from src.providers.anthropic_adapter import AnthropicAdapter
 from src.vectorstore.chroma_store import SutraVectorStore
+from src.agents.validator_agent import (
+    ValidatorAgent,
+    check_duplicate_or_near_duplicate,
+    normalize_sutra_text,
+)
+from scripts.generate_clean_layman_manuscript import build_clean_layman_document
 
 DOCS_DIR = BASE_DIR / "docs"
 DOCS_DIR.mkdir(parents=True, exist_ok=True)
@@ -114,6 +120,9 @@ class DynamicLiveCouncilRunner:
         self.agent3_claude = AnthropicAdapter(model_id="claude-sonnet-5-5", offline_mode=False)
         self.agent4_sutrakar = AnthropicAdapter(model_id="claude-sonnet-5-5", offline_mode=False)
         self.agent5_validator = OpenAIAdapter(model_id="gpt-4o", offline_mode=False)
+
+        # Initialize Classical Verification & Gate Auditor
+        self.validator_agent = ValidatorAgent()
 
         # Load Source Scripture Corpora
         self.narada_sutras: List[Dict[str, Any]] = self._load_json(RAW_DATA_DIR / "narada_bhakti_sutra.json")
@@ -195,7 +204,8 @@ class DynamicLiveCouncilRunner:
         Saves into SQLite token_usage_records, live_api_execution_logs, and audit manifests.
         """
         self.call_counter += 1
-        call_id = f"LIVE_CALL_{self.call_counter:03d}"
+        # Use execution-scoped call_id to eliminate primary key collisions across runs
+        call_id = f"{self.execution_id}_{self.call_counter:03d}"
         now_iso = datetime.now(timezone.utc).isoformat()
         content = getattr(response_obj, "content", "") or ""
         finish_reason = getattr(response_obj, "finish_reason", "end_turn") or "stop"
@@ -313,8 +323,8 @@ class DynamicLiveCouncilRunner:
     def call_agent1_narada(self, narada_sutra: Dict[str, Any]) -> str:
         s_no = str(narada_sutra.get("sutra_no"))
         sanskrit = narada_sutra.get("sanskrit", "")
-        meaning_en = narada_sutra.get("vishleshan", {}).get("en", "")
-        meaning_mr = narada_sutra.get("vishleshan", {}).get("mr", "")
+        meaning_en = narada_sutra.get("initial_meaning", {}).get("en") or narada_sutra.get("vishleshan", {}).get("en", "")
+        meaning_mr = narada_sutra.get("initial_meaning", {}).get("mr") or narada_sutra.get("vishleshan", {}).get("mr", "")
 
         prompt = (
             f"You are Agent 1 — Devarshi Narada Specialist in the SK Sutras project by Shri Shripad Kulkarni.\n"
@@ -666,7 +676,8 @@ class DynamicLiveCouncilRunner:
             "You compose short, memorable Sanskrit sutras ('सूत्र लहान, विचार महान') and write crisp, concise, "
             "lucid Marathi commentaries strictly under 110 words without unnecessary verbosity."
         )
-        resp = self.agent4_sutrakar.generate(prompt=prompt, system_prompt=sys_prompt)
+        # Use generate_with_continuation to automatically handle long JSON output without truncation
+        resp = self.agent4_sutrakar.generate_with_continuation(prompt=prompt, system_prompt=sys_prompt)
         self.record_live_call(
             provider="anthropic",
             model_id=self.agent4_sutrakar.model_id,
@@ -683,35 +694,14 @@ class DynamicLiveCouncilRunner:
                 if "original_sanskrit_verse" in parsed and "comprehensive_bhashya_mr" in parsed:
                     return parsed
         except Exception as e:
-            print(f"Warning: JSON parse failed for Sutrakar composition: {e}")
+            print(f"Error: JSON parse failed for Sutrakar composition: {e}")
+            raise RuntimeError(
+                f"Agent 4 Sutrakar composition failed validation for sutra {sutra_idx}: {e}"
+            )
 
-        # Short & Concise Fallback Safe Composition
-        return {
-            "sutra_no": sutra_idx,
-            "theme": theme,
-            "original_sanskrit_verse": f"॥ उद्यमेन कार्यसिद्धिः ॥ {sutra_idx} ॥",
-            "padaccheda": "उद्यमेन । कार्य-सिद्धिः ॥",
-            "anvaya": "उद्यमेन एव सर्वकार्यसिद्धिः भवति।",
-            "nirukta": "उद्यमेन = पुरुषार्थेन, कार्यसिद्धिः = उद्दिष्टपूर्ती।",
-            "translation_en": "Through relentless and disciplined enterprise alone is true success accomplished.",
-            "translation_mr": "केवळ निश्चयी आणि शिस्तबद्ध उद्योगातूनच सर्व उद्दिष्टांची खरी पूर्तता होते.",
-            "philosophical_foundation_mr": "नारदांची निष्ठा आणि शांडिल्यांची विवेकबुद्धी यांच्या एकत्रीकरणातून शाश्वत उद्यमाची निर्मिती होते.",
-            "comprehensive_bhashya_mr": "उद्योगाचे मूळ केवळ स्वप्न पाहण्यात नसून सततच्या कृतीशील पुरुषार्थात आहे. नारदमुनींचा समर्पणभाव आणि शांडिल्य ऋषींची तर्कशुद्ध विचारसरणी जेव्हा एकत्र येतात, तेव्हा उद्योगाला शाश्वत दिशा मिळते. उत्तम व्यवहारातून संपत्ती निर्माण करून समाजाच्या कल्याणासाठी (लोकसंग्रह) तिचा विनियोग करणे, हेच भारतीय उद्योग परंपरेचे अंतिम मर्म आहे.",
-            "biographical_case_studies": [
-                {"name": "जमशेदजी टाटा", "category": "भारतीय / आधुनिक", "case_summary": "मूलभूत उद्योगांची उभारणी करून देशाला स्वावलंबी बनवले आणि संपत्तीचा विश्वस्त म्हणून समाजासाठी विनियोग केला."},
-                {"name": "थॉमस एडिसन", "category": "पाश्चात्य / आधुनिक", "case_summary": "हजारो अयशस्वी प्रयोगांनंतरही न खचता तर्कशुद्ध अभ्यासाने आणि सातत्याने विजेचा दिवा शोधून काढला."}
-            ],
-            "mental_resilience_yoga_sutras": {
-                "sutra_reference": "पतंजली योगसूत्र १.१२",
-                "sanskrit": "अभ्यासवैराग्याभ्यां तन्निरोधः",
-                "psychological_framework": "सततचा सराव (अभ्यास) आणि फळाविषयीची आसक्ती सोडणे (वैराग्य) यांमुळे उद्योजकाचे मन शांत राहून नैराश्य व ताण दूर होतो."
-            },
-            "practical_enterprise_guidance": [
-                {"role": "नवउद्योजकांसाठी (Early-stage Founders)", "guidance": "केवळ कल्पनेवर अवलंबून न राहता ग्राहकांच्या प्रत्यक्ष गरजा समजून त्वरित कृती सुरू करा."},
-                {"role": "व्यवस्थापकांसाठी (Managers & Executives)", "guidance": "पारदर्शक संवाद, कार्यक्षम प्रक्रिया आणि दैनंदिन शिस्तीच्या आधारे उद्दिष्टे वेळेत पूर्ण करा."},
-                {"role": "नेतृत्वासाठी (Corporate Leadership & Boards)", "guidance": "नैतिक मूल्यांशी तडजोड न करता दीर्घकालीन संस्था उभारणी आणि लोककल्याणाला प्राधान्य द्या."}
-            ]
-        }
+        raise RuntimeError(
+            f"Agent 4 Sutrakar response did not contain required composition keys for sutra {sutra_idx}"
+        )
 
     # ==========================================================================
     # AGENT 5: Independent Verification Audit (OpenAI gpt-4o)
@@ -721,7 +711,27 @@ class DynamicLiveCouncilRunner:
         sutra_idx: int,
         composed_data: Dict[str, Any],
         research_notes: Dict[str, Any],
+        existing_sutras: Optional[List[str]] = None,
     ) -> Tuple[bool, int, Dict[str, Any]]:
+        cand_sanskrit = composed_data.get("original_sanskrit_verse", "")
+
+        # Gate 13: Strict algorithmic duplicate check against existing canon
+        if existing_sutras:
+            is_dup, dup_match, sim = check_duplicate_or_near_duplicate(
+                cand_sanskrit, existing_sutras, similarity_threshold=0.85
+            )
+            if is_dup:
+                print(f"    [GATE 13 REJECTION] Candidate '{cand_sanskrit}' is near-duplicate of '{dup_match}' (similarity: {sim:.2f})")
+                return False, 30, {
+                    "verdict": "REJECTED",
+                    "overall_score": 30,
+                    "rejection_reason": f"Gate 13 Duplicate Violation: Near-identical to '{dup_match}' (similarity: {sim:.2f})",
+                    "duplicate_match": dup_match,
+                    "similarity": sim,
+                    "gates_passed": 12,
+                    "audit_commentary": "Strictly rejected due to duplicate Sanskrit formulation."
+                }
+
         prompt = (
             f"You are Agent 5 — Independent Verification Specialist & Quality Auditor in the SK Sutras project by Shri Shripad Kulkarni.\n"
             f"Audit New Canonical Udyog Sutra #{sutra_idx} against the 13 Qualitative Gates:\n"
@@ -772,23 +782,21 @@ class DynamicLiveCouncilRunner:
             json_match = re.search(r"\{.*\}", txt, re.DOTALL)
             if json_match:
                 audit_res = json.loads(json_match.group(0))
-                verdict = audit_res.get("verdict", "APPROVED")
-                score = int(audit_res.get("overall_score", 95))
-                return (verdict == "APPROVED"), score, audit_res
-        except Exception:
-            pass
+                verdict = audit_res.get("verdict", "REJECTED")
+                score = int(audit_res.get("overall_score", 0))
+                is_approved = (verdict == "APPROVED" and score >= 85)
+                return is_approved, score, audit_res
+        except Exception as e:
+            print(f"Warning: JSON parse failed for Agent 5 audit: {e}")
 
-        b_words = len(composed_data.get("comprehensive_bhashya_mr", "").split())
-        return True, 97, {
-            "verdict": "APPROVED",
-            "overall_score": 97,
-            "bhashya_word_count": b_words,
-            "is_short_and_concise": True,
-            "bhashya_depth_verified": True,
-            "case_studies_verified": True,
-            "yoga_psychology_verified": True,
-            "gates_passed": 13,
-            "audit_commentary": "Certified compliant with short memorable sutra formulation, concise Marathi Bhashya, Patanjali mental resilience, and IKS enterprise ethics."
+        # Fail-closed: Zero unverified auto-approvals allowed
+        print(f"    [AGENT 5 AUDIT PARSE ERROR]: Could not parse validation verdict JSON. Failing closed.")
+        return False, 0, {
+            "verdict": "REJECTED",
+            "overall_score": 0,
+            "rejection_reason": "Audit verification response was malformed or failed schema validation",
+            "gates_passed": 0,
+            "audit_commentary": "Rejected due to validation output formatting defect (fail-closed zero-defect policy)."
         }
 
     # ==========================================================================
@@ -856,7 +864,21 @@ class DynamicLiveCouncilRunner:
 
             # Step 6: Agent 5 audits composition across 13 qualitative gates
             print(f"  [Agent 5 - OpenAI gpt-4o] Auditing across 13 Quality Gates (Short Length & Depth)...")
-            approved, score, audit_res = self.call_agent5_validate_sutra(current_idx, composed_data, research_notes)
+            approved_sanskrit_list = [
+                r.get("new_udyog_sutra", {}).get("sanskrit_verse", "")
+                for r in approved_canon
+                if r.get("new_udyog_sutra", {}).get("sanskrit_verse")
+            ]
+            approved, score, audit_res = self.call_agent5_validate_sutra(
+                current_idx, composed_data, research_notes, existing_sutras=approved_sanskrit_list
+            )
+
+            cand_sanskrit = composed_data.get("original_sanskrit_verse", "")
+            # Treatise Invariant Guard: Prevent any duplicate formulation from entering canon
+            is_dup, dup_match, sim = check_duplicate_or_near_duplicate(cand_sanskrit, approved_sanskrit_list)
+            if is_dup:
+                print(f"  >>> [CANON REJECTION]: Sutra candidate matches existing '{dup_match}' (similarity {sim:.2f})")
+                approved = False
 
             if approved:
                 b_words = len(composed_data.get("comprehensive_bhashya_mr", "").split())
@@ -872,8 +894,8 @@ class DynamicLiveCouncilRunner:
                         "narada": {
                             "sutra_no": n_no,
                             "sanskrit": narada_item.get("sanskrit", ""),
-                            "meaning_en": narada_item.get("vishleshan", {}).get("en", ""),
-                            "meaning_mr": narada_item.get("vishleshan", {}).get("mr", ""),
+                            "meaning_en": narada_item.get("initial_meaning", {}).get("en") or narada_item.get("vishleshan", {}).get("en", ""),
+                            "meaning_mr": narada_item.get("initial_meaning", {}).get("mr") or narada_item.get("vishleshan", {}).get("mr", ""),
                         },
                         "shandilya": {
                             "sutra_no": s_no,
@@ -1497,11 +1519,13 @@ if __name__ == "__main__":
     # Save canonical data file for deterministic re-rendering
     canon_file = BASE_DIR / "scripts" / "ten_new_sutras_canonical_data.py"
     with open(canon_file, "w", encoding="utf-8") as f:
+        f.write("# -*- coding: utf-8 -*-\n")
         f.write("# Canonical Data for Ten New Udyog Sutras\n")
+        f.write("true = True\nfalse = False\nnull = None\n\n")
         f.write("TEN_NEW_UDYOG_SUTRAS_CANON = " + json.dumps(canon_sutras, ensure_ascii=False, indent=2) + "\n")
     print(f"[Canonical Data Written]: {canon_file}")
 
-    # Generate Word Document
+    # Generate Layman Word Document with ZERO technical jargon
     doc_output = DOCS_DIR / "UDYOG_SUTRAS_TEN_NEW_CANONICAL_MATCHING_AND_SHLOKAS.docx"
-    generate_canonical_word_document(canon_sutras, doc_output)
+    build_clean_layman_document(sutras=canon_sutras, output_path=doc_output)
     print("[ALL TASKS COMPLETED SUCCESSFULLY]")
